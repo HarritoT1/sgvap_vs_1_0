@@ -2,7 +2,7 @@
 <html lang="en" data-bs-theme="auto">
 
 <head>
-    <script src="../js/color-modes.js"></script>
+    <script src="{{asset('js/color-modes.js')}}"></script>
 
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -11,12 +11,12 @@
     <title>LOGIN</title>
 
     <link rel="canonical" href="https://getbootstrap.com/docs/5.3/examples/heroes/">
-    <link rel="icon" type="image/png" href="../img/icono_sgvap.png" />
-    <link rel="stylesheet" href="../css/styles_sgvap.css" />
-    <link rel="stylesheet" href="../css/login.css" />
+    <link rel="icon" type="image/png" href="{{asset('img/icono_sgvap.png')}}" />
+    <link rel="stylesheet" href="{{asset('css/styles_sgvap.css')}}" />
+    <link rel="stylesheet" href="{{asset('css/login.css')}}" />
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@docsearch/css@3">
 
-    <link href="../css/bootstrap.min.css" rel="stylesheet">
+    <link href="{{asset('css/bootstrap.min.css')}}" rel="stylesheet">
 
     <style>
         .bd-placeholder-img {
@@ -99,7 +99,7 @@
 
 
     <!-- Custom styles for this template -->
-    <link href="../css/heroes.css" rel="stylesheet">
+    <link href="{{asset('css/heroes.css')}}" rel="stylesheet">
 </head>
 
 <body>
@@ -177,13 +177,13 @@
         <div class="container col-xl-10 col-xxl-8 px-4 py-5">
             <div class="row align-items-center g-lg-5 py-5">
                 <div class="col-lg-7 text-center text-lg-start">
-                    <img src="../img/logo_ecore.png" alt="logo_ecore" class="imageResponsive mb-4"
+                    <img src="{{asset('img/logo_ecore.png')}}" alt="logo_ecore" class="imageResponsive mb-4"
                         style="width: 22rem;">
                     <h1 class="display-4 fw-bold lh-1 text-body-emphasis mb-3">SGVAP.</h1>
                     <h3 class="h5 fw-bold lh-1 text-body-emphasis">Bienvenido.</h3>
                     <p class="col-lg-10 fs-5">Sistema Web de Gestión de Víaticos y Personal en Proyectos Foráneos.</p>
                     <hr class="my-4">
-                    <img src="../img/icono_sgvap.png" alt="icono_sgvap" class="imageResponsive mb-4"
+                    <img src="{{asset('img/icono_sgvap.png')}}" alt="icono_sgvap" class="imageResponsive mb-4"
                         style="width: 6rem;">
                 </div>
                 <div class="col-md-10 mx-auto col-lg-5">
@@ -203,7 +203,7 @@
                                 name="password" value="" required maxlength="20">
                             <label for="password">Contraseña</label>
                             <span onclick="togglePassword()">
-                                <img src="../img/toggle_pass.png" alt="toggle_pass" class="imageResponsive"
+                                <img src="{{asset('img/toggle_pass.png')}}" alt="toggle_pass" class="imageResponsive"
                                     style="width: 1.2rem; position: absolute; top: 20px; right: 10px; cursor: pointer; border-radius: 100%; background-color: white;">
                             </span>
                             <div class="invalid-feedback">
@@ -220,7 +220,7 @@
             </div>
         </div>
     </main>
-    <script src="../js/bootstrap.bundle.min.js"></script>
+    <script src="{{asset('js/bootstrap.bundle.min.js')}}"></script>
     <script>
         (() => {
             'use strict'
