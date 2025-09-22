@@ -18,3 +18,7 @@ Route::get('/contacto', function () {
     return view('contacto');
 });
 
+Route::get('/gp_nuevo', function () {
+    return view('gp_nuevo');
+});
+
