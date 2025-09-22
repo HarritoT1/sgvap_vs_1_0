@@ -710,8 +710,8 @@ l838 0 -282 -282 c-304 -305 -305 -307 -288 -395 9 -49 69 -109 118 -118 91
     </header>
 
     <div class="container-fluid" style="min-height: 100vh;">
-        <div class="row" style="min-height: 100vh;">
-            <div class="sidebar border border-right col-md-3 col-lg-2 p-0"
+        <div class="row">
+            <div class="sidebar border border-right col-md-3 col-lg-2 p-0 h-md-100vh"
                 style="background-color: var(--barra-navegacion-color);">
                 <div class="offcanvas-md offcanvas-end" tabindex="-1" id="sidebarMenu"
                     aria-labelledby="sidebarMenuLabel" style="background-color: var(--barra-navegacion-color);">
