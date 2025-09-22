@@ -817,11 +817,11 @@ l838 0 -282 -282 c-304 -305 -305 -307 -288 -395 9 -49 69 -109 118 -118 91
                                         Gestión de dispersiones monetarias.
                                     </summary>
                                     
-                                    <div style="padding: 0 30px;" class="my-1">
+                                    <div style="padding: 0 30px;" class="my-1 div-viatico">
                                         <svg class="bi">
                                             <use xlink:href="#gasolina" />
                                         </svg>
-                                        Gasolina.
+                                        <span>Gasolina.</span>
                                     </div>
                                     
                                     <ul class="flex-column vineta" style="padding-left: 75px;">
@@ -842,11 +842,11 @@ l838 0 -282 -282 c-304 -305 -305 -307 -288 -395 9 -49 69 -109 118 -118 91
                                         </li>
                                     </ul>
 
-                                    <div style="padding: 0 30px;" class="my-1">
+                                    <div style="padding: 0 30px;" class="my-1 div-viatico">
                                         <svg class="bi">
                                             <use xlink:href="#caseta" />
                                         </svg>
-                                        Caseta.
+                                        <span>Caseta.</span>
                                     </div>
                                     
                                     <ul class="flex-column vineta" style="padding-left: 75px;">
@@ -867,11 +867,11 @@ l838 0 -282 -282 c-304 -305 -305 -307 -288 -395 9 -49 69 -109 118 -118 91
                                         </li>
                                     </ul>
 
-                                    <div style="padding: 0 30px;" class="my-1">
+                                    <div style="padding: 0 30px;" class="my-1 div-viatico">
                                         <svg class="bi">
                                             <use xlink:href="#hospedaje" />
                                         </svg>
-                                        Hospedaje.
+                                        <span>Hospedaje.</span>
                                     </div>
                                     
                                     <ul class="flex-column vineta" style="padding-left: 75px;">
