@@ -953,7 +953,7 @@ l838 0 -282 -282 c-304 -305 -305 -307 -288 -395 9 -49 69 -109 118 -118 91
             </div>
 
             <main class="col-md-9 ms-sm-auto col-lg-10 px-md-4">
-                
+                @yield('content')
             </main>
         </div>
     </div>
