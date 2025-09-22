@@ -101,7 +101,7 @@
 
             /* md en Bootstrap */
             .h-md-100vh {
-                height: 100vh !important;
+                min-height: 100vh !important;
             }
         }
     </style>
