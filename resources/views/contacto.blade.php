@@ -5,7 +5,7 @@
 <div class="w-100 my-3 div-main">
     <h2 class="fw-bold my-3" style="font-size: 2rem;">Información del desarrollador:</h2>
     <div class="w-100 div-secondary">
-        <img src="../img/icono_sgvap.png" alt="icono_sgvap" class="imageResponsive my-3" style="width: 10rem;">
+        <img src="{{asset('img/icono_sgvap.png')}}" alt="icono_sgvap" class="imageResponsive my-3" style="width: 10rem;">
         <hr class="my-4">
         <ul class="flex-column vineta fw-bold" style="font-size: 1.5rem; text-align: justify;">
             <li>

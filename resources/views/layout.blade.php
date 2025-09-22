@@ -2,7 +2,7 @@
 <html lang="en" data-bs-theme="auto">
 
 <head>
-    <script src="{{asset('js/color-modes.js')}}"></script>
+    <script src="{{ asset('js/color-modes.js') }}"></script>
 
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -11,13 +11,13 @@
     <title>SGVAP</title>
 
     <link rel="canonical" href="https://getbootstrap.com/docs/5.3/examples/dashboard/">
-    <link rel="shortcut icon" type="image/png" href="{{asset('img/icono_sgvap.ico')}}" />
-    <link rel="stylesheet" href="{{asset('css/styles_sgvap.css')}}" />
+    <link rel="shortcut icon" type="image/png" href="{{ asset('img/icono_sgvap.ico') }}" />
+    <link rel="stylesheet" href="{{ asset('css/styles_sgvap.css') }}" />
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@docsearch/css@3">
-    <script src="{{asset('js/scripts_sgvap.js')}}" type="text/javascript"></script>
+    <script src="{{ asset('js/scripts_sgvap.js') }}" type="text/javascript"></script>
 
 
-    <link href="{{asset('css/bootstrap.min.css')}}" rel="stylesheet">
+    <link href="{{ asset('css/bootstrap.min.css') }}" rel="stylesheet">
 
     <style>
         .bd-placeholder-img {
@@ -96,13 +96,21 @@
         .bd-mode-toggle .dropdown-menu .active .bi {
             display: block !important;
         }
+
+        @media (min-width: 768px) {
+
+            /* md en Bootstrap */
+            .h-md-100vh {
+                height: 100vh !important;
+            }
+        }
     </style>
 
 
     <!-- Custom styles for this template -->
     <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.5/font/bootstrap-icons.min.css" rel="stylesheet">
     <!-- Custom styles for this template -->
-    <link href="{{asset('css/dashboard.css')}}" rel="stylesheet">
+    <link href="{{ asset('css/dashboard.css') }}" rel="stylesheet">
 </head>
 
 <body>
@@ -693,7 +701,8 @@ l838 0 -282 -282 c-304 -305 -305 -307 -288 -395 9 -49 69 -109 118 -118 91
 
     <header class="navbar sticky-top flex-md-nowrap p-0 shadow" data-bs-theme="dark"
         style="background-color: var(--empresa-color);">
-        <a class="navbar-brand col-md-3 col-lg-2 me-0 px-3 fs-6 text-white name-enterprise" href="#" target="_self">E
+        <a class="navbar-brand col-md-3 col-lg-2 me-0 px-3 fs-6 text-white name-enterprise" href="#"
+            target="_self">E
             Core Network S.A de C.V.</a>
 
         <ul class="navbar-nav flex-row d-md-none">
@@ -711,18 +720,20 @@ l838 0 -282 -282 c-304 -305 -305 -307 -288 -395 9 -49 69 -109 118 -118 91
 
     <div class="container-fluid" style="min-height: 100vh;">
         <div class="row">
-            <div class="sidebar border border-right col-md-3 col-lg-2 p-0"
+            <div class="sidebar border border-right col-md-3 col-lg-2 p-0 h-md-100vh"
                 style="background-color: var(--barra-navegacion-color);">
                 <div class="offcanvas-md offcanvas-end" tabindex="-1" id="sidebarMenu"
                     aria-labelledby="sidebarMenuLabel" style="background-color: var(--barra-navegacion-color);">
                     <div class="offcanvas-header">
-                        <h5 class="offcanvas-title fs-6 text-white name-enterprise" id="sidebarMenuLabel">E Core Network
+                        <h5 class="offcanvas-title fs-6 text-white name-enterprise" id="sidebarMenuLabel">E Core
+                            Network
                             S.A de C.V.</h5>
                         <button type="button" class="btn-close" data-bs-dismiss="offcanvas"
                             data-bs-target="#sidebarMenu" aria-label="Close"></button>
                     </div>
                     <div class="offcanvas-body d-md-flex flex-column p-0 pt-lg-3 overflow-y-auto">
-                        <img class="imageResponsive mb-1" alt="icono_sgvap" src="{{asset('img/icono_sgvap.png')}}" style="width: 6rem;">
+                        <img class="imageResponsive mb-1" alt="icono_sgvap" src="{{ asset('img/icono_sgvap.png') }}"
+                            style="width: 6rem;">
                         <hr class="my-3 hr-sidebar">
                         <ul class="nav flex-column">
                             <li class="nav-item">
@@ -744,12 +755,14 @@ l838 0 -282 -282 c-304 -305 -305 -307 -288 -395 9 -49 69 -109 118 -118 91
                                     </summary>
                                     <ul class="flex-column vineta">
                                         <li class="nav-item">
-                                            <a class="nav-link d-flex align-items-center gap-2 text-white fw-bold" href="#" target="_self">
+                                            <a class="nav-link d-flex align-items-center gap-2 text-white fw-bold"
+                                                href="#" target="_self">
                                                 Nuevo proyecto.
                                             </a>
                                         </li>
                                         <li class="nav-item">
-                                            <a class="nav-link d-flex align-items-center gap-2 text-white fw-bold" href="#" target="_self">
+                                            <a class="nav-link d-flex align-items-center gap-2 text-white fw-bold"
+                                                href="#" target="_self">
                                                 Consultar y actualizar proyectos.
                                             </a>
                                         </li>
@@ -766,42 +779,50 @@ l838 0 -282 -282 c-304 -305 -305 -307 -288 -395 9 -49 69 -109 118 -118 91
                                     </summary>
                                     <ul class="flex-column vineta">
                                         <li class="nav-item">
-                                            <a class="nav-link d-flex align-items-center gap-2 text-white fw-bold" href="#" target="_self">
+                                            <a class="nav-link d-flex align-items-center gap-2 text-white fw-bold"
+                                                href="#" target="_self">
                                                 Registrar empleados.
                                             </a>
                                         </li>
                                         <li class="nav-item">
-                                            <a class="nav-link d-flex align-items-center gap-2 text-white fw-bold" href="#" target="_self">
+                                            <a class="nav-link d-flex align-items-center gap-2 text-white fw-bold"
+                                                href="#" target="_self">
                                                 Consultar y actualizar empleados.
                                             </a>
                                         </li>
                                         <li class="nav-item">
-                                            <a class="nav-link d-flex align-items-center gap-2 text-white fw-bold" href="#" target="_self">
+                                            <a class="nav-link d-flex align-items-center gap-2 text-white fw-bold"
+                                                href="#" target="_self">
                                                 Corte por día de viáticos.
                                             </a>
                                         </li>
                                         <li class="nav-item">
-                                            <a class="nav-link d-flex align-items-center gap-2 text-white fw-bold" href="#" target="_self">
+                                            <a class="nav-link d-flex align-items-center gap-2 text-white fw-bold"
+                                                href="#" target="_self">
                                                 Consultar retiros semanales.
                                             </a>
                                         </li>
                                         <li class="nav-item">
-                                            <a class="nav-link d-flex align-items-center gap-2 text-white fw-bold" href="#" target="_self">
+                                            <a class="nav-link d-flex align-items-center gap-2 text-white fw-bold"
+                                                href="#" target="_self">
                                                 Corte mensual de viáticos.
                                             </a>
                                         </li>
                                         <li class="nav-item">
-                                            <a class="nav-link d-flex align-items-center gap-2 text-white fw-bold" href="#" target="_self">
+                                            <a class="nav-link d-flex align-items-center gap-2 text-white fw-bold"
+                                                href="#" target="_self">
                                                 Consultar cortes en un año específico.
                                             </a>
                                         </li>
                                         <li class="nav-item">
-                                            <a class="nav-link d-flex align-items-center gap-2 text-white fw-bold" href="#" target="_self">
+                                            <a class="nav-link d-flex align-items-center gap-2 text-white fw-bold"
+                                                href="#" target="_self">
                                                 Gráficas de barras de viáticos.
                                             </a>
                                         </li>
                                         <li class="nav-item">
-                                            <a class="nav-link d-flex align-items-center gap-2 text-white fw-bold" href="#" target="_self">
+                                            <a class="nav-link d-flex align-items-center gap-2 text-white fw-bold"
+                                                href="#" target="_self">
                                                 Gráficas de pastel por viáticos.
                                             </a>
                                         </li>
@@ -816,27 +837,30 @@ l838 0 -282 -282 c-304 -305 -305 -307 -288 -395 9 -49 69 -109 118 -118 91
                                         </svg>
                                         Gestión de dispersiones monetarias.
                                     </summary>
-                                    
+
                                     <div style="padding: 0 30px;" class="my-1 div-viatico">
                                         <svg class="bi">
                                             <use xlink:href="#gasolina" />
                                         </svg>
                                         <span>Gasolina.</span>
                                     </div>
-                                    
+
                                     <ul class="flex-column vineta" style="padding-left: 75px;">
                                         <li class="nav-item">
-                                            <a class="nav-link d-flex align-items-center gap-2 text-white fw-bold" href="#" target="_self">
+                                            <a class="nav-link d-flex align-items-center gap-2 text-white fw-bold"
+                                                href="#" target="_self">
                                                 Registrar disp. gasolina.
                                             </a>
                                         </li>
                                         <li class="nav-item">
-                                            <a class="nav-link d-flex align-items-center gap-2 text-white fw-bold" href="#" target="_self">
+                                            <a class="nav-link d-flex align-items-center gap-2 text-white fw-bold"
+                                                href="#" target="_self">
                                                 Consultar y actualizar disp. gasolina.
                                             </a>
                                         </li>
                                         <li class="nav-item">
-                                            <a class="nav-link d-flex align-items-center gap-2 text-white fw-bold" href="#" target="_self">
+                                            <a class="nav-link d-flex align-items-center gap-2 text-white fw-bold"
+                                                href="#" target="_self">
                                                 Gráficas.
                                             </a>
                                         </li>
@@ -848,20 +872,23 @@ l838 0 -282 -282 c-304 -305 -305 -307 -288 -395 9 -49 69 -109 118 -118 91
                                         </svg>
                                         <span>Caseta.</span>
                                     </div>
-                                    
+
                                     <ul class="flex-column vineta" style="padding-left: 75px;">
                                         <li class="nav-item">
-                                            <a class="nav-link d-flex align-items-center gap-2 text-white fw-bold" href="#" target="_self">
+                                            <a class="nav-link d-flex align-items-center gap-2 text-white fw-bold"
+                                                href="#" target="_self">
                                                 Registrar disp. caseta.
                                             </a>
                                         </li>
                                         <li class="nav-item">
-                                            <a class="nav-link d-flex align-items-center gap-2 text-white fw-bold" href="#" target="_self">
+                                            <a class="nav-link d-flex align-items-center gap-2 text-white fw-bold"
+                                                href="#" target="_self">
                                                 Consultar y actualizar disp. caseta.
                                             </a>
                                         </li>
                                         <li class="nav-item">
-                                            <a class="nav-link d-flex align-items-center gap-2 text-white fw-bold" href="#" target="_self">
+                                            <a class="nav-link d-flex align-items-center gap-2 text-white fw-bold"
+                                                href="#" target="_self">
                                                 Gráficas.
                                             </a>
                                         </li>
@@ -873,20 +900,23 @@ l838 0 -282 -282 c-304 -305 -305 -307 -288 -395 9 -49 69 -109 118 -118 91
                                         </svg>
                                         <span>Hospedaje.</span>
                                     </div>
-                                    
+
                                     <ul class="flex-column vineta" style="padding-left: 75px;">
                                         <li class="nav-item">
-                                            <a class="nav-link d-flex align-items-center gap-2 text-white fw-bold" href="#" target="_self">
+                                            <a class="nav-link d-flex align-items-center gap-2 text-white fw-bold"
+                                                href="#" target="_self">
                                                 Registrar disp. hospedaje.
                                             </a>
                                         </li>
                                         <li class="nav-item">
-                                            <a class="nav-link d-flex align-items-center gap-2 text-white fw-bold" href="#" target="_self">
+                                            <a class="nav-link d-flex align-items-center gap-2 text-white fw-bold"
+                                                href="#" target="_self">
                                                 Consultar y actualizar disp. hospedaje.
                                             </a>
                                         </li>
                                         <li class="nav-item">
-                                            <a class="nav-link d-flex align-items-center gap-2 text-white fw-bold" href="#" target="_self">
+                                            <a class="nav-link d-flex align-items-center gap-2 text-white fw-bold"
+                                                href="#" target="_self">
                                                 Gráficas.
                                             </a>
                                         </li>
@@ -906,22 +936,26 @@ l838 0 -282 -282 c-304 -305 -305 -307 -288 -395 9 -49 69 -109 118 -118 91
                                     </summary>
                                     <ul class="flex-column vineta">
                                         <li class="nav-item">
-                                            <a class="nav-link d-flex align-items-center gap-2 text-white fw-bold" href="#" target="_self">
+                                            <a class="nav-link d-flex align-items-center gap-2 text-white fw-bold"
+                                                href="#" target="_self">
                                                 Registro vehícular.
                                             </a>
                                         </li>
                                         <li class="nav-item">
-                                            <a class="nav-link d-flex align-items-center gap-2 text-white fw-bold" href="#" target="_self">
+                                            <a class="nav-link d-flex align-items-center gap-2 text-white fw-bold"
+                                                href="#" target="_self">
                                                 Consulta y act. de vehículos.
                                             </a>
                                         </li>
                                         <li class="nav-item">
-                                            <a class="nav-link d-flex align-items-center gap-2 text-white fw-bold" href="#" target="_self">
+                                            <a class="nav-link d-flex align-items-center gap-2 text-white fw-bold"
+                                                href="#" target="_self">
                                                 Préstamo vehícular.
                                             </a>
                                         </li>
                                         <li class="nav-item">
-                                            <a class="nav-link d-flex align-items-center gap-2 text-white fw-bold" href="#" target="_self">
+                                            <a class="nav-link d-flex align-items-center gap-2 text-white fw-bold"
+                                                href="#" target="_self">
                                                 Consulta y act. de prestamos.
                                             </a>
                                         </li>
@@ -932,7 +966,8 @@ l838 0 -282 -282 c-304 -305 -305 -307 -288 -395 9 -49 69 -109 118 -118 91
                         <hr class="my-3 hr-sidebar">
                         <ul class="nav flex-column">
                             <li class="nav-item">
-                                <a class="nav-link d-flex align-items-center gap-2 text-white fw-bold" href="#" target="_self">
+                                <a class="nav-link d-flex align-items-center gap-2 text-white fw-bold" href="#"
+                                    target="_self">
                                     <svg class="bi">
                                         <use xlink:href="#info_developer" />
                                     </svg>
@@ -940,7 +975,8 @@ l838 0 -282 -282 c-304 -305 -305 -307 -288 -395 9 -49 69 -109 118 -118 91
                                 </a>
                             </li>
                             <li class="nav-item">
-                                <a class="nav-link d-flex align-items-center gap-2 text-white fw-bold" href="#"target="_self">
+                                <a class="nav-link d-flex align-items-center gap-2 text-white fw-bold"
+                                    href="#"target="_self">
                                     <svg class="bi">
                                         <use xlink:href="#salir" />
                                     </svg>
@@ -957,12 +993,12 @@ l838 0 -282 -282 c-304 -305 -305 -307 -288 -395 9 -49 69 -109 118 -118 91
             </main>
         </div>
     </div>
-    <script src="{{asset('js/bootstrap.bundle.min.js')}}"></script>
+    <script src="{{ asset('js/bootstrap.bundle.min.js') }}"></script>
 
     <script src="https://cdn.jsdelivr.net/npm/chart.js@4.3.2/dist/chart.umd.js"
-        integrity="sha384-eI7PSr3L1XLISH8JdDII5YN/njoSsxfbrkCTnJrzXt+ENP5MOVBxD+l6sEG4zoLp"
-        crossorigin="anonymous"></script>
-    <script src="{{asset('js/dashboard.js')}}"></script>
+        integrity="sha384-eI7PSr3L1XLISH8JdDII5YN/njoSsxfbrkCTnJrzXt+ENP5MOVBxD+l6sEG4zoLp" crossorigin="anonymous">
+    </script>
+    <script src="{{ asset('js/dashboard.js') }}"></script>
 </body>
 
 </html>

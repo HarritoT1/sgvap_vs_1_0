@@ -118,12 +118,6 @@ a:active, summary:active, .div-viatico:active {
   text-shadow: 0px 0px 6px rgb(255, 255, 255) !important;
 }
 
-@media (min-width: 768px) { /* md en Bootstrap */
-  .h-md-100vh {
-    height: 100vh !important;
-  }
-}
-
 .div-main { 
   border-width: 2px; 
   border-color: rgba(0, 0, 0, 0.27); 
