@@ -14,13 +14,11 @@
         Tu navegador no soporta PDFs. Por favor descarga el PDF para verlo: <a download href="{{asset('img/prueba.pdf')}}">Descargar PDF</a>
     </iframe>
 
-    También puedes descargar el PDF para verlo: <a class="text-decoration-none" download="manual_usuario.pdf" href="{{asset('img/prueba.pdf')}}">Descargar PDF</a>
+    <p style="font-size: 0.8rem;">
+        También puedes descargar el PDF para verlo: <a class="text-decoration-none" download="manual_usuario.pdf" href="{{asset('img/prueba.pdf')}}">Descargar PDF</a>
+    </p>
 
-    <br>
-    <br>
-    <br>
-    <br>
-    <h3 class="fw-bold text-center" style="font-size: 1.2rem;">
+    <h3 class="fw-bold text-center mt-6" style="font-size: 1.2rem;">
         Todos los derechos reservados &copy; 2025 E Core Network S.A de C.V.
     </h3>
 </div>
