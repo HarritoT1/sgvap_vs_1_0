@@ -1,0 +1,200 @@
+/* CSS Variables */
+:root {
+  --barra-navegacion-color: #005e99;
+  --empresa-color: #046DAF;
+  --header-color: #0099cc;
+  --botones-color: #34b5e5;
+  --color-4: #64d8e8;
+  --login-color: #99e3eb;
+  --familyFont: signika, sans-serif !important;
+}
+
+.barra-navegacion-color {
+  background-color: #005e99;
+}
+
+.empresa-color {
+  background-color: #046DAF;
+}
+
+.header-color {
+  background-color: #0099cc;
+}
+
+.botones-color {
+  background-color: #34b5e5;
+}
+
+.color-4 {
+  background-color: #64d8e8;
+}
+
+.login-color {
+  background-color: #99e3eb;
+}
+
+* {
+  box-sizing: border-box !important;
+  font-family: var(--familyFont) !important;
+}
+
+html {
+  font-size: 16px !important;
+  max-width: 100vw !important;
+  min-height: 100vh !important;
+}
+
+body {
+  margin: 0;
+  padding: 0;
+  min-width: 100% !important;
+  min-height: 100vh !important;
+}
+
+.imageResponsive {
+  max-width: 100%;
+  height: auto;
+  display: block;
+  margin: 0 auto;
+}
+
+input:focus,
+textarea:focus,
+select:focus {
+  outline: 3px solid rgb(5, 209, 250) !important;
+  background-color: var(--color-4) !important;
+  box-shadow: -1px 1px 25px -1px rgba(0, 0, 0, 0.75) inset !important;
+  -webkit-box-shadow: -1px 1px 25px -1px rgba(0, 0, 0, 0.75) inset !important;
+  -moz-box-shadow: -1px 1px 25px -1px rgba(0, 0, 0, 0.75) inset !important;
+  border: 1px solid var(--botones-color) !important;
+}
+
+.name-enterprise {
+  font-weight: bold !important;
+  font-size: 1.2rem !important;
+  text-align: left !important;
+  text-shadow: 0px 0px 6px rgba(0, 0, 0, 1) !important;
+}
+
+.summary-navbar {
+  padding: 8px 16px;
+}
+
+ul.nav details,
+ul.nav summary,
+ul.nav {
+  font-size: .875rem !important;
+  font-weight: bold !important;
+}
+
+ul.vineta {
+  list-style-image: url('../img/vineta.png') !important;
+  list-style-position: outside !important;
+  padding-left: 60px;
+}
+
+ul.vineta a {
+  padding: 2.5px 0px !important;
+}
+
+.hr-sidebar {
+  border-color: white !important;
+  border-width: 3px !important;
+}
+
+a, summary {
+  transition: all 0.3s ease-in-out !important;
+}
+
+a:hover, summary:hover, .div-viatico:hover {
+  text-decoration: none !important;
+  color: var(--botones-color) !important;
+  text-shadow: 0px 0px 6px rgba(0, 0, 0, 1) !important;
+}
+
+a:active, summary:active, .div-viatico:active {
+  text-decoration: none !important;
+  color: black !important;
+  text-shadow: 0px 0px 6px rgb(255, 255, 255) !important;
+}
+
+@media (min-width: 768px) { /* md en Bootstrap */
+  .h-md-100vh {
+    height: 100vh !important;
+  }
+}
+
+.div-main { 
+  border-width: 2px; 
+  border-color: rgba(0, 0, 0, 0.27); 
+  border-style: solid;
+  box-shadow: -1px 23px 37px -10px rgba(0,0,0,0.75);
+  -webkit-box-shadow: -1px 23px 37px -10px rgba(0,0,0,0.75);
+  -moz-box-shadow: -1px 23px 37px -10px rgba(0,0,0,0.75);
+  padding: 15px 20px 30px 20px;
+}
+
+.div-secondary { 
+  border-radius: 20px;
+  border-width: 2px; 
+  border-color: rgba(0, 0, 0, 0.27); 
+  border-style: solid;
+  padding: 15px 20px;
+  box-shadow: 0px 0px 47px -10px rgba(0,0,0,0.75) inset;
+  -webkit-box-shadow: 0px 0px 47px -10px rgba(0,0,0,0.75) inset;
+  -moz-box-shadow: 0px 0px 47px -10px rgba(0,0,0,0.75) inset;
+}
+
+a {
+  word-wrap: break-word;   /* Permite cortar la palabra si no cabe */
+  overflow-wrap: break-word; /* Más moderno, soportado por la mayoría */
+  white-space: normal;     /* Evita que el texto quede en una sola línea */
+}
+
+/* Pantallas muy pequeñas (mini móviles) */
+@media (min-width: 320px) {
+  html {
+    font-size: 11px !important; /* 1rem = 11px */
+  }
+}
+
+/* Móviles grandes */
+@media (min-width: 480px) {
+  html {
+    font-size: 13px !important; /* 1rem = 13px */
+  }
+}
+
+/* Tablets */
+@media (min-width: 768px) {
+  html {
+    font-size: 14px !important; /* 1rem = 14px */
+  }
+}
+
+/* Laptops */
+@media (min-width: 992px) {
+  html {
+    font-size: 15px !important; /* 1rem = 15px */
+  }
+}
+
+/* Desktop grande */
+@media (min-width: 1200px) {
+  html {
+    font-size: 16px !important; /* 1rem = 16px */
+  }
+}
+
+/* Desktop extra grande */
+@media (min-width: 1600px) {
+  html {
+    font-size: 18px !important; /* 1rem = 18px */
+  }
+}
+
+
+
+
+
+
