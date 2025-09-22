@@ -18,7 +18,7 @@
         También puedes descargar el PDF para verlo: <a class="text-decoration-none" download="manual_usuario.pdf" href="{{asset('img/prueba.pdf')}}">Descargar PDF</a>
     </p>
 
-    <h3 class="fw-bold text-center mt-6" style="font-size: 1.2rem;">
+    <h3 class="fw-bold text-center mt-5" style="font-size: 1.2rem;">
         Todos los derechos reservados &copy; 2025 E Core Network S.A de C.V.
     </h3>
 </div>
