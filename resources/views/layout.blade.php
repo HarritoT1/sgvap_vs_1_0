@@ -993,6 +993,11 @@ l838 0 -282 -282 c-304 -305 -305 -307 -288 -395 9 -49 69 -109 118 -118 91
             </main>
         </div>
     </div>
+
+    <script>
+        document.addEventListener("DOMContentLoaded", asig_listeners_of_submit_forms);
+    </script>
+    
     <script src="{{ asset('js/bootstrap.bundle.min.js') }}"></script>
 
     <script src="https://cdn.jsdelivr.net/npm/chart.js@4.3.2/dist/chart.umd.js"
