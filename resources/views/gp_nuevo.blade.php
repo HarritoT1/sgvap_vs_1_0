@@ -4,7 +4,7 @@
 @section('content')
 
 <div class="w-100 my-3 div-main">
-    <h1 class="fw-bold my-3" style="font-size: 2rem;">Crea un proyecto dando de alta toda la información
+    <h1 class="fw-bold my-3" style="font-size: 2rem; text-align:justify">Crea un proyecto dando de alta toda la información
         del formulario:</h1>
     <div class="w-100 div-secondary">
 
