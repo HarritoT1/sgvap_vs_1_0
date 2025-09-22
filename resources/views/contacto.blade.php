@@ -1,8 +1,6 @@
 
 @extends('layout')
 
-@section('title', 'CONTACTO')
-
 @section('content')
 <div class="w-100 my-3 div-main">
     <h2 class="fw-bold my-3" style="font-size: 2rem;">Información del desarrollador:</h2>
