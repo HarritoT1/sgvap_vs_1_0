@@ -2,7 +2,7 @@
 <html lang="en" data-bs-theme="auto">
 
 <head>
-    <script src="../js/color-modes.js"></script>
+    <script src="{{asset('js/color-modes.js')}}"></script>
 
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -11,11 +11,13 @@
     <title>SGVAP</title>
 
     <link rel="canonical" href="https://getbootstrap.com/docs/5.3/examples/dashboard/">
-    <link rel="icon" type="image/png" href="../img/icono_sgvap.png" />
-    <link rel="stylesheet" href="../css/styles_sgvap.css" />
+    <link rel="shortcut icon" type="image/png" href="{{asset('img/icono_sgvap.ico')}}" />
+    <link rel="stylesheet" href="{{asset('css/styles_sgvap.css')}}" />
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@docsearch/css@3">
+    <script src="{{asset('js/scripts_sgvap.js')}}" type="text/javascript"></script>
 
-    <link href="../css/bootstrap.min.css" rel="stylesheet">
+
+    <link href="{{asset('css/bootstrap.min.css')}}" rel="stylesheet">
 
     <style>
         .bd-placeholder-img {
@@ -100,7 +102,7 @@
     <!-- Custom styles for this template -->
     <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.5/font/bootstrap-icons.min.css" rel="stylesheet">
     <!-- Custom styles for this template -->
-    <link href="../css/dashboard.css" rel="stylesheet">
+    <link href="{{asset('css/dashboard.css')}}" rel="stylesheet">
 </head>
 
 <body>
@@ -720,7 +722,7 @@ l838 0 -282 -282 c-304 -305 -305 -307 -288 -395 9 -49 69 -109 118 -118 91
                             data-bs-target="#sidebarMenu" aria-label="Close"></button>
                     </div>
                     <div class="offcanvas-body d-md-flex flex-column p-0 pt-lg-3 overflow-y-auto">
-                        <img class="imageResponsive mb-1" alt="icono_sgvap" src="../img/icono_sgvap.png" style="width: 6rem;">
+                        <img class="imageResponsive mb-1" alt="icono_sgvap" src="{{asset('img/icono_sgvap.png')}}" style="width: 6rem;">
                         <hr class="my-3 hr-sidebar">
                         <ul class="nav flex-column">
                             <li class="nav-item">
@@ -955,12 +957,12 @@ l838 0 -282 -282 c-304 -305 -305 -307 -288 -395 9 -49 69 -109 118 -118 91
             </main>
         </div>
     </div>
-    <script src="../js/bootstrap.bundle.min.js"></script>
+    <script src="{{asset('js/bootstrap.bundle.min.js')}}"></script>
 
     <script src="https://cdn.jsdelivr.net/npm/chart.js@4.3.2/dist/chart.umd.js"
         integrity="sha384-eI7PSr3L1XLISH8JdDII5YN/njoSsxfbrkCTnJrzXt+ENP5MOVBxD+l6sEG4zoLp"
         crossorigin="anonymous"></script>
-    <script src="../js/dashboard.js"></script>
+    <script src="{{asset('js/dashboard.js')}}"></script>
 </body>
 
 </html>

@@ -11,10 +11,11 @@
     <title>LOGIN</title>
 
     <link rel="canonical" href="https://getbootstrap.com/docs/5.3/examples/heroes/">
-    <link rel="icon" type="image/png" href="{{asset('img/icono_sgvap.png')}}" />
+    <link rel="shortcut icon" type="image/png" href="{{asset('img/icono_sgvap.ico')}}" />
     <link rel="stylesheet" href="{{asset('css/styles_sgvap.css')}}" />
     <link rel="stylesheet" href="{{asset('css/login.css')}}" />
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@docsearch/css@3">
+    <script src="{{asset('js/scripts_sgvap.js')}}" type="text/javascript"></script>
 
     <link href="{{asset('css/bootstrap.min.css')}}" rel="stylesheet">
 
@@ -222,21 +223,7 @@
     </main>
     <script src="{{asset('js/bootstrap.bundle.min.js')}}"></script>
     <script>
-        (() => {
-            'use strict'
-
-            const forms = document.querySelectorAll('.needs-validation')
-
-            Array.from(forms).forEach(form => {
-                form.addEventListener('submit', event => {
-                    if (!form.checkValidity()) {
-                        event.preventDefault()
-                        event.stopPropagation()
-                    }
-                    form.classList.add('was-validated')
-                }, false)
-            })
-        })()
+        asig_listeners_of_submit_forms()
 
         function togglePassword() {
             const passwordField = document.getElementById("password");
