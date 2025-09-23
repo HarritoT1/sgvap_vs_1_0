@@ -22,3 +22,7 @@ Route::get('/gp_nuevo', function () {
     return view('gp_nuevo');
 });
 
+Route::get('/gp_consulta_act_filtro', function () {
+    return view('gp_consulta_act_filtro');
+});
+
