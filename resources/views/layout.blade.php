@@ -11,12 +11,14 @@
     <title>SGVAP</title>
 
     <link rel="canonical" href="https://getbootstrap.com/docs/5.3/examples/dashboard/">
+    <link rel="canonical" href="https://getbootstrap.com/docs/5.3/examples/checkout/">
+    <link rel="canonical" href="https://getbootstrap.com/docs/5.3/examples/modals/">
     <link rel="shortcut icon" type="image/png" href="{{ asset('img/icono_sgvap.ico') }}" />
     <link rel="stylesheet" href="{{ asset('css/styles_sgvap.css') }}" />
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@docsearch/css@3">
     <script src="{{ asset('js/scripts_sgvap.js') }}" type="text/javascript"></script>
-
-
+    <link href="{{ asset('css/checkout.css') }}" rel="stylesheet">
+    <link href="{{asset('css/modals.css')}}" rel="stylesheet">
     <link href="{{ asset('css/bootstrap.min.css') }}" rel="stylesheet">
 
     <style>
@@ -1044,6 +1046,7 @@ l838 0 -282 -282 c-304 -305 -305 -307 -288 -395 9 -49 69 -109 118 -118 91
         integrity="sha384-eI7PSr3L1XLISH8JdDII5YN/njoSsxfbrkCTnJrzXt+ENP5MOVBxD+l6sEG4zoLp" crossorigin="anonymous">
     </script>
     <script src="{{ asset('js/dashboard.js') }}"></script>
+    <script src="{{ asset('js/checkout.js') }}"></script></body>
 </body>
 
 </html>
