@@ -13,3 +13,21 @@ function asig_listeners_of_submit_forms() {
         }, false)
     })
 }
+
+function enable_inpus_edit_mode() {
+    document.querySelectorAll('.form-control').forEach( input => {
+        input.removeAttribute('disabled');
+    });
+
+    document.getElementById('save').removeAttribute('disabled');
+    document.getElementById('edit').setAttribute('disabled', 'true');
+}
+
+function ask_before_submit() {
+    if (confirm("¿Está seguro de guardar los cambios del proyecto?")) {
+        document.getElementById('actualizar_proyecto').requestSubmit();
+    }
+    else {
+        window.location.reload();
+    }
+}

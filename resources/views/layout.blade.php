@@ -26,9 +26,9 @@
         button.button-custom {
             font-weight: bold !important;
             width: 95% !important;
-            margin: 10px auto !important;
+            margin: 10px auto;
             border: none !important;
-            padding: 12px 20px !important;
+            padding: 12px 20px;
             border-radius: 8px !important;
             text-align: center !important;
             cursor: pointer !important;
@@ -1037,7 +1037,9 @@ l838 0 -282 -282 c-304 -305 -305 -307 -288 -395 9 -49 69 -109 118 -118 91
     </div>
 
     <script>
-        document.addEventListener("DOMContentLoaded", asig_listeners_of_submit_forms);
+        document.addEventListener("DOMContentLoaded", function() {
+            asig_listeners_of_submit_forms();
+        });
     </script>
     
     <script src="{{ asset('js/bootstrap.bundle.min.js') }}"></script>

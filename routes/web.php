@@ -26,3 +26,7 @@ Route::get('/gp_consulta_act_filtro', function () {
     return view('gp_consulta_act_filtro');
 });
 
+Route::get('/gp_consulta_act', function () {
+    return view('gp_consulta_act');
+});
+
