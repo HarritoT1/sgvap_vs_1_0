@@ -5,21 +5,25 @@
         id="modalmain" style="min-height: 100vh; z-index: 0; box-sizing: border-box;">
         <div class="px-2" role="document"
             style="width: 30rem; max-width: 100%; position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%); box-sizing: border-box;">
-            <div class="modal-content rounded-4 shadow" style="max-width: 100%; box-sizing: border-box;">
+            <div class="modal-content rounded-4" style="max-width: 100%; box-sizing: border-box; border-style:solid; border-width: 3px; border-color: rgba(0, 0, 0, 0.306); box-shadow: 0px 10px 18px 5px rgba(0,0,0,0.75); !important">
                 <div class="modal-header p-5 pb-4 border-bottom-0" style="max-width: 100%; box-sizing: border-box;">
                     <h1 class="fw-bold mb-0" style="font-size: 1.2rem;">Ingresa el id del proyecto:</h1>
                     <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                 </div>
 
                 <div class="modal-body p-5 pt-0" style="max-width: 100%;">
-                    <form class="">
+                    <form id="buscar_proyecto" action="#" method="get" enctype="application/x-www-form-urlencoded"
+            autocomplete="off" class="needs-validation p-1" novalidate>
                         <div class="form-floating mb-3" style="max-width: 100%;">
-                            <input type="text" class="form-control rounded-3" id="floatingInput" placeholder="">
-                            <label for="floatingInput">id</label>
+                            <input type="text" class="form-control rounded-3" id="id" name="id" placeholder="" value="" required maxlength="80">
+                            <label for="id">id</label>
+                            <div class="invalid-feedback">
+                                Ingresa un id de proyecto válido.
+                            </div>
                         </div>
                         <button class="button-custom d-block mb-2 btn btn-lg rounded-3 btn-primary" type="submit"
                             style="background-color: var(--botones-color); font-size: 1.2rem;">Consultar</button>
-                        <small class="d-block mx-auto my-2 text-center text-body-secondary"
+                        <small class="fw-bold d-block mx-auto my-2 text-center text-body-secondary"
                             style="font-size: 1.2rem">¡¡¡Ingrese el id sin espacios!!!</small>
                         <hr class="mt-4">
                     </form>
