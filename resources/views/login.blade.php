@@ -2,7 +2,7 @@
 <html lang="en" data-bs-theme="auto">
 
 <head>
-    <script src="{{asset('js/color-modes.js')}}"></script>
+    <script src="{{ asset('js/color-modes.js') }}"></script>
 
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -11,15 +11,55 @@
     <title>LOGIN</title>
 
     <link rel="canonical" href="https://getbootstrap.com/docs/5.3/examples/heroes/">
-    <link rel="shortcut icon" type="image/png" href="{{asset('img/icono_sgvap.ico')}}" />
-    <link rel="stylesheet" href="{{asset('css/styles_sgvap.css')}}" />
-    <link rel="stylesheet" href="{{asset('css/login.css')}}" />
+    <link rel="shortcut icon" type="image/png" href="{{ asset('img/icono_sgvap.ico') }}" />
+    <link rel="stylesheet" href="{{ asset('css/styles_sgvap.css') }}" />
+    <link rel="stylesheet" href="{{ asset('css/login.css') }}" />
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@docsearch/css@3">
-    <script src="{{asset('js/scripts_sgvap.js')}}" type="text/javascript"></script>
+    <script src="{{ asset('js/scripts_sgvap.js') }}" type="text/javascript"></script>
 
-    <link href="{{asset('css/bootstrap.min.css')}}" rel="stylesheet">
+    <link href="{{ asset('css/bootstrap.min.css') }}" rel="stylesheet">
 
     <style>
+        /* Estilo base del botón */
+        button.button-custom {
+            font-weight: bold !important;
+            width: 95% !important;
+            margin: 10px auto !important;
+            border: none !important;
+            padding: 12px 20px !important;
+            border-radius: 8px !important;
+            text-align: center !important;
+            cursor: pointer !important;
+            transition: transform 0.2s ease-in-out, background 0.2s ease-in-out !important;
+        }
+
+        /* Brillo solo en hover */
+        button.button-custom:hover {
+            animation: glow 1.5s infinite alternate;
+            transform: scale(1.05);
+        }
+
+        /* Efecto al hacer clic */
+        button.button-custom:active {
+            background: #217dbb !important;
+            /* un azul más oscuro */
+            transform: scale(0.95);
+            /* se encoge un poco */
+            box-shadow: 0 0 5px #217dbb, 0 0 15px #217dbb inset;
+            /* brilla pero hacia adentro */
+        }
+
+        /* Animación de brillo */
+        @keyframes glow {
+            0% {
+                box-shadow: 0 0 5px #3498db, 0 0 10px #3498db;
+            }
+
+            100% {
+                box-shadow: 0 0 20px #3498db, 0 0 40px #3498db;
+            }
+        }
+
         .bd-placeholder-img {
             font-size: 1.125rem;
             text-anchor: middle;
@@ -100,7 +140,7 @@
 
 
     <!-- Custom styles for this template -->
-    <link href="{{asset('css/heroes.css')}}" rel="stylesheet">
+    <link href="{{ asset('css/heroes.css') }}" rel="stylesheet">
 </head>
 
 <body>
@@ -125,7 +165,7 @@
     </svg>
 
     <div class="dropdown position-fixed bottom-0 end-0 mb-3 me-3 bd-mode-toggle">
-        <button class="btn btn-bd-primary py-2 dropdown-toggle d-flex align-items-center" id="bd-theme" type="button"
+        <button class="button-custom btn btn-bd-primary py-2 dropdown-toggle d-flex align-items-center" id="bd-theme" type="button"
             aria-expanded="false" data-bs-toggle="dropdown" aria-label="Toggle theme (auto)"
             style="background-color: var(--botones-color); color: black; border-width: 0;">
             <svg class="bi my-1 theme-icon-active" width="1em" height="1em">
@@ -135,7 +175,7 @@
         </button>
         <ul class="dropdown-menu dropdown-menu-end shadow" aria-labelledby="bd-theme-text">
             <li>
-                <button type="button" class="dropdown-item d-flex align-items-center" data-bs-theme-value="light"
+                <button type="button" class="button-custom dropdown-item d-flex align-items-center" data-bs-theme-value="light"
                     aria-pressed="false">
                     <svg class="bi me-2 opacity-50" width="1em" height="1em">
                         <use href="#sun-fill"></use>
@@ -147,7 +187,7 @@
                 </button>
             </li>
             <li>
-                <button type="button" class="dropdown-item d-flex align-items-center" data-bs-theme-value="dark"
+                <button type="button" class="button-custom dropdown-item d-flex align-items-center" data-bs-theme-value="dark"
                     aria-pressed="false">
                     <svg class="bi me-2 opacity-50" width="1em" height="1em">
                         <use href="#moon-stars-fill"></use>
@@ -159,7 +199,7 @@
                 </button>
             </li>
             <li>
-                <button type="button" class="dropdown-item d-flex align-items-center active" data-bs-theme-value="auto"
+                <button type="button" class="button-custom dropdown-item d-flex align-items-center active" data-bs-theme-value="auto"
                     aria-pressed="true">
                     <svg class="bi me-2 opacity-50" width="1em" height="1em">
                         <use href="#circle-half"></use>
@@ -178,13 +218,13 @@
         <div class="container col-xl-10 col-xxl-8 px-4 py-5">
             <div class="row align-items-center g-lg-5 py-5">
                 <div class="col-lg-7 text-center text-lg-start">
-                    <img src="{{asset('img/logo_ecore.png')}}" alt="logo_ecore" class="imageResponsive mb-4"
+                    <img src="{{ asset('img/logo_ecore.png') }}" alt="logo_ecore" class="imageResponsive mb-4"
                         style="width: 22rem;">
                     <h1 class="display-4 fw-bold lh-1 text-body-emphasis mb-3">SGVAP.</h1>
                     <h3 class="h5 fw-bold lh-1 text-body-emphasis">Bienvenido.</h3>
                     <p class="col-lg-10 fs-5">Sistema Web de Gestión de Víaticos y Personal en Proyectos Foráneos.</p>
                     <hr class="my-4">
-                    <img src="{{asset('img/icono_sgvap.png')}}" alt="icono_sgvap" class="imageResponsive mb-4"
+                    <img src="{{ asset('img/icono_sgvap.png') }}" alt="icono_sgvap" class="imageResponsive mb-4"
                         style="width: 6rem;">
                 </div>
                 <div class="col-md-10 mx-auto col-lg-5">
@@ -192,8 +232,9 @@
                         autocomplete="off" class="needs-validation p-4 p-md-5 border rounded-3 text-center" novalidate
                         style="background-color: var(--login-color);">
                         <div class="form-floating mb-3">
-                            <input type="text" class="form-control" id="user" placeholder="username" name="user"
-                                value="" required pattern="^[a-zA-Z0-9_]{4,20}$" maxlength="20">
+                            <input type="text" class="form-control" id="user" placeholder="username"
+                                name="user" value="" required pattern="^[a-zA-Z0-9_]{4,20}$"
+                                maxlength="20">
                             <label for="user">Usuario</label>
                             <div class="invalid-feedback">
                                 Ingresa un usuario válido.
@@ -204,14 +245,15 @@
                                 name="password" value="" required maxlength="20">
                             <label for="password">Contraseña</label>
                             <span onclick="togglePassword()">
-                                <img src="{{asset('img/toggle_pass.png')}}" alt="toggle_pass" class="imageResponsive"
+                                <img src="{{ asset('img/toggle_pass.png') }}" alt="toggle_pass"
+                                    class="imageResponsive"
                                     style="width: 1.2rem; position: absolute; top: 20px; right: 10px; cursor: pointer; border-radius: 100%; background-color: white;">
                             </span>
                             <div class="invalid-feedback">
                                 Ingresa una contraseña válida.
                             </div>
                         </div>
-                        <button class="w-100 btn btn-lg btn-primary" type="submit"
+                        <button class="w-100 btn btn-lg btn-primary button-custom" type="submit"
                             style="background-color: black; color: white; border-width: 0;">Iniciar sesión</button>
                         <hr class="my-4">
                         <small class="fw-bold" style="color: black;">© Desarrollado por Ecore Network S.A de
@@ -221,7 +263,7 @@
             </div>
         </div>
     </main>
-    <script src="{{asset('js/bootstrap.bundle.min.js')}}"></script>
+    <script src="{{ asset('js/bootstrap.bundle.min.js') }}"></script>
     <script>
         asig_listeners_of_submit_forms()
 

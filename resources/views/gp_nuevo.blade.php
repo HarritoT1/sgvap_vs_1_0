@@ -96,7 +96,7 @@
 
                 <hr class="my-4 mb-2">
 
-                <button class="w-100 btn btn-primary btn-lg" type="submit"
+                <button class="d-block mx-auto btn btn-primary btn-lg fw-bold button-custom" type="submit"
                     style="background-color: var(--botones-color);">Crear proyecto</button>
         </form>
     </div>

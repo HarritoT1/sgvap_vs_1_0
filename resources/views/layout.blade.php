@@ -20,6 +20,46 @@
     <link href="{{ asset('css/bootstrap.min.css') }}" rel="stylesheet">
 
     <style>
+        /* Estilo base del botón */
+        button.button-custom {
+            font-weight: bold !important;
+            width: 95% !important;
+            margin: 10px auto !important;
+            border: none !important;
+            padding: 12px 20px !important;
+            border-radius: 8px !important;
+            text-align: center !important;
+            cursor: pointer !important;
+            transition: transform 0.2s ease-in-out, background 0.2s ease-in-out !important;
+        }
+
+        /* Brillo solo en hover */
+        button.button-custom:hover {
+            animation: glow 1.5s infinite alternate;
+            transform: scale(1.05);
+        }
+
+        /* Efecto al hacer clic */
+        button.button-custom:active {
+            background: #217dbb !important;
+            /* un azul más oscuro */
+            transform: scale(0.95);
+            /* se encoge un poco */
+            box-shadow: 0 0 5px #217dbb, 0 0 15px #217dbb inset;
+            /* brilla pero hacia adentro */
+        }
+
+        /* Animación de brillo */
+        @keyframes glow {
+            0% {
+                box-shadow: 0 0 5px #3498db, 0 0 10px #3498db;
+            }
+
+            100% {
+                box-shadow: 0 0 20px #3498db, 0 0 40px #3498db;
+            }
+        }
+        
         .bd-placeholder-img {
             font-size: 1.125rem;
             text-anchor: middle;
@@ -135,7 +175,7 @@
     </svg>
 
     <div class="dropdown position-fixed bottom-0 end-0 mb-3 me-3 bd-mode-toggle">
-        <button class="btn btn-bd-primary py-2 dropdown-toggle d-flex align-items-center" id="bd-theme" type="button"
+        <button class="button-custom btn btn-bd-primary py-2 dropdown-toggle d-flex align-items-center" id="bd-theme" type="button"
             aria-expanded="false" data-bs-toggle="dropdown" aria-label="Toggle theme (auto)"
             style="background-color: var(--botones-color); color: black; border-width: 0;">
             <svg class="bi my-1 theme-icon-active" width="1em" height="1em">
@@ -145,7 +185,7 @@
         </button>
         <ul class="dropdown-menu dropdown-menu-end shadow" aria-labelledby="bd-theme-text">
             <li>
-                <button type="button" class="dropdown-item d-flex align-items-center" data-bs-theme-value="light"
+                <button type="button" class="button-custom dropdown-item d-flex align-items-center" data-bs-theme-value="light"
                     aria-pressed="false">
                     <svg class="bi me-2 opacity-50" width="1em" height="1em">
                         <use href="#sun-fill"></use>
@@ -157,7 +197,7 @@
                 </button>
             </li>
             <li>
-                <button type="button" class="dropdown-item d-flex align-items-center" data-bs-theme-value="dark"
+                <button type="button" class="button-custom dropdown-item d-flex align-items-center" data-bs-theme-value="dark"
                     aria-pressed="false">
                     <svg class="bi me-2 opacity-50" width="1em" height="1em">
                         <use href="#moon-stars-fill"></use>
@@ -169,7 +209,7 @@
                 </button>
             </li>
             <li>
-                <button type="button" class="dropdown-item d-flex align-items-center active" data-bs-theme-value="auto"
+                <button type="button" class="button-custom dropdown-item d-flex align-items-center active" data-bs-theme-value="auto"
                     aria-pressed="true">
                     <svg class="bi me-2 opacity-50" width="1em" height="1em">
                         <use href="#circle-half"></use>
