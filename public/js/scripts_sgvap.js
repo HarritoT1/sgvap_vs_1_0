@@ -74,6 +74,8 @@ function asig_listener_autocomplete_rfc() {
             return;
         }
 
+        console.log("buscando rfc de empleados...");
+
         fetch(`/empleados/buscar-rfc?q=${query}`)
             .then(res => res.json())
             .then(data => {
@@ -96,6 +98,8 @@ function asig_listener_autocomplete_id_proyect() {
             sugerencias.innerHTML = '';
             return;
         }
+
+        console.log("buscando id de proyectos...")
 
         fetch(`/projects/buscar-id?q=${query}`)
             .then(res => res.json())
