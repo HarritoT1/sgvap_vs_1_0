@@ -15,12 +15,12 @@
                     <form id="buscar_empleado" action="#" method="get" enctype="application/x-www-form-urlencoded"
             autocomplete="off" class="needs-validation p-1" novalidate>
                         <div class="form-floating mb-3" style="max-width: 100%;">
-                            <input type="text" class="form-control rounded-3" id="input_find_rfc" name="id" placeholder="" value="" required maxlength="50" list="sugerencias">
+                            <input type="text" class="form-control rounded-3" id="input_find_rfc" name="id" placeholder="" value="" required maxlength="50" list="sugerencias_rfc">
                             <label for="input_find_rfc">RFC</label>
                             <div class="invalid-feedback">
                                 Ingresa un RFC válido.
                             </div>
-                            <datalist id="sugerencias">
+                            <datalist id="sugerencias_rfc">
                             </datalist>
                         </div>
                         <button class="button-custom d-block mb-2 btn btn-lg rounded-3 btn-primary" type="submit"
