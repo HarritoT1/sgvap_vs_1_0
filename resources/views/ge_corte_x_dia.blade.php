@@ -34,7 +34,7 @@
                     style="background-color: var(--botones-color);">Generar formulario de corte</button>
         </form>
 
-        <div class="w-100 div-secondary px-5">
+        <div class="w-100 div-secondary px-5 py-5">
             <h2 class="mb-3 fw-bold" style="font-size: 1.5rem;">Llena los datos del formulario para el corte de $nombre del
                 día $fecha:</h2>
             <div class="row g-3">
@@ -110,8 +110,8 @@
                     </div>
                 </div>
 
-                <div class="col">
-                    <label for="input_find_id_proyect" class="form-label fw-bold">id del proyecto</label>
+                <div class="col-12">
+                    <label for="input_find_id_proyect" class="form-label fw-bold">Id del proyecto</label>
                     <input type="text" class="form-control" id="input_find_id_proyect" name="id_p" placeholder=""
                         value="" required maxlength="80" list="sugerencias_id_proyect">
                     <div class="invalid-feedback">
@@ -119,6 +119,18 @@
                     </div>
                     <datalist id="sugerencias_id_proyect">
                     </datalist>
+                </div>
+
+                <div class="col d-flex flex-row justify-content-evenly alig-items-center">
+                    <div>
+                        <hr class="my-4 mb-2" style="border-color: red; border-style: solid; border-width: 5px;">
+                    </div>
+                    <div>
+                        texto
+                    </div>
+                    <div>
+                        <hr class="my-4 mb-2" style="border-color: red border-style: solid; border-width: 5px;"> 
+                    </div>
                 </div>
             </div>
         </div>
