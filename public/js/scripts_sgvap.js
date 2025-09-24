@@ -73,7 +73,7 @@ function cancel_edit_mode() {
 function asig_listener_autocomplete_rfc() {
     document.getElementById('input_find_rfc').addEventListener('input', function () {
         const query = this.value;
-        const sugerencias = document.getElementById('sugerencias');
+        const sugerencias = document.getElementById('sugerencias_rfc');
 
         if (query.length < 2) {
             sugerencias.innerHTML = '';
@@ -98,7 +98,7 @@ function asig_listener_autocomplete_rfc() {
 function asig_listener_autocomplete_id_proyect() {
     document.getElementById('input_find_id_proyect').addEventListener('input', function () {
         const query = this.value;
-        const sugerencias = document.getElementById('sugerencias');
+        const sugerencias = document.getElementById('sugerencias_id_proyect');
 
         if (query.length < 2) {
             sugerencias.innerHTML = '';

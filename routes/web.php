@@ -42,3 +42,7 @@ Route::get('/ge_consulta_act', function () {
     return view('ge_consulta_act');
 });
 
+Route::get('/ge_corte_x_dia', function () {
+    return view('ge_corte_x_dia');
+});
+
