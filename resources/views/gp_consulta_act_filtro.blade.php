@@ -15,7 +15,7 @@
                     <form id="buscar_proyecto" action="#" method="get" enctype="application/x-www-form-urlencoded"
             autocomplete="off" class="needs-validation p-1" novalidate>
                         <div class="form-floating mb-3" style="max-width: 100%;">
-                            <input type="text" class="form-control rounded-3" id="input_find" name="id" placeholder="" value="" required maxlength="80" list="sugerencias">
+                            <input type="text" class="form-control rounded-3" id="input_find_id_proyect" name="id" placeholder="" value="" required maxlength="80" list="sugerencias">
                             <label for="input_find_id_proyect">id</label>
                             <div class="invalid-feedback">
                                 Ingresa un id de proyecto válido.
