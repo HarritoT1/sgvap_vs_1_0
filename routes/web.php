@@ -38,4 +38,7 @@ Route::get('/ge_consulta_act_filtro', function () {
     return view('ge_consulta_act_filtro');
 });
 
+Route::get('/ge_consulta_act', function () {
+    return view('ge_consulta_act');
+});
 

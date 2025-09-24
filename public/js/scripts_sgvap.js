@@ -35,8 +35,11 @@ function save_values_of_inputs() {
 
     valoresOriginales = {};
     inputs.forEach(input => {
-        valoresOriginales[input.name] = input.value;
+        if (!(input.type === 'radio')) valoresOriginales[input.name] = input.value;
+        if (input.type === 'radio' && input.checked === true) valoresOriginales[input.name] = input.value;
     });
+
+    console.log(valoresOriginales);
 }
 
 function ask_before_submit() {
@@ -45,7 +48,10 @@ function ask_before_submit() {
         const inputs = form.querySelectorAll("input, textarea, select");
 
         const huboCambios = Array.from(inputs).some(
-            input => valoresOriginales[input.name] !== input.value
+            (input) => {
+                if (!(input.type === 'radio')) return valoresOriginales[input.name] !== input.value;
+                if (input.type === 'radio' && input.checked === true) return valoresOriginales[input.name] !== input.value;
+            }
         );
 
         if (!huboCambios) {
