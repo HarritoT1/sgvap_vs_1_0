@@ -17,7 +17,7 @@ function asig_listeners_of_submit_forms() {
 }
 
 function enable_inpus_edit_mode() {
-    document.querySelectorAll('.form-control').forEach( input => {
+    document.querySelectorAll('.form-control, .form-check-input').forEach(input => {
         input.removeAttribute('disabled');
     });
 
@@ -55,11 +55,57 @@ function ask_before_submit() {
         }
 
         form.requestSubmit();
-    } 
+    }
 }
 
 function cancel_edit_mode() {
     if (confirm("¿Está seguro de cancelar los cambios del proyecto?")) {
         window.location.reload();
     }
+}
+
+function asig_listener_autocomplete_rfc() {
+    document.getElementById('input_find_rfc').addEventListener('input', function () {
+        const query = this.value;
+        const sugerencias = document.getElementById('sugerencias');
+
+        if (query.length < 2) {
+            sugerencias.innerHTML = '';
+            return;
+        }
+
+        fetch(`/empleados/buscar-rfc?q=${query}`)
+            .then(res => res.json())
+            .then(data => {
+                sugerencias.innerHTML = '';
+                data.forEach(emp => {
+                    const option = document.createElement('option');
+                    option.value = emp.id + " - " + emp.nombre; // ejemplo: id - nombre
+                    sugerencias.appendChild(option);
+                });
+            });
+    });
+}
+
+function asig_listener_autocomplete_id_proyect() {
+    document.getElementById('input_find_id_proyect').addEventListener('input', function () {
+        const query = this.value;
+        const sugerencias = document.getElementById('sugerencias');
+
+        if (query.length < 2) {
+            sugerencias.innerHTML = '';
+            return;
+        }
+
+        fetch(`/projects/buscar-id?q=${query}`)
+            .then(res => res.json())
+            .then(data => {
+                sugerencias.innerHTML = '';
+                data.forEach(proyect => {
+                    const option = document.createElement('option');
+                    option.value = proyect.id + " - " + proyect.nombre; // ejemplo: id - nombre
+                    sugerencias.appendChild(option);
+                });
+            });
+    });
 }
