@@ -17,7 +17,7 @@ function asig_listeners_of_submit_forms() {
 }
 
 function enable_inpus_edit_mode() {
-    document.querySelectorAll('.form-control').forEach( input => {
+    document.querySelectorAll('.form-control, .form-check-input').forEach( input => {
         input.removeAttribute('disabled');
     });
 

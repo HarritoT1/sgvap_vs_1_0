@@ -30,3 +30,7 @@ Route::get('/gp_consulta_act', function () {
     return view('gp_consulta_act');
 });
 
+Route::get('/ge_nuevo', function () {
+    return view('ge_nuevo');
+});
+
