@@ -215,5 +215,3 @@ function show_part_extra_ecore() {
         }
     });
 }
-
-
