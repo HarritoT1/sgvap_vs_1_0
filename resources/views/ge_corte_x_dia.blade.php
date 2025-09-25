@@ -210,7 +210,7 @@
             </div>
         </div>
 
-        <div class="container">
+        <div class="container my-4">
             <div class="label-row">
                 <div><strong>Barra segmentada</strong> — límite: <span id="limitDisplay">260000</span></div>
                 <div id="percentTotal"></div>
@@ -223,7 +223,7 @@
 
             <div id="overflowMsg" class="overflow" style="display:none"></div>
 
-            <div class="info" id="legend"></div>
+            <div class="info info d-flex justify-content-evenly" id="legend"></div>
         </div>
     </div>
 @endsection

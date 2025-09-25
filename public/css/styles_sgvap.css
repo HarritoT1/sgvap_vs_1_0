@@ -225,7 +225,7 @@ a {
 }
 
 .bar-wrap {
-  background: var(--bg);
+  border: solid 3px rgba(88, 88, 88, 0.4);
   border-radius: var(--radius);
   padding: 4px;
   box-sizing: border-box;
@@ -254,24 +254,28 @@ a {
   font-weight: 600;
 }
 
-/* colores por segmento (puedes cambiarlos) */
 .seg-0 {
-  background: #4e79a7;
+  background: #910cd9;
 }
 
-/* azul */
 .seg-1 {
-  background: #f28e2b;
-}
-
-/* naranja */
-.seg-2 {
-  background: #e15759;
-}
-
-/* rojo */
-.seg-3 {
   background: #76b7b2;
+}
+
+.seg-2 {
+  background: #d79c2e;
+}
+
+.seg-3 {
+  background: #e63d3d;
+}
+
+.seg-4 {
+  background: #42e740;
+}
+
+.seg-5 {
+  background: #e763d3;
 }
 
 /* turquesa */
@@ -290,7 +294,6 @@ a {
 }
 
 .chip {
-  background: #f7f8fa;
   padding: 6px 10px;
   border-radius: 999px;
   border: 1px solid #e3e6ea;
