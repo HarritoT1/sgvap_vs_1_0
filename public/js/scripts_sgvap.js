@@ -119,3 +119,101 @@ function asig_listener_autocomplete_id_proyect() {
             });
     });
 }
+
+async function validar_form_generator() {
+    // 1. Obtener valores del formulario.
+    const rfc = document.getElementById('input_find_rfc').value.trim();
+    const fecha = document.getElementById('fecha_dispersion_dia').value;
+
+    // Validación básica antes del fetch.
+    if (!rfc || !fecha) {
+        alert("Por favor ingresa RFC y fecha de corte.");
+        return;
+    }
+
+    try {
+        // 2. Hacer la petición al controlador.
+        const response = await fetch('/validar_form_generator', {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json',
+                'X-CSRF-TOKEN': document.querySelector('meta[name="csrf-token"]').content // si aplica...
+            },
+            body: JSON.stringify({ employee_id: rfc, fecha_dispersion_dia: fecha })
+        });
+
+        // 3. Si Laravel devolvió redirect con errores → no habrá JSON → deja que la recarga suceda...
+        const contentType = response.headers.get("content-type") || "";
+        if (!contentType.includes("application/json")) {
+            return; // aquí no forzamos reload, Laravel ya maneja la bolsa de errores...
+        }
+
+        // 4. Parsear el JSON válido.
+        const data = await response.json();
+
+        if (data.generacion_formulario) {
+            // Mostrar segunda parte del formulario.
+            const segundaParte = document.getElementById('segunda-parte-formulario');
+            if (segundaParte) {
+                segundaParte.classList.remove('d-none');
+            }
+
+            // Si viene deuda extra, precargarla.
+            if (data.extra_ecore_debt) {
+                console.log("Deuda extra recibida:", data.extra_ecore_debt);
+
+                // Obtener input basado en el campo a descontar.
+                const fieldId = data.extra_ecore_debt.campo_descontar;
+                const inputPreloadedValue = document.getElementById(fieldId);
+
+                document.getElementById("id_e").value = data.extra_ecore.id;
+
+                if (inputPreloadedValue) {
+                    inputPreloadedValue.value = data.extra_ecore_debt.monto_extra_ecore * -1;
+                    inputPreloadedValue.disabled = true; // Bloquea el input para que no se modifique.
+                } else {
+                    console.warn(`No se encontró el input con id = "${fieldId}"`);
+                }
+            }
+        }
+    } catch (error) {
+        console.error("Error en el fetch:", error);
+        alert("Hubo un problema al generar el corte. Intenta de nuevo.");
+    }
+}
+
+function show_part_extra_ecore() {
+    const monto_input = document.getElementById('monto_extra_ecore');
+    const campo_input = document.getElementById('campo_descontar');
+    const fecha_input = document.getElementById('fecha_descontar');
+
+    const cont_monto = document.getElementById('monto_extra_ecore_div');
+    const cont_campo = document.getElementById('campo_descontar_div');
+    const cont_fecha = document.getElementById('fecha_descontar_div');
+
+    document.getElementById('ajuste_retiro').addEventListener('change', (e) => {
+        if (e.target.checked) {
+            cont_monto.classList.remove('d-none');
+            cont_campo.classList.remove('d-none');
+            cont_fecha.classList.remove('d-none');
+
+            monto_input.required = true;
+            campo_input.required = true;
+            fecha_input.required = true;
+        } else {
+            cont_monto.classList.add('d-none');
+            cont_campo.classList.add('d-none');
+            cont_fecha.classList.add('d-none');
+
+            monto_input.required = false;
+            campo_input.required = false;
+            fecha_input.required = false;
+
+            monto_input.value = "";
+            campo_input.value = "";
+            fecha_input.value = "";
+        }
+    });
+}
+
+
