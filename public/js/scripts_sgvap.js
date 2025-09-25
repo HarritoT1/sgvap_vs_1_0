@@ -219,11 +219,11 @@ async function ask_values_of_proyect_progress_bar() {
     const contenedor_barra_presupuesto_viaticos = document.getElementById('contenedor_barra_presupuesto_viaticos');
 
     if (input_id_proyect.length < 5) {
-        if(!(contenedor_barra_presupuesto_viaticos.classList.contains("d-none"))) contenedor_barra_presupuesto_viaticos.classList.add('d-none');
+        if (!(contenedor_barra_presupuesto_viaticos.classList.contains("d-none"))) contenedor_barra_presupuesto_viaticos.classList.add('d-none');
         return;
     }
 
-    if(contenedor_barra_presupuesto_viaticos.classList.contains("d-none")) contenedor_barra_presupuesto_viaticos.classList.remove('d-none');
+    if (contenedor_barra_presupuesto_viaticos.classList.contains("d-none")) contenedor_barra_presupuesto_viaticos.classList.remove('d-none');
 
     console.log(`Generando valores de la barra de progreso del proyecto con id: ${input_id_proyect}...`)
 
@@ -243,7 +243,7 @@ async function ask_values_of_proyect_progress_bar() {
         const limit = 260000; // límite requerido
         // --- EJEMPLO: modifica estos valores como necesites ---
         //const values = [50000, 70000, 20000, 30000]; // suma=170000 (< limit)
-        const values = [90000, 90000, 20000, 10000, 90000, 12000]; // ejemplo > limit
+        const values = [20000, 20000, 20000, 10000, 90000, 12000]; // ejemplo > limit
         // ----------------------------------------------------
 
         const colors = ['seg-0', 'seg-1', 'seg-2', 'seg-3', 'seg-4', 'seg-5'];
@@ -286,7 +286,7 @@ async function ask_values_of_proyect_progress_bar() {
             const adjustedPercent = Math.round(((val / limit) * scaleFactor) * 10000) / 100; // 2 decimales visuales
             seg.style.flex = `0 0 ${adjustedPercent}%`;
             // texto: mostramos porcentaje relativo al límite real y valor bruto
-            const pctText = (Math.round(((val / limit) * 100) * 100) / 100).toLocaleString('es-ES') + '%';
+            const pctText = percentsRounded[i].toLocaleString('es-ES') + '%';
             seg.textContent = pctText;
             seg.title = `${labels[i]} — ${val.toLocaleString('es-ES')} / ${limit.toLocaleString('es-ES')} (${pctText})`;
             bar.appendChild(seg);
@@ -322,7 +322,7 @@ async function ask_values_of_proyect_progress_bar() {
             remDiv.style.flex = `0 0 ${remainingPercent}%`;
             remDiv.title = `Restante: ${remaining.toLocaleString('es-ES')} (${remainingPercent}%)`;
             // opcional: mostrar texto pequeño cuando haya espacio suficiente
-            if (remainingPercent >= 8) {
+            if (remainingPercent >= 5) {
                 remDiv.textContent = `${remainingPercent}%`;
                 remDiv.style.color = '#333';
                 remDiv.style.fontWeight = '700';
@@ -347,8 +347,8 @@ async function ask_values_of_proyect_progress_bar() {
         }
 
         // Actualizamos atributos ARIA y el porcentaje total mostrado
-        document.getElementById('bar').setAttribute('aria-valuenow', Math.min(sumValues, limit));
-        const totalPct = Math.round((Math.min(sumValues, limit) / limit) * 10000) / 100;
+        document.getElementById('bar').setAttribute('aria-valuenow', sumValues);
+        const totalPct = Math.round((sumValues / limit) * 10000) / 100;
         percentTotal.textContent = `${totalPct}% usado (${sumValues.toLocaleString('es-ES')}/${limit.toLocaleString('es-ES')})`;
     }
 }
