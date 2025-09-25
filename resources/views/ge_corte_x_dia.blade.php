@@ -210,7 +210,9 @@
             </div>
         </div>
 
-        <div class="container my-4">
+        <h2 class="fw-bold mt-4 mb-1" style="font-size: 1.8rem; text-align:justify">Límite de presupuesto de viáticos:</h2>
+        
+        <div class="container my-4 d-none" id="contenedor_barra_presupuesto_viaticos">
             <div class="label-row">
                 <div><strong>Barra segmentada</strong> — límite: <span id="limitDisplay">260000</span></div>
                 <div id="percentTotal"></div>
@@ -225,5 +227,10 @@
 
             <div class="info info d-flex justify-content-evenly" id="legend"></div>
         </div>
+
+        <hr class="my-4">
+
+        <p class="text-center fw-bold" style="font-size: 1.2rem; color: var(--empresa-color);">¡Nota!: En la barra de presupuesto de viáticos no se considera IVA y Sí Vale!</p>
+
     </div>
 @endsection

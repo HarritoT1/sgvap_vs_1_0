@@ -216,10 +216,14 @@ function show_part_extra_ecore(e) {
 
 async function ask_values_of_proyect_progress_bar() {
     const input_id_proyect = document.getElementById('input_find_id_proyect').value;
+    const contenedor_barra_presupuesto_viaticos = document.getElementById('contenedor_barra_presupuesto_viaticos');
 
     if (input_id_proyect.length < 5) {
+        if(!(contenedor_barra_presupuesto_viaticos.classList.contains("d-none"))) contenedor_barra_presupuesto_viaticos.classList.add('d-none');
         return;
     }
+
+    if(contenedor_barra_presupuesto_viaticos.classList.contains("d-none")) contenedor_barra_presupuesto_viaticos.classList.remove('d-none');
 
     console.log(`Generando valores de la barra de progreso del proyecto con id: ${input_id_proyect}...`)
 
@@ -233,16 +237,17 @@ async function ask_values_of_proyect_progress_bar() {
         const monto_comision = data.totales_viaticos_table_daily.total_comision;
         const monto_gasolina = data.totales_viaticos_table_gasoline.total_comision;
         const monto_caseta = data.totales_viaticos_table_tag.total_comision;
-        const monto_hospedaje = data.totales_viaticos_lodging_daily.total_comision;*/
+        const monto_hospedaje = data.totales_viaticos_lodging_daily.total_comision;
+        const limit = data.project.estimado_viaticos;*/
 
         const limit = 260000; // límite requerido
         // --- EJEMPLO: modifica estos valores como necesites ---
         //const values = [50000, 70000, 20000, 30000]; // suma=170000 (< limit)
-        const values = [90000, 90000, 90000, 90000]; // ejemplo > limit
+        const values = [90000, 90000, 20000, 10000, 90000, 12000]; // ejemplo > limit
         // ----------------------------------------------------
 
-        const colors = ['seg-0', 'seg-1', 'seg-2', 'seg-3'];
-        const labels = ['Segmento A', 'Segmento B', 'Segmento C', 'Segmento D'];
+        const colors = ['seg-0', 'seg-1', 'seg-2', 'seg-3', 'seg-4', 'seg-5'];
+        const labels = ['Alimentos', 'Traslados', 'Comisión', 'Gasolina', 'Casetas', 'Hospedajes'];
 
         const bar = document.getElementById('bar');
         const legend = document.getElementById('legend');
