@@ -2,7 +2,8 @@
 
 @section('content')
     <div class="w-100 my-3 div-main">
-        <h1 class="fw-bold my-3" style="font-size: 1.8rem; text-align:justify">Captura los datos previos para generar el
+        <h1 class="fw-bold my-3" style="font-size: 1.8rem; text-align:justify" id="form_corte_dia">Captura los datos previos
+            para generar el
             formulario de corte:
         </h1>
         <form id="crear_corte_dia" action="#" method="post" enctype="application/x-www-form-urlencoded" autocomplete="off"
@@ -30,8 +31,9 @@
 
                 <hr class="my-4 mb-2">
 
-                <button class="d-block mx-auto btn btn-primary btn-lg fw-bold button-custom" type="button" onclick="validar_form_generator()"
-                    style="background-color: var(--botones-color);">Generar formulario de corte</button>
+                <button class="d-block mx-auto btn btn-primary btn-lg fw-bold button-custom" type="button"
+                    onclick="validar_form_generator()" style="background-color: var(--botones-color);">Generar formulario de
+                    corte</button>
         </form>
 
         <div class="w-100 div-secondary px-5 py-5 d-block" id="segunda-parte-formulario"> <!-- Cambiar a d-none -->
@@ -118,8 +120,9 @@
 
                 <div class="col-12">
                     <label for="input_find_id_proyect" class="form-label fw-bold">Id del proyecto</label>
-                    <input type="text" class="form-control" id="input_find_id_proyect" name="project_id" placeholder=""
-                        value="" required maxlength="80" list="sugerencias_id_proyect" form="crear_corte_dia">
+                    <input type="text" class="form-control" id="input_find_id_proyect" name="project_id"
+                        placeholder="" value="" required maxlength="80" list="sugerencias_id_proyect"
+                        form="crear_corte_dia">
                     <div class="invalid-feedback">
                         Ingresa un id de proyecto válido.
                     </div>
@@ -134,7 +137,8 @@
                     <div style="width: 33%; display: flex; align-items: center; justify-content: center;">
                         <div class="form-check">
                             <input class="form-check-input" type="checkbox" id="ajuste_retiro">
-                            <label class="form-check-label fw-bold text-center" for="ajuste_retiro" style="font-size: 0.8rem;">
+                            <label class="form-check-label fw-bold text-center" for="ajuste_retiro"
+                                style="font-size: 0.8rem;">
                                 <em>$ Ajuste por retiro</em>
                             </label>
                         </div>
@@ -187,8 +191,8 @@
 
                 <div class="col-sm-6 mx-auto d-none" id="fecha_descontar_div">
                     <label for="fecha_descontar" class="form-label fw-bold">Fecha de ajuste por retiro</label>
-                    <input type="date" class="form-control sm-form-control" id="fecha_descontar" name="fecha_descontar"
-                        value="" form="crear_corte_dia">
+                    <input type="date" class="form-control sm-form-control" id="fecha_descontar"
+                        name="fecha_descontar" value="" form="crear_corte_dia">
                     <div class="invalid-feedback">
                         Ingresa una fecha válida.
                     </div>
@@ -198,12 +202,28 @@
 
                 <hr class="my-4 mb-2">
 
-                <button class="d-block mx-auto btn btn-primary btn-lg fw-bold button-custom" type="submit" form="crear_corte_dia"
-                    style="background-color: var(--botones-color);">Registrar corte del día</button>
+                <button class="d-block mx-auto btn btn-primary btn-lg fw-bold button-custom" type="submit"
+                    form="crear_corte_dia" style="background-color: var(--botones-color);">Registrar corte del
+                    día</button>
 
                 <hr class="my-2">
             </div>
         </div>
+
+        <div class="container">
+            <div class="label-row">
+                <div><strong>Barra segmentada</strong> — límite: <span id="limitDisplay">260000</span></div>
+                <div id="percentTotal"></div>
+            </div>
+
+            <div class="bar-wrap" id="barWrap">
+                <div id="bar" class="bar" aria-hidden="false" role="progressbar" aria-valuemin="0"
+                    aria-valuemax="260000" aria-valuenow="0"></div>
+            </div>
+
+            <div id="overflowMsg" class="overflow" style="display:none"></div>
+
+            <div class="info" id="legend"></div>
+        </div>
     </div>
 @endsection
-

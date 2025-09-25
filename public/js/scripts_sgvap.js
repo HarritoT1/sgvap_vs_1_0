@@ -214,3 +214,137 @@ function show_part_extra_ecore(e) {
     }
 }
 
+async function ask_values_of_proyect_progress_bar() {
+    const input_id_proyect = document.getElementById('input_find_id_proyect').value;
+
+    if (input_id_proyect.length < 5) {
+        return;
+    }
+
+    console.log(`Generando valores de la barra de progreso del proyecto con id: ${input_id_proyect}...`)
+
+    /*const response = await fetch(`/proyectprogressbargenerator?q=${input_id_proyect}`);
+
+    const data = await response.json();*/
+
+    if (/*data.generacion_progress_bar ||*/ true) {
+        /*const monto_alimentos = data.totales_viaticos_table_daily.total_alimentos;
+        const monto_traslados = data.totales_viaticos_table_daily.total_traslados;
+        const monto_comision = data.totales_viaticos_table_daily.total_comision;
+        const monto_gasolina = data.totales_viaticos_table_gasoline.total_comision;
+        const monto_caseta = data.totales_viaticos_table_tag.total_comision;
+        const monto_hospedaje = data.totales_viaticos_lodging_daily.total_comision;*/
+
+        const limit = 260000; // límite requerido
+        // --- EJEMPLO: modifica estos valores como necesites ---
+        //const values = [50000, 70000, 20000, 30000]; // suma=170000 (< limit)
+        const values = [90000, 90000, 90000, 90000]; // ejemplo > limit
+        // ----------------------------------------------------
+
+        const colors = ['seg-0', 'seg-1', 'seg-2', 'seg-3'];
+        const labels = ['Segmento A', 'Segmento B', 'Segmento C', 'Segmento D'];
+
+        const bar = document.getElementById('bar');
+        const legend = document.getElementById('legend');
+        const overflowMsg = document.getElementById('overflowMsg');
+        const percentTotal = document.getElementById('percentTotal');
+        const limitDisplay = document.getElementById('limitDisplay');
+        limitDisplay.textContent = limit.toLocaleString('es-ES');
+
+        // cálculos (digit-by-digit mental rigor aplicado: usamos aritmética JS, con redondeo a 2 decimales)
+        const sumValues = values.reduce((a, b) => a + b, 0);
+        const rawPercents = values.map(v => (v / limit) * 100); // porcentaje relativo al límite
+        const percentsRounded = rawPercents.map(p => Math.round(p * 100) / 100); // 2 decimales
+
+        // función para crear un chip en leyenda
+        function createChip(text) {
+            const d = document.createElement('div');
+            d.className = 'chip';
+            d.textContent = text;
+            return d;
+        }
+
+        // Limpia barra y leyenda
+        bar.innerHTML = '';
+        legend.innerHTML = '';
+
+        // Si suma > límite: indicamos overflow y opcionalmente escalamos para que la barra no pase 100% visual
+        const isOverflow = sumValues > limit;
+
+        // Si hay overflow, calculamos factor de escala para ajustar visualmente pero mantener datos reales en leyenda:
+        const scaleFactor = isOverflow ? (limit / sumValues) : 1;
+
+        // Construcción de segmentos
+        values.forEach((val, i) => {
+            const seg = document.createElement('div');
+            seg.className = `segment ${colors[i]}`;
+            const adjustedPercent = Math.round(((val / limit) * scaleFactor) * 10000) / 100; // 2 decimales visuales
+            seg.style.flex = `0 0 ${adjustedPercent}%`;
+            // texto: mostramos porcentaje relativo al límite real y valor bruto
+            const pctText = (Math.round(((val / limit) * 100) * 100) / 100).toLocaleString('es-ES') + '%';
+            seg.textContent = pctText;
+            seg.title = `${labels[i]} — ${val.toLocaleString('es-ES')} / ${limit.toLocaleString('es-ES')} (${pctText})`;
+            bar.appendChild(seg);
+
+            // leyenda: valor real + porcentaje sobre límite
+            const chip = createChip(`${labels[i]}: ${val.toLocaleString('es-ES')} (${pctText})`);
+            chip.style.borderLeft = `6px solid ${getComputedStyle(document.documentElement).getPropertyValue('--bg')}`;
+            // indicador de color en leyenda (pequeño cuadrado)
+            const colorMark = document.createElement('span');
+            colorMark.style.display = 'inline-block';
+            colorMark.style.width = '12px';
+            colorMark.style.height = '12px';
+            colorMark.style.marginRight = '8px';
+            colorMark.style.verticalAlign = 'middle';
+            // Copiamos el color desde la regla CSS de la clase del segmento
+            const segEl = document.createElement('div');
+            segEl.className = colors[i];
+            segEl.style.display = 'none';
+            document.body.appendChild(segEl);
+            const bg = getComputedStyle(segEl).backgroundColor;
+            document.body.removeChild(segEl);
+            colorMark.style.background = bg;
+            chip.prepend(colorMark);
+            legend.appendChild(chip);
+        });
+
+        // Espacio restante si sum < limit
+        if (!isOverflow) {
+            const remaining = limit - sumValues;
+            const remainingPercent = Math.round((remaining / limit) * 10000) / 100; // 2 decimales
+            const remDiv = document.createElement('div');
+            remDiv.className = 'remaining';
+            remDiv.style.flex = `0 0 ${remainingPercent}%`;
+            remDiv.title = `Restante: ${remaining.toLocaleString('es-ES')} (${remainingPercent}%)`;
+            // opcional: mostrar texto pequeño cuando haya espacio suficiente
+            if (remainingPercent >= 8) {
+                remDiv.textContent = `${remainingPercent}%`;
+                remDiv.style.color = '#333';
+                remDiv.style.fontWeight = '700';
+                remDiv.style.fontSize = '12px';
+                remDiv.style.display = 'flex';
+                remDiv.style.alignItems = 'center';
+                remDiv.style.justifyContent = 'center';
+            }
+            bar.appendChild(remDiv);
+
+            // Añadir chip de restante
+            const chipRem = createChip(`Restante: ${remaining.toLocaleString('es-ES')} (${remainingPercent}%)`);
+            legend.appendChild(chipRem);
+        } else {
+            // Mostrar mensaje de overflow con el monto excedente
+            const excedente = sumValues - limit;
+            overflowMsg.style.display = 'block';
+            overflowMsg.textContent = `Desbordamiento: la suma de segmentos excede el límite en ${excedente.toLocaleString('es-ES')}. La barra se muestra escalada para visualización.`;
+            // Estilizamos la barra con borde de advertencia
+            const wrap = document.getElementById('barWrap');
+            wrap.style.border = 'var(--overflow-border)';
+        }
+
+        // Actualizamos atributos ARIA y el porcentaje total mostrado
+        document.getElementById('bar').setAttribute('aria-valuenow', Math.min(sumValues, limit));
+        const totalPct = Math.round((Math.min(sumValues, limit) / limit) * 10000) / 100;
+        percentTotal.textContent = `${totalPct}% usado (${sumValues.toLocaleString('es-ES')}/${limit.toLocaleString('es-ES')})`;
+    }
+}
+
