@@ -10,7 +10,7 @@
             <div class="row g-3">
                 <div class="col-sm-6">
                     <label for="input_find_rfc" class="form-label fw-bold">RFC</label>
-                    <input type="text" class="form-control" id="input_find_rfc" name="id" placeholder=""
+                    <input type="text" class="form-control" id="input_find_rfc" name="employee_id" placeholder=""
                         value="" required maxlength="50" list="sugerencias_rfc">
                     <div class="invalid-feedback">
                         Ingresa un RFC válido.
@@ -21,8 +21,8 @@
 
                 <div class="col-sm-6">
                     <label for="fecha_dispersion_dia" class="form-label fw-bold">Fecha de corte</label>
-                    <input type="date" class="form-control sm-form-control" id="fecha_dispersion_dia" name="fecha_dispersion_dia"
-                        value="" required>
+                    <input type="date" class="form-control sm-form-control" id="fecha_dispersion_dia"
+                        name="fecha_dispersion_dia" value="" required>
                     <div class="invalid-feedback">
                         Ingresa una fecha válida.
                     </div>
@@ -30,11 +30,11 @@
 
                 <hr class="my-4 mb-2">
 
-                <button class="d-block mx-auto btn btn-primary btn-lg fw-bold button-custom" type="submit"
+                <button class="d-block mx-auto btn btn-primary btn-lg fw-bold button-custom" type="button" onclick="validar_form_generator()"
                     style="background-color: var(--botones-color);">Generar formulario de corte</button>
         </form>
 
-        <div class="w-100 div-secondary px-5 py-5">
+        <div class="w-100 div-secondary px-5 py-5 d-block" id="segunda-parte-formulario"> <!-- Cambiar a d-none -->
             <h2 class="mb-3 fw-bold" style="font-size: 1.5rem;">Llena los datos del formulario para el corte de $nombre del
                 día $fecha:</h2>
             <div class="row g-3">
@@ -43,7 +43,8 @@
                     <div class="input-group">
                         <span class="input-group-text">$</span>
                         <input type="number" class="form-control" aria-label="Amount (to the nearest dollar)"
-                            id="desayuno" name="desayuno" placeholder="0.000" step="0.00000001" value="" form="crear_corte_dia">
+                            id="desayuno" name="desayuno" placeholder="0.000" step="0.00000001" value=""
+                            form="crear_corte_dia">
                         <div class="invalid-feedback">
                             Ingresa un monto válido.
                         </div>
@@ -55,7 +56,8 @@
                     <div class="input-group">
                         <span class="input-group-text">$</span>
                         <input type="number" class="form-control" aria-label="Amount (to the nearest dollar)"
-                            id="comida" name="comida" placeholder="0.000" step="0.00000001" value="" form="crear_corte_dia">
+                            id="comida" name="comida" placeholder="0.000" step="0.00000001" value=""
+                            form="crear_corte_dia">
                         <div class="invalid-feedback">
                             Ingresa un monto válido.
                         </div>
@@ -67,7 +69,8 @@
                     <div class="input-group">
                         <span class="input-group-text">$</span>
                         <input type="number" class="form-control" aria-label="Amount (to the nearest dollar)"
-                            id="cena" name="cena" placeholder="0.000" step="0.00000001" value="" form="crear_corte_dia">
+                            id="cena" name="cena" placeholder="0.000" step="0.00000001" value=""
+                            form="crear_corte_dia">
                         <div class="invalid-feedback">
                             Ingresa un monto válido.
                         </div>
@@ -79,7 +82,8 @@
                     <div class="input-group">
                         <span class="input-group-text">$</span>
                         <input type="number" class="form-control" aria-label="Amount (to the nearest dollar)"
-                            id="traslado_local" name="traslado_local" placeholder="0.000" step="0.00000001" value="" form="crear_corte_dia">
+                            id="traslado_local" name="traslado_local" placeholder="0.000" step="0.00000001" value=""
+                            form="crear_corte_dia">
                         <div class="invalid-feedback">
                             Ingresa un monto válido.
                         </div>
@@ -91,7 +95,8 @@
                     <div class="input-group">
                         <span class="input-group-text">$</span>
                         <input type="number" class="form-control" aria-label="Amount (to the nearest dollar)"
-                            id="traslado_externo" name="traslado_externo" placeholder="0.000" step="0.00000001" value="" form="crear_corte_dia">
+                            id="traslado_externo" name="traslado_externo" placeholder="0.000" step="0.00000001"
+                            value="" form="crear_corte_dia">
                         <div class="invalid-feedback">
                             Ingresa un monto válido.
                         </div>
@@ -103,7 +108,8 @@
                     <div class="input-group">
                         <span class="input-group-text">$</span>
                         <input type="number" class="form-control" aria-label="Amount (to the nearest dollar)"
-                            id="comision_bancaria" name="comision_bancaria" placeholder="0.000" step="0.00000001" value="" form="crear_corte_dia">
+                            id="comision_bancaria" name="comision_bancaria" placeholder="0.000" step="0.00000001"
+                            value="" form="crear_corte_dia">
                         <div class="invalid-feedback">
                             Ingresa un monto válido.
                         </div>
@@ -112,8 +118,8 @@
 
                 <div class="col-12">
                     <label for="input_find_id_proyect" class="form-label fw-bold">Id del proyecto</label>
-                    <input type="text" class="form-control" id="input_find_id_proyect" name="id_p" placeholder=""
-                        value="" required maxlength="80" list="sugerencias_id_proyect">
+                    <input type="text" class="form-control" id="input_find_id_proyect" name="project_id" placeholder=""
+                        value="" required maxlength="80" list="sugerencias_id_proyect" form="crear_corte_dia">
                     <div class="invalid-feedback">
                         Ingresa un id de proyecto válido.
                     </div>
@@ -121,18 +127,83 @@
                     </datalist>
                 </div>
 
-                <div class="col d-flex flex-row justify-content-evenly alig-items-center">
-                    <div>
-                        <hr class="my-4 mb-2" style="border-color: red; border-style: solid; border-width: 5px;">
+                <div class="col-12 d-flex flex-row justify-content-evenly alig-items-center"> <!-- AJUSTAR -->
+                    <div style="width: 33%">
+                        <hr class="w-100" style="border-style: solid; border-width: 3px;">
                     </div>
-                    <div>
-                        texto
+                    <div style="width: 33%; display: flex; align-items: center; justify-content: center;">
+                        <div class="form-check">
+                            <input class="form-check-input" type="checkbox" id="ajuste_retiro" oninput="show_part_extra_ecore()">
+                            <label class="form-check-label fw-bold ms-2" for="ajuste_retiro">
+                                <em>$ Ajuste por retiro</em>
+                            </label>
+                        </div>
                     </div>
-                    <div>
-                        <hr class="my-4 mb-2" style="border-color: red border-style: solid; border-width: 5px;"> 
+                    <div style="width: 33%">
+                        <hr class="w-100" style="border-style: solid; border-width: 3px;">
                     </div>
                 </div>
+
+                <div class="col-sm-6 d-none" id="monto_extra_ecore_div">
+                    <label for="monto_extra_ecore" class="form-label fw-bold">Monto del ajuste por retiro</label>
+                    <div class="input-group">
+                        <span class="input-group-text">$</span>
+                        <input type="number" class="form-control" aria-label="Amount (to the nearest dollar)"
+                            id="monto_extra_ecore" name="monto_extra_ecore" placeholder="0.000" step="0.00000001"
+                            min="0" value="" form="crear_corte_dia">
+                        <div class="invalid-feedback">
+                            Ingresa un monto válido.
+                        </div>
+                    </div>
+                </div>
+
+                <div class="col-sm-6 d-none" id="campo_descontar_div">
+                    <label for="campo_descontar" class="form-label fw-bold">Campo de ajuste por retiro</label>
+                    <select name="campo_descontar" id="campo_descontar" class="form-control form-select"
+                        aria-label="Default select example" form="crear_corte_dia">
+                        <option value="desayuno" selected>
+                            DESAYUNO
+                        </option>
+                        <option value="comida">
+                            COMIDA
+                        </option>
+                        <option value="cena">
+                            CENA
+                        </option>
+                        <option value="traslado_local">
+                            TRASLADO LOCAL
+                        </option>
+                        <option value="traslado_externo">
+                            TRASLADO EXTERNO
+                        </option>
+                        <option value="comision_bancaria">
+                            COMISIÓN BANCARIA
+                        </option>
+                    </select>
+                    <div class="invalid-feedback">
+                        Ingresa un campo válido.
+                    </div>
+                </div>
+
+                <div class="col-sm-6 mx-auto d-none" id="fecha_descontar_div">
+                    <label for="fecha_descontar" class="form-label fw-bold">Fecha de ajuste por retiro</label>
+                    <input type="date" class="form-control sm-form-control" id="fecha_descontar" name="fecha_descontar"
+                        value="" form="crear_corte_dia">
+                    <div class="invalid-feedback">
+                        Ingresa una fecha válida.
+                    </div>
+                </div>
+
+                <input type="hidden" name="id_e" value="">
+
+                <hr class="my-4 mb-2">
+
+                <button class="d-block mx-auto btn btn-primary btn-lg fw-bold button-custom" type="submit" form="crear_corte_dia"
+                    style="background-color: var(--botones-color);">Registrar corte del día</button>
+
+                <hr class="my-2">
             </div>
         </div>
     </div>
 @endsection
+

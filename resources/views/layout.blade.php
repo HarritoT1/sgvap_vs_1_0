@@ -8,6 +8,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta name="description" content="">
     <meta name="author" content="Ing. Harol Gael Cardenas Trejo">
+    <meta name="csrf-token" content="{{ csrf_token() }}">
     <title>SGVAP</title>
 
     <link rel="canonical" href="https://getbootstrap.com/docs/5.3/examples/dashboard/">
