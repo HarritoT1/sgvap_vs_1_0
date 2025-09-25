@@ -128,18 +128,18 @@
                 </div>
 
                 <div class="col-12 d-flex flex-row justify-content-evenly alig-items-center"> <!-- AJUSTAR -->
-                    <div style="width: 33%">
+                    <div style="width: 30%">
                         <hr class="w-100" style="border-style: solid; border-width: 3px;">
                     </div>
                     <div style="width: 33%; display: flex; align-items: center; justify-content: center;">
                         <div class="form-check">
-                            <input class="form-check-input" type="checkbox" id="ajuste_retiro" oninput="show_part_extra_ecore()">
-                            <label class="form-check-label fw-bold ms-2" for="ajuste_retiro">
+                            <input class="form-check-input" type="checkbox" id="ajuste_retiro">
+                            <label class="form-check-label fw-bold text-center" for="ajuste_retiro" style="font-size: 0.8rem;">
                                 <em>$ Ajuste por retiro</em>
                             </label>
                         </div>
                     </div>
-                    <div style="width: 33%">
+                    <div style="width: 30%">
                         <hr class="w-100" style="border-style: solid; border-width: 3px;">
                     </div>
                 </div>
