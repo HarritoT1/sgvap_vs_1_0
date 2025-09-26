@@ -214,8 +214,8 @@
         
         <div class="container my-4 d-none" id="contenedor_barra_presupuesto_viaticos">
             <div class="label-row">
-                <div><strong>Barra segmentada</strong> — límite: <span id="limitDisplay">260000</span></div>
-                <div id="percentTotal"></div>
+                <div><strong>Barra segmentada</strong> — límite: $<span id="limitDisplay"></span></div>
+                <div id="percentTotal" style="text-align: right"></div>
             </div>
 
             <div class="bar-wrap" id="barWrap">
@@ -230,7 +230,27 @@
 
         <hr class="my-4">
 
-        <p class="text-center fw-bold" style="font-size: 1.2rem; color: var(--empresa-color);">¡Nota!: En la barra de presupuesto de viáticos no se considera IVA y Sí Vale!</p>
+        <h2 class="fw-bold mt-4 mb-1" style="font-size: 1.8rem; text-align:justify">Límite de fecha de entrega:</h2>
+        
+        <div class="container my-4 d-none" id="contenedor_barra_fecha_limite">
+            <div class="label-row">
+                <div><strong>Barra de progreso</strong> — fecha límite: <span id="limitDisplay1"></span></div>
+                <div id="percentTotal1" style="text-align: right"></div>
+            </div>
+
+            <div class="bar-wrap" id="barWrap1">
+                <div id="bar1" class="bar" aria-hidden="false" role="progressbar" aria-valuemin="0"
+                    aria-valuemax="260000" aria-valuenow="0"></div>
+            </div>
+
+            <div id="overflowMsg1" class="overflow" style="display:none"></div>
+
+            <div class="info info d-flex justify-content-evenly" id="legend1"></div>
+        </div>
+
+        <hr class="my-4">
+
+        <p class="text-center fw-bold" style="font-size: 1.2rem; color: var(--empresa-color);">¡Nota!: En la barra de presupuesto de viáticos no se considera IVA y Sí Vale!</p>        
 
     </div>
 @endsection

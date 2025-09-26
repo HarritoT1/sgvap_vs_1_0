@@ -217,15 +217,18 @@ function show_part_extra_ecore(e) {
 async function ask_values_of_proyect_progress_bar() {
     const input_id_proyect = document.getElementById('input_find_id_proyect').value;
     const contenedor_barra_presupuesto_viaticos = document.getElementById('contenedor_barra_presupuesto_viaticos');
+    const contenedor_barra_fecha_limite = document.getElementById('contenedor_barra_fecha_limite');
 
     if (input_id_proyect.length < 5) {
         if (!(contenedor_barra_presupuesto_viaticos.classList.contains("d-none"))) contenedor_barra_presupuesto_viaticos.classList.add('d-none');
+        if (!(contenedor_barra_fecha_limite.classList.contains("d-none"))) contenedor_barra_fecha_limite.classList.add('d-none');
         return;
     }
 
     if (contenedor_barra_presupuesto_viaticos.classList.contains("d-none")) contenedor_barra_presupuesto_viaticos.classList.remove('d-none');
+    if (contenedor_barra_fecha_limite.classList.contains("d-none")) contenedor_barra_fecha_limite.classList.remove('d-none');
 
-    console.log(`Generando valores de la barra de progreso del proyecto con id: ${input_id_proyect}...`)
+    console.log(`Generando valores de las barras de progreso del proyecto con id: ${input_id_proyect}...`)
 
     /*const response = await fetch(`/proyectprogressbargenerator?q=${input_id_proyect}`);
 
@@ -238,12 +241,13 @@ async function ask_values_of_proyect_progress_bar() {
         const monto_gasolina = data.totales_viaticos_table_gasoline.total_comision;
         const monto_caseta = data.totales_viaticos_table_tag.total_comision;
         const monto_hospedaje = data.totales_viaticos_lodging_daily.total_comision;
-        const limit = data.project.estimado_viaticos;*/
+        const limit = data.project.estimado_viaticos;
+        const values = [monto_alimentos, monto_traslados, monto_comision, monto_gasolina, monto_caseta, monto_hospedaje];*/
 
         const limit = 260000; // límite requerido
         // --- EJEMPLO: modifica estos valores como necesites ---
         //const values = [50000, 70000, 20000, 30000]; // suma=170000 (< limit)
-        const values = [20000, 20000, 20000, 10000, 90000, 12000]; // ejemplo > limit
+        const values = [20000, 90000, 20000, 90000, 90000, 90000]; // ejemplo > limit
         // ----------------------------------------------------
 
         const colors = ['seg-0', 'seg-1', 'seg-2', 'seg-3', 'seg-4', 'seg-5'];
@@ -292,7 +296,7 @@ async function ask_values_of_proyect_progress_bar() {
             bar.appendChild(seg);
 
             // leyenda: valor real + porcentaje sobre límite
-            const chip = createChip(`${labels[i]}: ${val.toLocaleString('es-ES')} (${pctText})`);
+            const chip = createChip(`${labels[i]}: $${val.toLocaleString('es-ES')} (${pctText})`);
             chip.style.borderLeft = `6px solid ${getComputedStyle(document.documentElement).getPropertyValue('--bg')}`;
             // indicador de color en leyenda (pequeño cuadrado)
             const colorMark = document.createElement('span');
@@ -320,13 +324,13 @@ async function ask_values_of_proyect_progress_bar() {
             const remDiv = document.createElement('div');
             remDiv.className = 'remaining';
             remDiv.style.flex = `0 0 ${remainingPercent}%`;
-            remDiv.title = `Restante: ${remaining.toLocaleString('es-ES')} (${remainingPercent}%)`;
+            remDiv.title = `Restante: ${remaining.toLocaleString('es-ES')} (${remainingPercent.toLocaleString('es-ES')}%)`;
             // opcional: mostrar texto pequeño cuando haya espacio suficiente
             if (remainingPercent >= 5) {
-                remDiv.textContent = `${remainingPercent}%`;
+                remDiv.textContent = `${remainingPercent.toLocaleString('es-ES')}%`;
                 remDiv.style.color = '#333';
                 remDiv.style.fontWeight = '700';
-                remDiv.style.fontSize = '12px';
+                remDiv.style.fontSize = '1.2rem';
                 remDiv.style.display = 'flex';
                 remDiv.style.alignItems = 'center';
                 remDiv.style.justifyContent = 'center';
@@ -334,13 +338,23 @@ async function ask_values_of_proyect_progress_bar() {
             bar.appendChild(remDiv);
 
             // Añadir chip de restante
-            const chipRem = createChip(`Restante: ${remaining.toLocaleString('es-ES')} (${remainingPercent}%)`);
+            const chipRem = createChip(`Restante: $${remaining.toLocaleString('es-ES')} (${remainingPercent.toLocaleString('es-ES')}%)`);
+
+            // indicador de color en leyenda (pequeño cuadrado)
+            const colorMark = document.createElement('span');
+            colorMark.style.display = 'inline-block';
+            colorMark.style.width = '12px';
+            colorMark.style.height = '12px';
+            colorMark.style.marginRight = '8px';
+            colorMark.style.verticalAlign = 'middle';
+            colorMark.style.background = '#cfd6db';
+            chipRem.prepend(colorMark);
             legend.appendChild(chipRem);
         } else {
             // Mostrar mensaje de overflow con el monto excedente
             const excedente = sumValues - limit;
             overflowMsg.style.display = 'block';
-            overflowMsg.textContent = `Desbordamiento: la suma de segmentos excede el límite en ${excedente.toLocaleString('es-ES')}. La barra se muestra escalada para visualización.`;
+            overflowMsg.textContent = `Desbordamiento: la suma de segmentos excede el límite en $${excedente.toLocaleString('es-ES')}. La barra se muestra escalada para visualización.`;
             // Estilizamos la barra con borde de advertencia
             const wrap = document.getElementById('barWrap');
             wrap.style.border = 'var(--overflow-border)';
@@ -349,7 +363,9 @@ async function ask_values_of_proyect_progress_bar() {
         // Actualizamos atributos ARIA y el porcentaje total mostrado
         document.getElementById('bar').setAttribute('aria-valuenow', sumValues);
         const totalPct = Math.round((sumValues / limit) * 10000) / 100;
-        percentTotal.textContent = `${totalPct}% usado (${sumValues.toLocaleString('es-ES')}/${limit.toLocaleString('es-ES')})`;
+        percentTotal.textContent = `${totalPct}% usado ($${sumValues.toLocaleString('es-ES')} / $${limit.toLocaleString('es-ES')})`;
+
+        /* 2DA BARRA DE PROGRESO. */
     }
 }
 
