@@ -220,7 +220,7 @@
 
             <div class="bar-wrap" id="barWrap">
                 <div id="bar" class="bar" aria-hidden="false" role="progressbar" aria-valuemin="0"
-                    aria-valuemax="260000" aria-valuenow="0"></div>
+                    aria-valuemax="0" aria-valuenow="0"></div>
             </div>
 
             <div id="overflowMsg" class="overflow" style="display:none"></div>
@@ -240,12 +240,10 @@
 
             <div class="bar-wrap" id="barWrap1">
                 <div id="bar1" class="bar" aria-hidden="false" role="progressbar" aria-valuemin="0"
-                    aria-valuemax="260000" aria-valuenow="0"></div>
+                    aria-valuemax="0" aria-valuenow="0"></div>
             </div>
 
             <div id="overflowMsg1" class="overflow" style="display:none"></div>
-
-            <div class="info info d-flex justify-content-evenly" id="legend1"></div>
         </div>
 
         <hr class="my-4">

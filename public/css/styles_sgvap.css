@@ -148,9 +148,9 @@ summary:active,
   border-color: rgba(0, 0, 0, 0.27);
   border-style: solid;
   padding: 15px 20px;
-  box-shadow: 0px 0px 47px -10px rgba(0, 0, 0, 0.75) inset;
-  -webkit-box-shadow: 0px 0px 47px -10px rgba(0, 0, 0, 0.75) inset;
-  -moz-box-shadow: 0px 0px 47px -10px rgba(0, 0, 0, 0.75) inset;
+  box-shadow: 0px 0px 20px -10px rgba(0, 0, 0, 0.75) inset;
+  -webkit-box-shadow: 0px 0px 20px -10px rgba(0, 0, 0, 0.75) inset;
+  -moz-box-shadow: 0px 0px 20px -10px rgba(0, 0, 0, 0.75) inset;
 }
 
 a {
@@ -277,6 +277,10 @@ a {
 
 .seg-5 {
   background: #e763d3;
+}
+
+.seg-6 {
+  background: #ff0000;
 }
 
 /* turquesa */
