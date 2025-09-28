@@ -54,4 +54,8 @@ Route::get('/ge_retiro_semanal', function () {
     return view('ge_retiro_semanal'); //http://127.0.0.1:8000/ge_retiro_semanal
 });
 
+Route::get('/ge_corte_x_mes_filtro', function () {
+    return view('ge_corte_x_mes_filtro'); //http://127.0.0.1:8000/ge_corte_x_mes_filtro
+});
+
 
