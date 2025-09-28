@@ -2,7 +2,7 @@
 
 @section('content')
     <div class="w-100 my-3 div-main">
-        <h1 class="fw-bold my-3" style="font-size: 2rem; text-align:justify">Llena el formulario para dar de alta un empleado:
+        <h1 class="fw-bold my-3" style="font-size: 2rem; text-align:justify">Datos del empleado con el RFC: $id
         </h1>
         <div class="w-100 div-secondary">
 
@@ -11,7 +11,7 @@
                 autocomplete="off" class="needs-validation p-1" novalidate>
                 <div class="row g-3">
                     <div class="col-sm-6">
-                        <label for="id" class="form-label">RFC</label>
+                        <label for="id" class="form-label fw-bold">RFC</label>
                         <input type="text" class="form-control" id="id" name="id" placeholder=""
                             value="" required maxlength="50" disabled>
                         <div class="invalid-feedback">
@@ -20,7 +20,7 @@
                     </div>
 
                     <div class="col-sm-6">
-                        <label for="puesto" class="form-label">Puesto</label>
+                        <label for="puesto" class="form-label fw-bold">Puesto</label>
                         <input type="text" class="form-control" id="puesto" name="puesto" placeholder=""
                             value="" required maxlength="100" disabled>
                         <div class="invalid-feedback">
@@ -29,7 +29,7 @@
                     </div>
 
                     <div class="col-sm-6">
-                        <label for="nombre" class="form-label">Nombre</label>
+                        <label for="nombre" class="form-label fw-bold">Nombre</label>
                         <input type="text" class="form-control" id="nombre" name="nombre" placeholder=""
                             value="" required maxlength="100" disabled>
                         <div class="invalid-feedback">
@@ -38,7 +38,7 @@
                     </div>
 
                     <div class="col-sm-6">
-                        <label for="status" class="form-label">Estado del empleado</label>
+                        <label for="status" class="form-label fw-bold">Estado del empleado</label>
                         <select name="status" id="status" class="form-control form-select" aria-label="Default select example" required disabled>
                             <option value="activo" selected>
                                 ACTIVO
@@ -52,18 +52,18 @@
                         </div>
                     </div>
 
-                    <div class="col-sm-6 mx-auto">
-                        <label for="interno" class="form-label d-block">Modo (interno / contratista)</label>
+                    <div class="col-sm-6 mx-auto" style="max-width: 500px;">
+                        <label for="interno" class="form-label d-block fw-bold">Modo (interno / contratista)</label>
                         <div class="text-center">
                             <div class="form-check form-check-inline">
                                 <input class="form-check-input" type="radio" name="modo" id="interno" value="interno"
                                     required checked disabled>
-                                <label class="form-check-label" for="interno">Interno</label>
+                                <label class="form-check-label fw-bold" for="interno">Interno</label>
                             </div>
                             <div class="form-check form-check-inline">
                                 <input class="form-check-input" type="radio" name="modo" id="contratista"
                                     value="contratista" required disabled>
-                                <label class="form-check-label" for="contratista">Contratista</label>
+                                <label class="form-check-label fw-bold" for="contratista">Contratista</label>
                             </div>
                             <!-- Aquí va el feedback para el grupo -->
                             <div class="invalid-feedback">
