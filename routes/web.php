@@ -46,3 +46,8 @@ Route::get('/ge_corte_x_dia', function () {
     return view('ge_corte_x_dia'); //http://127.0.0.1:8000/ge_corte_x_dia
 });
 
+Route::get('/ge_retiro_semanal_filtro', function () {
+    return view('ge_retiro_semanal_filtro'); //http://127.0.0.1:8000/ge_corte_x_dia
+});
+
+
