@@ -781,7 +781,7 @@ l838 0 -282 -282 c-304 -305 -305 -307 -288 -395 9 -49 69 -109 118 -118 91
                         <ul class="nav flex-column">
                             <li class="nav-item">
                                 <a class="nav-link d-flex align-items-center gap-2 active text-white fw-bold"
-                                    aria-current="page" href="#" target="_self">
+                                    aria-current="page" href="/inicio" target="_self">
                                     <svg class="bi">
                                         <use xlink:href="#inicio" />
                                     </svg>
@@ -799,13 +799,13 @@ l838 0 -282 -282 c-304 -305 -305 -307 -288 -395 9 -49 69 -109 118 -118 91
                                     <ul class="flex-column vineta">
                                         <li class="nav-item">
                                             <a class="nav-link d-flex align-items-center gap-2 text-white fw-bold"
-                                                href="#" target="_self">
+                                                href="/gp_nuevo" target="_self">
                                                 Nuevo proyecto.
                                             </a>
                                         </li>
                                         <li class="nav-item">
                                             <a class="nav-link d-flex align-items-center gap-2 text-white fw-bold"
-                                                href="#" target="_self">
+                                                href="/gp_consulta_act_filtro" target="_self">
                                                 Consultar y actualizar proyectos.
                                             </a>
                                         </li>
@@ -823,37 +823,37 @@ l838 0 -282 -282 c-304 -305 -305 -307 -288 -395 9 -49 69 -109 118 -118 91
                                     <ul class="flex-column vineta">
                                         <li class="nav-item">
                                             <a class="nav-link d-flex align-items-center gap-2 text-white fw-bold"
-                                                href="#" target="_self">
+                                                href="/ge_nuevo" target="_self">
                                                 Registrar empleados.
                                             </a>
                                         </li>
                                         <li class="nav-item">
                                             <a class="nav-link d-flex align-items-center gap-2 text-white fw-bold"
-                                                href="#" target="_self">
+                                                href="/ge_consulta_act_filtro" target="_self">
                                                 Consultar y actualizar empleados.
                                             </a>
                                         </li>
                                         <li class="nav-item">
                                             <a class="nav-link d-flex align-items-center gap-2 text-white fw-bold"
-                                                href="#" target="_self">
+                                                href="/ge_corte_x_dia" target="_self">
                                                 Corte por día de viáticos.
                                             </a>
                                         </li>
                                         <li class="nav-item">
                                             <a class="nav-link d-flex align-items-center gap-2 text-white fw-bold"
-                                                href="#" target="_self">
+                                                href="/ge_retiro_semanal_filtro" target="_self">
                                                 Consultar retiros semanales.
                                             </a>
                                         </li>
                                         <li class="nav-item">
                                             <a class="nav-link d-flex align-items-center gap-2 text-white fw-bold"
-                                                href="#" target="_self">
+                                                href="/ge_corte_x_mes_filtro" target="_self">
                                                 Corte mensual de viáticos.
                                             </a>
                                         </li>
                                         <li class="nav-item">
                                             <a class="nav-link d-flex align-items-center gap-2 text-white fw-bold"
-                                                href="#" target="_self">
+                                                href="/ge_consulta_corte_x_año_filtro" target="_self">
                                                 Consultar cortes en un año específico.
                                             </a>
                                         </li>
