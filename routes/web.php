@@ -70,4 +70,12 @@ Route::get('/ge_consulta_corte_x_año_especifico', function () {
     return view('ge_consulta_corte_x_año_especifico'); //http://127.0.0.1:8000/ge_consulta_corte_x_año_especifico
 });
 
+Route::get('/ge_graficas_viaticos', function () {
+    return view('ge_graficas_viaticos'); //http://127.0.0.1:8000/ge_graficas_viaticos
+});
+
+Route::get('/ge_graficas_x_viatico', function () {
+    return view('ge_graficas_x_viatico'); //http://127.0.0.1:8000/ge_graficas_x_viatico
+});
+
 
