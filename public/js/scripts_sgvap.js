@@ -64,6 +64,13 @@ function ask_before_submit() {
     }
 }
 
+function ask_before_submit_new() {
+    if (confirm("¿Está seguro de esta operación?")) {
+        const form = document.querySelector("form");
+        form.requestSubmit();
+    }
+}
+
 function cancel_edit_mode() {
     if (confirm("¿Está seguro de cancelar los cambios del proyecto?")) {
         window.location.reload();
