@@ -294,7 +294,7 @@ async function ask_values_of_proyect_progress_bar() {
             const overflowMsg = document.getElementById('overflowMsg');
             const percentTotal = document.getElementById('percentTotal');
             const limitDisplay = document.getElementById('limitDisplay');
-            limitDisplay.textContent = limit.toLocaleString('es-ES');
+            limitDisplay.textContent = limit.toLocaleString('es-MX');
 
             // cálculos (digit-by-digit mental rigor aplicado: usamos aritmética JS, con redondeo a 2 decimales).
             const sumValues = values.reduce((a, b) => a + b, 0);
@@ -326,13 +326,13 @@ async function ask_values_of_proyect_progress_bar() {
                 const adjustedPercent = Math.round(((val / limit) * scaleFactor) * 10000) / 100; // 2 decimales visuales.
                 seg.style.flex = `0 0 ${adjustedPercent}%`;
                 // texto: mostramos porcentaje relativo al límite real y valor bruto.
-                const pctText = percentsRounded[i].toLocaleString('es-ES') + '%';
+                const pctText = percentsRounded[i].toLocaleString('es-MX') + '%';
                 seg.textContent = pctText;
-                seg.title = `${labels[i]} — ${val.toLocaleString('es-ES')} / ${limit.toLocaleString('es-ES')} (${pctText})`;
+                seg.title = `${labels[i]} — ${val.toLocaleString('es-MX')} / ${limit.toLocaleString('es-MX')} (${pctText})`;
                 bar.appendChild(seg);
 
                 // leyenda: valor real + porcentaje sobre límite.
-                const chip = createChip(`${labels[i]}: $${val.toLocaleString('es-ES')} (${pctText})`);
+                const chip = createChip(`${labels[i]}: $${val.toLocaleString('es-MX')} (${pctText})`);
                 chip.style.borderLeft = `6px solid ${getComputedStyle(document.documentElement).getPropertyValue('--bg')}`;
                 // indicador de color en leyenda (pequeño cuadrado).
                 const colorMark = document.createElement('span');
@@ -360,10 +360,10 @@ async function ask_values_of_proyect_progress_bar() {
                 const remDiv = document.createElement('div');
                 remDiv.className = 'remaining';
                 remDiv.style.flex = `0 0 ${remainingPercent}%`;
-                remDiv.title = `Restante: ${remaining.toLocaleString('es-ES')} (${remainingPercent.toLocaleString('es-ES')}%)`;
+                remDiv.title = `Restante: ${remaining.toLocaleString('es-MX')} (${remainingPercent.toLocaleString('es-MX')}%)`;
                 // opcional: mostrar texto pequeño cuando haya espacio suficiente.
                 if (remainingPercent >= 5) {
-                    remDiv.textContent = `${remainingPercent.toLocaleString('es-ES')}%`;
+                    remDiv.textContent = `${remainingPercent.toLocaleString('es-MX')}%`;
                     remDiv.style.color = '#333';
                     remDiv.style.fontWeight = '700';
                     remDiv.style.fontSize = '1.2rem';
@@ -374,7 +374,7 @@ async function ask_values_of_proyect_progress_bar() {
                 bar.appendChild(remDiv);
 
                 // Añadir chip de restante
-                const chipRem = createChip(`Restante: $${remaining.toLocaleString('es-ES')} (${remainingPercent.toLocaleString('es-ES')}%)`);
+                const chipRem = createChip(`Restante: $${remaining.toLocaleString('es-MX')} (${remainingPercent.toLocaleString('es-MX')}%)`);
 
                 // indicador de color en leyenda (pequeño cuadrado).
                 const colorMark = document.createElement('span');
@@ -390,7 +390,7 @@ async function ask_values_of_proyect_progress_bar() {
                 // Mostrar mensaje de overflow con el monto excedente.
                 const excedente = sumValues - limit;
                 overflowMsg.style.display = 'block';
-                overflowMsg.textContent = `Desbordamiento: la suma de segmentos excede el límite en $${excedente.toLocaleString('es-ES')}. La barra se muestra escalada para visualización.`;
+                overflowMsg.textContent = `Desbordamiento: la suma de segmentos excede el límite en $${excedente.toLocaleString('es-MX')}. La barra se muestra escalada para visualización.`;
                 // Estilizamos la barra con borde de advertencia.
                 const wrap = document.getElementById('barWrap');
                 wrap.style.border = 'var(--overflow-border)';
@@ -400,7 +400,7 @@ async function ask_values_of_proyect_progress_bar() {
             document.getElementById('bar').setAttribute('aria-valuenow', sumValues);
             document.getElementById('bar').setAttribute('aria-valuemax', limit);
             const totalPct = Math.round((sumValues / limit) * 10000) / 100;
-            percentTotal.textContent = `${totalPct}% usado ($${sumValues.toLocaleString('es-ES')} / $${limit.toLocaleString('es-ES')})`;
+            percentTotal.textContent = `${totalPct}% usado ($${sumValues.toLocaleString('es-MX')} / $${limit.toLocaleString('es-MX')})`;
 
             /* 2DA BARRA DE PROGRESO. */
             const fecha_limite = new Date(data.project.fecha_limite.split("T")[0] + "T00:00:00");
@@ -435,9 +435,9 @@ async function ask_values_of_proyect_progress_bar() {
                 seg.className = `segment ${colors1[i]}`;
                 const adjustedPercent = Math.round(((val / limit1) * scaleFactor1) * 10000) / 100;
                 seg.style.flex = `0 0 ${adjustedPercent}%`;
-                const pctText = porcentajeRounded1.toLocaleString('es-ES') + '%';
+                const pctText = porcentajeRounded1.toLocaleString('es-MX') + '%';
                 seg.textContent = pctText;
-                seg.title = `${labels1[i]} — ${val.toLocaleString('es-ES')} días / ${limit1.toLocaleString('es-ES')} días (${pctText})`;
+                seg.title = `${labels1[i]} — ${val.toLocaleString('es-MX')} días / ${limit1.toLocaleString('es-MX')} días (${pctText})`;
                 bar1.appendChild(seg);
             });
 
@@ -447,10 +447,10 @@ async function ask_values_of_proyect_progress_bar() {
                 const remDiv = document.createElement('div');
                 remDiv.className = 'remaining';
                 remDiv.style.flex = `0 0 ${remainingPercent}%`;
-                remDiv.title = `Días restantes: ${remaining.toLocaleString('es-ES')} (${remainingPercent.toLocaleString('es-ES')}%)`;
+                remDiv.title = `Días restantes: ${remaining.toLocaleString('es-MX')} (${remainingPercent.toLocaleString('es-MX')}%)`;
 
                 if (remainingPercent >= 5) {
-                    remDiv.textContent = `${remainingPercent.toLocaleString('es-ES')}%`;
+                    remDiv.textContent = `${remainingPercent.toLocaleString('es-MX')}%`;
                     remDiv.style.color = '#333';
                     remDiv.style.fontWeight = '700';
                     remDiv.style.fontSize = '1.2rem';
@@ -462,7 +462,7 @@ async function ask_values_of_proyect_progress_bar() {
             } else {
                 const excedente = diffDias_enteros - limit1;
                 overflowMsg1.style.display = 'block';
-                overflowMsg1.textContent = `Desbordamiento: la fecha actual excede en ${excedente.toLocaleString('es-ES')} días a la fecha límite del proyecto. La barra se muestra escalada para visualización.`;
+                overflowMsg1.textContent = `Desbordamiento: la fecha actual excede en ${excedente.toLocaleString('es-MX')} días a la fecha límite del proyecto. La barra se muestra escalada para visualización.`;
                 const wrap = document.getElementById('barWrap1');
                 wrap.style.border = 'var(--overflow-border)';
             }
@@ -470,7 +470,7 @@ async function ask_values_of_proyect_progress_bar() {
             document.getElementById('bar1').setAttribute('aria-valuenow', diffDias_enteros);
             document.getElementById('bar1').setAttribute('aria-valuemax', limit1);
             const totalPct1 = Math.round((diffDias_enteros / limit1) * 10000) / 100;
-            percentTotal1.textContent = `${totalPct1}% usado (${diffDias_enteros.toLocaleString('es-ES')} días / ${limit1.toLocaleString('es-ES')} días)`;
+            percentTotal1.textContent = `${totalPct1}% usado (${diffDias_enteros.toLocaleString('es-MX')} días / ${limit1.toLocaleString('es-MX')} días)`;
         }
     } catch (error) {
         console.error("Error en el fetch:", error);
@@ -486,7 +486,7 @@ async function show_all_personnel(e, anio_query, id_query) {
         console.log("Cargando tablas de cada el empleado...");
 
         try {
-            const response = await fetch(`/allpersonneltables?anio=${anio_query}&id=${id_query}`, {
+            /*const response = await fetch(`/allpersonneltables?anio=${anio_query}&id=${id_query}`, {
                 method: 'GET',
                 headers: {
                     'X-CSRF-TOKEN': document.querySelector('meta[name="csrf-token"]').content,
@@ -494,7 +494,7 @@ async function show_all_personnel(e, anio_query, id_query) {
                 }
             });
 
-            const data = await response.json();
+            const data = await response.json();*/
 
             // Lógica de presentación: renderizar cada tabla por separado.
             // data is an array of objects, each object represents an row in the table monthly_expense_cuts.
@@ -503,8 +503,9 @@ async function show_all_personnel(e, anio_query, id_query) {
             let currentEmployeeId = null;
             let currentTable = null;
 
-            data.forEach(record => {
+            datas.forEach(record => {
                 if (record.employee_id !== currentEmployeeId) {
+                    console.log("Nuevo empleado detectado, creando nueva tabla para id:", record.employee_id);
                     // New employee detected, create a new table.
                     if (currentTable) {
                         // Append the previous table to the container.
@@ -534,18 +535,19 @@ async function show_all_personnel(e, anio_query, id_query) {
                             <tr class="text-center" style="font-size: 1.2rem;">
                                 <td>${record.mes}</td>
                                 <td>${record.anio}</td>
-                                <td>$ ${record.total_alimentos_mes.toLocaleString('es-ES')}</td>
-                                <td>$ ${record.total_traslado_local_mes.toLocaleString('es-ES')}</td>
-                                <td>$ ${record.total_traslado_externo_mes.toLocaleString('es-ES')}</td>
-                                <td>$ ${record.total_comision_bancaria_mes.toLocaleString('es-ES')}</td>
-                                <td>$ ${record.total_comision_sivale_mes.toLocaleString('es-ES')}</td>
-                                <td>$ ${record.total_iva_mes.toLocaleString('es-ES')}</td>
+                                <td>$ ${record.total_alimentos_mes.toLocaleString('es-MX')}</td>
+                                <td>$ ${record.total_traslado_local_mes.toLocaleString('es-MX')}</td>
+                                <td>$ ${record.total_traslado_externo_mes.toLocaleString('es-MX')}</td>
+                                <td>$ ${record.total_comision_bancaria_mes.toLocaleString('es-MX')}</td>
+                                <td>$ ${record.total_comision_sivale_mes.toLocaleString('es-MX')}</td>
+                                <td>$ ${record.total_iva_mes.toLocaleString('es-MX')}</td>
                             </tr>
                         </tbody>
                     </table>
                     `;
                 } else {
                     // Same employee, append a new row to the current table.
+                    console.log("Mismo empleado, agregando fila a la tabla actual para id:", record.employee_id);
                     const tbody = currentTable.querySelector('tbody');
                     const newRow = document.createElement('tr');
                     newRow.className = 'text-center';
@@ -553,21 +555,28 @@ async function show_all_personnel(e, anio_query, id_query) {
                     newRow.innerHTML = `
                         <td>${record.mes}</td>
                         <td>${record.anio}</td>
-                        <td>$ ${record.total_alimentos_mes.toLocaleString('es-ES')}</td>
-                        <td>$ ${record.total_traslado_local_mes.toLocaleString('es-ES')}</td>
-                        <td>$ ${record.total_traslado_externo_mes.toLocaleString('es-ES')}</td>
-                        <td>$ ${record.total_comision_bancaria_mes.toLocaleString('es-ES')}</td>
-                        <td>$ ${record.total_comision_sivale_mes.toLocaleString('es-ES')}</td>
-                        <td>$ ${record.total_iva_mes.toLocaleString('es-ES')}</td>
+                        <td>$ ${record.total_alimentos_mes.toLocaleString('es-MX')}</td>
+                        <td>$ ${record.total_traslado_local_mes.toLocaleString('es-MX')}</td>
+                        <td>$ ${record.total_traslado_externo_mes.toLocaleString('es-MX')}</td>
+                        <td>$ ${record.total_comision_bancaria_mes.toLocaleString('es-MX')}</td>
+                        <td>$ ${record.total_comision_sivale_mes.toLocaleString('es-MX')}</td>
+                        <td>$ ${record.total_iva_mes.toLocaleString('es-MX')}</td>
                     `;
                     tbody.appendChild(newRow);
                 }
             });
 
+            if (currentTable) {
+                // Append the previous table to the container.
+                check_show.appendChild(currentTable);
+                currentTable = null;
+            }
+
         } catch (error) {
             console.error("Error en el fetch:", error);
             alert("Hubo un problema al cargar las tablas de empleados. Intenta de nuevo.");
         }
+
         check_show.classList.remove('d-none');
 
     } else {
@@ -575,3 +584,80 @@ async function show_all_personnel(e, anio_query, id_query) {
         check_show.innerHTML = '';
     }
 }
+
+const datas = [
+    {
+        employee_id: 1,
+        nombre: "Juan Pérez",
+        anio: 2024,
+        mes: "Enero",
+        total_alimentos_mes: 1500.50,
+        total_traslado_local_mes: 300.75,
+        total_traslado_externo_mes: 120.00,
+        total_comision_bancaria_mes: 50.25,
+        total_comision_sivale_mes: 30.00,
+        total_iva_mes: 240.10
+    },
+    {
+        employee_id: 1,
+        nombre: "Juan Pérez",
+        anio: 2024,
+        mes: "Febrero",
+        total_alimentos_mes: 1600.00,
+        total_traslado_local_mes: 320.00,
+        total_traslado_externo_mes: 110.00,
+        total_comision_bancaria_mes: 55.00,
+        total_comision_sivale_mes: 35.00,
+        total_iva_mes: 250.00
+    },
+    {
+        employee_id: 2,
+        nombre: "María López",
+        anio: 2024,
+        mes: "Enero",
+        total_alimentos_mes: 1400.00,
+        total_traslado_local_mes: 280.00,
+        total_traslado_externo_mes: 100.00,
+        total_comision_bancaria_mes: 45.00,
+        total_comision_sivale_mes: 25.00,
+        total_iva_mes: 230.00
+    },
+    {
+        employee_id: 2,
+        nombre: "María López",
+        anio: 2024,
+        mes: "Febrero",
+        total_alimentos_mes: 1450.00,
+        total_traslado_local_mes: 290.00,
+        total_traslado_externo_mes: 105.00,
+        total_comision_bancaria_mes: 48.00,
+        total_comision_sivale_mes: 28.00,
+        total_iva_mes: 235.00
+    },
+    {
+        employee_id: 3,
+        nombre: "Panchito Gómez",
+        anio: 2024,
+        mes: "Enero",
+        total_alimentos_mes: 1400.00,
+        total_traslado_local_mes: 280.00,
+        total_traslado_externo_mes: 100.00,
+        total_comision_bancaria_mes: 45.00,
+        total_comision_sivale_mes: 25.00,
+        total_iva_mes: 230.00
+    },
+    {
+        employee_id: 3,
+        nombre: "Panchito Gómez",
+        anio: 2024,
+        mes: "Febrero",
+        total_alimentos_mes: 1450.00,
+        total_traslado_local_mes: 290.00,
+        total_traslado_externo_mes: 105.00,
+        total_comision_bancaria_mes: 48.00,
+        total_comision_sivale_mes: 28.00,
+        total_iva_mes: 235.00
+    }
+];
+
+// Luego puedes usar este array `datas` directamente en tu función para probar la lógica de renderizado.
