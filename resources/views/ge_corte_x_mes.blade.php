@@ -60,7 +60,7 @@
                     <div class="col-sm-6" style="max-width: 100%;">
                         <label for="anio" class="form-label fw-bold" style="font-size: 1.2rem;">Año</label>
                         <input type="number" class="form-control rounded-3" id="anio" name="anio" placeholder="2025"
-                            step="1" min="2000" value="" required style="height: 3.5rem; background-color: #343c44;" readonly>
+                            step="1" min="2000" value="" required style="height: 3.5rem;" readonly>
                         <div class="invalid-feedback">
                             Ingresa una año válido.
                         </div>
@@ -70,7 +70,7 @@
                         <label for="input_find_rfc" class="form-label fw-bold" style="font-size: 1.2rem;">RFC</label>
                         <input type="text" class="form-control rounded-3" id="input_find_rfc" name="employee_id"
                             placeholder="" value="" required maxlength="50" list="sugerencias_rfc"
-                            style="height: 3.5rem; background-color: #343c44;" readonly>
+                            style="height: 3.5rem;" readonly>
                         <div class="invalid-feedback">
                             Ingresa un RFC válido.
                         </div>
@@ -84,7 +84,7 @@
                             <span class="input-group-text">$</span>
                             <input type="number" class="form-control" aria-label="Amount (to the nearest dollar)"
                                 id="total_alimentos_mes" name="total_alimentos_mes" placeholder="0.000" step="0.00000001"
-                                value="" required style="height: 3.5rem; background-color: #343c44;" readonly> 
+                                value="" required style="height: 3.5rem;" readonly> 
                             <div class="invalid-feedback">
                                 Ingresa un monto válido.
                             </div>
@@ -97,7 +97,7 @@
                             <span class="input-group-text">$</span>
                             <input type="number" class="form-control" aria-label="Amount (to the nearest dollar)"
                                 id="total_traslado_local_mes" name="total_traslado_local_mes" placeholder="0.000" step="0.00000001"
-                                value="" required style="height: 3.5rem; background-color: #343c44;" readonly> 
+                                value="" required style="height: 3.5rem;" readonly> 
                             <div class="invalid-feedback">
                                 Ingresa un monto válido.
                             </div>
@@ -110,7 +110,7 @@
                             <span class="input-group-text">$</span>
                             <input type="number" class="form-control" aria-label="Amount (to the nearest dollar)"
                                 id="total_traslado_externo_mes" name="total_traslado_externo_mes" placeholder="0.000" step="0.00000001"
-                                value="" required style="height: 3.5rem; background-color: #343c44;" readonly> 
+                                value="" required style="height: 3.5rem;" readonly> 
                             <div class="invalid-feedback">
                                 Ingresa un monto válido.
                             </div>
@@ -123,7 +123,7 @@
                             <span class="input-group-text">$</span>
                             <input type="number" class="form-control" aria-label="Amount (to the nearest dollar)"
                                 id="total_comision_bancaria_mes" name="total_comision_bancaria_mes" placeholder="0.000" step="0.00000001"
-                                value="" required style="height: 3.5rem; background-color: #343c44;" readonly> 
+                                value="" required style="height: 3.5rem;" readonly> 
                             <div class="invalid-feedback">
                                 Ingresa un monto válido.
                             </div>

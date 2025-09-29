@@ -328,3 +328,7 @@ a {
     font-size: 0.8rem;
   }
 }
+
+input:read-only, input[disabled] {
+  background-color: var(--bs-secondary-bg);
+}
