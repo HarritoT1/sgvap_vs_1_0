@@ -91,7 +91,7 @@
             <div style="width: 30%">
                 <hr class="w-100" style="border-style: solid; border-width: 3px;">
             </div>
-            <div style="width: 33%; display: flex; align-items: center; justify-content: center;">
+            <div style="width: 30%; display: flex; align-items: center; justify-content: center;">
                 <div class="form-check">
                     <input class="form-check-input" type="checkbox" id="include_all_personnel">
                     <label class="form-check-label fw-bold text-center" for="include_all_personnel" style="font-size: 0.8rem;">
