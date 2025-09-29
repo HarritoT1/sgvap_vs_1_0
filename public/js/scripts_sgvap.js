@@ -502,6 +502,8 @@ async function show_all_personnel(e, anio_query, id_query) {
 
             let currentEmployeeId = null;
             let currentTable = null;
+            let hr = document.createElement('hr');
+            hr.className = 'my-4 mb-2';
 
             datas.forEach(record => {
                 if (record.employee_id !== currentEmployeeId) {
@@ -510,6 +512,7 @@ async function show_all_personnel(e, anio_query, id_query) {
                     if (currentTable) {
                         // Append the previous table to the container.
                         check_show.appendChild(currentTable);
+                        check_show.appendChild(hr.cloneNode()); // add a horizontal line between tables.
                         currentTable = null;
                     }
 
@@ -569,6 +572,7 @@ async function show_all_personnel(e, anio_query, id_query) {
             if (currentTable) {
                 // Append the previous table to the container.
                 check_show.appendChild(currentTable);
+                check_show.appendChild(hr.cloneNode()); // add a horizontal line between tables.
                 currentTable = null;
             }
 
