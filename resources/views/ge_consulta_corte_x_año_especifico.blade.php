@@ -4,6 +4,10 @@
     <div class="w-100 my-3 div-main">
         <h2 class="fw-bold my-3" style="font-size: 2rem; text-align:justify">Corte anual $anio del empleado $nombre:
         </h2>
+        <script>
+            let anio_query = 2025;
+            let id_query = 2025;
+        </script>
         <div class="table-responsive small">
             <table class="table table-striped table-sm">
                 <thead>
@@ -83,7 +87,7 @@
             </table>
         </div>
 
-        <div class="col-12 d-flex flex-row justify-content-evenly alig-items-center">
+        <div class="col-12 d-flex flex-row justify-content-evenly alig-items-center mt-4">
             <div style="width: 30%">
                 <hr class="w-100" style="border-style: solid; border-width: 3px;">
             </div>
@@ -99,7 +103,9 @@
                 <hr class="w-100" style="border-style: solid; border-width: 3px;">
             </div>
         </div>
-        <hr class="my-4 mb-2">
 
+        <hr class="my-4 mb-2">
+        
+        <div id="tables_of_all_personnel" class="d-none"></div>
     </div>
 @endsection
