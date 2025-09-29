@@ -62,4 +62,8 @@ Route::get('/ge_consulta_corte_x_año_filtro', function () {
     return view('ge_consulta_corte_x_año_filtro'); //http://127.0.0.1:8000/ge_consulta_corte_x_año_filtro
 });
 
+Route::get('/ge_corte_x_mes', function () {
+    return view('ge_corte_x_mes'); //http://127.0.0.1:8000/ge_corte_x_mes
+});
+
 
