@@ -645,18 +645,6 @@ const datas = [
         total_comision_bancaria_mes: 45.00,
         total_comision_sivale_mes: 25.00,
         total_iva_mes: 230.00
-    },
-    {
-        employee_id: 3,
-        nombre: "Panchito Gómez",
-        anio: 2024,
-        mes: "Febrero",
-        total_alimentos_mes: 1450.00,
-        total_traslado_local_mes: 290.00,
-        total_traslado_externo_mes: 105.00,
-        total_comision_bancaria_mes: 48.00,
-        total_comision_sivale_mes: 28.00,
-        total_iva_mes: 235.00
     }
 ];
 
