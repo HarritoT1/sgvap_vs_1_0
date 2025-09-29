@@ -478,6 +478,100 @@ async function ask_values_of_proyect_progress_bar() {
     }
 }
 
-async function show_all_personnel(e) {
+async function show_all_personnel(e, anio_query, id_query) {
+    const check_show = document.getElementById('tables_of_all_personnel');
 
+    if (e.target.checked) {
+        check_show.innerHTML = '';
+        console.log("Cargando tablas de cada el empleado...");
+
+        try {
+            const response = await fetch(`/allpersonneltables?anio=${anio_query}&id=${id_query}`, {
+                method: 'GET',
+                headers: {
+                    'X-CSRF-TOKEN': document.querySelector('meta[name="csrf-token"]').content,
+                    'Accept': 'application/json',
+                }
+            });
+
+            const data = await response.json();
+
+            // Lógica de presentación: renderizar cada tabla por separado.
+            // data is an array of objects, each object represents an row in the table monthly_expense_cuts.
+            // some objects have the same employee_id, so we need to group them by employee_id.
+
+            let currentEmployeeId = null;
+            let currentTable = null;
+
+            data.forEach(record => {
+                if (record.employee_id !== currentEmployeeId) {
+                    // New employee detected, create a new table.
+                    if (currentTable) {
+                        // Append the previous table to the container.
+                        check_show.appendChild(currentTable);
+                        currentTable = null;
+                    }
+
+                    // Create a new table for the new employee.
+                    currentEmployeeId = record.employee_id;
+                    currentTable = document.createElement('div');
+                    currentTable.className = 'table-responsive small my-4';
+                    currentTable.innerHTML = `<h2 class="fw-bold my-3" style="font-size: 2rem; text-align:justify">Corte anual ${record.anio} del empleado ${record.nombre}: </h2>
+                    <table class="table table-striped table-sm">
+                        <thead>
+                            <tr class="text-center">
+                                <th scope="col" style="font-size: 1.3rem;">Mes</th>
+                                <th scope="col" style="font-size: 1.3rem;">Año específico</th>
+                                <th scope="col" style="font-size: 1.3rem;">Total alimentos</th>
+                                <th scope="col" style="font-size: 1.3rem;">Total traslados locales</th>
+                                <th scope="col" style="font-size: 1.3rem;">Total traslados externos</th>
+                                <th scope="col" style="font-size: 1.3rem;">Total comisión bancaria</th>
+                                <th scope="col" style="font-size: 1.3rem;">Total comisión Sí Vale</th>
+                                <th scope="col" style="font-size: 1.3rem;">Total de IVA</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr class="text-center" style="font-size: 1.2rem;">
+                                <td>${record.mes}</td>
+                                <td>${record.anio}</td>
+                                <td>$ ${record.total_alimentos_mes.toLocaleString('es-ES')}</td>
+                                <td>$ ${record.total_traslado_local_mes.toLocaleString('es-ES')}</td>
+                                <td>$ ${record.total_traslado_externo_mes.toLocaleString('es-ES')}</td>
+                                <td>$ ${record.total_comision_bancaria_mes.toLocaleString('es-ES')}</td>
+                                <td>$ ${record.total_comision_sivale_mes.toLocaleString('es-ES')}</td>
+                                <td>$ ${record.total_iva_mes.toLocaleString('es-ES')}</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                    `;
+                } else {
+                    // Same employee, append a new row to the current table.
+                    const tbody = currentTable.querySelector('tbody');
+                    const newRow = document.createElement('tr');
+                    newRow.className = 'text-center';
+                    newRow.style.fontSize = '1.2rem';
+                    newRow.innerHTML = `
+                        <td>${record.mes}</td>
+                        <td>${record.anio}</td>
+                        <td>$ ${record.total_alimentos_mes.toLocaleString('es-ES')}</td>
+                        <td>$ ${record.total_traslado_local_mes.toLocaleString('es-ES')}</td>
+                        <td>$ ${record.total_traslado_externo_mes.toLocaleString('es-ES')}</td>
+                        <td>$ ${record.total_comision_bancaria_mes.toLocaleString('es-ES')}</td>
+                        <td>$ ${record.total_comision_sivale_mes.toLocaleString('es-ES')}</td>
+                        <td>$ ${record.total_iva_mes.toLocaleString('es-ES')}</td>
+                    `;
+                    tbody.appendChild(newRow);
+                }
+            });
+
+        } catch (error) {
+            console.error("Error en el fetch:", error);
+            alert("Hubo un problema al cargar las tablas de empleados. Intenta de nuevo.");
+        }
+        check_show.classList.remove('d-none');
+
+    } else {
+        check_show.classList.add('d-none');
+        check_show.innerHTML = '';
+    }
 }
