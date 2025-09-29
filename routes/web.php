@@ -46,3 +46,20 @@ Route::get('/ge_corte_x_dia', function () {
     return view('ge_corte_x_dia'); //http://127.0.0.1:8000/ge_corte_x_dia
 });
 
+Route::get('/ge_retiro_semanal_filtro', function () {
+    return view('ge_retiro_semanal_filtro'); //http://127.0.0.1:8000/ge_retiro_semanal_filtro
+});
+
+Route::get('/ge_retiro_semanal', function () {
+    return view('ge_retiro_semanal'); //http://127.0.0.1:8000/ge_retiro_semanal
+});
+
+Route::get('/ge_corte_x_mes_filtro', function () {
+    return view('ge_corte_x_mes_filtro'); //http://127.0.0.1:8000/ge_corte_x_mes_filtro
+});
+
+Route::get('/ge_consulta_corte_x_año_filtro', function () {
+    return view('ge_consulta_corte_x_año_filtro'); //http://127.0.0.1:8000/ge_consulta_corte_x_año_filtro
+});
+
+

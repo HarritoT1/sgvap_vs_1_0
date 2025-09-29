@@ -10,7 +10,7 @@
                 autocomplete="off" class="needs-validation p-1" novalidate>
                 <div class="row g-3">
                     <div class="col-sm-6">
-                        <label for="id" class="form-label">id</label>
+                        <label for="id" class="form-label fw-bold">id</label>
                         <input type="text" class="form-control" id="id" name="id" placeholder=""
                             value="" required maxlength="80" disabled>
                         <div class="invalid-feedback">
@@ -19,7 +19,7 @@
                     </div>
 
                     <div class="col-sm-6">
-                        <label for="nombre" class="form-label">Nombre</label>
+                        <label for="nombre" class="form-label fw-bold">Nombre</label>
                         <input type="text" class="form-control" id="nombre" name="nombre" placeholder=""
                             value="" required maxlength="150" disabled>
                         <div class="invalid-feedback">
@@ -28,7 +28,7 @@
                     </div>
 
                     <div class="col-sm-6">
-                        <label for="sitio" class="form-label">Sitio</label>
+                        <label for="sitio" class="form-label fw-bold">Sitio</label>
                         <input type="text" class="form-control" id="sitio" name="sitio" placeholder=""
                             value="" required maxlength="50" disabled>
                         <div class="invalid-feedback">
@@ -37,7 +37,7 @@
                     </div>
 
                     <div class="col-sm-6">
-                        <label for="monto_cobrar" class="form-label">Monto a cobrar</label>
+                        <label for="monto_cobrar" class="form-label fw-bold">Monto a cobrar</label>
                         <div class="input-group">
                             <span class="input-group-text">$</span>
                             <input type="number" class="form-control" aria-label="Amount (to the nearest dollar)"
@@ -50,7 +50,7 @@
                     </div>
 
                     <div class="col-sm-6">
-                        <label for="estimado_viaticos" class="form-label">Estimado en viáticos</label>
+                        <label for="estimado_viaticos" class="form-label fw-bold">Estimado en viáticos</label>
                         <div class="input-group">
                             <span class="input-group-text">$</span>
                             <input type="number" class="form-control" aria-label="Amount (to the nearest dollar)"
@@ -63,7 +63,7 @@
                     </div>
 
                     <div class="col-sm-6">
-                        <label for="estimado_tiempo" class="form-label">Estimado en tiempo</label>
+                        <label for="estimado_tiempo" class="form-label fw-bold">Estimado en tiempo</label>
                         <div class="input-group">
                             <span class="input-group-text">⌛</span>
                             <input type="text" class="form-control" id="estimado_tiempo" name="estimado_tiempo"
@@ -75,7 +75,7 @@
                     </div>
 
                     <div class="col-sm-6">
-                        <label for="fecha_limite" class="form-label">Fecha limite</label>
+                        <label for="fecha_limite" class="form-label fw-bold">Fecha limite</label>
                         <input type="date" class="form-control sm-form-control" id="fecha_limite" name="fecha_limite"
                             value="" required disabled>
                         <div class="invalid-feedback">
@@ -84,7 +84,7 @@
                     </div>
 
                     <div class="col-sm-6">
-                        <label for="status" class="form-label">Estado del proyecto</label>
+                        <label for="status" class="form-label fw-bold">Estado del proyecto</label>
                         <select name="status" id="status" class="form-control form-select" aria-label="Default select example" required disabled>
                             <option value="activo" selected>
                                 ACTIVO
@@ -99,7 +99,7 @@
                     </div>
 
                     <div class="col-sm-6 mx-auto">
-                        <label for="notas" class="form-label">Notas</label>
+                        <label for="notas" class="form-label fw-bold">Notas</label>
                         <div class="input-group">
                             <span class="input-group-text">📝</span>
                             <textarea id="notas" name="notas" class="form-control" aria-label="Notas" maxlength="300" disabled></textarea>
