@@ -130,7 +130,7 @@
                     </datalist>
                 </div>
 
-                <div class="col-12 d-flex flex-row justify-content-evenly alig-items-center"> <!-- AJUSTAR -->
+                <div class="col-12 d-flex flex-row justify-content-evenly alig-items-center"> 
                     <div style="width: 30%">
                         <hr class="w-100" style="border-style: solid; border-width: 3px;">
                     </div>

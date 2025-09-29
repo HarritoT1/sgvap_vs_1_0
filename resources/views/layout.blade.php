@@ -1046,6 +1046,7 @@ l838 0 -282 -282 c-304 -305 -305 -307 -288 -395 9 -49 69 -109 118 -118 91
             if(document.getElementById("ajuste_retiro")) { document.getElementById("ajuste_retiro").addEventListener('change', (e) => { show_part_extra_ecore(e) } ) }
             if(document.getElementById("form_corte_dia")) { document.getElementById("input_find_id_proyect").addEventListener('input', () => { ask_values_of_proyect_progress_bar() } ) }
             if(document.getElementById("generar_corte_mensual")) {alert("AVISO: Se recomienda hacer el corte mensual el último día del mes.");}
+            if(document.getElementById("include_all_personnel")) { document.getElementById("include_all_personnel").addEventListener('change', (e) => { show_all_personnel(e) } ) }
         });
     </script>
     
