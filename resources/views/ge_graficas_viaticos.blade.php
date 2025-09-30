@@ -92,9 +92,67 @@
                         onclick="ask_before_submit_new()" style="background-color: var(--botones-color);">Generar</button>
             </form>
         </div>
+    </div>
 
-        <div class="w-100 div-secondary px-5 py-5 d-block">
+    <br>
 
+    <div class="d-flex gap-2 justify-content-between align-items-stretch px-1 flex-wrap">
+        <div class="p-3 d-inline-block rounded-3 do_responsive_div"
+            style="box-shadow: 0px 0px 8px 0px rgba(0,0,0,0.75) inset;">
+            <canvas id="myChart0" style="height: 22rem;" class="d-block w-90 mx-auto" data-yValues="[55, 49, 44, 24]"
+                data-title="Proyecto con id: id"></canvas>
+                <br>
+                <hr class="my-4">
+                <br>
+            <canvas id="myChart1" style="height: 22rem;" class="d-block w-90 mx-auto" data-yValues="[55, 49, 44, 24]"
+                data-title="Proyecto con id: id"></canvas>
+                <br>
+                <hr class="my-4">
+                <br>
+            <canvas id="myChart2" style="height: 22rem;" class="d-block w-90 mx-auto" data-yValues="[55, 49, 44, 24]"
+                data-title="Proyecto con id: id"></canvas>
+                <br>
+                <hr class="my-4">
+                <br>
+            <canvas id="myChart3" style="height: 22rem;" class="d-block w-90 mx-auto" data-yValues="[55, 49, 44, 24]"
+                data-title="Proyecto con id: id"></canvas>
+                <br>
+                <hr class="my-4">
+                <br>
+        </div>
+
+        <div class="p-3 d-inline-block rounded-3 do_responsive_div"
+            style="box-shadow: 0px 0px 8px 0px rgba(0,0,0,0.75) inset;">
+            <canvas id="myChart4" style="height: 22rem;" class="d-block w-90 mx-auto" data-yValues="[55, 49, 44, 24]"
+                data-title="Empleado con RFC: RFC"></canvas>
+                <br>
+                <hr class="my-4">
+                <br>
+            <canvas id="myChart5" style="height: 22rem;" class="d-block w-90 mx-auto" data-yValues="[55, 49, 44, 24]"
+                data-title="Empleado con RFC: RFC"></canvas>
+                <br>
+                <hr class="my-4">
+                <br>
+            <canvas id="myChart6" style="height: 22rem;" class="d-block w-90 mx-auto" data-yValues="[55, 49, 44, 24]"
+                data-title="Empleado con RFC: RFC"></canvas>
+                <br>
+                <hr class="my-4">
+                <br>
+            <canvas id="myChart7" style="height: 22rem;" class="d-block w-90 mx-auto" data-yValues="[55, 49, 44, 24]"
+                data-title="Empleado con RFC: RFC"></canvas>
+                <br>
+                <hr class="my-8">
+                <br>
         </div>
     </div>
+
+    <script>
+        document.addEventListener("DOMContentLoaded", function() {
+            document.querySelectorAll('canvas').forEach(canvas => {
+                const yValues = JSON.parse(canvas.dataset.yvalues); // convierte la cadena a arreglo
+                const title = canvas.dataset.title;
+                generate_graphs_barras(canvas.id, yValues, title);
+            });
+        });
+    </script>
 @endsection

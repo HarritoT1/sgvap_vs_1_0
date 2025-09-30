@@ -332,3 +332,17 @@ a {
 input:read-only, input[disabled] {
   background-color: var(--bs-secondary-bg);
 }
+
+div.do_responsive_div {
+  width: 100%;
+  overflow-y: auto;
+  overflow-x: hidden;
+  height: 25rem;
+  margin-bottom: 1.5rem;
+}
+
+@media (min-width: 1400px) {
+  div.do_responsive_div {
+    width: 48%;
+  }
+}
