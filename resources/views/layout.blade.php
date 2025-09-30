@@ -19,7 +19,7 @@
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@docsearch/css@3">
     <script src="{{ asset('js/scripts_sgvap.js') }}" type="text/javascript"></script>
     <link href="{{ asset('css/checkout.css') }}" rel="stylesheet">
-    <link href="{{asset('css/modals.css')}}" rel="stylesheet">
+    <link href="{{ asset('css/modals.css') }}" rel="stylesheet">
     <link href="{{ asset('css/bootstrap.min.css') }}" rel="stylesheet">
 
     <style>
@@ -62,7 +62,7 @@
                 box-shadow: 0 0 20px #3498db, 0 0 40px #3498db;
             }
         }
-        
+
         .bd-placeholder-img {
             font-size: 1.125rem;
             text-anchor: middle;
@@ -178,8 +178,8 @@
     </svg>
 
     <div class="dropdown position-fixed bottom-0 end-0 mb-3 me-3 bd-mode-toggle">
-        <button class="button-custom btn btn-bd-primary py-2 dropdown-toggle d-flex align-items-center" id="bd-theme" type="button"
-            aria-expanded="false" data-bs-toggle="dropdown" aria-label="Toggle theme (auto)"
+        <button class="button-custom btn btn-bd-primary py-2 dropdown-toggle d-flex align-items-center" id="bd-theme"
+            type="button" aria-expanded="false" data-bs-toggle="dropdown" aria-label="Toggle theme (auto)"
             style="background-color: var(--botones-color); color: black; border-width: 0;">
             <svg class="bi my-1 theme-icon-active" width="1em" height="1em">
                 <use href="#circle-half"></use>
@@ -188,8 +188,8 @@
         </button>
         <ul class="dropdown-menu dropdown-menu-end shadow" aria-labelledby="bd-theme-text">
             <li>
-                <button type="button" class="button-custom dropdown-item d-flex align-items-center" data-bs-theme-value="light"
-                    aria-pressed="false">
+                <button type="button" class="button-custom dropdown-item d-flex align-items-center"
+                    data-bs-theme-value="light" aria-pressed="false">
                     <svg class="bi me-2 opacity-50" width="1em" height="1em">
                         <use href="#sun-fill"></use>
                     </svg>
@@ -200,8 +200,8 @@
                 </button>
             </li>
             <li>
-                <button type="button" class="button-custom dropdown-item d-flex align-items-center" data-bs-theme-value="dark"
-                    aria-pressed="false">
+                <button type="button" class="button-custom dropdown-item d-flex align-items-center"
+                    data-bs-theme-value="dark" aria-pressed="false">
                     <svg class="bi me-2 opacity-50" width="1em" height="1em">
                         <use href="#moon-stars-fill"></use>
                     </svg>
@@ -212,8 +212,8 @@
                 </button>
             </li>
             <li>
-                <button type="button" class="button-custom dropdown-item d-flex align-items-center active" data-bs-theme-value="auto"
-                    aria-pressed="true">
+                <button type="button" class="button-custom dropdown-item d-flex align-items-center active"
+                    data-bs-theme-value="auto" aria-pressed="true">
                     <svg class="bi me-2 opacity-50" width="1em" height="1em">
                         <use href="#circle-half"></use>
                     </svg>
@@ -1040,24 +1040,47 @@ l838 0 -282 -282 c-304 -305 -305 -307 -288 -395 9 -49 69 -109 118 -118 91
     <script>
         document.addEventListener("DOMContentLoaded", function() {
             asig_listeners_of_submit_forms();
-            if(document.getElementById("actualizar")) { save_values_of_inputs() }
-            if(document.getElementById("input_find_rfc")) { asig_listener_autocomplete_rfc() }
-            if(document.getElementById("input_find_id_proyect")) { asig_listener_autocomplete_id_proyect() }
-            if(document.getElementById("ajuste_retiro")) { document.getElementById("ajuste_retiro").addEventListener('change', (e) => { show_part_extra_ecore(e) } ) }
-            if(document.getElementById("form_corte_dia")) { document.getElementById("input_find_id_proyect").addEventListener('input', () => { ask_values_of_proyect_progress_bar() } ) }
-            if(document.getElementById("generar_corte_mensual")) {alert("AVISO: Se recomienda hacer el corte mensual el último día del mes.");}
-            if(document.getElementById("include_all_personnel")) { document.getElementById("include_all_personnel").addEventListener('change', (e) => { show_all_personnel(e, anio_query, id_query) } ) }
-            if(document.getElementById("graficas_barras")) { set_required_input_find_id_proyect() }
+            if (document.getElementById("actualizar")) {
+                save_values_of_inputs()
+            }
+            if (document.getElementById("input_find_rfc")) {
+                asig_listener_autocomplete_rfc()
+            }
+            if (document.getElementById("input_find_id_proyect")) {
+                asig_listener_autocomplete_id_proyect()
+            }
+            if (document.getElementById("ajuste_retiro")) {
+                document.getElementById("ajuste_retiro").addEventListener('change', (e) => {
+                    show_part_extra_ecore(e)
+                })
+            }
+            if (document.getElementById("form_corte_dia")) {
+                document.getElementById("input_find_id_proyect").addEventListener('input', () => {
+                    ask_values_of_proyect_progress_bar()
+                })
+            }
+            if (document.getElementById("generar_corte_mensual")) {
+                alert("AVISO: Se recomienda hacer el corte mensual el último día del mes.");
+            }
+            if (document.getElementById("include_all_personnel")) {
+                document.getElementById("include_all_personnel").addEventListener('change', (e) => {
+                    show_all_personnel(e, anio_query, id_query)
+                })
+            }
+            if (document.getElementById("graficas_barras")) {
+                set_required_input_find_id_proyect()
+            }
         });
     </script>
-    
+
     <script src="{{ asset('js/bootstrap.bundle.min.js') }}"></script>
 
     <script src="https://cdn.jsdelivr.net/npm/chart.js@4.3.2/dist/chart.umd.js"
         integrity="sha384-eI7PSr3L1XLISH8JdDII5YN/njoSsxfbrkCTnJrzXt+ENP5MOVBxD+l6sEG4zoLp" crossorigin="anonymous">
     </script>
     <script src="{{ asset('js/dashboard.js') }}"></script>
-    <script src="{{ asset('js/checkout.js') }}"></script></body>
+    <script src="{{ asset('js/checkout.js') }}"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.5.0/Chart.min.js"></script>
 </body>
 
 </html>
