@@ -653,3 +653,23 @@ const datas = [
 ];
 
 // Luego puedes usar este array `datas` directamente en tu función para probar la lógica de renderizado.
+
+function set_required_input_find_id_proyect() {
+    document.getElementById('input_find_id_proyect').addEventListener('input', function () {
+        const query = this.value;
+
+        if (query.length < 4) {
+            document.getElementById('input_find_rfc').value = "";
+            document.getElementById('input_find_rfc').disabled = true;
+            document.getElementById('input_find_id_proyect').required = false;
+            return;
+        }
+
+        console.log("Habilitando input de RFC...");
+        document.getElementById('input_find_rfc').disabled = false;
+    });
+
+    document.getElementById('input_find_rfc').addEventListener('input', function () {
+        document.getElementById('input_find_id_proyect').required = true;
+    });
+}
