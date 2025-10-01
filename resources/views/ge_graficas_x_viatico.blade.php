@@ -2,15 +2,12 @@
 
 @section('content')
     <div class="w-100 my-3 div-main">
-        <h1 class="fw-bold my-3" style="font-size: 1.8rem; text-align:justify" id="graficas_barras">Gráficas de barras
-            completando proyectos |
-            empleados.
-        </h1>
+        <h1 class="fw-bold my-3" style="font-size: 1.8rem; text-align:justify" id="graficas_pastel">Gráficas de pastel por cada viático existente.</h1>
 
         <div class="w-100 div-secondary px-5 py-5 d-block">
             <h2 class="mb-3 fw-bold" style="font-size: 1.5rem; text-align:justify">Llena los filtros y generá las gráficas:
             </h2>
-            <form id="generar_graficas_viaticos_barras" action="#" method="get"
+            <form id="generar_graficas_viaticos_pastel" action="#" method="get"
                 enctype="application/x-www-form-urlencoded" autocomplete="off" class="needs-validation p-1" novalidate>
                 <div class="row g-3">
                     <div class="col-sm-6" style="max-width: 100%;" id="campo_mes">
@@ -63,27 +60,21 @@
                     </div>
 
                     <div class="col-sm-6">
-                        <label for="input_find_id_proyect" class="form-label fw-bold" style="font-size: 1.2rem;">id del
-                            proyecto</label>
-                        <input type="text" class="form-control" id="input_find_id_proyect" name="project_id"
-                            placeholder="" value="" maxlength="80" list="sugerencias_id_proyect"
-                            style="height: 3.5rem;">
-                        <div class="invalid-feedback">
-                            Ingresa un id de proyecto válido.
+                        <label for="opt1" class="form-label d-block fw-bold" style="font-size: 1.2rem;">Opciones personalizadas</label>
+                        <div class="ps-3">
+                            <div class="form-check form-check-inline">
+                                <input class="form-check-input" type="checkbox" name="personnel_inactive" id="opt1" value="true">
+                                <label class="form-check-label fw-bold" for="opt1">Incluír empleados o personal inactivo actualmente.</label>
+                            </div>
+                            <div class="form-check form-check-inline">
+                                <input class="form-check-input" type="checkbox" name="proyects_inactive" id="opt2" value="true">
+                                <label class="form-check-label fw-bold" for="opt2">Incluír proyectos concluídos actualmente.</label>
+                            </div>
+                            <!-- Aquí va el feedback para el grupo -->
+                            <div class="invalid-feedback">
+                                Selecciona una opción válida.
+                            </div>
                         </div>
-                        <datalist id="sugerencias_id_proyect">
-                        </datalist>
-                    </div>
-
-                    <div class="col-sm-6 mx-auto">
-                        <label for="input_find_rfc" class="form-label fw-bold" style="font-size: 1.2rem;">RFC</label>
-                        <input type="text" class="form-control" id="input_find_rfc" name="employee_id" placeholder=""
-                            value="" maxlength="50" list="sugerencias_rfc" style="height: 3.5rem;" disabled>
-                        <div class="invalid-feedback">
-                            Ingresa un RFC válido.
-                        </div>
-                        <datalist id="sugerencias_rfc">
-                        </datalist>
                     </div>
 
                     <hr class="my-4 mb-2">
