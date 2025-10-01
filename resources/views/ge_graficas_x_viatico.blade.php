@@ -87,62 +87,57 @@
 
     <br>
 
-    <div class="d-flex gap-2 justify-content-between align-items-stretch px-1 flex-wrap">
-        <div class="p-3 d-inline-block rounded-3 do_responsive_div"
-            style="box-shadow: 0px 0px 8px 0px rgba(0,0,0,0.75) inset;">
-            <canvas id="myChart0" style="height: 22rem;" class="d-block w-90 mx-auto" data-yValues="[55, 49, 44, 24]"
-                data-title="Proyecto $nombre"></canvas>
-                <br>
-                <hr class="my-4">
-                <br>
-            <canvas id="myChart1" style="height: 22rem;" class="d-block w-90 mx-auto" data-yValues="[55, 49, 44, 24]"
-                data-title="Proyecto $nombre"></canvas>
-                <br>
-                <hr class="my-4">
-                <br>
-            <canvas id="myChart2" style="height: 22rem;" class="d-block w-90 mx-auto" data-yValues="[55, 49, 44, 24]"
-                data-title="Proyecto $nombre"></canvas>
-                <br>
-                <hr class="my-4">
-                <br>
-            <canvas id="myChart3" style="height: 22rem;" class="d-block w-90 mx-auto" data-yValues="[55, 49, 44, 24]"
-                data-title="Proyecto $nombre"></canvas>
-                <br>
-                <hr class="my-4">
-                <br>
+    <div class="d-flex gap-2 justify-content-between align-items-stretch px-2 flex-wrap">
+        <div class="p-3 d-inline-block rounded-3 do_responsive_div2"
+            style="box-shadow: 0px 7px 11px 0px rgba(0,0,0,0.75);">
+            <canvas id="myChart0" data-yValues="[55, 49, 44, 24]" data-xValues='["Juan Manuel", "Pedro", "Luis", "Carlos"]'
+                data-title="Viático Alimentos:"></canvas>
         </div>
 
-        <div class="p-3 d-inline-block rounded-3 do_responsive_div"
-            style="box-shadow: 0px 0px 8px 0px rgba(0,0,0,0.75) inset;">
-            <canvas id="myChart4" style="height: 22rem;" class="d-block w-90 mx-auto" data-yValues="[55, 49, 44, 24]"
-                data-title="Empleado $nombre"></canvas>
-                <br>
-                <hr class="my-4">
-                <br>
-            <canvas id="myChart5" style="height: 22rem;" class="d-block w-90 mx-auto" data-yValues="[55, 49, 44, 24]"
-                data-title="Empleado $nombre"></canvas>
-                <br>
-                <hr class="my-4">
-                <br>
-            <canvas id="myChart6" style="height: 22rem;" class="d-block w-90 mx-auto" data-yValues="[55, 49, 44, 24]"
-                data-title="Empleado $nombre"></canvas>
-                <br>
-                <hr class="my-4">
-                <br>
-            <canvas id="myChart7" style="height: 22rem;" class="d-block w-90 mx-auto" data-yValues="[55, 49, 44, 24]"
-                data-title="Empleado $nombre"></canvas>
-                <br>
-                <hr class="my-8">
-                <br>
+        <div class="p-3 d-inline-block rounded-3 do_responsive_div2"
+            style="box-shadow: 0px 7px 11px 0px rgba(0,0,0,0.75);">
+            <canvas id="myChart1" data-yValues="[55, 49, 44, 24]" data-xValues='["Juan Manuel", "Pedro", "Luis", "Carlos"]'
+                data-title="Viático Traslados Locales:"></canvas>
+        </div>
+
+        <div class="p-3 d-inline-block rounded-3 do_responsive_div2"
+            style="box-shadow: 0px 7px 11px 0px rgba(0,0,0,0.75);">
+            <canvas id="myChart2" data-yValues="[55, 49, 44, 24]" data-xValues='["Juan Manuel", "Pedro", "Luis", "Carlos"]'
+                data-title="Viático Traslados Externos:"></canvas>
+        </div>
+
+        <div class="p-3 d-inline-block rounded-3 do_responsive_div2"
+            style="box-shadow: 0px 7px 11px 0px rgba(0,0,0,0.75);">
+            <canvas id="myChart3" data-yValues="[55, 49, 44, 24]" data-xValues='["Juan Manuel", "Pedro", "Luis", "Carlos"]'
+                data-title="Viático Comisión Bancaria:"></canvas>
+        </div>
+
+        <div class="p-3 d-inline-block rounded-3 do_responsive_div2"
+            style="box-shadow: 0px 7px 11px 0px rgba(0,0,0,0.75);">
+            <canvas id="myChart4" data-yValues="[55, 49, 44, 24]" data-xValues='["Juan Manuel", "Pedro", "Luis", "Carlos"]'
+                data-title="Viático Gasolina:"></canvas>
+        </div>
+
+        <div class="p-3 d-inline-block rounded-3 do_responsive_div2"
+            style="box-shadow: 0px 7px 11px 0px rgba(0,0,0,0.75);">
+            <canvas id="myChart5" data-yValues="[55, 49, 44, 24]" data-xValues='["Juan Manuel", "Pedro", "Luis", "Carlos"]'
+                data-title="Viático Caseta:"></canvas>
+        </div>
+
+        <div class="p-3 d-inline-block rounded-3 do_responsive_div2"
+            style="box-shadow: 0px 7px 11px 0px rgba(0,0,0,0.75);"> 
+            <canvas id="myChart6"  data-yValues="[55, 49, 44, 24]" data-xValues='["Juan Manuel", "Pedro", "Luis", "Carlos"]'
+                data-title="Viático Hospedaje:"></canvas>
         </div>
     </div>
 
     <script>
         document.addEventListener("DOMContentLoaded", function() {
             document.querySelectorAll('canvas').forEach(canvas => {
-                const yValues = JSON.parse(canvas.dataset.yvalues); // convierte la cadena a arreglo
+                const yValues = JSON.parse(canvas.dataset.yvalues); // convierte la cadena a arreglo.
                 const title = canvas.dataset.title;
-                generate_graphs_barras(canvas.id, yValues, title);
+                const xValues = JSON.parse(canvas.dataset.xvalues); // convierte la cadena a arreglo.
+                generate_graphs_pastel(canvas.id, xValues, yValues, title);
             });
         });
     </script>
