@@ -63,7 +63,7 @@
                     </div>
 
                     <div class="col-sm-6">
-                        <label for="input_find_id_proyect" class="form-label fw-bold" style="font-size: 1.2rem;">Id del
+                        <label for="input_find_id_proyect" class="form-label fw-bold" style="font-size: 1.2rem;">id del
                             proyecto</label>
                         <input type="text" class="form-control" id="input_find_id_proyect" name="project_id"
                             placeholder="" value="" maxlength="80" list="sugerencias_id_proyect"
@@ -100,22 +100,22 @@
         <div class="p-3 d-inline-block rounded-3 do_responsive_div"
             style="box-shadow: 0px 0px 8px 0px rgba(0,0,0,0.75) inset;">
             <canvas id="myChart0" style="height: 22rem;" class="d-block w-90 mx-auto" data-yValues="[55, 49, 44, 24]"
-                data-title="Proyecto con id: id"></canvas>
+                data-title="Proyecto $nombre"></canvas>
                 <br>
                 <hr class="my-4">
                 <br>
             <canvas id="myChart1" style="height: 22rem;" class="d-block w-90 mx-auto" data-yValues="[55, 49, 44, 24]"
-                data-title="Proyecto con id: id"></canvas>
+                data-title="Proyecto $nombre"></canvas>
                 <br>
                 <hr class="my-4">
                 <br>
             <canvas id="myChart2" style="height: 22rem;" class="d-block w-90 mx-auto" data-yValues="[55, 49, 44, 24]"
-                data-title="Proyecto con id: id"></canvas>
+                data-title="Proyecto $nombre"></canvas>
                 <br>
                 <hr class="my-4">
                 <br>
             <canvas id="myChart3" style="height: 22rem;" class="d-block w-90 mx-auto" data-yValues="[55, 49, 44, 24]"
-                data-title="Proyecto con id: id"></canvas>
+                data-title="Proyecto $nombre"></canvas>
                 <br>
                 <hr class="my-4">
                 <br>
@@ -124,22 +124,22 @@
         <div class="p-3 d-inline-block rounded-3 do_responsive_div"
             style="box-shadow: 0px 0px 8px 0px rgba(0,0,0,0.75) inset;">
             <canvas id="myChart4" style="height: 22rem;" class="d-block w-90 mx-auto" data-yValues="[55, 49, 44, 24]"
-                data-title="Empleado con RFC: RFC"></canvas>
+                data-title="Empleado $nombre"></canvas>
                 <br>
                 <hr class="my-4">
                 <br>
             <canvas id="myChart5" style="height: 22rem;" class="d-block w-90 mx-auto" data-yValues="[55, 49, 44, 24]"
-                data-title="Empleado con RFC: RFC"></canvas>
+                data-title="Empleado $nombre"></canvas>
                 <br>
                 <hr class="my-4">
                 <br>
             <canvas id="myChart6" style="height: 22rem;" class="d-block w-90 mx-auto" data-yValues="[55, 49, 44, 24]"
-                data-title="Empleado con RFC: RFC"></canvas>
+                data-title="Empleado $nombre"></canvas>
                 <br>
                 <hr class="my-4">
                 <br>
             <canvas id="myChart7" style="height: 22rem;" class="d-block w-90 mx-auto" data-yValues="[55, 49, 44, 24]"
-                data-title="Empleado con RFC: RFC"></canvas>
+                data-title="Empleado $nombre"></canvas>
                 <br>
                 <hr class="my-8">
                 <br>
