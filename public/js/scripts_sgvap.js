@@ -689,6 +689,8 @@ function generate_graphs_barras(id_canvas, yValues, title) {
             }]
         },
         options: {
+            responsive: true,
+            maintainAspectRatio: false, // para que respete el tamaño del canvas.
             legend: { display: false },
             title: {
                 display: true,
@@ -696,6 +698,16 @@ function generate_graphs_barras(id_canvas, yValues, title) {
                 fontSize: 20,
                 fontStyle: 'bold',
                 fontColor: "gray"
+            },
+            tooltips: {
+                callbacks: {
+                    label: function (tooltipItem, data) {
+                        var dataset = data.datasets[tooltipItem.datasetIndex];
+                        var value = dataset.data[tooltipItem.index];
+                        var label = data.labels[tooltipItem.index]; // <-- aquí está tu xValue.
+                        return ' ' + label + ': $ ' + Number(value).toLocaleString('es-MX');
+                    }
+                }
             },
             scales: {
                 xAxes: [{
@@ -710,6 +722,49 @@ function generate_graphs_barras(id_canvas, yValues, title) {
                         }
                     }
                 }]
+            }
+        }
+    });
+}
+
+function generate_graphs_pastel(id_canvas, xValues, yValues, title) {
+    var cantXvalues = xValues.length;
+    //necesito generar n colores distintos.
+    var pieColors = [];
+    for (var i = 0; i < cantXvalues; i++) {
+        var color = '#' + Math.floor(Math.random() * 16777215).toString(16).padStart(6, "0");
+        pieColors.push(color);
+    }
+    const yValuesNum = yValues.map(Number); // [55, 49, 44, 24]
+
+    new Chart(id_canvas, {
+        type: "pie",
+        data: {
+            labels: xValues,
+            datasets: [{
+                backgroundColor: pieColors,
+                data: yValuesNum
+            }]
+        },
+        options: {
+            responsive: true,
+            maintainAspectRatio: false, // para que respete el tamaño del canvas.
+            title: {
+                display: true,
+                text: title,
+                fontSize: 20,
+                fontStyle: 'bold',
+                fontColor: "gray"
+            },
+            tooltips: {
+                callbacks: {
+                    label: function (tooltipItem, data) {
+                        var dataset = data.datasets[tooltipItem.datasetIndex];
+                        var value = dataset.data[tooltipItem.index];
+                        var label = data.labels[tooltipItem.index]; // <-- aquí está tu xValue.
+                        return ' ' + label + ': $ ' + Number(value).toLocaleString('es-MX');
+                    }
+                }
             }
         }
     });

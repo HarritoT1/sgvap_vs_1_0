@@ -99,22 +99,22 @@
     <div class="d-flex gap-2 justify-content-between align-items-stretch px-1 flex-wrap">
         <div class="p-3 d-inline-block rounded-3 do_responsive_div"
             style="box-shadow: 0px 0px 8px 0px rgba(0,0,0,0.75) inset;">
-            <canvas id="myChart0" style="height: 22rem;" class="d-block w-90 mx-auto" data-yValues="[55, 49, 44, 24]"
+            <canvas id="myChart0" data-yValues="[55, 49, 44, 24]"
                 data-title="Proyecto $nombre"></canvas>
                 <br>
                 <hr class="my-4">
                 <br>
-            <canvas id="myChart1" style="height: 22rem;" class="d-block w-90 mx-auto" data-yValues="[55, 49, 44, 24]"
+            <canvas id="myChart1" data-yValues="[55, 49, 44, 24]"
                 data-title="Proyecto $nombre"></canvas>
                 <br>
                 <hr class="my-4">
                 <br>
-            <canvas id="myChart2" style="height: 22rem;" class="d-block w-90 mx-auto" data-yValues="[55, 49, 44, 24]"
+            <canvas id="myChart2" data-yValues="[55, 49, 44, 24]"
                 data-title="Proyecto $nombre"></canvas>
                 <br>
                 <hr class="my-4">
                 <br>
-            <canvas id="myChart3" style="height: 22rem;" class="d-block w-90 mx-auto" data-yValues="[55, 49, 44, 24]"
+            <canvas id="myChart3" data-yValues="[55, 49, 44, 24]"
                 data-title="Proyecto $nombre"></canvas>
                 <br>
                 <hr class="my-4">
@@ -123,22 +123,22 @@
 
         <div class="p-3 d-inline-block rounded-3 do_responsive_div"
             style="box-shadow: 0px 0px 8px 0px rgba(0,0,0,0.75) inset;">
-            <canvas id="myChart4" style="height: 22rem;" class="d-block w-90 mx-auto" data-yValues="[55, 49, 44, 24]"
+            <canvas id="myChart4" data-yValues="[55, 49, 44, 24]"
                 data-title="Empleado $nombre"></canvas>
                 <br>
                 <hr class="my-4">
                 <br>
-            <canvas id="myChart5" style="height: 22rem;" class="d-block w-90 mx-auto" data-yValues="[55, 49, 44, 24]"
+            <canvas id="myChart5" data-yValues="[55, 49, 44, 24]"
                 data-title="Empleado $nombre"></canvas>
                 <br>
                 <hr class="my-4">
                 <br>
-            <canvas id="myChart6" style="height: 22rem;" class="d-block w-90 mx-auto" data-yValues="[55, 49, 44, 24]"
+            <canvas id="myChart6" data-yValues="[55, 49, 44, 24]"
                 data-title="Empleado $nombre"></canvas>
                 <br>
                 <hr class="my-4">
                 <br>
-            <canvas id="myChart7" style="height: 22rem;" class="d-block w-90 mx-auto" data-yValues="[55, 49, 44, 24]"
+            <canvas id="myChart7" data-yValues="[55, 49, 44, 24]"
                 data-title="Empleado $nombre"></canvas>
                 <br>
                 <hr class="my-8">
