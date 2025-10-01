@@ -677,6 +677,7 @@ function set_required_input_find_id_proyect() {
 function generate_graphs_barras(id_canvas, yValues, title) {
     var barColors = ["#ff0000", "#0000ff", "#008000", "#ff00ff"];
     var xValues = ["Alimentos", "Tras. Locales", "Tras. Externos", "Comisión Bancaria"];
+    const yValuesNum = yValues.map(Number); // [55, 49, 44, 24]
 
     new Chart(id_canvas, {
         type: "bar",
@@ -684,7 +685,7 @@ function generate_graphs_barras(id_canvas, yValues, title) {
             labels: xValues,
             datasets: [{
                 backgroundColor: barColors,
-                data: yValues
+                data: yValuesNum
             }]
         },
         options: {
