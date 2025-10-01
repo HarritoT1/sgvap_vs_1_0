@@ -702,6 +702,13 @@ function generate_graphs_barras(id_canvas, yValues, title) {
                     ticks: {
                         fontSize: 12 // Tamaño de las etiquetas del eje X.
                     }
+                }],
+                yAxes: [{
+                    ticks: {
+                        callback: function (value) {
+                            return '$ ' + value.toLocaleString('es-MX'); // agrega símbolo $ y separador de miles
+                        }
+                    }
                 }]
             }
         }
