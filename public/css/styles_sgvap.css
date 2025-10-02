@@ -329,7 +329,8 @@ a {
   }
 }
 
-input:read-only, input[disabled] {
+input:read-only,
+input[disabled] {
   background-color: var(--bs-secondary-bg);
 }
 
@@ -348,8 +349,8 @@ div.do_responsive_div {
 }
 
 .do_responsive_div canvas {
-    width: 100% !important;
-    height: 100% !important;
+  width: 100% !important;
+  height: 100% !important;
 }
 
 div.do_responsive_div2 {
@@ -372,6 +373,44 @@ div.do_responsive_div2 {
 }
 
 .do_responsive_div2 canvas {
-    width: 100% !important;
-    height: 100% !important;
+  width: 100% !important;
+  height: 100% !important;
+}
+
+div.msgFloat {
+  font-size: 0.8rem;
+  width: 12rem;
+  text-align: justify;
+  color: red;
+  font-weight: bold;
+  background-color: yellow;
+  border: 3px solid black;
+  border-radius: 15px 15px 15px 0px;
+  padding: 10px;
+  position: absolute;
+  z-index: 2;
+  opacity: 0;
+  /* invisible por defecto */
+  visibility: hidden;
+  /* lo oculta del flujo */
+  transition: opacity 0.5s ease-in-out;
+  bottom: 8px;
+  left: 8px;
+  transition: all 0.5s ease-in-out;
+}
+
+span#msgIVA:hover div.msgFloat {
+  opacity: 1;
+  /* aparece */
+  visibility: visible;
+  width: 16rem;
+  /* este cambio sí se puede animar */
+}
+
+span#msgBASE:hover div.msgFloat {
+  opacity: 1;
+  /* aparece */
+  visibility: visible;
+  width: 16rem;
+  /* este cambio sí se puede animar */
 }

@@ -87,7 +87,13 @@
                     </div>
 
                     <div class="col-sm-6">
-                        <label for="base_imponible" class="form-label fw-bold">Base imponible <span>ⓘ</span></label>
+                        <label for="base_imponible" class="form-label fw-bold w-100">Base imponible <span
+                                class="position-relative" id="msgBASE" style="cursor: pointer;">ⓘ
+                                <div class="msgFloat">
+                                    La base imponible se calcula como: Monto dispersado / 1.16
+                                </div>
+                            </span></label>
+
                         <div class="input-group">
                             <span class="input-group-text">$</span>
                             <input type="number" class="form-control" aria-label="Amount (to the nearest dollar)"
@@ -100,7 +106,13 @@
                     </div>
 
                     <div class="col-sm-6">
-                        <label for="iva_acumulado" class="form-label fw-bold">IVA acumulado <span>ⓘ</span></label>
+                        <label for="iva_acumulado" class="form-label fw-bold w-100">IVA acumulado <span
+                                class="position-relative" id="msgIVA" style="cursor: pointer;">ⓘ
+                                <div class="msgFloat">
+                                    El IVA acumulado se calcula como: Base imponible * 0.16
+                                </div>
+                            </span>
+                        </label>
                         <div class="input-group">
                             <span class="input-group-text">$</span>
                             <input type="number" class="form-control" aria-label="Amount (to the nearest dollar)"
@@ -150,7 +162,8 @@
                 style="width: 70rem;">
 
             <ul class="mb-3 flex-column vineta" style="font-size: 1.2rem; text-align: justify">
-                <li class="mb-2">La fila 1 es para los headers y las posteriores para los registros, compara los valores de la imagen con
+                <li class="mb-2">La fila 1 es para los headers y las posteriores para los registros, compara los valores
+                    de la imagen con
                     tu tabla.</li>
                 <li class="mb-2">La hoja de cálculo de los registros a almacenar debe ser la primera.</li>
                 <li>Si cumples con todo ello tus registros serán almacenados correctamente y se te notificará aquí mismo, en
@@ -159,15 +172,20 @@
 
             <div class="mb-3 mx-auto" style="width: 25rem;">
                 <label for="xls_gasoline" class="form-label d-block w-100" style="cursor: pointer;">
-                    <img class="imageResponsive my-2" alt="img" src="{{ asset('img/xls.png') }}" style="width: 10rem;">
+                    <img class="imageResponsive my-2" alt="img" src="{{ asset('img/xls.png') }}"
+                        style="width: 10rem;">
                 </label>
                 <input type="file" class="form-control my-3" id="xls_gasoline" accept=".xls, .xlsx">
+                <div class="invalid-feedback">
+                    Ingresa un archivo válido.
+                </div>
             </div>
 
             <hr class="my-4 mb-2">
 
             <button class="d-block mx-auto btn btn-primary btn-lg fw-bold button-custom" type="button"
-                        onclick="ask_before_submit_new()" style="background-color: rgb(161, 160, 160)" disabled>Analizar excel y almacenar registros</button>
+                id="button_analizar_excel" onclick="ask_before_submit_new()" style="background-color: rgb(161, 160, 160)"
+                disabled>Analizar excel y almacenar registros</button>
         </div>
     </div>
 @endsection
