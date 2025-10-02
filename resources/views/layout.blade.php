@@ -1009,7 +1009,7 @@ l838 0 -282 -282 c-304 -305 -305 -307 -288 -395 9 -49 69 -109 118 -118 91
                         <hr class="my-3 hr-sidebar">
                         <ul class="nav flex-column">
                             <li class="nav-item">
-                                <a class="nav-link d-flex align-items-center gap-2 text-white fw-bold" href="#"
+                                <a class="nav-link d-flex align-items-center gap-2 text-white fw-bold" href="/contacto"
                                     target="_self">
                                     <svg class="bi">
                                         <use xlink:href="#info_developer" />
@@ -1019,7 +1019,7 @@ l838 0 -282 -282 c-304 -305 -305 -307 -288 -395 9 -49 69 -109 118 -118 91
                             </li>
                             <li class="nav-item">
                                 <a class="nav-link d-flex align-items-center gap-2 text-white fw-bold"
-                                    href="#"target="_self">
+                                    href="/login"target="_self">
                                     <svg class="bi">
                                         <use xlink:href="#salir" />
                                     </svg>
