@@ -10,8 +10,8 @@
     <h3 class="fw-bold text-center mb-4" style="font-size: 2rem;">
         Sí eres nuevo, te invito a consultar el manual de usuario:
     </h3>
-    <iframe class="d-block mx-auto my-3 border border-radius" src="{{asset('img/prueba.pdf')}}" title="PDF del manual de usuario." loading="eager" allow="fullscreen" style="width: 60%; min-height: 400px; height: auto;">
-        Tu navegador no soporta PDFs. Por favor descarga el PDF para verlo: <a download href="{{asset('img/prueba.pdf')}}">Descargar PDF</a>
+    <iframe class="d-block mx-auto my-3 border border-radius" src="{{asset('img/prueba.pdf')}}" title="PDF del manual de usuario." loading="lazy" allow="fullscreen" style="width: 60%; min-height: 400px; height: auto;">
+        Tu navegador no soporta PDFs. Por favor descarga el PDF para verlo: <a class="text-decoration-none" download="manual_usuario.pdf" href="{{asset('img/prueba.pdf')}}">Descargar PDF</a>
     </iframe>
 
     <p style="font-size: 0.8rem;">
