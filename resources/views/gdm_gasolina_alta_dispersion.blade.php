@@ -158,8 +158,10 @@
                     ejemplo:</li>
             </ul>
 
-            <img class="imageResponsive my-2" alt="img" src="{{ asset('img/gasoline_example.png') }}"
-                style="width: 70rem;">
+            <div class="p-0" style="overflow-x: auto;">
+                <img class="imageResponsive my-2" alt="img" src="{{ asset('img/gasoline_example.png') }}"
+                style="width: 70rem; min-height: 4rem; max-width: none;">
+            </div>
 
             <ul class="mb-3 flex-column vineta" style="font-size: 1.2rem; text-align: justify">
                 <li class="mb-2">La fila 1 es para los headers y las posteriores para los registros, compara los valores
