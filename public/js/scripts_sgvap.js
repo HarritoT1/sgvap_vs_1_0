@@ -807,7 +807,7 @@ function analizar_xls(expectedHeadersParam) {
     function processExcelFile() {
         const input = document.getElementById('xls_gasoline');
         const file = input.files[0];
-        
+
         if (!file) return;
 
         const reader = new FileReader();
@@ -815,21 +815,20 @@ function analizar_xls(expectedHeadersParam) {
             const data = new Uint8Array(event.target.result);
             const workbook = XLSX.read(data, { type: 'array' });
 
-            // Suponiendo que quieres la primera hoja
+            // Suponiendo que quieres la primera hoja.
             const sheetName = workbook.SheetNames[0];
             const worksheet = workbook.Sheets[sheetName];
 
-            // Convierte la hoja a JSON usando la primera fila como headers
+            // Convierte la hoja a JSON usando la primera fila como headers.
             const jsonData = XLSX.utils.sheet_to_json(worksheet, { header: 1 });
 
-            // jsonData[0] = headers
+            // jsonData[0] = headers.
             const headers = jsonData[0].map(h => h.trim());
             const rows = jsonData.slice(1);
 
             console.log("Headers extraídos:", headers);
 
-            // Validar que los headers coincidan exactamente
-            //const expectedHeaders = ['fecha_dispersion', 'project_id', 'vehicle_id', 'costo_lt', 'cant_litros', 'monto_dispersado', 'base_imponible', 'iva_acumulado', 'importe_total']; // <-- cámbialos
+            // Validar que los headers coincidan exactamente.
             const expectedHeaders = expectedHeadersParam;
 
             console.log("Headers esperados:", expectedHeaders);
@@ -845,25 +844,39 @@ function analizar_xls(expectedHeadersParam) {
                 return;
             }
 
-            // Convertir filas a objetos
+            // Convertir filas a objetos.
             const objects = rows.map(row => {
                 let obj = {};
                 headers.forEach((h, i) => {
-                    obj[h] = row[i] !== undefined ? row[i] : null;
+                    if (typeof row[i] === 'string' && h === 'fecha_dispersion') obj[h] = row[i].replaceAll('"', '').trim();
+                    if (typeof row[i] === 'number') obj[h] = Number(row[i].toFixed(3));
+                    else obj[h] = row[i] !== undefined ? row[i] : null;
                 });
                 return obj;
             });
 
             console.log("Objetos generados:", objects);
 
-            // Mandar al backend
-            fetch("/api/registro", {
-                method: "POST",
-                headers: { "Content-Type": "application/json" },
+            // Mandar al backend.
+            fetch('/gdm_gasolina_auto_alta_xls', {
+                method: 'POST',
+                headers: {
+                    'X-CSRF-TOKEN': document.querySelector('meta[name="csrf-token"]').content,
+                    'Accept': 'application/json',
+                    "Content-Type": "application/json"
+                },
                 body: JSON.stringify(objects)
-            })
-                .then(res => res.json())
-                .then(data => console.log("Respuesta del backend:", data))
+            }).then(res => res.json())
+                .then(object => {
+                    console.log("Respuesta del backend:", object);
+                    if (object.success) {
+                        alert("Archivo procesado correctamente. Se han registrado los datos.");
+                        window.location.reload();
+                    } else {
+                        alert("Hubo un problema al procesar el archivo. Intenta de nuevo.");
+                        window.location.reload();
+                    }
+                })
                 .catch(err => console.error("Error enviando datos:", err));
         };
 
