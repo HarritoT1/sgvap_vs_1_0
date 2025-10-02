@@ -78,4 +78,7 @@ Route::get('/ge_graficas_x_viatico', function () {
     return view('ge_graficas_x_viatico'); //http://127.0.0.1:8000/ge_graficas_x_viatico
 });
 
+Route::get('/gdm_gasolina_alta_dispersion', function () {
+    return view('gdm_gasolina_alta_dispersion'); //http://127.0.0.1:8000/gdm_gasolina_alta_dispersion
+});
 
