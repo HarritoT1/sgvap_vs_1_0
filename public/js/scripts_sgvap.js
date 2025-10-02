@@ -769,3 +769,15 @@ function generate_graphs_pastel(id_canvas, xValues, yValues, title) {
         }
     });
 }
+
+function asig_listener_autocomputed_inputs() {
+    const base_imponible = document.getElementById('base_imponible');
+    const iva_acumulado = document.getElementById('iva_acumulado');
+    const importe_total = document.getElementById('importe_total');
+
+    document.getElementById('monto_dispersado').addEventListener('input', function () { 
+        importe_total.value = this.value ? parseFloat(this.value) : 0;
+        base_imponible.value = (importe_total.value / 1.16).toFixed(2);
+        iva_acumulado.value = (importe_total.value - parseFloat(base_imponible.value)).toFixed(2);
+    });
+}
