@@ -52,8 +52,8 @@
                         <div class="input-group">
                             <span class="input-group-text">$</span>
                             <input type="number" class="form-control" aria-label="Amount (to the nearest dollar)"
-                                id="costo_lt" name="costo_lt" placeholder="0.0000" step="0.0001"
-                                min="0" value="" required>
+                                id="costo_lt" name="costo_lt" placeholder="0.0000" step="0.0001" min="0"
+                                value="" required>
                             <div class="invalid-feedback">
                                 Ingresa un costo de gasolina válido.
                             </div>
@@ -65,8 +65,8 @@
                         <div class="input-group">
                             <span class="input-group-text">$</span>
                             <input type="number" class="form-control" aria-label="Amount (to the nearest dollar)"
-                                id="cant_litros" name="cant_litros" placeholder="0.0000" step="0.0001"
-                                min="0" value="" required>
+                                id="cant_litros" name="cant_litros" placeholder="0.0000" step="0.0001" min="0"
+                                value="" required>
                             <div class="invalid-feedback">
                                 Ingresa una cantidad de lts. de gasolina válida.
                             </div>
@@ -124,7 +124,7 @@
                             </div>
                         </div>
                     </div>
-                    
+
                     <hr class="my-4 mb-2">
 
                     <button class="d-block mx-auto btn btn-primary btn-lg fw-bold button-custom" type="button"
@@ -133,6 +133,41 @@
 
                     <hr class="my-4 mb-2">
             </form>
+
+            <h2 class="mb-3 fw-bold" style="font-size: 1.5rem; text-align: justify">Importar excel para registro de
+                dispersiones de gasolina automaticamente.</h2>
+
+            <h3 class="my-3 fw-bold" style="font-size: 1.3rem; text-align: justify">Tu archivo tiene que cumplir algunos
+                criterios para ser apto:</h3>
+
+            <ul class="mb-3 flex-column vineta" style="font-size: 1.2rem; text-align: justify">
+                <li class="mb-2">Tu archivo tiene que estar en formato ‘.xls’ o ‘.xlsx’.</li>
+                <li>Tu archivo tiene que tener una tabla con los siguientes headers (estrictamente igual nombrados). Por
+                    ejemplo:</li>
+            </ul>
+
+            <img class="imageResponsive my-2" alt="img" src="{{ asset('img/gasoline_example.png') }}"
+                style="width: 70rem;">
+
+            <ul class="mb-3 flex-column vineta" style="font-size: 1.2rem; text-align: justify">
+                <li class="mb-2">La fila 1 es para los headers y las posteriores para los registros, compara los valores de la imagen con
+                    tu tabla.</li>
+                <li class="mb-2">La hoja de cálculo de los registros a almacenar debe ser la primera.</li>
+                <li>Si cumples con todo ello tus registros serán almacenados correctamente y se te notificará aquí mismo, en
+                    caso contrario, se te notificará de igual forma.</li>
+            </ul>
+
+            <div class="mb-3 mx-auto" style="width: 25rem;">
+                <label for="xls_gasoline" class="form-label d-block w-100" style="cursor: pointer;">
+                    <img class="imageResponsive my-2" alt="img" src="{{ asset('img/xls.png') }}" style="width: 10rem;">
+                </label>
+                <input type="file" class="form-control my-3" id="xls_gasoline" accept=".xls, .xlsx">
+            </div>
+
+            <hr class="my-4 mb-2">
+
+            <button class="d-block mx-auto btn btn-primary btn-lg fw-bold button-custom" type="button"
+                        onclick="ask_before_submit_new()" style="background-color: rgb(161, 160, 160)" disabled>Analizar excel y almacenar registros</button>
         </div>
     </div>
 @endsection
