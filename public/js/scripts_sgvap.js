@@ -807,6 +807,7 @@ function analizar_xls() {
     function processExcelFile() {
         const input = document.getElementById('xls_gasoline');
         const file = input.files[0];
+        
         if (!file) return;
 
         const reader = new FileReader();
@@ -830,7 +831,7 @@ function analizar_xls() {
             const validHeaders = JSON.stringify(headers) === JSON.stringify(expectedHeaders);
 
             if (!validHeaders) {
-                alert("Los headers no coinciden con lo esperado.");
+                alert("Los headers no coinciden con lo esperado o alguna otra característica mencionada no esta satisfecha.");
                 window.location.reload();
                 return;
             }
