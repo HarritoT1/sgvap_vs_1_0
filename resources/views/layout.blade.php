@@ -1009,7 +1009,7 @@ l838 0 -282 -282 c-304 -305 -305 -307 -288 -395 9 -49 69 -109 118 -118 91
                         <hr class="my-3 hr-sidebar">
                         <ul class="nav flex-column">
                             <li class="nav-item">
-                                <a class="nav-link d-flex align-items-center gap-2 text-white fw-bold" href="#"
+                                <a class="nav-link d-flex align-items-center gap-2 text-white fw-bold" href="/contacto"
                                     target="_self">
                                     <svg class="bi">
                                         <use xlink:href="#info_developer" />
@@ -1019,7 +1019,7 @@ l838 0 -282 -282 c-304 -305 -305 -307 -288 -395 9 -49 69 -109 118 -118 91
                             </li>
                             <li class="nav-item">
                                 <a class="nav-link d-flex align-items-center gap-2 text-white fw-bold"
-                                    href="#"target="_self">
+                                    href="/login"target="_self">
                                     <svg class="bi">
                                         <use xlink:href="#salir" />
                                     </svg>
@@ -1070,6 +1070,12 @@ l838 0 -282 -282 c-304 -305 -305 -307 -288 -395 9 -49 69 -109 118 -118 91
             if (document.getElementById("graficas_barras")) {
                 set_required_input_find_id_proyect()
             }
+            if (document.getElementById("crear_dm_gasolina")) {
+                asig_listener_autocomputed_inputs()
+            }
+            if (document.getElementById("xls_gasoline")) {
+                asig_listener_on_change()
+            }
         });
     </script>
 
@@ -1081,6 +1087,7 @@ l838 0 -282 -282 c-304 -305 -305 -307 -288 -395 9 -49 69 -109 118 -118 91
     <script src="{{ asset('js/dashboard.js') }}"></script>
     <script src="{{ asset('js/checkout.js') }}"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.5.0/Chart.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/xlsx/0.18.5/xlsx.full.min.js"></script>
 </body>
 
 </html>

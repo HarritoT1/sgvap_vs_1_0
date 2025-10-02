@@ -769,3 +769,103 @@ function generate_graphs_pastel(id_canvas, xValues, yValues, title) {
         }
     });
 }
+
+function asig_listener_autocomputed_inputs() {
+    const base_imponible = document.getElementById('base_imponible');
+    const iva_acumulado = document.getElementById('iva_acumulado');
+    const importe_total = document.getElementById('importe_total');
+
+    document.getElementById('monto_dispersado').addEventListener('input', function () {
+        importe_total.value = this.value ? parseFloat(this.value) : 0;
+        base_imponible.value = (importe_total.value / 1.16).toFixed(2);
+        iva_acumulado.value = (importe_total.value - parseFloat(base_imponible.value)).toFixed(2);
+    });
+}
+
+function asig_listener_on_change() {
+    document.getElementById('xls_gasoline').addEventListener('change', function (event) {
+        const file = event.target.files[0]; // Accede al primer archivo seleccionado.
+        if (file) {
+            document.getElementById('button_analizar_excel').disabled = false;
+            document.getElementById('button_analizar_excel').style.backgroundColor = "var(--botones-color)";
+        }
+        else {
+            document.getElementById('button_analizar_excel').disabled = true;
+            document.getElementById('button_analizar_excel').style.backgroundColor = "rgb(161, 160, 160)";
+        }
+    });
+}
+
+function analizar_xls() {
+    if (confirm("¿Estás seguro de que deseas analizar el archivo Excel seleccionado?")) {
+        console.log("Analizando archivo Excel...");
+        processExcelFile();
+    }
+
+    else window.location.reload();
+
+    function processExcelFile() {
+        const input = document.getElementById('xls_gasoline');
+        const file = input.files[0];
+        
+        if (!file) return;
+
+        const reader = new FileReader();
+        reader.onload = function (event) {
+            const data = new Uint8Array(event.target.result);
+            const workbook = XLSX.read(data, { type: 'array' });
+
+            // Suponiendo que quieres la primera hoja
+            const sheetName = workbook.SheetNames[0];
+            const worksheet = workbook.Sheets[sheetName];
+
+            // Convierte la hoja a JSON usando la primera fila como headers
+            const jsonData = XLSX.utils.sheet_to_json(worksheet, { header: 1 });
+
+            // jsonData[0] = headers
+            const headers = jsonData[0].map(h => h.trim());
+            const rows = jsonData.slice(1);
+
+            console.log("Headers extraídos:", headers);
+
+            // Validar que los headers coincidan exactamente
+            const expectedHeaders = ['fecha_dispersion', 'project_id', 'vehicle_id', 'costo_lt', 'cant_litros', 'monto_dispersado', 'base_imponible', 'iva_acumulado', 'importe_total']; // <-- cámbialos
+
+            console.log("Headers esperados:", expectedHeaders);
+
+            console.log(JSON.stringify(headers));
+            console.log(JSON.stringify(expectedHeaders));
+
+            const validHeaders = JSON.stringify(headers) === JSON.stringify(expectedHeaders);
+
+            if (!validHeaders) {
+                alert("Los headers no coinciden con lo esperado o alguna otra característica mencionada no esta satisfecha.");
+                window.location.reload();
+                return;
+            }
+
+            // Convertir filas a objetos
+            const objects = rows.map(row => {
+                let obj = {};
+                headers.forEach((h, i) => {
+                    obj[h] = row[i] !== undefined ? row[i] : null;
+                });
+                return obj;
+            });
+
+            console.log("Objetos generados:", objects);
+
+            // Mandar al backend
+            fetch("/api/registro", {
+                method: "POST",
+                headers: { "Content-Type": "application/json" },
+                body: JSON.stringify(objects)
+            })
+                .then(res => res.json())
+                .then(data => console.log("Respuesta del backend:", data))
+                .catch(err => console.error("Error enviando datos:", err));
+        };
+
+        reader.readAsArrayBuffer(file);
+    }
+}
