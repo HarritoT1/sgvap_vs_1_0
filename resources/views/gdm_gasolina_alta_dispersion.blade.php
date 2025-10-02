@@ -169,9 +169,9 @@
                     tu tabla.</li>
                 <li class="mb-2">La hoja de cálculo de los registros a almacenar debe ser la primera.</li>
                 <li class="mb-2">El campo <em class="fw-bold">fecha_dispersion</em> debe de ir como una cadena texto <strong>encerrada entre comillas dobles</strong>. Y cumplir el formato <strong>aaaa/mm/dd</strong>.</li>
-                <li class="mb-2">Si cumples con todo ello tus registros serán almacenados correctamente y se te notificará aquí mismo, en
+                <li class="mb-2">Si necesitas la plantilla base .xlsx compatible, la puedes <a class="text-decoration-none" download="dp_gasolina_formato_valido.xlsx" href="{{asset('img/dp_gasolina_formato_valido.xlsx')}}">descargar aquí</a>. Los campos <strong>base_imponible</strong>, <strong>iva_acumulado</strong> e <strong>importe_total</strong> ya vienen calculados automáticamente en esta plantilla al momento de ingresar el <strong>monto_dispersado</strong>.</li>
+                <li>Si cumples con todo ello tus registros serán almacenados correctamente y se te notificará aquí mismo, en
                     caso contrario, se te notificará de igual forma.</li>
-                <li class="mb-2">Si necesitas la plantilla base .xlsx compatible, la puedes <a class="text-decoration-none" download="dp_gasolina_formato_valido.xlsx" href="{{asset('img/dp_gasolina_formato_valido.xlsx')}}">descargar aquí</a>.</li>
             </ul>
 
             <div class="mb-3 mx-auto" style="width: 25rem;">

@@ -156,7 +156,7 @@
     <link href="{{ asset('css/dashboard.css') }}" rel="stylesheet">
 </head>
 
-<body>
+<body id="bodysgvap">
     <svg xmlns="http://www.w3.org/2000/svg" class="d-none">
         <symbol id="check2" viewBox="0 0 16 16">
             <path
@@ -744,7 +744,7 @@ l838 0 -282 -282 c-304 -305 -305 -307 -288 -395 9 -49 69 -109 118 -118 91
 
     <header class="navbar sticky-top flex-md-nowrap p-0 shadow" data-bs-theme="dark"
         style="background-color: var(--empresa-color);">
-        <a class="navbar-brand col-md-3 col-lg-2 me-0 px-3 fs-6 text-white name-enterprise" href="#"
+        <a class="navbar-brand col-md-3 col-lg-2 me-0 px-3 fs-6 text-white name-enterprise" href="#bodysgvap"
             target="_self">E
             Core Network S.A de C.V.</a>
 
