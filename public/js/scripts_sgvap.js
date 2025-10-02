@@ -796,7 +796,7 @@ function asig_listener_on_change() {
     });
 }
 
-function analizar_xls() {
+function analizar_xls(expectedHeadersParam) {
     if (confirm("¿Estás seguro de que deseas analizar el archivo Excel seleccionado?")) {
         console.log("Analizando archivo Excel...");
         processExcelFile();
@@ -829,7 +829,8 @@ function analizar_xls() {
             console.log("Headers extraídos:", headers);
 
             // Validar que los headers coincidan exactamente
-            const expectedHeaders = ['fecha_dispersion', 'project_id', 'vehicle_id', 'costo_lt', 'cant_litros', 'monto_dispersado', 'base_imponible', 'iva_acumulado', 'importe_total']; // <-- cámbialos
+            //const expectedHeaders = ['fecha_dispersion', 'project_id', 'vehicle_id', 'costo_lt', 'cant_litros', 'monto_dispersado', 'base_imponible', 'iva_acumulado', 'importe_total']; // <-- cámbialos
+            const expectedHeaders = expectedHeadersParam;
 
             console.log("Headers esperados:", expectedHeaders);
 
