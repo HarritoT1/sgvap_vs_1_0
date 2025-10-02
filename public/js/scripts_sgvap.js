@@ -795,3 +795,68 @@ function asig_listener_on_change() {
         }
     });
 }
+
+function analizar_xls() {
+    if (confirm("¿Estás seguro de que deseas analizar el archivo Excel seleccionado?")) {
+        console.log("Analizando archivo Excel...");
+        processExcelFile();
+    }
+
+    else window.location.reload();
+
+    function processExcelFile() {
+        const input = document.getElementById('xls_gasoline');
+        const file = input.files[0];
+        if (!file) return;
+
+        const reader = new FileReader();
+        reader.onload = function (event) {
+            const data = new Uint8Array(event.target.result);
+            const workbook = XLSX.read(data, { type: 'array' });
+
+            // Suponiendo que quieres la primera hoja
+            const sheetName = workbook.SheetNames[0];
+            const worksheet = workbook.Sheets[sheetName];
+
+            // Convierte la hoja a JSON usando la primera fila como headers
+            const jsonData = XLSX.utils.sheet_to_json(worksheet, { header: 1 });
+
+            // jsonData[0] = headers
+            const headers = jsonData[0];
+            const rows = jsonData.slice(1);
+
+            // Validar que los headers coincidan exactamente
+            const expectedHeaders = ["Columna1", "Columna2", "Columna3"]; // <-- cámbialos
+            const validHeaders = JSON.stringify(headers) === JSON.stringify(expectedHeaders);
+
+            if (!validHeaders) {
+                alert("Los headers no coinciden con lo esperado.");
+                window.location.reload();
+                return;
+            }
+
+            // Convertir filas a objetos
+            const objects = rows.map(row => {
+                let obj = {};
+                headers.forEach((h, i) => {
+                    obj[h] = row[i] !== undefined ? row[i] : null;
+                });
+                return obj;
+            });
+
+            console.log("Objetos generados:", objects);
+
+            // Mandar al backend
+            fetch("/api/registro", {
+                method: "POST",
+                headers: { "Content-Type": "application/json" },
+                body: JSON.stringify(objects)
+            })
+                .then(res => res.json())
+                .then(data => console.log("Respuesta del backend:", data))
+                .catch(err => console.error("Error enviando datos:", err));
+        };
+
+        reader.readAsArrayBuffer(file);
+    }
+}

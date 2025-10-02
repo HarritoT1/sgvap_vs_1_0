@@ -184,7 +184,7 @@
             <hr class="my-4 mb-2">
 
             <button class="d-block mx-auto btn btn-primary btn-lg fw-bold button-custom" type="button"
-                id="button_analizar_excel" onclick="ask_before_submit_new()" style="background-color: rgb(161, 160, 160)"
+                id="button_analizar_excel" onclick="analizar_xls()" style="background-color: rgb(161, 160, 160)"
                 disabled>Analizar excel y almacenar registros</button>
         </div>
     </div>
