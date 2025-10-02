@@ -823,11 +823,19 @@ function analizar_xls() {
             const jsonData = XLSX.utils.sheet_to_json(worksheet, { header: 1 });
 
             // jsonData[0] = headers
-            const headers = jsonData[0];
+            const headers = jsonData[0].map(h => h.trim());
             const rows = jsonData.slice(1);
 
+            console.log("Headers extraídos:", headers);
+
             // Validar que los headers coincidan exactamente
-            const expectedHeaders = ["Columna1", "Columna2", "Columna3"]; // <-- cámbialos
+            const expectedHeaders = ['fecha_dispersion', 'project_id', 'vehicle_id', 'costo_lt', 'cant_litros', 'monto_dispersado', 'base_imponible', 'iva_acumulado', 'importe_total']; // <-- cámbialos
+
+            console.log("Headers esperados:", expectedHeaders);
+
+            console.log(JSON.stringify(headers));
+            console.log(JSON.stringify(expectedHeaders));
+
             const validHeaders = JSON.stringify(headers) === JSON.stringify(expectedHeaders);
 
             if (!validHeaders) {
