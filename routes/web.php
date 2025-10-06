@@ -91,3 +91,7 @@ Route::get('/gdm_gasolina_disp_consulta_act_filtro', function () {
 Route::post('/gasolina_disp_consulta_filtro', function () {
     return response()->json([["id" => 1, "fecha_dispersion" => "2025-12-24", "project_name" => "uetamo", "vehicle_id" => "ASFG-AH4D"], ["id" => 2, "fecha_dispersion" => "2025-12-25", "project_name" => "parajilla", "vehicle_id" => "ZXCW-RT56"], ["id" => 3, "fecha_dispersion" => "2025-12-26", "project_name" => "zacatenco", "vehicle_id" => "QWER-YUI7"]]);
 });
+
+Route::get('/gdm_gasolina_disp_consulta_act', function () {
+    return view('gdm_gasolina_disp_consulta_act'); //http://127.0.0.1:8000/gdm_gasolina_disp_consulta_act
+});
