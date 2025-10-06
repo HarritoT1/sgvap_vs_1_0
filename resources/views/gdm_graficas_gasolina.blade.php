@@ -115,15 +115,15 @@
     <br>
 
     <div class="d-flex gap-2 justify-content-between align-items-stretch px-1 flex-wrap">
-        <div class="p-3 d-inline-block rounded-3 do_responsive_div"
-            style="box-shadow: 0px 0px 8px 0px rgba(0,0,0,0.75) inset; overflow-x: auto; overflow-y: hidden;">
-            <canvas id="chart_projects" data-yValues="[55, 49, 44, 24]"
+        <div class="p-3 d-inline-block rounded-3 do_responsive_div3"
+            style="box-shadow: 0px 0px 8px 0px rgba(159, 97, 97, 0.75) inset;">
+            <canvas id="chart_projects" data-xValues='["id_3", "id_4", "id_5", "id_9"]' data-yValues="[55, 49, 45, 32]"
                 data-title="$nombre"></canvas>
         </div>
 
-        <div class="p-3 d-inline-block rounded-3 do_responsive_div"
-            style="box-shadow: 0px 0px 8px 0px rgba(0,0,0,0.75) inset; overflow-x: auto; overflow-y: hidden;">
-            <canvas id="chart_vehicles" data-yValues="[55, 49, 44, 24, 55, 49, 44, 24]"
+        <div class="p-3 d-inline-block rounded-3 do_responsive_div3"
+            style="box-shadow: 0px 0px 8px 0px rgba(0,0,0,0.75) inset;">
+            <canvas id="chart_vehicles" data-xValues='["id_1", "id_2", "id_3", "id_4", "id_5", "id_6", "id_7", "id_8"]' data-yValues="[55, 49, 44, 64, 55, 49, 44, 24]"
                 data-title="$nombre"></canvas>
         </div>
     </div>
@@ -132,8 +132,9 @@
         document.addEventListener("DOMContentLoaded", function() {
             document.querySelectorAll('canvas').forEach(canvas => {
                 const yValues = JSON.parse(canvas.dataset.yvalues); // convierte la cadena a arreglo
+                const xValues = JSON.parse(canvas.dataset.xvalues); // convierte la cadena a arreglo
                 const title = canvas.dataset.title;
-                generate_graphs_barras(canvas.id, yValues, title);
+                generate_graphs_barras_vtc_especifico(canvas.id, xValues, yValues, title);
             });
         });
     </script>
