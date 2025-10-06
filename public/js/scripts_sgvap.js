@@ -674,7 +674,7 @@ function set_required_input_find_id_proyect() {
     });
 }
 
-function set_required_input_vehicle_id () {
+function set_required_input_vehicle_id() {
     document.getElementById('input_find_id_proyect').addEventListener('input', function () {
         const query = this.value;
 
@@ -710,6 +710,66 @@ function generate_graphs_barras(id_canvas, yValues, title) {
         },
         options: {
             responsive: true,
+            maintainAspectRatio: false, // para que respete el tamaño del canvas.
+            legend: { display: false },
+            title: {
+                display: true,
+                text: title,
+                fontSize: 20,
+                fontStyle: 'bold',
+                fontColor: "gray"
+            },
+            tooltips: {
+                callbacks: {
+                    label: function (tooltipItem, data) {
+                        var dataset = data.datasets[tooltipItem.datasetIndex];
+                        var value = dataset.data[tooltipItem.index];
+                        var label = data.labels[tooltipItem.index]; // <-- aquí está tu xValue.
+                        return ' ' + label + ': $ ' + Number(value).toLocaleString('es-MX');
+                    }
+                }
+            },
+            scales: {
+                xAxes: [{
+                    ticks: {
+                        fontSize: 12 // Tamaño de las etiquetas del eje X.
+                    }
+                }],
+                yAxes: [{
+                    ticks: {
+                        callback: function (value) {
+                            return '$ ' + value.toLocaleString('es-MX'); // agrega símbolo $ y separador de miles
+                        }
+                    }
+                }]
+            }
+        }
+    });
+}
+
+function generate_graphs_barras_vtc_especifico(id_canvas, xValues, yValues, title) {
+    var cantXvalues = xValues.length;
+    document.getElementById(id_canvas).style.width = (cantXvalues * 60) + 'px !important';
+    //necesito generar n colores distintos.
+    var barColors = [];
+    for (var i = 0; i < cantXvalues; i++) {
+        var color = '#' + Math.floor(Math.random() * 16777215).toString(16).padStart(6, "0");
+        barColors.push(color);
+    }
+    const yValuesNum = yValues.map(Number); // [55, 49, 44, 24]
+
+    new Chart(id_canvas, {
+        type: "bar",
+        data: {
+            labels: xValues,
+            datasets: [{
+                backgroundColor: barColors,
+                data: yValuesNum,
+                barThickness: 60 // ancho fijo mínimo de cada barra en píxeles.
+            }]
+        },
+        options: {
+            responsive: false,
             maintainAspectRatio: false, // para que respete el tamaño del canvas.
             legend: { display: false },
             title: {
