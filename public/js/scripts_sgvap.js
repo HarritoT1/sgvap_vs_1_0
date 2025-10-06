@@ -674,6 +674,26 @@ function set_required_input_find_id_proyect() {
     });
 }
 
+function set_required_input_vehicle_id () {
+    document.getElementById('input_find_id_proyect').addEventListener('input', function () {
+        const query = this.value;
+
+        if (query.length < 4) {
+            document.getElementById('vehicle_id').value = "";
+            document.getElementById('vehicle_id').disabled = true;
+            document.getElementById('input_find_id_proyect').required = false;
+            return;
+        }
+
+        console.log("Habilitando select de vehicle_id...");
+        document.getElementById('vehicle_id').disabled = false;
+    });
+
+    document.getElementById('vehicle_id').addEventListener('change', function () {
+        document.getElementById('input_find_id_proyect').required = true;
+    });
+}
+
 function generate_graphs_barras(id_canvas, yValues, title) {
     var barColors = ["#ff0000", "#0000ff", "#008000", "#ff00ff"];
     var xValues = ["Alimentos", "Tras. Locales", "Tras. Externos", "Comisión Bancaria"];
