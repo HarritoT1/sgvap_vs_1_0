@@ -43,7 +43,7 @@ function save_values_of_inputs() {
 }
 
 function ask_before_submit() {
-    if (confirm("¿Está seguro de guardar los cambios del proyecto?")) {
+    if (confirm("¿Está seguro de guardar los cambios?")) {
         const form = document.getElementById("actualizar");
         const inputs = form.querySelectorAll("input, textarea, select");
 
@@ -886,7 +886,7 @@ function analizar_xls(expectedHeadersParam) {
 
 async function get_results_and_show_them_like_links(endpoint) {
     const list = document.getElementById('lista_resultados');
-    if(!list.classList.contains('d-none')) list.classList.add('d-none');
+    if (!list.classList.contains('d-none')) list.classList.add('d-none');
     list.innerHTML = ''; // Limpiar resultados previos.
     const form = document.querySelector("form");
     const inputs = form.querySelectorAll("input, select");
@@ -897,42 +897,48 @@ async function get_results_and_show_them_like_links(endpoint) {
     });
 
     try {
-        const response = await fetch(endpoint, {
-            method: 'POST',
-            headers: {
-                'X-CSRF-TOKEN': document.querySelector('meta[name="csrf-token"]').content,
-                'Accept': 'application/json',
-                "Content-Type": "application/json"
-            },
-            body: JSON.stringify(data)
-        });
 
-        const result = await response.json();
-        console.log("Respuesta del backend:", result);
+        if (form.checkValidity()) {
 
-        if (response.ok) {
-            //Aquí procesas result que es un array de objetos.
-            result.forEach(item => {
-                const li = document.createElement('li');
-                li.className = 'mb-2';
-                const a = document.createElement('a');
-                a.className = 'fw-bold';
-                a.target = "_self"; 
-                a.style.fontSize = "1.3rem";
-                a.style.textDecoration = "none";
-                a.style.textAlign = "justify";
-                a.style.color = "var(--botones-color)";
-                a.textContent = `Dispersión de gasolina del ${item.fecha_dispersion} para proyecto ${item.project_name} al vehículo con placa ${item.vehicle_id}.`;
-                a.href = `/gdm_gasolina_disp_consulta_act/${item.id}`;
-                li.appendChild(a);
-                list.appendChild(li);
+            form.classList.add('was-validated');
+
+            const response = await fetch(endpoint, {
+                method: 'POST',
+                headers: {
+                    'X-CSRF-TOKEN': document.querySelector('meta[name="csrf-token"]').content,
+                    'Accept': 'application/json',
+                    "Content-Type": "application/json"
+                },
+                body: JSON.stringify(data)
             });
 
-            list.classList.remove('d-none');
-        }
+            const result = await response.json();
+            console.log("Respuesta del backend:", result);
 
-        else {
-            throw new Error(response.message || 'Error en la respuesta del servidor');
+            if (response.ok) {
+                //Aquí procesas result que es un array de objetos.
+                result.forEach(item => {
+                    const li = document.createElement('li');
+                    li.className = 'mb-2';
+                    const a = document.createElement('a');
+                    a.className = 'fw-bold';
+                    a.target = "_self";
+                    a.style.fontSize = "1.3rem";
+                    a.style.textDecoration = "none";
+                    a.style.textAlign = "justify";
+                    a.style.color = "var(--empresa-color)";
+                    a.textContent = `Dispersión de gasolina del ${item.fecha_dispersion} para proyecto ${item.project_name} al vehículo con placa ${item.vehicle_id}.`;
+                    a.href = `/gdm_gasolina_disp_consulta_act/${item.id}`;
+                    li.appendChild(a);
+                    list.appendChild(li);
+                });
+
+                list.classList.remove('d-none');
+            }
+
+            else {
+                throw new Error(response.message || 'Error en la respuesta del servidor');
+            }
         }
 
     } catch (error) {
