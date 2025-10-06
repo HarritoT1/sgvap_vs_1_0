@@ -95,3 +95,7 @@ Route::post('/gasolina_disp_consulta_filtro', function () {
 Route::get('/gdm_gasolina_disp_consulta_act', function () {
     return view('gdm_gasolina_disp_consulta_act'); //http://127.0.0.1:8000/gdm_gasolina_disp_consulta_act
 });
+
+Route::get('/gdm_graficas_gasolina', function () {
+    return view('gdm_graficas_gasolina'); //http://127.0.0.1:8000/gdm_graficas_gasolina
+});
