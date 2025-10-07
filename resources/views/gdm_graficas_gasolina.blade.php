@@ -116,7 +116,7 @@
 
     <div class="d-flex gap-2 justify-content-between align-items-stretch px-1 flex-wrap">
         <div class="p-3 d-inline-block rounded-3 do_responsive_div3"
-            style="box-shadow: 0px 0px 8px 0px rgba(159, 97, 97, 0.75) inset;">
+            style="box-shadow: 0px 0px 8px 0px rgba(0,0,0,0.75) inset;">
             <canvas id="chart_projects" data-xValues='["id_3", "id_4", "id_5", "id_9"]' data-yValues="[55, 49, 45, 32]"
                 data-title="$nombre"></canvas>
         </div>
