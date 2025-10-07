@@ -49,8 +49,8 @@
 
                     <div class="col-sm-6">
                         <label for="nombre_caseta" class="form-label fw-bold">Nombre de la caseta</label>
-                        <input type="text" class="form-control" id="nombre_caseta" name="nombre_caseta"
-                            placeholder="" value="" required maxlength="100">
+                        <input type="text" class="form-control" id="nombre_caseta" name="nombre_caseta" placeholder=""
+                            value="" required maxlength="100">
                         <div class="invalid-feedback">
                             Ingresa un id de proyecto válido.
                         </div>
@@ -114,6 +114,7 @@
                         dispersión</button>
 
                     <hr class="my-4 mb-2">
+                </div>
             </form>
 
             <h2 class="mb-3 fw-bold" style="font-size: 1.5rem; text-align: justify">Importar excel para registro de
@@ -139,13 +140,15 @@
                     tu tabla.</li>
                 <li class="mb-2">La hoja de cálculo de los registros a almacenar debe ser la primera.</li>
                 <li class="mb-2">El campo <em class="fw-bold">fecha_dispersion</em> debe de ir como una cadena texto
-                    <strong>encerrada entre comillas dobles</strong>. Y cumplir el formato <strong>aaaa/mm/dd</strong>.</li>
+                    <strong>encerrada entre comillas dobles</strong>. Y cumplir el formato <strong>aaaa/mm/dd</strong>.
+                </li>
                 <li class="mb-2">Si necesitas la plantilla base .xlsx compatible, la puedes <a
                         class="text-decoration-none" download="dp_caseta_formato_valido.xlsx"
                         href="{{ asset('img/dp_caseta_formato_valido.xlsx') }}">descargar aquí</a>. Los campos
                     <strong>base_imponible</strong> e <strong>iva_acumulado</strong> ya
                     vienen calculados automáticamente en esta plantilla al momento de ingresar el
-                    <strong>importe_total</strong>.</li>
+                    <strong>importe_total</strong>.
+                </li>
                 <li>Si cumples con todo ello tus registros serán almacenados correctamente y se te notificará aquí mismo, en
                     caso contrario, se te notificará de igual forma.</li>
             </ul>

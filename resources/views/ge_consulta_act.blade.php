@@ -7,8 +7,8 @@
         <div class="w-100 div-secondary">
 
             <h2 class="mb-3 fw-bold" style="font-size: 1.5rem;">Datos del empleado:</h2>
-            <form id="actualizar" action="#" method="post" enctype="application/x-www-form-urlencoded"
-                autocomplete="off" class="needs-validation p-1" novalidate>
+            <form id="actualizar" action="#" method="post" enctype="application/x-www-form-urlencoded" autocomplete="off"
+                class="needs-validation p-1" novalidate>
                 <div class="row g-3">
                     <div class="col-sm-6">
                         <label for="id" class="form-label fw-bold">RFC</label>
@@ -39,7 +39,8 @@
 
                     <div class="col-sm-6">
                         <label for="status" class="form-label fw-bold">Estado del empleado</label>
-                        <select name="status" id="status" class="form-control form-select" aria-label="Default select example" required disabled>
+                        <select name="status" id="status" class="form-control form-select"
+                            aria-label="Default select example" required disabled>
                             <option value="activo" selected>
                                 ACTIVO
                             </option>
@@ -75,8 +76,7 @@
                     <hr class="my-4 mb-2">
 
                     <div class="d-flex flex-row justify-content-end align-items-stretch gap-3" style="height: 60px">
-                        <div style="height: 100%;"
-                            class="px-2 d-flex flex-row align-items-stretch gap-3">
+                        <div style="height: 100%;" class="px-2 d-flex flex-row align-items-stretch gap-3">
                             <button style="height: 100%; width:4rem; padding: 0px; !important" type="button"
                                 class="d-none button-custom btn rounded-3 m-0" id="cancel" onclick="cancel_edit_mode()">
                                 <img src="{{ asset('img/cancel.png') }}" alt="cancelar" style="height: 100%; width: 4rem;">
@@ -88,7 +88,8 @@
                             <button style="height: 100%; width:4rem; padding: 0px; !important" type="button"
                                 class="button-custom btn rounded-3 m-0" disabled id="save"
                                 onclick="ask_before_submit()">
-                                <img src="{{ asset('img/guardar.png') }}" alt="guardar" style="height: 100%; width: 4rem;">
+                                <img src="{{ asset('img/guardar.png') }}" alt="guardar"
+                                    style="height: 100%; width: 4rem;">
                             </button>
                         </div>
                     </div>

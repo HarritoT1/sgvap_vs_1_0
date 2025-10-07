@@ -144,6 +144,7 @@
                         dispersión</button>
 
                     <hr class="my-4 mb-2">
+                </div>
             </form>
 
             <h2 class="mb-3 fw-bold" style="font-size: 1.5rem; text-align: justify">Importar excel para registro de
@@ -160,7 +161,7 @@
 
             <div class="p-0" style="overflow-x: auto;">
                 <img class="imageResponsive my-2" alt="img" src="{{ asset('img/gasoline_example.png') }}"
-                style="width: 70rem; min-height: 4rem; max-width: none;">
+                    style="width: 70rem; min-height: 4rem; max-width: none;">
             </div>
 
             <ul class="mb-3 flex-column vineta" style="font-size: 1.2rem; text-align: justify">
@@ -168,8 +169,14 @@
                     de la imagen con
                     tu tabla.</li>
                 <li class="mb-2">La hoja de cálculo de los registros a almacenar debe ser la primera.</li>
-                <li class="mb-2">El campo <em class="fw-bold">fecha_dispersion</em> debe de ir como una cadena texto <strong>encerrada entre comillas dobles</strong>. Y cumplir el formato <strong>aaaa/mm/dd</strong>.</li>
-                <li class="mb-2">Si necesitas la plantilla base .xlsx compatible, la puedes <a class="text-decoration-none" download="dp_gasolina_formato_valido.xlsx" href="{{asset('img/dp_gasolina_formato_valido.xlsx')}}">descargar aquí</a>. Los campos <strong>base_imponible</strong>, <strong>iva_acumulado</strong> e <strong>importe_total</strong> ya vienen calculados automáticamente en esta plantilla al momento de ingresar el <strong>monto_dispersado</strong>.</li>
+                <li class="mb-2">El campo <em class="fw-bold">fecha_dispersion</em> debe de ir como una cadena texto
+                    <strong>encerrada entre comillas dobles</strong>. Y cumplir el formato <strong>aaaa/mm/dd</strong>.</li>
+                <li class="mb-2">Si necesitas la plantilla base .xlsx compatible, la puedes <a
+                        class="text-decoration-none" download="dp_gasolina_formato_valido.xlsx"
+                        href="{{ asset('img/dp_gasolina_formato_valido.xlsx') }}">descargar aquí</a>. Los campos
+                    <strong>base_imponible</strong>, <strong>iva_acumulado</strong> e <strong>importe_total</strong> ya
+                    vienen calculados automáticamente en esta plantilla al momento de ingresar el
+                    <strong>monto_dispersado</strong>.</li>
                 <li>Si cumples con todo ello tus registros serán almacenados correctamente y se te notificará aquí mismo, en
                     caso contrario, se te notificará de igual forma.</li>
             </ul>
@@ -188,8 +195,9 @@
             <hr class="my-4 mb-2">
 
             <button class="d-block mx-auto btn btn-primary btn-lg fw-bold button-custom" type="button"
-                id="button_analizar_excel" onclick="analizar_xls(['fecha_dispersion', 'project_id', 'vehicle_id', 'costo_lt', 'cant_litros', 'monto_dispersado', 'base_imponible', 'iva_acumulado', 'importe_total'])" style="background-color: rgb(161, 160, 160)"
-                disabled>Analizar excel y almacenar registros</button>
+                id="button_analizar_excel"
+                onclick="analizar_xls(['fecha_dispersion', 'project_id', 'vehicle_id', 'costo_lt', 'cant_litros', 'monto_dispersado', 'base_imponible', 'iva_acumulado', 'importe_total'])"
+                style="background-color: rgb(161, 160, 160)" disabled>Analizar excel y almacenar registros</button>
         </div>
     </div>
 @endsection

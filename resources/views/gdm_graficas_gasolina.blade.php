@@ -2,7 +2,8 @@
 
 @section('content')
     <div class="w-100 my-3 div-main">
-        <h1 class="fw-bold my-3" style="font-size: 1.8rem; text-align:justify" id="graficas_barras_gasolina">Gráficas de dispersiones de gasolina.
+        <h1 class="fw-bold my-3" style="font-size: 1.8rem; text-align:justify" id="graficas_barras_gasolina">Gráficas de
+            dispersiones de gasolina.
         </h1>
 
         <div class="w-100 div-secondary px-5 py-5 d-block">
@@ -74,7 +75,8 @@
                     </div>
 
                     <div class="col-sm-6 mx-auto" style="max-width: 100%;" id="campo_placa">
-                        <label for="vehicle_id" class="form-label fw-bold" style="font-size: 1.2rem;">Placa del vehículo</label>
+                        <label for="vehicle_id" class="form-label fw-bold" style="font-size: 1.2rem;">Placa del
+                            vehículo</label>
                         <select name="vehicle_id" id="vehicle_id" class="form-control form-select"
                             aria-label="Default select example" style="height: 3.5rem;" disabled>
                             <option value="" selected>
@@ -90,12 +92,14 @@
                     </div>
 
                     <div class="col-sm-6">
-                        <label for="opt1" class="form-label d-block fw-bold" style="font-size: 1.2rem;">Opciones personalizadas</label>
+                        <label for="opt1" class="form-label d-block fw-bold" style="font-size: 1.2rem;">Opciones
+                            personalizadas</label>
                         <div class="ps-3">
                             <div class="form-check form-check-inline">
-                                <input class="form-check-input" type="checkbox" name="proyects_inactive" id="opt1" value="true" 
-                                {{true ? "" : "disabled"}}>
-                                <label class="form-check-label fw-bold" for="opt2">Incluír proyectos concluídos actualmente.</label>
+                                <input class="form-check-input" type="checkbox" name="proyects_inactive" id="opt1"
+                                    value="true" {{ true ? '' : 'disabled' }}>
+                                <label class="form-check-label fw-bold" for="opt2">Incluír proyectos concluídos
+                                    actualmente.</label>
                             </div>
                             <!-- Aquí va el feedback para el grupo -->
                             <div class="invalid-feedback">
@@ -108,6 +112,7 @@
 
                     <button class="d-block mx-auto btn btn-primary btn-lg fw-bold button-custom" type="button"
                         onclick="ask_before_submit_new()" style="background-color: var(--botones-color);">Generar</button>
+                </div>
             </form>
         </div>
     </div>
@@ -117,14 +122,15 @@
     <div class="d-flex gap-2 justify-content-between align-items-stretch px-1 flex-wrap">
         <div class="p-3 d-inline-block rounded-3 do_responsive_div3 mx-auto"
             style="box-shadow: 0px 0px 8px 0px rgba(0,0,0,0.75) inset;">
-            <canvas id="myChartProjects_Gasoline" class="d-block mx-auto" data-xValues='["id_3", "id_4", "id_5", "id_9"]' data-yValues="[55, 49, 45, 32]"
-                data-title="$nombre"></canvas>
+            <canvas id="myChartProjects_Gasoline" class="d-block mx-auto" data-xValues='["id_3", "id_4", "id_5", "id_9"]'
+                data-yValues="[55, 49, 45, 32]" data-title="$nombre"></canvas>
         </div>
 
         <div class="p-3 d-inline-block rounded-3 do_responsive_div3 mx-auto"
             style="box-shadow: 0px 0px 8px 0px rgba(0,0,0,0.75) inset;">
-            <canvas id="myChartVehicles_Gasoline" class="d-block mx-auto" data-xValues='["id_1", "id_2", "id_3", "id_4", "id_5", "id_6", "id_7", "id_8"]' data-yValues="[55, 49, 44, 64, 55, 49, 44, 24]"
-                data-title="$nombre"></canvas>
+            <canvas id="myChartVehicles_Gasoline" class="d-block mx-auto"
+                data-xValues='["id_1", "id_2", "id_3", "id_4", "id_5", "id_6", "id_7", "id_8"]'
+                data-yValues="[55, 49, 44, 64, 55, 49, 44, 24]" data-title="$nombre"></canvas>
         </div>
     </div>
 
