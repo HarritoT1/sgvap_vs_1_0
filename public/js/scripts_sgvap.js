@@ -751,6 +751,7 @@ function generate_graphs_barras_vtc_especifico(id_canvas, xValues, yValues, titl
     var cantXvalues = xValues.length;
     document.getElementById(id_canvas).style.width = (cantXvalues * 70) + 'px !important';
     console.log("Ancho del canvas ajustado a:", (cantXvalues * 70) + 'px');
+
     //necesito generar n colores distintos.
     var barColors = [];
     for (var i = 0; i < cantXvalues; i++) {
