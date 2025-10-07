@@ -117,13 +117,13 @@
     <div class="d-flex gap-2 justify-content-between align-items-stretch px-1 flex-wrap">
         <div class="p-3 d-inline-block rounded-3 do_responsive_div3 mx-auto"
             style="box-shadow: 0px 0px 8px 0px rgba(0,0,0,0.75) inset;">
-            <canvas id="chart_projects" class="d-block mx-auto" data-xValues='["id_3", "id_4", "id_5", "id_9"]' data-yValues="[55, 49, 45, 32]"
+            <canvas id="myChartProjects_Gasoline" class="d-block mx-auto" data-xValues='["id_3", "id_4", "id_5", "id_9"]' data-yValues="[55, 49, 45, 32]"
                 data-title="$nombre"></canvas>
         </div>
 
         <div class="p-3 d-inline-block rounded-3 do_responsive_div3 mx-auto"
             style="box-shadow: 0px 0px 8px 0px rgba(0,0,0,0.75) inset;">
-            <canvas id="chart_vehicles" class="d-block mx-auto" data-xValues='["id_1", "id_2", "id_3", "id_4", "id_5", "id_6", "id_7", "id_8"]' data-yValues="[55, 49, 44, 64, 55, 49, 44, 24]"
+            <canvas id="myChartVehicles_Gasoline" class="d-block mx-auto" data-xValues='["id_1", "id_2", "id_3", "id_4", "id_5", "id_6", "id_7", "id_8"]' data-yValues="[55, 49, 44, 64, 55, 49, 44, 24]"
                 data-title="$nombre"></canvas>
         </div>
     </div>
