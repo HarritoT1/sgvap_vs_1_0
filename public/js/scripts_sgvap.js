@@ -864,6 +864,17 @@ function asig_listener_autocomputed_inputs() {
     });
 }
 
+function asig_listener_autocomputed_inputs_caseta() {
+    const base_imponible = document.getElementById('base_imponible');
+    const iva_acumulado = document.getElementById('iva_acumulado');
+    const importe_total = document.getElementById('importe_total');
+
+    document.getElementById('importe_total').addEventListener('input', function () {
+        base_imponible.value = (importe_total.value / 1.16).toFixed(2);
+        iva_acumulado.value = (importe_total.value - parseFloat(base_imponible.value)).toFixed(2);
+    });
+}
+
 function asig_listener_on_change() {
     document.getElementById('xls_gasoline').addEventListener('change', function (event) {
         const file = event.target.files[0]; // Accede al primer archivo seleccionado.
