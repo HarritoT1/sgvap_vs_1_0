@@ -3,13 +3,13 @@
 @section('content')
     <div class="w-100 my-3 div-main">
         <h1 class="fw-bold my-3" style="font-size: 1.8rem; text-align:justify" id="graficas_barras_gasolina">Gráficas de
-            dispersiones de gasolina.
+            dispersiones de caseta.
         </h1>
 
         <div class="w-100 div-secondary px-5 py-5 d-block">
             <h2 class="mb-3 fw-bold" style="font-size: 1.5rem; text-align:justify">Llena los filtros y generá las gráficas:
             </h2>
-            <form id="generar_graficas_viatico_gasolina" action="#" method="get"
+            <form id="generar_graficas_viatico_caseta" action="#" method="get"
                 enctype="application/x-www-form-urlencoded" autocomplete="off" class="needs-validation p-1" novalidate>
                 <div class="row g-3">
                     <div class="col-sm-6" style="max-width: 100%;" id="campo_mes">
@@ -122,13 +122,13 @@
     <div class="d-flex gap-2 justify-content-between align-items-stretch px-1 flex-wrap">
         <div class="p-3 d-inline-block rounded-3 do_responsive_div3 mx-auto"
             style="box-shadow: 0px 0px 8px 0px rgba(0,0,0,0.75) inset;">
-            <canvas id="myChartProjects_Gasoline" class="d-block mx-auto" data-xValues='["id_3", "id_4", "id_5", "id_9"]'
+            <canvas id="myChartProjects_Tag" class="d-block mx-auto" data-xValues='["id_3", "id_4", "id_5", "id_9"]'
                 data-yValues="[55, 49, 45, 32]" data-title="$nombre"></canvas>
         </div>
 
         <div class="p-3 d-inline-block rounded-3 do_responsive_div3 mx-auto"
             style="box-shadow: 0px 0px 8px 0px rgba(0,0,0,0.75) inset;">
-            <canvas id="myChartVehicles_Gasoline" class="d-block mx-auto"
+            <canvas id="myChartVehicles_Tag" class="d-block mx-auto"
                 data-xValues='["id_1", "id_2", "id_3", "id_4", "id_5", "id_6", "id_7", "id_8"]'
                 data-yValues="[55, 49, 44, 64, 55, 49, 44, 24]" data-title="$nombre"></canvas>
         </div>

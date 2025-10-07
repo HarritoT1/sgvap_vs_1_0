@@ -690,7 +690,8 @@ function set_required_input_vehicle_id() {
     });
 
     document.getElementById('vehicle_id').addEventListener('change', function () {
-        document.getElementById('input_find_id_proyect').required = true;
+        if (this.value === "") document.getElementById('input_find_id_proyect').required = false;
+        else document.getElementById('input_find_id_proyect').required = true;
     });
 }
 
