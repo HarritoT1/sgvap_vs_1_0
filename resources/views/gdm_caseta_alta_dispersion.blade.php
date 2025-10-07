@@ -60,7 +60,7 @@
                         <label for="base_imponible" class="form-label fw-bold w-100">Base imponible <span
                                 class="position-relative" id="msgBASE" style="cursor: pointer;">ⓘ
                                 <div class="msgFloat">
-                                    La base imponible se calcula como: Monto dispersado / 1.16
+                                    La base imponible se calcula como: Importe total / 1.16
                                 </div>
                             </span></label>
 
@@ -129,7 +129,7 @@
             </ul>
 
             <div class="p-0" style="overflow-x: auto;">
-                <img class="imageResponsive my-2" alt="img" src="{{ asset('img/gasoline_example.png') }}"
+                <img class="imageResponsive my-2" alt="img" src="{{ asset('img/caseta_example.png') }}"
                     style="width: 70rem; min-height: 4rem; max-width: none;">
             </div>
 
@@ -141,11 +141,11 @@
                 <li class="mb-2">El campo <em class="fw-bold">fecha_dispersion</em> debe de ir como una cadena texto
                     <strong>encerrada entre comillas dobles</strong>. Y cumplir el formato <strong>aaaa/mm/dd</strong>.</li>
                 <li class="mb-2">Si necesitas la plantilla base .xlsx compatible, la puedes <a
-                        class="text-decoration-none" download="dp_gasolina_formato_valido.xlsx"
-                        href="{{ asset('img/dp_gasolina_formato_valido.xlsx') }}">descargar aquí</a>. Los campos
-                    <strong>base_imponible</strong>, <strong>iva_acumulado</strong> e <strong>importe_total</strong> ya
+                        class="text-decoration-none" download="dp_caseta_formato_valido.xlsx"
+                        href="{{ asset('img/dp_caseta_formato_valido.xlsx') }}">descargar aquí</a>. Los campos
+                    <strong>base_imponible</strong> e <strong>iva_acumulado</strong> ya
                     vienen calculados automáticamente en esta plantilla al momento de ingresar el
-                    <strong>monto_dispersado</strong>.</li>
+                    <strong>importe_total</strong>.</li>
                 <li>Si cumples con todo ello tus registros serán almacenados correctamente y se te notificará aquí mismo, en
                     caso contrario, se te notificará de igual forma.</li>
             </ul>
@@ -165,7 +165,7 @@
 
             <button class="d-block mx-auto btn btn-primary btn-lg fw-bold button-custom" type="button"
                 id="button_analizar_excel"
-                onclick="analizar_xls(['fecha_dispersion', 'project_id', 'vehicle_id', 'costo_lt', 'cant_litros', 'monto_dispersado', 'base_imponible', 'iva_acumulado', 'importe_total'])"
+                onclick="analizar_xls(['fecha_dispersion', 'project_id', 'vehicle_id', 'nombre_caseta', 'base_imponible', 'iva_caseta', 'importe_total'])"
                 style="background-color: rgb(161, 160, 160)" disabled>Analizar excel y almacenar registros</button>
         </div>
     </div>
