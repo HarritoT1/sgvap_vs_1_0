@@ -378,17 +378,11 @@ div.do_responsive_div2 {
 }
 
 div.do_responsive_div3 {
-  width: 100%;
+  width: 98%;
   overflow-y: hidden;
   overflow-x: auto;
   height: 25rem;
   margin-bottom: 1.5rem;
-}
-
-@media (min-width: 1400px) {
-  div.do_responsive_div3 {
-    width: 48%;
-  }
 }
 
 .do_responsive_div3 canvas {
