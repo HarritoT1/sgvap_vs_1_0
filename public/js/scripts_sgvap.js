@@ -977,7 +977,7 @@ function analizar_xls(expectedHeadersParam) {
     }
 }
 
-async function get_results_and_show_them_like_links(endpoint) {
+async function get_results_and_show_them_like_links(endpoint, concepto_dispersion) {
     const list = document.getElementById('lista_resultados');
     if (!list.classList.contains('d-none')) list.classList.add('d-none');
     list.innerHTML = ''; // Limpiar resultados previos.
@@ -1020,8 +1020,8 @@ async function get_results_and_show_them_like_links(endpoint) {
                     a.style.textDecoration = "none";
                     a.style.textAlign = "justify";
                     a.style.color = "var(--empresa-color)";
-                    a.textContent = `Dispersión de gasolina del ${item.fecha_dispersion} para proyecto ${item.project_name} al vehículo con placa ${item.vehicle_id}.`;
-                    a.href = `/gdm_gasolina_disp_consulta_act/${item.id}`;
+                    a.textContent = `Dispersión de ${concepto_dispersion} del ${item.fecha_dispersion} para proyecto ${item.project_name} al vehículo con placa ${item.vehicle_id}.`;
+                    a.href = `/gdm_${concepto_dispersion}_disp_consulta_act/${item.id}`;
                     li.appendChild(a);
                     list.appendChild(li);
                 });

@@ -89,7 +89,7 @@
                     <hr class="my-4 mb-2">
 
                     <button class="d-block mx-auto btn btn-primary btn-lg fw-bold button-custom" type="button"
-                        onclick="get_results_and_show_them_like_links('/gasolina_disp_consulta_filtro')" style="background-color: var(--botones-color);">Consultar</button>
+                        onclick="get_results_and_show_them_like_links('/gasolina_disp_consulta_filtro', 'gasolina')" style="background-color: var(--botones-color);">Consultar</button>
             </form>
         </div>
     </div>
