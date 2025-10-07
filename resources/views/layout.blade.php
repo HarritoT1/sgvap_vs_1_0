@@ -897,13 +897,13 @@ l838 0 -282 -282 c-304 -305 -305 -307 -288 -395 9 -49 69 -109 118 -118 91
                                         </li>
                                         <li class="nav-item">
                                             <a class="nav-link d-flex align-items-center gap-2 text-white fw-bold"
-                                                href="#" target="_self">
+                                                href="/gdm_gasolina_disp_consulta_act_filtro" target="_self">
                                                 Consultar y actualizar disp. gasolina.
                                             </a>
                                         </li>
                                         <li class="nav-item">
                                             <a class="nav-link d-flex align-items-center gap-2 text-white fw-bold"
-                                                href="#" target="_self">
+                                                href="/gdm_graficas_gasolina" target="_self">
                                                 Gráficas.
                                             </a>
                                         </li>
@@ -919,19 +919,19 @@ l838 0 -282 -282 c-304 -305 -305 -307 -288 -395 9 -49 69 -109 118 -118 91
                                     <ul class="flex-column vineta" style="padding-left: 75px;">
                                         <li class="nav-item">
                                             <a class="nav-link d-flex align-items-center gap-2 text-white fw-bold"
-                                                href="#" target="_self">
+                                                href="/gdm_caseta_alta_dispersion" target="_self">
                                                 Registrar disp. caseta.
                                             </a>
                                         </li>
                                         <li class="nav-item">
                                             <a class="nav-link d-flex align-items-center gap-2 text-white fw-bold"
-                                                href="#" target="_self">
+                                                href="/gdm_caseta_disp_consulta_act_filtro" target="_self">
                                                 Consultar y actualizar disp. caseta.
                                             </a>
                                         </li>
                                         <li class="nav-item">
                                             <a class="nav-link d-flex align-items-center gap-2 text-white fw-bold"
-                                                href="#" target="_self">
+                                                href="/gdm_graficas_caseta" target="_self">
                                                 Gráficas.
                                             </a>
                                         </li>
