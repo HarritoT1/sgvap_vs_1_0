@@ -198,7 +198,7 @@
 
             <button class="d-block mx-auto btn btn-primary btn-lg fw-bold button-custom" type="button"
                 id="button_analizar_excel"
-                onclick="analizar_xls(['fecha_dispersion', 'project_id', 'rfc_hospedaje', 'razon_social', 'numero_noches', 'costo_x_noche', 'numero_personas', 'base_imponible', 'iva_hospedaje', 'importe_total])"
+                onclick="analizar_xls(['fecha_dispersion', 'project_id', 'rfc_hospedaje', 'razon_social', 'numero_noches', 'costo_x_noche', 'numero_personas', 'base_imponible', 'iva_hospedaje', 'importe_total'])"
                 style="background-color: rgb(161, 160, 160)" disabled>Analizar excel y almacenar registros</button>
         </div>
     </div>
