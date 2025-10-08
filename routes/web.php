@@ -8,84 +8,84 @@ Route::get('/', function () {
 }); //http://127.0.0.1:8000/
 
 Route::get('/login', function () {
-    return view('login'); //http://127.0.0.1:8000/login
+    return view('Login_inicio_soporte/login'); //http://127.0.0.1:8000/login
 });
 
 Route::get('/inicio', function () {
-    return view('inicio'); //http://127.0.0.1:8000/inicio
+    return view('Login_inicio_soporte/inicio'); //http://127.0.0.1:8000/inicio
 });
 
 Route::get('/contacto', function () {
-    return view('contacto'); //http://127.0.0.1:8000/contacto
+    return view('Login_inicio_soporte/contacto'); //http://127.0.0.1:8000/contacto
 });
 
 Route::get('/gp_nuevo', function () {
-    return view('gp_nuevo'); //http://127.0.0.1:8000/gp_nuevo
+    return view('Gestion_proyectos/gp_nuevo'); //http://127.0.0.1:8000/gp_nuevo
 });
 
 Route::get('/gp_consulta_act_filtro', function () {
-    return view('gp_consulta_act_filtro'); //http://127.0.0.1:8000/gp_consulta_act_filtro
+    return view('Gestion_proyectos/gp_consulta_act_filtro'); //http://127.0.0.1:8000/gp_consulta_act_filtro
 });
 
 Route::get('/gp_consulta_act', function () {
-    return view('gp_consulta_act'); //http://127.0.0.1:8000/gp_consulta_act
+    return view('Gestion_proyectos/gp_consulta_act'); //http://127.0.0.1:8000/gp_consulta_act
 });
 
 Route::get('/ge_nuevo', function () {
-    return view('ge_nuevo'); //http://127.0.0.1:8000/ge_nuevo
+    return view('Gestion_empleados/ge_nuevo'); //http://127.0.0.1:8000/ge_nuevo
 });
 
 Route::get('/ge_consulta_act_filtro', function () {
-    return view('ge_consulta_act_filtro'); //http://127.0.0.1:8000/ge_consulta_act_filtro
+    return view('Gestion_empleados/ge_consulta_act_filtro'); //http://127.0.0.1:8000/ge_consulta_act_filtro
 });
 
 Route::get('/ge_consulta_act', function () {
-    return view('ge_consulta_act'); //http://127.0.0.1:8000/ge_consulta_act
+    return view('Gestion_empleados/ge_consulta_act'); //http://127.0.0.1:8000/ge_consulta_act
 });
 
 Route::get('/ge_corte_x_dia', function () {
-    return view('ge_corte_x_dia'); //http://127.0.0.1:8000/ge_corte_x_dia
+    return view('Gestion_empleados/ge_corte_x_dia'); //http://127.0.0.1:8000/ge_corte_x_dia
 });
 
 Route::get('/ge_retiro_semanal_filtro', function () {
-    return view('ge_retiro_semanal_filtro'); //http://127.0.0.1:8000/ge_retiro_semanal_filtro
+    return view('Gestion_empleados/ge_retiro_semanal_filtro'); //http://127.0.0.1:8000/ge_retiro_semanal_filtro
 });
 
 Route::get('/ge_retiro_semanal', function () {
-    return view('ge_retiro_semanal'); //http://127.0.0.1:8000/ge_retiro_semanal
+    return view('Gestion_empleados/ge_retiro_semanal'); //http://127.0.0.1:8000/ge_retiro_semanal
 });
 
 Route::get('/ge_corte_x_mes_filtro', function () {
-    return view('ge_corte_x_mes_filtro'); //http://127.0.0.1:8000/ge_corte_x_mes_filtro
+    return view('Gestion_empleados/ge_corte_x_mes_filtro'); //http://127.0.0.1:8000/ge_corte_x_mes_filtro
 });
 
 Route::get('/ge_consulta_corte_x_año_filtro', function () {
-    return view('ge_consulta_corte_x_año_filtro'); //http://127.0.0.1:8000/ge_consulta_corte_x_año_filtro
+    return view('Gestion_empleados/ge_consulta_corte_x_año_filtro'); //http://127.0.0.1:8000/ge_consulta_corte_x_año_filtro
 });
 
 Route::get('/ge_corte_x_mes', function () {
-    return view('ge_corte_x_mes'); //http://127.0.0.1:8000/ge_corte_x_mes
+    return view('Gestion_empleados/ge_corte_x_mes'); //http://127.0.0.1:8000/ge_corte_x_mes
 });
 
 Route::get('/ge_consulta_corte_x_año_especifico', function () {
-    return view('ge_consulta_corte_x_año_especifico'); //http://127.0.0.1:8000/ge_consulta_corte_x_año_especifico
+    return view('Gestion_empleados/ge_consulta_corte_x_año_especifico'); //http://127.0.0.1:8000/ge_consulta_corte_x_año_especifico
 });
 
 Route::get('/ge_graficas_viaticos', function () {
-    return view('ge_graficas_viaticos'); //http://127.0.0.1:8000/ge_graficas_viaticos
+    return view('Gestion_empleados/ge_graficas_viaticos'); //http://127.0.0.1:8000/ge_graficas_viaticos
 });
 
 Route::get('/ge_graficas_x_viatico', function () {
-    return view('ge_graficas_x_viatico'); //http://127.0.0.1:8000/ge_graficas_x_viatico
+    return view('Gestion_empleados/ge_graficas_x_viatico'); //http://127.0.0.1:8000/ge_graficas_x_viatico
 });
 
 Route::get('/gdm_gasolina_alta_dispersion', function () {
-    return view('gdm_gasolina_alta_dispersion'); //http://127.0.0.1:8000/gdm_gasolina_alta_dispersion
+    return view('Gestion_dispersiones_monetarias/gdm_gasolina_alta_dispersion'); //http://127.0.0.1:8000/gdm_gasolina_alta_dispersion
 });
 
 
 Route::get('/gdm_gasolina_disp_consulta_act_filtro', function () {
-    return view('gdm_gasolina_disp_consulta_act_filtro'); //http://127.0.0.1:8000/gdm_gasolina_disp_consulta_act_filtro
+    return view('Gestion_dispersiones_monetarias/gdm_gasolina_disp_consulta_act_filtro'); //http://127.0.0.1:8000/gdm_gasolina_disp_consulta_act_filtro
 });
 
 Route::post('/gasolina_disp_consulta_filtro', function () {
@@ -93,19 +93,19 @@ Route::post('/gasolina_disp_consulta_filtro', function () {
 });
 
 Route::get('/gdm_gasolina_disp_consulta_act', function () {
-    return view('gdm_gasolina_disp_consulta_act'); //http://127.0.0.1:8000/gdm_gasolina_disp_consulta_act
+    return view('Gestion_dispersiones_monetarias/gdm_gasolina_disp_consulta_act'); //http://127.0.0.1:8000/gdm_gasolina_disp_consulta_act
 });
 
 Route::get('/gdm_graficas_gasolina', function () {
-    return view('gdm_graficas_gasolina'); //http://127.0.0.1:8000/gdm_graficas_gasolina
+    return view('Gestion_dispersiones_monetarias/gdm_graficas_gasolina'); //http://127.0.0.1:8000/gdm_graficas_gasolina
 });
 
 Route::get('/gdm_caseta_alta_dispersion', function () {
-    return view('gdm_caseta_alta_dispersion'); //http://127.0.0.1:8000/gdm_caseta_alta_dispersion
+    return view('Gestion_dispersiones_monetarias/gdm_caseta_alta_dispersion'); //http://127.0.0.1:8000/gdm_caseta_alta_dispersion
 });
 
 Route::get('/gdm_caseta_disp_consulta_act_filtro', function () {
-    return view('gdm_caseta_disp_consulta_act_filtro'); //http://127.0.0.1:8000/gdm_caseta_disp_consulta_act_filtro
+    return view('Gestion_dispersiones_monetarias/gdm_caseta_disp_consulta_act_filtro'); //http://127.0.0.1:8000/gdm_caseta_disp_consulta_act_filtro
 });
 
 Route::post('/caseta_disp_consulta_filtro', function () {
@@ -113,19 +113,19 @@ Route::post('/caseta_disp_consulta_filtro', function () {
 });
 
 Route::get('/gdm_caseta_disp_consulta_act', function () {
-    return view('gdm_caseta_disp_consulta_act'); //http://127.0.0.1:8000/gdm_caseta_disp_consulta_act
+    return view('Gestion_dispersiones_monetarias/gdm_caseta_disp_consulta_act'); //http://127.0.0.1:8000/gdm_caseta_disp_consulta_act
 });
 
 Route::get('/gdm_graficas_caseta', function () {
-    return view('gdm_graficas_caseta'); //http://127.0.0.1:8000/gdm_graficas_caseta
+    return view('Gestion_dispersiones_monetarias/gdm_graficas_caseta'); //http://127.0.0.1:8000/gdm_graficas_caseta
 });
 
 Route::get('/gdm_hospedaje_alta_dispersion', function () {
-    return view('gdm_hospedaje_alta_dispersion'); //http://127.0.0.1:8000/gdm_hospedaje_alta_dispersion
+    return view('Gestion_dispersiones_monetarias/gdm_hospedaje_alta_dispersion'); //http://127.0.0.1:8000/gdm_hospedaje_alta_dispersion
 });
 
 Route::get('/gdm_hospedaje_disp_consulta_act_filtro', function () {
-    return view('gdm_hospedaje_disp_consulta_act_filtro'); //http://127.0.0.1:8000/gdm_hospedaje_disp_consulta_act_filtro
+    return view('Gestion_dispersiones_monetarias/gdm_hospedaje_disp_consulta_act_filtro'); //http://127.0.0.1:8000/gdm_hospedaje_disp_consulta_act_filtro
 });
 
 Route::post('/hospedaje_disp_consulta_filtro', function () {
@@ -133,9 +133,9 @@ Route::post('/hospedaje_disp_consulta_filtro', function () {
 });
 
 Route::get('/gdm_hospedaje_disp_consulta_act', function () {
-    return view('gdm_hospedaje_disp_consulta_act'); //http://127.0.0.1:8000/gdm_hospedaje_disp_consulta_act
+    return view('Gestion_dispersiones_monetarias/gdm_hospedaje_disp_consulta_act'); //http://127.0.0.1:8000/gdm_hospedaje_disp_consulta_act
 });
 
 Route::get('/gdm_graficas_hospedaje', function () {
-    return view('gdm_graficas_hospedaje'); //http://127.0.0.1:8000/gdm_graficas_hospedaje
+    return view('Gestion_dispersiones_monetarias/gdm_graficas_hospedaje'); //http://127.0.0.1:8000/gdm_graficas_hospedaje
 });
