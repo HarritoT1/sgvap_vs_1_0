@@ -938,16 +938,27 @@ function analizar_xls(expectedHeadersParam) {
                 return;
             }
 
+            let campo_vacio = false;
+
             // Convertir filas a objetos.
             const objects = rows.map(row => {
                 let obj = {};
                 headers.forEach((h, i) => {
                     if (typeof row[i] === 'string' && h === 'fecha_dispersion') obj[h] = row[i].replaceAll('"', '').trim();
-                    if (typeof row[i] === 'number') obj[h] = Number(row[i].toFixed(3));
-                    else obj[h] = row[i] !== undefined ? row[i] : null;
+                    else if (typeof row[i] === 'number') obj[h] = Number(row[i].toFixed(3));
+                    else if (typeof row[i] !== 'undefined') obj[h] = row[i] !== undefined ? row[i] : null;
+                    else {
+                        campo_vacio = true;
+                    }
                 });
                 return obj;
             });
+
+            if (campo_vacio) {
+                alert("¡Ups!. Al parecer te falta llenar un campo.");
+                window.location.reload();
+                return;
+            }
 
             console.log("Objetos generados:", objects);
 

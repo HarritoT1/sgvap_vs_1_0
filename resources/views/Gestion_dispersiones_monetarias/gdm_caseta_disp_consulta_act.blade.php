@@ -76,20 +76,20 @@
                     </div>
 
                     <div class="col-sm-6">
-                        <label for="iva_acumulado" class="form-label fw-bold w-100">IVA acumulado <span
+                        <label for="iva_caseta" class="form-label fw-bold w-100">IVA de la caseta <span
                                 class="position-relative" id="msgIVA" style="cursor: pointer;">ⓘ
                                 <div class="msgFloat">
-                                    El IVA acumulado se calcula como: Base imponible * 0.16
+                                    El IVA de caseta se calcula como: Base imponible * 0.16
                                 </div>
                             </span>
                         </label>
                         <div class="input-group">
                             <span class="input-group-text">$</span>
                             <input type="number" class="form-control" aria-label="Amount (to the nearest dollar)"
-                                id="iva_acumulado" name="iva_acumulado" placeholder="0.000" step="0.000001" min="0"
+                                id="iva_caseta" name="iva_caseta" placeholder="0.000" step="0.000001" min="0"
                                 value="" required readonly>
                             <div class="invalid-feedback">
-                                Ingresa un IVA acumulado válido.
+                                Ingresa un IVA de caseta válido.
                             </div>
                         </div>
                     </div>
