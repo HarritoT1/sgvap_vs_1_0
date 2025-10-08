@@ -49,36 +49,39 @@
                         </div>
                     </div>
 
-                    <div class="mb-3">
-                        <label for="numero_noches" class="form-label">Número de noches</label>
-                        <input type="number" class="form-control" id="numero_noches" name="numero_noches" min="1" placeholder="" value="" required>
-                        <div class="invalid-feedback">
-                            Ingresa un número de noches válido.
-                        </div>
-                    </div>
-
                     <div class="col-sm-6">
-                        <label for="cant_litros" class="form-label fw-bold">Cantidad de lts. de gasolina</label>
+                        <label for="numero_noches" class="form-label fw-bold">Número de noches</label>
                         <div class="input-group">
-                            <span class="input-group-text">$</span>
-                            <input type="number" class="form-control" aria-label="Amount (to the nearest dollar)"
-                                id="cant_litros" name="cant_litros" placeholder="0.0000" step="0.0001" min="0"
-                                value="" required>
+                            <span class="input-group-text">🌙</span>
+                            <input type="number" class="form-control" id="numero_noches" name="numero_noches"
+                                min="1" placeholder="" step="1" value="" required>
                             <div class="invalid-feedback">
-                                Ingresa una cantidad de lts. de gasolina válida.
+                                Ingresa un número de noches válido.
                             </div>
                         </div>
                     </div>
 
                     <div class="col-sm-6">
-                        <label for="monto_dispersado" class="form-label fw-bold">Monto dispersado</label>
+                        <label for="costo_x_noche" class="form-label fw-bold">Costo por noche</label>
                         <div class="input-group">
                             <span class="input-group-text">$</span>
                             <input type="number" class="form-control" aria-label="Amount (to the nearest dollar)"
-                                id="monto_dispersado" name="monto_dispersado" placeholder="0.000" step="0.000001"
-                                min="0" value="" required>
+                                id="costo_x_noche" name="costo_x_noche" placeholder="0.000" step="0.0000001" min="0"
+                                value="" required>
                             <div class="invalid-feedback">
-                                Ingresa un monto dispersado válido.
+                                Ingresa un monto válido.
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="col-sm-6">
+                        <label for="numero_personas" class="form-label fw-bold">Número de personas hospedadas</label>
+                        <div class="input-group">
+                            <span class="input-group-text">👤</span>
+                            <input type="number" class="form-control" id="numero_personas" name="numero_personas"
+                                min="1" placeholder="" step="1" value="" required>
+                            <div class="invalid-feedback">
+                                Ingresa un número de personas hospedadas válido.
                             </div>
                         </div>
                     </div>
@@ -87,7 +90,7 @@
                         <label for="base_imponible" class="form-label fw-bold w-100">Base imponible <span
                                 class="position-relative" id="msgBASE" style="cursor: pointer;">ⓘ
                                 <div class="msgFloat">
-                                    La base imponible se calcula como: Monto dispersado / 1.16
+                                    La base imponible se calcula como: Importe total / 1.16
                                 </div>
                             </span></label>
 
@@ -127,7 +130,7 @@
                             <span class="input-group-text">$</span>
                             <input type="number" class="form-control" aria-label="Amount (to the nearest dollar)"
                                 id="importe_total" name="importe_total" placeholder="0.000" step="0.000001"
-                                min="0" value="" required readonly>
+                                min="0" value="" required>
                             <div class="invalid-feedback">
                                 Ingresa un importe total válido.
                             </div>
