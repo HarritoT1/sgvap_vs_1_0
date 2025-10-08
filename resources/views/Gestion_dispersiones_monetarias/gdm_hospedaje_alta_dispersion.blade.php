@@ -109,7 +109,7 @@
                         <label for="iva_hospedaje" class="form-label fw-bold w-100">IVA de hospedaje <span
                                 class="position-relative" id="msgIVA" style="cursor: pointer;">ⓘ
                                 <div class="msgFloat">
-                                    El IVA acumulado se calcula como: Base imponible * 0.16
+                                    El IVA de hospedaje se calcula como: Base imponible * 0.16
                                 </div>
                             </span>
                         </label>
@@ -119,7 +119,7 @@
                                 id="iva_hospedaje" name="iva_hospedaje" placeholder="0.000" step="0.000001"
                                 min="0" value="" required readonly>
                             <div class="invalid-feedback">
-                                Ingresa un IVA válido.
+                                Ingresa un IVA de hospedaje válido.
                             </div>
                         </div>
                     </div>
@@ -148,7 +148,7 @@
             </form>
 
             <h2 class="mb-3 fw-bold" style="font-size: 1.5rem; text-align: justify">Importar excel para registro de
-                dispersiones de gasolina automaticamente.</h2>
+                dispersiones de hospedaje automaticamente.</h2>
 
             <h3 class="my-3 fw-bold" style="font-size: 1.3rem; text-align: justify">Tu archivo tiene que cumplir algunos
                 criterios para ser apto:</h3>
@@ -160,7 +160,7 @@
             </ul>
 
             <div class="p-0" style="overflow-x: auto;">
-                <img class="imageResponsive my-2" alt="img" src="{{ asset('img/gasoline_example.png') }}"
+                <img class="imageResponsive my-2" alt="img" src="{{ asset('img/hospedaje_example.png') }}"
                     style="width: 70rem; min-height: 4rem; max-width: none;">
             </div>
 
@@ -170,14 +170,14 @@
                     tu tabla.</li>
                 <li class="mb-2">La hoja de cálculo de los registros a almacenar debe ser la primera.</li>
                 <li class="mb-2">El campo <em class="fw-bold">fecha_dispersion</em> debe de ir como una cadena texto
-                    <strong>encerrada entre comillas dobles</strong>. Y cumplir el formato <strong>aaaa/mm/dd</strong>.
+                    <strong>encerrada entre comillas dobles</strong>. Y cumplir el formato <strong>aaaa-mm-dd</strong>.
                 </li>
                 <li class="mb-2">Si necesitas la plantilla base .xlsx compatible, la puedes <a
-                        class="text-decoration-none" download="dp_gasolina_formato_valido.xlsx"
-                        href="{{ asset('img/dp_gasolina_formato_valido.xlsx') }}">descargar aquí</a>. Los campos
-                    <strong>base_imponible</strong>, <strong>iva_acumulado</strong> e <strong>importe_total</strong> ya
+                        class="text-decoration-none" download="dp_hospedaje_formato_valido.xlsx"
+                        href="{{ asset('img/dp_hospedaje_formato_valido.xlsx') }}">descargar aquí</a>. Los campos
+                    <strong>base_imponible</strong> e <strong>iva_hospedaje</strong> ya
                     vienen calculados automáticamente en esta plantilla al momento de ingresar el
-                    <strong>monto_dispersado</strong>.
+                    <strong>importe_total</strong>.
                 </li>
                 <li>Si cumples con todo ello tus registros serán almacenados correctamente y se te notificará aquí mismo, en
                     caso contrario, se te notificará de igual forma.</li>
@@ -198,7 +198,7 @@
 
             <button class="d-block mx-auto btn btn-primary btn-lg fw-bold button-custom" type="button"
                 id="button_analizar_excel"
-                onclick="analizar_xls(['fecha_dispersion', 'project_id', 'vehicle_id', 'costo_lt', 'cant_litros', 'monto_dispersado', 'base_imponible', 'iva_acumulado', 'importe_total'])"
+                onclick="analizar_xls(['fecha_dispersion', 'project_id', 'rfc_hospedaje', 'razon_social', 'numero_noches', 'costo_x_noche', 'numero_personas', 'base_imponible', 'iva_hospedaje', 'importe_total])"
                 style="background-color: rgb(161, 160, 160)" disabled>Analizar excel y almacenar registros</button>
         </div>
     </div>

@@ -140,12 +140,12 @@
                     tu tabla.</li>
                 <li class="mb-2">La hoja de cálculo de los registros a almacenar debe ser la primera.</li>
                 <li class="mb-2">El campo <em class="fw-bold">fecha_dispersion</em> debe de ir como una cadena texto
-                    <strong>encerrada entre comillas dobles</strong>. Y cumplir el formato <strong>aaaa/mm/dd</strong>.
+                    <strong>encerrada entre comillas dobles</strong>. Y cumplir el formato <strong>aaaa-mm-dd</strong>.
                 </li>
                 <li class="mb-2">Si necesitas la plantilla base .xlsx compatible, la puedes <a
                         class="text-decoration-none" download="dp_caseta_formato_valido.xlsx"
                         href="{{ asset('img/dp_caseta_formato_valido.xlsx') }}">descargar aquí</a>. Los campos
-                    <strong>base_imponible</strong> e <strong>iva_acumulado</strong> ya
+                    <strong>base_imponible</strong> e <strong>iva_caseta</strong> ya
                     vienen calculados automáticamente en esta plantilla al momento de ingresar el
                     <strong>importe_total</strong>.
                 </li>

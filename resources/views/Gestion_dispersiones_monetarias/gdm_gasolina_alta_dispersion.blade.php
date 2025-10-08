@@ -170,7 +170,7 @@
                     tu tabla.</li>
                 <li class="mb-2">La hoja de cálculo de los registros a almacenar debe ser la primera.</li>
                 <li class="mb-2">El campo <em class="fw-bold">fecha_dispersion</em> debe de ir como una cadena texto
-                    <strong>encerrada entre comillas dobles</strong>. Y cumplir el formato <strong>aaaa/mm/dd</strong>.</li>
+                    <strong>encerrada entre comillas dobles</strong>. Y cumplir el formato <strong>aaaa-mm-dd</strong>.</li>
                 <li class="mb-2">Si necesitas la plantilla base .xlsx compatible, la puedes <a
                         class="text-decoration-none" download="dp_gasolina_formato_valido.xlsx"
                         href="{{ asset('img/dp_gasolina_formato_valido.xlsx') }}">descargar aquí</a>. Los campos
