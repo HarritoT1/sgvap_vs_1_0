@@ -745,7 +745,7 @@ l838 0 -282 -282 c-304 -305 -305 -307 -288 -395 9 -49 69 -109 118 -118 91
     <header class="navbar sticky-top flex-md-nowrap p-0 shadow" data-bs-theme="dark"
         style="background-color: var(--empresa-color);">
         <a class="navbar-brand col-md-3 col-lg-2 me-0 px-3 fs-6 text-white name-enterprise" href="#bodysgvap"
-            target="_self">E
+            target="_self" title="Subir">E
             Core Network S.A de C.V.</a>
 
         <ul class="navbar-nav flex-row d-md-none">

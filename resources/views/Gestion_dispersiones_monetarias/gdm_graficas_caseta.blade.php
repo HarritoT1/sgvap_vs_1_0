@@ -92,13 +92,13 @@
                     </div>
 
                     <div class="col-sm-6">
-                        <label for="opt1" class="form-label d-block fw-bold" style="font-size: 1.2rem;">Opciones
+                        <label class="form-label d-block fw-bold" style="font-size: 1.2rem;">Opciones
                             personalizadas</label>
                         <div class="ps-3">
                             <div class="form-check form-check-inline">
                                 <input class="form-check-input" type="checkbox" name="proyects_inactive" id="opt1"
                                     value="true" {{ true ? '' : 'disabled' }}>
-                                <label class="form-check-label fw-bold" for="opt2">Incluír proyectos concluídos
+                                <label class="form-check-label fw-bold" for="opt1">Incluír proyectos concluídos
                                     actualmente.</label>
                             </div>
                             <!-- Aquí va el feedback para el grupo -->
