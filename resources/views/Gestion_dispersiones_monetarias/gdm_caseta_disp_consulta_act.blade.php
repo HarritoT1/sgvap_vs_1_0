@@ -95,7 +95,7 @@
                     </div>
 
                     <div class="col-sm-6 mx-auto">
-                        <label for="importe_total" class="form-label fw-bold">Importe total</label>
+                        <label for="importe_total" class="form-label fw-bold" id="label_caseta_importe_total">Importe total</label>
                         <div class="input-group">
                             <span class="input-group-text">$</span>
                             <input type="number" class="form-control" aria-label="Amount (to the nearest dollar)"
