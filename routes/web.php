@@ -119,3 +119,23 @@ Route::get('/gdm_caseta_disp_consulta_act', function () {
 Route::get('/gdm_graficas_caseta', function () {
     return view('gdm_graficas_caseta'); //http://127.0.0.1:8000/gdm_graficas_caseta
 });
+
+Route::get('/gdm_hospedaje_alta_dispersion', function () {
+    return view('gdm_hospedaje_alta_dispersion'); //http://127.0.0.1:8000/gdm_hospedaje_alta_dispersion
+});
+
+Route::get('/gdm_hospedaje_disp_consulta_act_filtro', function () {
+    return view('gdm_hospedaje_disp_consulta_act_filtro'); //http://127.0.0.1:8000/gdm_hospedaje_disp_consulta_act_filtro
+});
+
+Route::post('/hospedaje_disp_consulta_filtro', function () {
+    return response()->json([["id" => 1, "fecha_dispersion" => "2025-12-24", "project_name" => "uetamo", "vehicle_id" => "ASFG-AH4D"], ["id" => 2, "fecha_dispersion" => "2025-12-25", "project_name" => "parajilla", "vehicle_id" => "ZXCW-RT56"], ["id" => 3, "fecha_dispersion" => "2025-12-26", "project_name" => "zacatenco", "vehicle_id" => "QWER-YUI7"]]);
+});
+
+Route::get('/gdm_hospedaje_disp_consulta_act', function () {
+    return view('gdm_hospedaje_disp_consulta_act'); //http://127.0.0.1:8000/gdm_hospedaje_disp_consulta_act
+});
+
+Route::get('/gdm_graficas_hospedaje', function () {
+    return view('gdm_graficas_hospedaje'); //http://127.0.0.1:8000/gdm_graficas_hospedaje
+});
