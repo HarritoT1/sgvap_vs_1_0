@@ -953,13 +953,13 @@ l838 0 -282 -282 c-304 -305 -305 -307 -288 -395 9 -49 69 -109 118 -118 91
                                         </li>
                                         <li class="nav-item">
                                             <a class="nav-link d-flex align-items-center gap-2 text-white fw-bold"
-                                                href="#" target="_self">
+                                                href="/gdm_hospedaje_disp_consulta_act_filtro" target="_self">
                                                 Consultar y actualizar disp. hospedaje.
                                             </a>
                                         </li>
                                         <li class="nav-item">
                                             <a class="nav-link d-flex align-items-center gap-2 text-white fw-bold"
-                                                href="#" target="_self">
+                                                href="/gdm_graficas_hospedaje" target="_self">
                                                 Gráficas.
                                             </a>
                                         </li>

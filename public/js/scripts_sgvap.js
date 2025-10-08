@@ -1043,7 +1043,12 @@ async function get_results_and_show_them_like_links(endpoint, concepto_dispersio
                     a.style.textDecoration = "none";
                     a.style.textAlign = "justify";
                     a.style.color = "var(--empresa-color)";
-                    a.textContent = `Dispersión de ${concepto_dispersion} del ${item.fecha_dispersion} para proyecto ${item.project_name} al vehículo con placa ${item.vehicle_id}.`;
+                    if (concepto_dispersion === 'hospedaje') {
+                        a.textContent = `Dispersión de ${concepto_dispersion} del ${item.fecha_dispersion} para proyecto ${item.project_name} en el hospedaje ${item.razon_social}.`;
+                    }
+                    else {
+                        a.textContent = `Dispersión de ${concepto_dispersion} del ${item.fecha_dispersion} para proyecto ${item.project_name} al vehículo con placa ${item.vehicle_id}.`;
+                    }
                     a.href = `/gdm_${concepto_dispersion}_disp_consulta_act/${item.id}`;
                     li.appendChild(a);
                     list.appendChild(li);

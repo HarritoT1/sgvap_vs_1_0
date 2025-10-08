@@ -113,4 +113,7 @@
             style="text-align:justify; overflow-y: auto; overflow-x: hidden; height: 22rem; padding-right: 2rem;"
             id="lista_resultados"></ul>
     </div>
+
+    <br>
+    <br>
 @endsection
