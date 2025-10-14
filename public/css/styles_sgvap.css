@@ -449,3 +449,10 @@ input.checklist:not(:checked) {
 input.checklist:hover {
   cursor: pointer;
 }
+
+@media (max-width: 576px) {
+  div#caracteristicas_2 {
+    margin-top: 0px;
+    padding-left: 13px;
+  }
+}
