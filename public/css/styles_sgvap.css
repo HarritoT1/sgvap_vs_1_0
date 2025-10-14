@@ -426,3 +426,26 @@ span#msgBASE:hover div.msgFloat {
   width: 16rem;
   /* este cambio sí se puede animar */
 }
+
+input.checklist:focus {
+  outline: none !important;
+  background-color: none !important;
+  box-shadow: none !important;
+  -webkit-box-shadow: none !important;
+  -moz-box-shadow: none !important;
+  border: none !important;
+}
+
+input.checklist:checked {
+  outline: 3px solid rgb(5, 209, 250) !important;
+  background-color: var(--color-4) !important;
+  border: 1px solid var(--botones-color) !important;
+}
+
+input.checklist:not(:checked) {
+  background-color: rgb(188, 188, 188) !important;
+}
+
+input.checklist:hover {
+  cursor: pointer;
+}

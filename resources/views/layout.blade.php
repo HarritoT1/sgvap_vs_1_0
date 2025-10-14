@@ -18,6 +18,9 @@
     <link rel="stylesheet" href="{{ asset('css/styles_sgvap.css') }}" />
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@docsearch/css@3">
     <script src="{{ asset('js/scripts_sgvap.js') }}" type="text/javascript"></script>
+    <script src="{{ asset('js/scripts_sgvap_2.js') }}" type="text/javascript"></script>
+    <script src="{{ asset('js/jspdf.umd.min.js') }}" type="text/javascript"></script>
+    <script src="{{ asset('js/jspdf.plugin.autotable.min.js') }}" type="text/javascript"></script>
     <link href="{{ asset('css/checkout.css') }}" rel="stylesheet">
     <link href="{{ asset('css/modals.css') }}" rel="stylesheet">
     <link href="{{ asset('css/bootstrap.min.css') }}" rel="stylesheet">

@@ -139,3 +139,7 @@ Route::get('/gdm_hospedaje_disp_consulta_act', function () {
 Route::get('/gdm_graficas_hospedaje', function () {
     return view('Gestion_dispersiones_monetarias/gdm_graficas_hospedaje'); //http://127.0.0.1:8000/gdm_graficas_hospedaje
 });
+
+Route::get('/gv_registro_vehiculos', function () {
+    return view('Gestion_vehiculos//gv_registro_vehiculos'); //http://127.0.0.1:8000/gv_registro_vehiculos
+});
