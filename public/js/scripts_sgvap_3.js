@@ -44,7 +44,7 @@ function ask_before_submit_with_files() {
         let valoresOriginales2 ={}
 
         const huboCambios = Array.from(inputs).some(
-            (input, index) => {
+            (input) => {
                 if (!(input.type === 'radio') && !(input.type === 'checkbox')) valoresOriginales2[input.name] = input.value;
                 if (input.type === 'radio' && input.checked === true) valoresOriginales2[input.name] = input.value;
                 if (input.type === 'checkbox') valoresOriginales2[input.value] = input.checked;
