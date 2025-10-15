@@ -94,7 +94,7 @@
                     <div class="mx-auto mt-4" style="width: 25rem;">
                         <label for="ruta_foto_1" class="form-label d-block w-100" style="cursor: pointer;"
                             title="Cambiar fotografía">
-                            <img id="prev_foto" class="imageResponsive my-2" alt="img" src="{{ asset('img/sin_img.jpg') }}"
+                            <img id="prev_foto" class="imageResponsive my-2 img_file" alt="img" src="{{ asset('img/sin_img.jpg') }}"
                                 style="width: 15rem; border-radius: 15px; box-shadow: -1px 3px 10px 4px rgba(0,0,0,0.75); height: 12rem;">
                         </label>
                         <input type="file" class="form-control mt-4 mb-3" id="ruta_foto_1" name="ruta_foto_1"
@@ -262,7 +262,7 @@
                             </button>
                             <button style="height: 100%; width:4rem; padding: 0px; !important" type="button"
                                 class="button-custom btn rounded-3 m-0" disabled id="save"
-                                onclick="ask_before_submit()">
+                                onclick="ask_before_submit_with_files()">
                                 <img src="{{ asset('img/guardar.png') }}" alt="guardar"
                                     style="height: 100%; width: 4rem;">
                             </button>
