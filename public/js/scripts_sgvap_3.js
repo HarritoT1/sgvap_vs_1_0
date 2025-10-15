@@ -5,13 +5,13 @@ function asig_listener_change_vehicle_foto_prev() {
         if (file) {
             const reader = new FileReader();
             reader.onload = function (e) {
-                document.getElementById('prev_foto').src = e.target.result;
+                document.getElementById('prev_foto_1').src = e.target.result;
             };
             reader.readAsDataURL(file);
         }
 
         else {
-            document.getElementById('prev_foto').src = "http://127.0.0.1:8000/img/sin_img.jpg";
+            document.getElementById('prev_foto_1').src = "http://127.0.0.1:8000/img/sin_img.jpg";
         }
     });
 }
