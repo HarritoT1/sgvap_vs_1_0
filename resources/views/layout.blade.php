@@ -984,25 +984,25 @@ l838 0 -282 -282 c-304 -305 -305 -307 -288 -395 9 -49 69 -109 118 -118 91
                                     <ul class="flex-column vineta">
                                         <li class="nav-item">
                                             <a class="nav-link d-flex align-items-center gap-2 text-white fw-bold"
-                                                href="#" target="_self">
+                                                href="/gv_registro_vehiculos" target="_self">
                                                 Registro vehícular.
                                             </a>
                                         </li>
                                         <li class="nav-item">
                                             <a class="nav-link d-flex align-items-center gap-2 text-white fw-bold"
-                                                href="#" target="_self">
+                                                href="/gv_consulta_act_filtro" target="_self">
                                                 Consulta y act. de vehículos.
                                             </a>
                                         </li>
                                         <li class="nav-item">
                                             <a class="nav-link d-flex align-items-center gap-2 text-white fw-bold"
-                                                href="#" target="_self">
+                                                href="/gv_registro_prestamos" target="_self">
                                                 Préstamo vehícular.
                                             </a>
                                         </li>
                                         <li class="nav-item">
                                             <a class="nav-link d-flex align-items-center gap-2 text-white fw-bold"
-                                                href="#" target="_self">
+                                                href="/gv_consulta_act_prestamos_filtro" target="_self">
                                                 Consulta y act. de prestamos.
                                             </a>
                                         </li>
