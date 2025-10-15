@@ -446,7 +446,7 @@ input.checklist:not(:checked) {
   background-color: rgb(188, 188, 188) !important;
 }
 
-input.checklist:hover {
+input.checklist:hover, select:hover, option:hover {
   cursor: pointer;
 }
 
@@ -456,3 +456,4 @@ input.checklist:hover {
     padding-left: 13px;
   }
 }
+
