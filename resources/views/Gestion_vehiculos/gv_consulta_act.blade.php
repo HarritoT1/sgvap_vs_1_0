@@ -94,8 +94,8 @@
                     <div class="mx-auto mt-4" style="width: 25rem;">
                         <label for="ruta_foto_1" class="form-label d-block w-100" style="cursor: pointer;"
                             title="Cambiar fotografía">
-                            <img class="imageResponsive my-2" alt="img" src="{{ asset('img/prueba_seat.jpg') }}"
-                                style="width: 15rem; border-radius: 15px; box-shadow: -1px 3px 10px 4px rgba(0,0,0,0.75);">
+                            <img id="prev_foto" class="imageResponsive my-2" alt="img" src="{{ asset('img/sin_img.jpg') }}"
+                                style="width: 15rem; border-radius: 15px; box-shadow: -1px 3px 10px 4px rgba(0,0,0,0.75); height: 12rem;">
                         </label>
                         <input type="file" class="form-control mt-4 mb-3" id="ruta_foto_1" name="ruta_foto_1"
                             accept="image/png, image/jpeg, image/webp, image/gif" disabled>
@@ -238,9 +238,9 @@
 
                     <div class="col-12 mb-3">
                         <label for="obs_gral" class="form-label fw-bold">Observación general descriptiva:</label>
-                        <div class="input-group" style="height: 10rem !important;">
+                        <div class="input-group" style="min-height: 10rem !important;">
                             <span class="input-group-text">📝</span>
-                            <textarea id="obs_gral" name="obs_gral" class="form-control" aria-label="Obs_gral" maxlength="500" disabled></textarea>
+                            <textarea id="obs_gral" name="obs_gral" class="form-control" aria-label="Notas" maxlength="500" disabled style="resize: none; overflow-y: auto;"></textarea>
                         </div>
                     </div>
 

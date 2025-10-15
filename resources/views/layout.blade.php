@@ -19,6 +19,7 @@
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@docsearch/css@3">
     <script src="{{ asset('js/scripts_sgvap.js') }}" type="text/javascript"></script>
     <script src="{{ asset('js/scripts_sgvap_2.js') }}" type="text/javascript"></script>
+    <script src="{{ asset('js/scripts_sgvap_3.js') }}" type="text/javascript"></script>
     <script src="{{ asset('js/jspdf.umd.min.js') }}" type="text/javascript"></script>
     <script src="{{ asset('js/jspdf.plugin.autotable.min.js') }}" type="text/javascript"></script>
     <link href="{{ asset('css/checkout.css') }}" rel="stylesheet">
@@ -1087,6 +1088,9 @@ l838 0 -282 -282 c-304 -305 -305 -307 -288 -395 9 -49 69 -109 118 -118 91
             }
             if (document.getElementById("xls_gasoline")) {
                 asig_listener_on_change()
+            }
+            if (document.getElementById("actualizar_version_2")) {
+                asig_listener_change_vehicle_foto_prev()
             }
         });
     </script>
