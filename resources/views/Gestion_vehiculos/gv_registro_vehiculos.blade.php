@@ -78,7 +78,7 @@
 
                     <hr class="my-4 mb-2">
 
-                    <h2 class="mb-3 fw-bold" style="font-size: 1.5rem;">Selecciona los ítems del estado actual del vehículo:
+                    <h2 class="mb-3 fw-bold" style="font-size: 1.5rem; text-align:justify;">Selecciona los ítems del estado actual del vehículo:
                     </h2>
 
                     <div class="row align-items-center justify-content-evenly g-3 mt-0">
