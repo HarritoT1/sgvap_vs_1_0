@@ -160,6 +160,10 @@ Route::get('/gv_consulta_act_prestamos_filtro', function () {
     return view('Gestion_vehiculos/gv_consulta_act_prestamos_filtro'); //http://127.0.0.1:8000/gv_consulta_act_prestamos_filtro
 });
 
+Route::post('/prestamo_consulta_filtro', function () {
+    return response()->json([["id" => 1, "fecha_prestamo" => "2025-12-24", "employee_name" => "Miguel Angel Mancera", "vehicle_id" => "ASFG-AH4D"], ["id" => 2, "fecha_prestamo" => "2025-12-25", "employee_name" => "Jose Cruz", "vehicle_id" => "AFGG-AH4B"], ["id" => 3, "fecha_prestamo" => "2025-12-26", "employee_name" => "Luis Joel", "vehicle_id" => "AHIG-AH4A"], ["id" => 4, "fecha_prestamo" => "2025-12-27", "employee_name" => "Victor Manuel", "vehicle_id" => "AJKG-AH4C"]]);
+});
+
 Route::get('/gv_consulta_act_prestamos', function () {
     return view('Gestion_vehiculos/gv_consulta_act_prestamos'); //http://127.0.0.1:8000/gv_consulta_act_prestamos
 });
