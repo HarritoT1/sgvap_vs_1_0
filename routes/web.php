@@ -147,3 +147,7 @@ Route::get('/gv_registro_vehiculos', function () {
 Route::get('/gv_consulta_act_filtro', function () {
     return view('Gestion_vehiculos/gv_consulta_act_filtro'); //http://127.0.0.1:8000/gv_consulta_act_filtro
 });
+
+Route::get('/gv_consulta_act', function () {
+    return view('Gestion_vehiculos/gv_consulta_act'); //http://127.0.0.1:8000/gv_consulta_act
+});
