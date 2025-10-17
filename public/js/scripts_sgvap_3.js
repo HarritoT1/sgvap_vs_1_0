@@ -1,17 +1,21 @@
 function asig_listener_change_vehicle_foto_prev() {
-    document.getElementById('ruta_foto_1').addEventListener('change', function (event) {
-        console.log("Evento change generado.");
-        const file = event.target.files[0]; //
-        if (file) {
-            const reader = new FileReader();
-            reader.onload = function (e) {
-                document.getElementById('prev_foto_1').src = e.target.result;
-            };
-            reader.readAsDataURL(file);
-        }
+    document.querySelectorAll('input[type="file"]').forEach((input, index) => {
+        if (input.id !== "politica") {
+            input.addEventListener('change', function (event) {
+                console.log("Evento change generado.");
+                const file = event.target.files[0]; //
+                if (file) {
+                    const reader = new FileReader();
+                    reader.onload = function (e) {
+                        document.getElementById(`prev_foto_${index + 1}`).src = e.target.result;
+                    };
+                    reader.readAsDataURL(file);
+                }
 
-        else {
-            document.getElementById('prev_foto_1').src = "http://127.0.0.1:8000/img/sin_img.jpg";
+                else {
+                    document.getElementById(`prev_foto_${index + 1}`).src = valoresOriginales[`ruta_evidencia_${index + 1}`];
+                }
+            });
         }
     });
 }
@@ -41,7 +45,7 @@ function ask_before_submit_with_files() {
         const inputs = form.querySelectorAll("input:not([type='file']), textarea, select");
         const imgs = form.querySelectorAll("img.img_file");
 
-        let valoresOriginales2 ={}
+        let valoresOriginales2 = {}
 
         const huboCambios = Array.from(inputs).some(
             (input) => {

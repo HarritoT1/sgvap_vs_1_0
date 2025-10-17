@@ -2,18 +2,21 @@
 
 @section('content')
     <div class="w-100 my-3 div-main">
-        <h1 class="fw-bold my-3" style="font-size: 2rem; text-align:justify">Detalles del prestamo y actualización del estado
+        <h1 class="fw-bold my-3" style="font-size: 2rem; text-align:justify" id="prestamo_vehicular_act_form">Detalles del
+            prestamo y actualización del estado
             del vehículo:</h1>
-        <div class="w-100 div-secondary">
 
-            <h2 class="mb-3 fw-bold" style="font-size: 1.5rem;">Datos del vehículo en cuestión:</h2>
-            <form id="actualizar_version_2" action="#" method="post" enctype="multipart/form-data" autocomplete="off"
-                class="needs-validation p-1" novalidate>
+        <form id="actualizar_version_2" action="#" method="post" enctype="multipart/form-data" autocomplete="off"
+            class="needs-validation p-1" novalidate>
+
+            <div class="w-100 div-secondary mb-3">
+                <h2 class="mb-3 fw-bold" style="font-size: 1.5rem;">Datos del vehículo en cuestión:</h2>
+
                 <div class="row g-3">
                     <div class="col-sm-6">
                         <label for="vehicle_id" class="form-label fw-bold">Placa</label>
                         <input type="text" class="form-control" id="vehicle_id" name="vehicle_id" placeholder="ASP-MV9"
-                            value="" required maxlength="20" readonly>
+                            value="ASP-MV9" required maxlength="20" readonly>
                         <div class="invalid-feedback">
                             Ingresa una placa vehícular válida.
                         </div>
@@ -24,7 +27,7 @@
                         <div class="input-group">
                             <span class="input-group-text">⏲</span>
                             <input type="number" class="form-control" id="km_salida" name="km_salida" placeholder=""
-                                step="1" min="0" value="" required readonly>
+                                step="1" min="0" value="55500" required readonly>
                             <div class="invalid-feedback">
                                 Ingresa un km entero válido.
                             </div>
@@ -186,208 +189,235 @@
                             Marca por lo menos una característica vehícular.
                         </div>
                     </div>
-            </form>
-        </div>
 
-        <div class="w-100 div-secondary mt-3 mb-5">
-
-            <h2 class="mb-3 fw-bold" style="font-size: 1.5rem;">Datos del prestamo:</h2>
-
-            <div class="row g-3">
-                <div class="col-sm-6">
-                    <label for="input_find_rfc" class="form-label fw-bold">RFC del empleado títular</label>
-                    <input form="actualizar_version_2" type="text" class="form-control" id="input_find_rfc"
-                        name="employee_id" placeholder="" value="" required maxlength="50" list="sugerencias_rfc"
-                        readonly>
-                    <div class="invalid-feedback">
-                        Ingresa un RFC válido.
-                    </div>
-                    <datalist id="sugerencias_rfc">
-                    </datalist>
                 </div>
+            </div>
 
-                <div class="col-sm-6">
-                    <label for="proveedor" class="form-label fw-bold">Proveedor</label>
-                    <input form="actualizar_version_2" type="text" class="form-control" id="proveedor"
-                        name="proveedor" placeholder="" value="" required maxlength="100" disabled>
-                    <div class="invalid-feedback">
-                        Ingresa un nombre de proveedor válido.
+            <div class="w-100 div-secondary my-5">
+
+                <h2 class="mb-3 fw-bold" style="font-size: 1.5rem;">Datos del prestamo:</h2>
+
+                <div class="row g-3">
+                    <div class="col-sm-6">
+                        <label for="input_find_rfc" class="form-label fw-bold">RFC del empleado títular</label>
+                        <input form="actualizar_version_2" type="text" class="form-control" id="input_find_rfc"
+                            name="employee_id" placeholder="" value="XXXXYYYYMMDDZZZ" required maxlength="50"
+                            list="sugerencias_rfc" readonly>
+                        <div class="invalid-feedback">
+                            Ingresa un RFC válido.
+                        </div>
+                        <datalist id="sugerencias_rfc">
+                        </datalist>
                     </div>
-                </div>
 
-                <div class="col-sm-6">
-                    <label for="input_find_id_proyect" class="form-label fw-bold w-100">id del proyecto <span
-                            class="position-relative" id="msgBASE" style="cursor: pointer;">ⓘ
-                            <div class="msgFloat">
-                                Este prestamo vehícular considera traslados vehículares a diferentes proyectos.
-                            </div>
-                        </span></label>
-
-                    <input form="actualizar_version_2" type="text" class="form-control" id="input_find_id_proyect"
-                        name="project_id" placeholder="" value="" required maxlength="80"
-                        list="sugerencias_id_proyect" readonly>
-                    <div class="invalid-feedback">
-                        Ingresa un id de proyecto válido.
-                    </div>
-                    <datalist id="sugerencias_id_proyect">
-                    </datalist>
-                </div>
-
-                <div class="col-sm-6">
-                    <label for="fecha_prestamo" class="form-label fw-bold">Fecha del prestamo</label>
-                    <input form="actualizar_version_2" type="date" class="form-control sm-form-control"
-                        id="fecha_prestamo" name="fecha_prestamo" value="" required disabled>
-                    <div class="invalid-feedback">
-                        Ingresa una fecha válida.
-                    </div>
-                </div>
-
-                <div class="col-sm-6">
-                    <label for="prestamo_status" class="form-label fw-bold">Estado del prestamo</label>
-                    <select form="actualizar_version_2" name="prestamo_status" id="prestamo_status"
-                        class="form-control form-select" aria-label="Default select example" required disabled>
-                        <option value="entregado" selected>
-                            CONCLUIDO
-                        </option>
-                        <option value="no_entregado">
-                            PENDIENTE
-                        </option>
-                    </select>
-                    <div class="invalid-feedback">
-                        Ingresa un status válido.
-                    </div>
-                </div>
-
-                <div class="col-sm-6">
-                    <label for="fecha_devolucion" class="form-label fw-bold">Fecha de devolución</label>
-                    <input form="actualizar_version_2" type="date" class="form-control sm-form-control"
-                        id="fecha_devolucion" name="fecha_devolucion" value="" disabled>
-                    <div class="invalid-feedback">
-                        Ingresa una fecha válida.
-                    </div>
-                </div>
-
-                <div class="col-sm-6 mx-auto">
-                    <label for="km_retorno" class="form-label fw-bold">Km posterior al prestamo</label>
-                    <div class="input-group">
-                        <span class="input-group-text">⏲</span>
-                        <input form="actualizar_version_2" type="number" class="form-control" id="km_retorno"
-                            name="km_retorno" placeholder="" step="1" min="0" value="" required
+                    <div class="col-sm-6">
+                        <label for="proveedor" class="form-label fw-bold">Proveedor</label>
+                        <input form="actualizar_version_2" type="text" class="form-control" id="proveedor"
+                            name="proveedor" placeholder="" value="Miguel Cuevas Díaz" required maxlength="100"
                             disabled>
                         <div class="invalid-feedback">
-                            Ingresa un km entero válido.
+                            Ingresa un nombre de proveedor válido.
+                        </div>
+                    </div>
+
+                    <div class="col-sm-6">
+                        <label for="input_find_id_proyect" class="form-label fw-bold w-100">id del proyecto <span
+                                class="position-relative" id="msgBASE" style="cursor: pointer;">ⓘ
+                                <div class="msgFloat">
+                                    Este prestamo vehícular considera traslados vehículares a diferentes proyectos.
+                                </div>
+                            </span></label>
+
+                        <input form="actualizar_version_2" type="text" class="form-control"
+                            id="input_find_id_proyect" name="project_id" placeholder="" value="PRJ-2025-001" required
+                            maxlength="80" list="sugerencias_id_proyect" readonly>
+                        <div class="invalid-feedback">
+                            Ingresa un id de proyecto válido.
+                        </div>
+                        <datalist id="sugerencias_id_proyect">
+                        </datalist>
+                    </div>
+
+                    <div class="col-sm-6">
+                        <label for="fecha_prestamo" class="form-label fw-bold">Fecha del prestamo</label>
+                        <input form="actualizar_version_2" type="date" class="form-control sm-form-control"
+                            id="fecha_prestamo" name="fecha_prestamo" value="2025-12-12" required disabled>
+                        <div class="invalid-feedback">
+                            Ingresa una fecha válida.
+                        </div>
+                    </div>
+
+                    <div class="col-sm-6">
+                        <label for="prestamo_status" class="form-label fw-bold">Estado del prestamo</label>
+                        <select form="actualizar_version_2" name="prestamo_status" id="prestamo_status"
+                            class="form-control form-select" aria-label="Default select example" required disabled>
+                            <option value="entregado" selected>
+                                CONCLUIDO
+                            </option>
+                            <option value="no_entregado">
+                                PENDIENTE
+                            </option>
+                        </select>
+                        <div class="invalid-feedback">
+                            Ingresa un status válido.
+                        </div>
+                    </div>
+
+                    <div class="col-sm-6">
+                        <label for="fecha_devolucion" class="form-label fw-bold">Fecha de devolución</label>
+                        <input form="actualizar_version_2" type="date" class="form-control sm-form-control"
+                            id="fecha_devolucion" name="fecha_devolucion" value="2025-12-20" required disabled>
+                        <div class="invalid-feedback">
+                            Ingresa una fecha válida.
+                        </div>
+                    </div>
+
+                    <div class="col-sm-6 mx-auto">
+                        <label for="km_retorno" class="form-label fw-bold">Km posterior al prestamo</label>
+                        <div class="input-group">
+                            <span class="input-group-text">⏲</span>
+                            <input form="actualizar_version_2" type="number" class="form-control" id="km_retorno"
+                                name="km_retorno" placeholder="" step="1" min="0" value="56000" required
+                                disabled>
+                            <div class="invalid-feedback">
+                                Ingresa un km entero válido.
+                            </div>
                         </div>
                     </div>
                 </div>
+
             </div>
 
-        </div>
+            <div class="w-100 div-secondary my-3">
 
-        <div class="w-100 div-secondary my-3">
+                <h2 class="mb-3 fw-bold" style="font-size: 1.5rem;">Evidencias gráficas del prestamo:</h2>
 
-            <h2 class="mb-3 fw-bold" style="font-size: 1.5rem;">Evidencias gráficas del prestamo:</h2>
+                <div class="row g-3">
+                    <div class="col-sm-6">
+                        <label class="form-label d-block w-100" style="cursor: pointer;" title="Cambiar fotografía">
+                            <img id="prev_foto_1" class="imageResponsive my-2 img_file" alt="img"
+                                src="{{ asset('img/sin_img.jpg') }}"
+                                style="max-width: 90%; width: 16rem; border-radius: 15px; box-shadow: -1px 3px 10px 4px rgba(0,0,0,0.75); height: 13rem;">
+                        </label>
+                        <input form="actualizar_version_2" type="file" class="form-control mt-4 mb-3"
+                            id="ruta_evidencia_1" name="ruta_evidencia_1"
+                            accept="image/png, image/jpeg, image/webp, image/gif" disabled>
+                        <div class="invalid-feedback">
+                            Ingresa un archivo válido.
+                        </div>
+                    </div>
+                    <div class="col-sm-6">
+                        <label class="form-label d-block w-100" style="cursor: pointer;" title="Cambiar fotografía">
+                            <img id="prev_foto_2" class="imageResponsive my-2 img_file" alt="img"
+                                src="{{ asset('img/sin_img.jpg') }}"
+                                style="max-width: 90%; width: 16rem; border-radius: 15px; box-shadow: -1px 3px 10px 4px rgba(0,0,0,0.75); height: 13rem;">
+                        </label>
+                        <input form="actualizar_version_2" type="file" class="form-control mt-4 mb-3"
+                            id="ruta_evidencia_2" name="ruta_evidencia_2"
+                            accept="image/png, image/jpeg, image/webp, image/gif" disabled>
+                        <div class="invalid-feedback">
+                            Ingresa un archivo válido.
+                        </div>
+                    </div>
+                    <div class="col-sm-6">
+                        <label class="form-label d-block w-100" style="cursor: pointer;" title="Cambiar fotografía">
+                            <img id="prev_foto_3" class="imageResponsive my-2 img_file" alt="img"
+                                src="{{ asset('img/sin_img.jpg') }}"
+                                style="max-width: 90%; width: 16rem; border-radius: 15px; box-shadow: -1px 3px 10px 4px rgba(0,0,0,0.75); height: 13rem;">
+                        </label>
+                        <input form="actualizar_version_2" type="file" class="form-control mt-4 mb-3"
+                            id="ruta_evidencia_3" name="ruta_evidencia_3"
+                            accept="image/png, image/jpeg, image/webp, image/gif" disabled>
+                        <div class="invalid-feedback">
+                            Ingresa un archivo válido.
+                        </div>
+                    </div>
+                    <div class="col-sm-6">
+                        <label class="form-label d-block w-100" style="cursor: pointer;" title="Cambiar fotografía">
+                            <img id="prev_foto_4" class="imageResponsive my-2 img_file" alt="img"
+                                src="{{ asset('img/prueba_seat.jpg') }}"
+                                style="max-width: 90%; width: 16rem; border-radius: 15px; box-shadow: -1px 3px 10px 4px rgba(0,0,0,0.75); height: 13rem;">
+                        </label>
+                        <input form="actualizar_version_2" type="file" class="form-control mt-4 mb-3"
+                            id="ruta_evidencia_4" name="ruta_evidencia_4"
+                            accept="image/png, image/jpeg, image/webp, image/gif" disabled>
+                        <div class="invalid-feedback">
+                            Ingresa un archivo válido.
+                        </div>
+                    </div>
+                    <div class="col-sm-6 mx-auto">
+                        <label class="form-label d-block w-100" style="cursor: pointer;" title="Cambiar fotografía">
+                            <img id="prev_foto_5" class="imageResponsive my-2 img_file" alt="img"
+                                src="{{ asset('img/sin_img.jpg') }}"
+                                style="max-width: 90%; width: 16rem; border-radius: 15px; box-shadow: -1px 3px 10px 4px rgba(0,0,0,0.75); height: 13rem;">
+                        </label>
+                        <input form="actualizar_version_2" type="file" class="form-control mt-4 mb-3"
+                            id="ruta_evidencia_5" name="ruta_evidencia_5"
+                            accept="image/png, image/jpeg, image/webp, image/gif" disabled>
+                        <div class="invalid-feedback">
+                            Ingresa un archivo válido.
+                        </div>
+                    </div>
+                </div>
 
-            <div class="row g-3">
-                <div class="col-sm-6">
-                    <label class="form-label d-block w-100" style="cursor: pointer;" title="Cambiar fotografía">
-                        <img id="prev_foto_1" class="imageResponsive my-2 img_file" alt="img"
-                            src="{{ asset('img/sin_img.jpg') }}"
-                            style="max-width: 90%; width: 16rem; border-radius: 15px; box-shadow: -1px 3px 10px 4px rgba(0,0,0,0.75); height: 13rem;">
-                    </label>
-                    <input type="file" class="form-control mt-4 mb-3" id="ruta_evidencia_1" name="ruta_evidencia_1"
-                        accept="image/png, image/jpeg, image/webp, image/gif" disabled>
-                    <div class="invalid-feedback">
-                        Ingresa un archivo válido.
+                <hr class="my-4 mb-2">
+
+                <div class="col-12 mb-3">
+                    <label for="prestamo_obs_gral" class="form-label fw-bold">Observación general del
+                        prestamo:</label>
+                    <div class="input-group" style="min-height: 10rem !important;">
+                        <span class="input-group-text">📝</span>
+                        <textarea form="actualizar_version_2" id="prestamo_obs_gral" name="prestamo_obs_gral" class="form-control"
+                            aria-label="Notas" maxlength="500" disabled style="resize: none; overflow-y: auto;">El coche perdio los tapones de las llantas.</textarea>
                     </div>
                 </div>
-                <div class="col-sm-6">
-                    <label class="form-label d-block w-100" style="cursor: pointer;" title="Cambiar fotografía">
-                        <img id="prev_foto_2" class="imageResponsive my-2 img_file" alt="img"
-                            src="{{ asset('img/sin_img.jpg') }}"
-                            style="max-width: 90%; width: 16rem; border-radius: 15px; box-shadow: -1px 3px 10px 4px rgba(0,0,0,0.75); height: 13rem;">
-                    </label>
-                    <input type="file" class="form-control mt-4 mb-3" id="ruta_evidencia_2" name="ruta_evidencia_2"
-                        accept="image/png, image/jpeg, image/webp, image/gif" disabled>
-                    <div class="invalid-feedback">
-                        Ingresa un archivo válido.
-                    </div>
+
+                <hr class="my-4 mb-2">
+
+                <div class="d-flex flex-row justify-content-end align-items-stretch gap-3" style="height: 60px">
+                    @if ('entregado' !== 'entregado')
+                        <div style="height: 100%;" class="d-flex flex-row align-items-stretch gap-3">
+                            <button style="height: 100%; width:4rem; padding: 0px; !important" type="button"
+                                class="d-none button-custom btn rounded-3 m-0" id="cancel"
+                                onclick="cancel_edit_mode()">
+                                <img src="{{ asset('img/cancel.png') }}" alt="cancelar"
+                                    style="height: 100%; width: 4rem;">
+                            </button>
+                            <button style="height: 100%; width:4rem; padding: 0px; !important" type="button"
+                                class="button-custom btn rounded-3 m-0" id="edit"
+                                onclick="enable_inpus_edit_mode()">
+                                <img src="{{ asset('img/lapiz.png') }}" alt="editar"
+                                    style="height: 100%; width: 4rem;">
+                            </button>
+                            <button style="height: 100%; width:4rem; padding: 0px; !important" type="button"
+                                class="button-custom btn rounded-3 m-0" disabled id="save"
+                                onclick="ask_before_submit_with_files()">
+                                <img src="{{ asset('img/guardar.png') }}" alt="guardar"
+                                    style="height: 100%; width: 4rem;">
+                            </button>
+                        </div>
+                    @else
+                        <div style="height: 100%; border-width: 3px; border-color: rgba(0, 0, 0, 0.148); border-right-style: solid;"
+                            class="px-2 pe-3 d-flex flex-row align-items-stretch gap-3">
+                            <label class="form-label m-0" style="cursor: pointer;" title="Subir política" for="politica">
+                                <img src="{{ asset('img/politica.png') }}" alt="img" style="height: 100%; width: 4rem;">
+                            </label>
+                            <input form="" type="file" class="form-control form-control-sm d-none" style="align-self: center; width: 12rem;"
+                                id="politica" name="politica"
+                                accept="image/png">
+                        </div>
+                        <div style="height: 100%;" class="px-2 ps-0 d-flex flex-row align-items-stretch gap-3">
+                            <button style="height: 100%; width:4rem; padding: 0px; !important" type="button"
+                                class="button-custom btn rounded-3 m-0" disabled id="button_generate_pdf" onclick="generate_pdf_prestamos_vehiculares()">
+                                <img src="{{ asset('img/pdf.png') }}" alt="pdf" style="height: 100%; width: 4rem;">
+                            </button>
+                        </div>
+                    @endif
                 </div>
-                <div class="col-sm-6">
-                    <label class="form-label d-block w-100" style="cursor: pointer;" title="Cambiar fotografía">
-                        <img id="prev_foto_3" class="imageResponsive my-2 img_file" alt="img"
-                            src="{{ asset('img/sin_img.jpg') }}"
-                            style="max-width: 90%; width: 16rem; border-radius: 15px; box-shadow: -1px 3px 10px 4px rgba(0,0,0,0.75); height: 13rem;">
-                    </label>
-                    <input type="file" class="form-control mt-4 mb-3" id="ruta_evidencia_3" name="ruta_evidencia_3"
-                        accept="image/png, image/jpeg, image/webp, image/gif" disabled>
-                    <div class="invalid-feedback">
-                        Ingresa un archivo válido.
-                    </div>
-                </div>
-                <div class="col-sm-6">
-                    <label class="form-label d-block w-100" style="cursor: pointer;" title="Cambiar fotografía">
-                        <img id="prev_foto_4" class="imageResponsive my-2 img_file" alt="img"
-                            src="{{ asset('img/sin_img.jpg') }}"
-                            style="max-width: 90%; width: 16rem; border-radius: 15px; box-shadow: -1px 3px 10px 4px rgba(0,0,0,0.75); height: 13rem;">
-                    </label>
-                    <input type="file" class="form-control mt-4 mb-3" id="ruta_evidencia_4" name="ruta_evidencia_4"
-                        accept="image/png, image/jpeg, image/webp, image/gif" disabled>
-                    <div class="invalid-feedback">
-                        Ingresa un archivo válido.
-                    </div>
-                </div>
-                <div class="col-sm-6 mx-auto">
-                    <label class="form-label d-block w-100" style="cursor: pointer;" title="Cambiar fotografía">
-                        <img id="prev_foto_5" class="imageResponsive my-2 img_file" alt="img"
-                            src="{{ asset('img/sin_img.jpg') }}"
-                            style="max-width: 90%; width: 16rem; border-radius: 15px; box-shadow: -1px 3px 10px 4px rgba(0,0,0,0.75); height: 13rem;">
-                    </label>
-                    <input type="file" class="form-control mt-4 mb-3" id="ruta_evidencia_5" name="ruta_evidencia_5"
-                        accept="image/png, image/jpeg, image/webp, image/gif" disabled>
-                    <div class="invalid-feedback">
-                        Ingresa un archivo válido.
-                    </div>
-                </div>
+
+                <hr class="my-4 mb-2">
             </div>
 
-            <hr class="my-4 mb-2">
-
-            <div class="col-12 mb-3">
-                <label for="prestamo_obs_gral" class="form-label fw-bold">Observación general del prestamo:</label>
-                <div class="input-group" style="min-height: 10rem !important;">
-                    <span class="input-group-text">📝</span>
-                    <textarea id="prestamo_obs_gral" name="prestamo_obs_gral" class="form-control" aria-label="Notas" maxlength="500"
-                        disabled style="resize: none; overflow-y: auto;"></textarea>
-                </div>
-            </div>
-
-            <hr class="my-4 mb-2">
-
-            <div class="d-flex flex-row justify-content-end align-items-stretch gap-3" style="height: 60px">
-                <div style="height: 100%; border-width: 3px; border-color: rgba(0, 0, 0, 0.148); border-right-style: solid;"
-                    class="px-2 pe-3 d-flex flex-row align-items-stretch gap-3">
-                    <button style="height: 100%; width:4rem; padding: 0px; !important" type="button"
-                        class="d-none button-custom btn rounded-3 m-0" id="cancel" onclick="cancel_edit_mode()">
-                        <img src="{{ asset('img/cancel.png') }}" alt="cancelar" style="height: 100%; width: 4rem;">
-                    </button>
-                    <button style="height: 100%; width:4rem; padding: 0px; !important" type="button"
-                        class="button-custom btn rounded-3 m-0" id="edit" onclick="enable_inpus_edit_mode()">
-                        <img src="{{ asset('img/lapiz.png') }}" alt="editar" style="height: 100%; width: 4rem;">
-                    </button>
-                    <button style="height: 100%; width:4rem; padding: 0px; !important" type="button"
-                        class="button-custom btn rounded-3 m-0" disabled id="save" onclick="ask_before_submit()">
-                        <img src="{{ asset('img/guardar.png') }}" alt="guardar" style="height: 100%; width: 4rem;">
-                    </button>
-                </div>
-                <div style="height: 100%;" class="px-2 ps-0 d-flex flex-row align-items-stretch gap-3">
-                    <button style="height: 100%; width:4rem; padding: 0px; !important" type="button"
-                        class="button-custom btn rounded-3 m-0" disabled id="pdf">
-                        <img src="{{ asset('img/pdf.png') }}" alt="pdf" style="height: 100%; width: 4rem;">
-                    </button>
-                </div>
-            </div>
-
-            <hr class="my-4 mb-2">
-        </div>
+        </form>
     </div>
 @endsection
