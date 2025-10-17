@@ -28,6 +28,8 @@ function generate_pdf_prestamos_vehiculares() {
 }
 
 function generate_content(base64politica) {
+
+    const form = document.getElementById('actualizar_version_2');
     // Usamos el namespace UMD (importante si lo usas con CDN).
     const { jsPDF } = window.jspdf;
 
