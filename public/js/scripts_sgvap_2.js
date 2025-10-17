@@ -1,13 +1,11 @@
 function enable_button_pdf_generator() {
   document.getElementById('politica').addEventListener('change', function (event) {
     const file = event.target.files[0]; // Accede al primer archivo seleccionado.
-    if (file) {
+    if (file && file.type === 'image/png') {
       document.getElementById('button_generate_pdf').disabled = false;
-      document.getElementById('button_generate_pdf').style.backgroundColor = "var(--botones-color)";
     }
     else {
       document.getElementById('button_generate_pdf').disabled = true;
-      document.getElementById('button_generate_pdf').style.backgroundColor = "rgb(161, 160, 160)";
       alert("Ingresa una imagen de la política en formato .png porfavor.")
     }
   });
@@ -306,7 +304,7 @@ function generate_content(base64politica) {
     doc.setFontSize(14);
 
     function llenartablasfeatures() {
-      document.getElementById('formwithvehiclefeaturesdata').querySelectorAll('input[type = "checkbox"]').forEach(function (input) {
+      document.getElementById('actualizar_version_2').querySelectorAll('input[type = "checkbox"]').forEach(function (input) {
         if (input.checked) {
           doc.setTextColor(0, 128, 0);
           doc.text("X", positionx, positiony, { align: "center" });

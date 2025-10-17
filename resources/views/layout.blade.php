@@ -1091,7 +1091,10 @@ l838 0 -282 -282 c-304 -305 -305 -307 -288 -395 9 -49 69 -109 118 -118 91
             }
             if (document.getElementById("actualizar_version_2")) {
                 asig_listener_change_vehicle_foto_prev()
-                save_values_of_inputs_with_files ()
+                save_values_of_inputs_with_files()
+            }
+            if (document.getElementById("prestamo_vehicular_act_form")) {
+                enable_button_pdf_generator()
             }
         });
     </script>

@@ -1,20 +1,22 @@
 function asig_listener_change_vehicle_foto_prev() {
     document.querySelectorAll('input[type="file"]').forEach((input, index) => {
-        input.addEventListener('change', function (event) {
-        console.log("Evento change generado.");
-        const file = event.target.files[0]; //
-        if (file) {
-            const reader = new FileReader();
-            reader.onload = function (e) {
-                document.getElementById(`prev_foto_${index + 1}`).src = e.target.result;
-            };
-            reader.readAsDataURL(file);
-        }
+        if (input.id !== "politica") {
+            input.addEventListener('change', function (event) {
+                console.log("Evento change generado.");
+                const file = event.target.files[0]; //
+                if (file) {
+                    const reader = new FileReader();
+                    reader.onload = function (e) {
+                        document.getElementById(`prev_foto_${index + 1}`).src = e.target.result;
+                    };
+                    reader.readAsDataURL(file);
+                }
 
-        else {
-            document.getElementById(`prev_foto_${index + 1}`).src = valoresOriginales[`ruta_evidencia_${index + 1}`];
+                else {
+                    document.getElementById(`prev_foto_${index + 1}`).src = valoresOriginales[`ruta_evidencia_${index + 1}`];
+                }
+            });
         }
-    });
     });
 }
 
@@ -43,7 +45,7 @@ function ask_before_submit_with_files() {
         const inputs = form.querySelectorAll("input:not([type='file']), textarea, select");
         const imgs = form.querySelectorAll("img.img_file");
 
-        let valoresOriginales2 ={}
+        let valoresOriginales2 = {}
 
         const huboCambios = Array.from(inputs).some(
             (input) => {
