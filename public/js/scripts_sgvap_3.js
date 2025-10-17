@@ -1,18 +1,20 @@
 function asig_listener_change_vehicle_foto_prev() {
-    document.getElementById('ruta_foto_1').addEventListener('change', function (event) {
+    document.querySelectorAll('input[type="file"]').forEach((input, index) => {
+        input.addEventListener('change', function (event) {
         console.log("Evento change generado.");
         const file = event.target.files[0]; //
         if (file) {
             const reader = new FileReader();
             reader.onload = function (e) {
-                document.getElementById('prev_foto_1').src = e.target.result;
+                document.getElementById(`prev_foto_${index + 1}`).src = e.target.result;
             };
             reader.readAsDataURL(file);
         }
 
         else {
-            document.getElementById('prev_foto_1').src = "http://127.0.0.1:8000/img/sin_img.jpg";
+            document.getElementById(`prev_foto_${index + 1}`).src = valoresOriginales[`ruta_evidencia_${index + 1}`];
         }
+    });
     });
 }
 
