@@ -79,7 +79,7 @@
                                     <label class="form-check-label fw-bold" for="char2">Retrovisor Derecho.</label>
                                 </div>
                                 <div class="form-check form-switch mb-2">
-                                    <input class="form-check-input checklist" type="checkbox" id="char3" checked
+                                    <input class="form-check-input checklist" type="checkbox" id="char3" 
                                         name="caracteristicas[]" value="Tapon gasolina" disabled>
                                     <label class="form-check-label fw-bold" for="char3">Tapón Gasolina.</label>
                                 </div>
@@ -94,7 +94,7 @@
                                     <label class="form-check-label fw-bold" for="char5">Cristales Puertas.</label>
                                 </div>
                                 <div class="form-check form-switch mb-2">
-                                    <input class="form-check-input checklist" type="checkbox" id="char6" checked
+                                    <input class="form-check-input checklist" type="checkbox" id="char6" 
                                         name="caracteristicas[]" value="Llanta refaccion" disabled>
                                     <label class="form-check-label fw-bold" for="char6">Llanta Refacción.</label>
                                 </div>
@@ -119,7 +119,7 @@
                                     <label class="form-check-label fw-bold" for="char10">Medallón.</label>
                                 </div>
                                 <div class="form-check form-switch mb-2">
-                                    <input class="form-check-input checklist" type="checkbox" id="char11" checked
+                                    <input class="form-check-input checklist" type="checkbox" id="char11" 
                                         name="caracteristicas[]" value="Molduras" disabled>
                                     <label class="form-check-label fw-bold" for="char11">Molduras.</label>
                                 </div>
@@ -134,12 +134,12 @@
                                     <label class="form-check-label fw-bold" for="char12">Calaveras.</label>
                                 </div>
                                 <div class="form-check form-switch mb-2">
-                                    <input class="form-check-input checklist" type="checkbox" id="char13" checked
+                                    <input class="form-check-input checklist" type="checkbox" id="char13" 
                                         name="caracteristicas[]" value="Parrilla" disabled>
                                     <label class="form-check-label fw-bold" for="char13">Parrilla.</label>
                                 </div>
                                 <div class="form-check form-switch mb-2">
-                                    <input class="form-check-input checklist" type="checkbox" id="char14" checked
+                                    <input class="form-check-input checklist" type="checkbox" id="char14" 
                                         name="caracteristicas[]" value="Placa delantera" disabled>
                                     <label class="form-check-label fw-bold" for="char14">Placa Delantera.</label>
                                 </div>
@@ -159,7 +159,7 @@
                                     <label class="form-check-label fw-bold" for="char17">Retrovisor.</label>
                                 </div>
                                 <div class="form-check form-switch mb-2">
-                                    <input class="form-check-input checklist" type="checkbox" id="char18" checked
+                                    <input class="form-check-input checklist" type="checkbox" id="char18" 
                                         name="caracteristicas[]" value="Tapetes" disabled>
                                     <label class="form-check-label fw-bold" for="char18">Tapetes.</label>
                                 </div>
@@ -174,7 +174,7 @@
                                     <label class="form-check-label fw-bold" for="char20">Estéreo.</label>
                                 </div>
                                 <div class="form-check form-switch mb-2">
-                                    <input class="form-check-input checklist" type="checkbox" id="char21" checked
+                                    <input class="form-check-input checklist" type="checkbox" id="char21" 
                                         name="caracteristicas[]" value="Poliza de seguro" disabled>
                                     <label class="form-check-label fw-bold" for="char21">Póliza de Seguro.</label>
                                 </div>
@@ -418,6 +418,13 @@
                 <hr class="my-4 mb-2">
             </div>
 
+            <input type="hidden" id="nombre_conductor" value="Jorge Manuel Contreras">
+            <input type="hidden" id="sitio" value="antara">
+
+            <input type="hidden" id="marca" value="Nissan">
+            <input type="hidden" id="color" value="rojo">
+            <input type="hidden" id="nombre_modelo" value="March">
+            <input type="hidden" id="anio" value="2012">
         </form>
     </div>
 @endsection
