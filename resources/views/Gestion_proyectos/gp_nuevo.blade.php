@@ -40,6 +40,25 @@
                 </div>
 
                 <div class="col-sm-6">
+                        <label for="customer_id" class="form-label fw-bold">Cliente 🤝🏻</label>
+                        <select name="customer_id" id="customer_id" class="form-control form-select"
+                            aria-label="Default select example" required>
+                            <option value="" selected>
+                                NINGUNO
+                            </option>
+                            <option value="RFC_1">
+                                RAZON_SOCIAL_1
+                            </option>
+                            <option value="RFC_2">
+                                RAZON_SOCIAL_2
+                            </option>
+                        </select>
+                        <div class="invalid-feedback">
+                            Selecciona un cliente por favor.
+                        </div>
+                    </div>
+
+                <div class="col-sm-6">
                     <label for="monto_cobrar" class="form-label fw-bold">Monto a cobrar</label>
                     <div class="input-group">
                         <span class="input-group-text">💰</span>
@@ -181,7 +200,7 @@
                     <label for="notas" class="form-label fw-bold">Notas</label>
                     <div class="input-group">
                         <span class="input-group-text">📝</span>
-                        <textarea id="notas" name="notas" class="form-control" aria-label="Notas" maxlength="300"></textarea>
+                        <textarea id="notas" name="notas" class="form-control" aria-label="Notas" maxlength="300" style="height: 1.5rem;"></textarea>
                     </div>
                 </div>
 
