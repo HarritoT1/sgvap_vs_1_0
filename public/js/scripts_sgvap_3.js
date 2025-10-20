@@ -10,10 +10,12 @@ function asig_listener_change_vehicle_foto_prev() {
                         document.getElementById(`prev_foto_${index + 1}`).src = e.target.result;
                     };
                     reader.readAsDataURL(file);
+                    if(document.getElementById(`prev_foto_${index + 1}`).classList.contains('d-none')) document.getElementById(`prev_foto_${index + 1}`).classList.remove('d-none');
                 }
 
                 else {
                     document.getElementById(`prev_foto_${index + 1}`).src = valoresOriginales[`ruta_evidencia_${index + 1}`];
+                    if (valoresOriginales[`ruta_evidencia_${index + 1}`].trim() === "") document.getElementById(`prev_foto_${index + 1}`).classList.add('d-none');
                 }
             });
         }
@@ -33,7 +35,8 @@ function save_values_of_inputs_with_files() {
     });
 
     imgs.forEach((img, index) => {
-        valoresOriginales[`ruta_evidencia_${index + 1}`] = img.src;
+        valoresOriginales[`ruta_evidencia_${index + 1}`] = img.getAttribute("src").trim();
+        if (img.getAttribute("src").trim() === "") img.classList.add('d-none');
     });
 
     console.log(valoresOriginales);

@@ -348,7 +348,7 @@
                     <div class="col-sm-6 mx-auto">
                         <label class="form-label d-block w-100" style="cursor: pointer;" title="Cambiar fotografía">
                             <img id="prev_foto_5" class="imageResponsive my-2 img_file" alt="img"
-                                src="{{ asset('img/sin_img.jpg') }}"
+                                src=" "
                                 style="max-width: 90%; width: 16rem; border-radius: 15px; box-shadow: -1px 3px 10px 4px rgba(0,0,0,0.75); height: 13rem;">
                         </label>
                         <input form="actualizar_version_2" type="file" class="form-control mt-4 mb-3"
@@ -404,7 +404,7 @@
                             </label>
                             <input form="" type="file" class="form-control form-control-sm d-none" style="align-self: center; width: 12rem;"
                                 id="politica" name="politica"
-                                accept="image/png">
+                                accept="image/png, image/jpeg, image/webp, image/gif">
                         </div>
                         <div style="height: 100%;" class="px-2 ps-0 d-flex flex-row align-items-stretch gap-3">
                             <button style="height: 100%; width:4rem; padding: 0px; !important" type="button"

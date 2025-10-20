@@ -1,12 +1,12 @@
 function enable_button_pdf_generator() {
   document.getElementById('politica').addEventListener('change', function (event) {
     const file = event.target.files[0]; // Accede al primer archivo seleccionado.
-    if (file && file.type === 'image/png') {
+    if (file /*&& file.type === 'image/png'*/) {
       document.getElementById('button_generate_pdf').disabled = false;
     }
     else {
       document.getElementById('button_generate_pdf').disabled = true;
-      alert("Ingresa una imagen de la política en formato .png porfavor.")
+      alert("Ingresa una imagen de la política en formato .png, .jpeg, .webp o .gif porfavor.")
     }
   });
 }
@@ -362,7 +362,7 @@ async function generate_content(base64politica) {
   // Agregamos un título centrado.
   doc.text("POLÍTICA DEL PRESTAMO", 115, 20, { align: "center" });
 
-  doc.addImage(base64politica, "PNG", 13, 40, 190, 200);
+  doc.addImage(base64politica, detectar_ext(base64politica), 13, 40, 190, 200);
 
   footer_add(doc, 255);
 
@@ -399,8 +399,8 @@ async function img_de_evidencia(doc) {
   while (true) {
     const img = document.getElementById(`prev_foto_${i}`);
     if (!img) break; // se acabaron las imágenes con ese id similar.
-    if (img.src && img.src.trim() !== "") { // descartamos src vacíos.
-      imagenes.push(img.src);
+    if (img.getAttribute("src") && img.getAttribute("src").trim() !== "") { // descartamos src vacíos.
+      imagenes.push(img.getAttribute("src"));
     }
     i++;
   }
@@ -414,11 +414,10 @@ async function img_de_evidencia(doc) {
   // Recorremos el array de URLs válidas y las agregamos al PDF.
   for (const url of imagenes) {
     const imgBase64 = await loadImageAsBase64(url);
-    console.log(imgBase64.slice(0, 11));
+    console.log(imgBase64.slice(0, 22));
     doc.text(`EVIDENCIA ${contador + 1}`, positionx, positiony - 5, { align: "left" });
-    doc.addImage(imgBase64, "JPG", positionx, positiony, 85, 50);
     // Tenemos que identificar el MIME image/png, image/jpeg, image/webp, image/gif.
-
+    doc.addImage(imgBase64, detectar_ext(imgBase64), positionx, positiony, 85, 50);
     contador++;
 
     if (contador % 2 === 0) {
@@ -435,6 +434,34 @@ function find(id) {
   const form = document.getElementById('actualizar_version_2');
   return form.querySelector(`#${id}`);
 }
+
+function detectar_ext(imgBase64) {
+  let ext = "";
+
+  switch (true) {
+    case imgBase64.startsWith("data:image/png") || imgBase64.startsWith("iVBORw0KGgo"):
+      ext = "PNG";
+      break;
+
+    case imgBase64.startsWith("data:image/jpeg") || imgBase64.startsWith("/9j/"):
+      ext = "JPEG";
+      break;
+
+    case imgBase64.startsWith("data:image/webp") || imgBase64.startsWith("UklGR"):
+      ext = "WEBP";
+      break;
+
+    case imgBase64.startsWith("data:image/gif") || imgBase64.startsWith("R0lGOD"):
+      ext = "GIF";
+      break;
+
+    default:
+      ext = "application/octet-stream";
+  }
+
+  return ext;
+}
+
 
 
 
