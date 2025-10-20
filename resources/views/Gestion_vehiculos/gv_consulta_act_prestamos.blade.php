@@ -193,7 +193,7 @@
                 </div>
             </div>
 
-            <div class="w-100 div-secondary my-5">
+            <div class="w-100 div-secondary my-5 pb-4">
 
                 <h2 class="mb-3 fw-bold" style="font-size: 1.5rem;">Datos del prestamo:</h2>
 
@@ -241,7 +241,7 @@
                     <div class="col-sm-6">
                         <label for="fecha_prestamo" class="form-label fw-bold">Fecha del prestamo</label>
                         <input form="actualizar_version_2" type="date" class="form-control sm-form-control"
-                            id="fecha_prestamo" name="fecha_prestamo" value="2025-12-12" required disabled>
+                            id="fecha_prestamo" name="fecha_prestamo" value="2025-12-12" required readonly>
                         <div class="invalid-feedback">
                             Ingresa una fecha válida.
                         </div>
@@ -251,10 +251,10 @@
                         <label for="prestamo_status" class="form-label fw-bold">Estado del prestamo</label>
                         <select form="actualizar_version_2" name="prestamo_status" id="prestamo_status"
                             class="form-control form-select" aria-label="Default select example" required disabled>
-                            <option value="entregado" selected>
+                            <option value="entregado">
                                 CONCLUIDO
                             </option>
-                            <option value="no_entregado">
+                            <option value="no_entregado" selected>
                                 PENDIENTE
                             </option>
                         </select>
@@ -294,6 +294,7 @@
 
                 <div class="row g-3">
                     <div class="col-sm-6">
+                        <h3 class="fw-bold text-center" style="font-size: 1.3rem;">Evidencia 1</h3>
                         <label class="form-label d-block w-100" style="cursor: pointer;" title="Cambiar fotografía">
                             <img id="prev_foto_1" class="imageResponsive my-2 img_file" alt="img"
                                 src="{{ asset('img/sin_img.jpg') }}"
@@ -307,6 +308,7 @@
                         </div>
                     </div>
                     <div class="col-sm-6">
+                        <h3 class="fw-bold text-center" style="font-size: 1.3rem;">Evidencia 2</h3>
                         <label class="form-label d-block w-100" style="cursor: pointer;" title="Cambiar fotografía">
                             <img id="prev_foto_2" class="imageResponsive my-2 img_file" alt="img"
                                 src="{{ asset('img/sin_img.jpg') }}"
@@ -320,6 +322,7 @@
                         </div>
                     </div>
                     <div class="col-sm-6">
+                        <h3 class="fw-bold text-center" style="font-size: 1.3rem;">Evidencia 3</h3>
                         <label class="form-label d-block w-100" style="cursor: pointer;" title="Cambiar fotografía">
                             <img id="prev_foto_3" class="imageResponsive my-2 img_file" alt="img"
                                 src="{{ asset('img/sin_img.jpg') }}"
@@ -333,6 +336,7 @@
                         </div>
                     </div>
                     <div class="col-sm-6">
+                        <h3 class="fw-bold text-center" style="font-size: 1.3rem;">Evidencia 4</h3>
                         <label class="form-label d-block w-100" style="cursor: pointer;" title="Cambiar fotografía">
                             <img id="prev_foto_4" class="imageResponsive my-2 img_file" alt="img"
                                 src="{{ asset('img/prueba_seat.jpg') }}"
@@ -346,9 +350,10 @@
                         </div>
                     </div>
                     <div class="col-sm-6 mx-auto">
+                        <h3 class="fw-bold text-center" style="font-size: 1.3rem;">Evidencia 5</h3>
                         <label class="form-label d-block w-100" style="cursor: pointer;" title="Cambiar fotografía">
                             <img id="prev_foto_5" class="imageResponsive my-2 img_file" alt="img"
-                                src="{{ asset('img/sin_img.jpg') }}"
+                                src=" "
                                 style="max-width: 90%; width: 16rem; border-radius: 15px; box-shadow: -1px 3px 10px 4px rgba(0,0,0,0.75); height: 13rem;">
                         </label>
                         <input form="actualizar_version_2" type="file" class="form-control mt-4 mb-3"
@@ -375,7 +380,7 @@
                 <hr class="my-4 mb-2">
 
                 <div class="d-flex flex-row justify-content-end align-items-stretch gap-3" style="height: 60px">
-                    @if ('entregado' !== 'entregado')
+                    @if ('entregado_' !== 'entregado')
                         <div style="height: 100%;" class="d-flex flex-row align-items-stretch gap-3">
                             <button style="height: 100%; width:4rem; padding: 0px; !important" type="button"
                                 class="d-none button-custom btn rounded-3 m-0" id="cancel"
@@ -404,7 +409,7 @@
                             </label>
                             <input form="" type="file" class="form-control form-control-sm d-none" style="align-self: center; width: 12rem;"
                                 id="politica" name="politica"
-                                accept="image/png">
+                                accept="image/png, image/jpeg, image/webp, image/gif">
                         </div>
                         <div style="height: 100%;" class="px-2 ps-0 d-flex flex-row align-items-stretch gap-3">
                             <button style="height: 100%; width:4rem; padding: 0px; !important" type="button"

@@ -2,7 +2,7 @@
 
 @section('content')
     <div class="w-100 my-3 div-main">
-        <h1 class="fw-bold my-3" style="font-size: 2rem; text-align:justify">Detalles del vehículo con el placa: $id</h1>
+        <h1 class="fw-bold my-3" style="font-size: 2rem; text-align:justify">Detalles del vehículo con la placa: $id</h1>
         <div class="w-100 div-secondary">
 
             <h2 class="mb-3 fw-bold" style="font-size: 1.5rem;">Datos del vehículo:</h2>
@@ -92,9 +92,10 @@
                     </div>
 
                     <div class="mx-auto mt-4" style="width: 25rem;">
+                        <h3 class="fw-bold" style="font-size: 1rem;">Fotografía del vehículo</h3>
                         <label for="ruta_foto_1" class="form-label d-block w-100" style="cursor: pointer;"
                             title="Cambiar fotografía">
-                            <img id="prev_foto_1" class="imageResponsive my-2 img_file" alt="img" src="{{ asset('img/sin_img.jpg') }}"
+                            <img id="prev_foto_1" class="imageResponsive my-2 img_file" alt="img" src=" "
                                 style="width: 15rem; border-radius: 15px; box-shadow: -1px 3px 10px 4px rgba(0,0,0,0.75); height: 12rem;">
                         </label>
                         <input type="file" class="form-control mt-4 mb-3" id="ruta_foto_1" name="ruta_foto_1"

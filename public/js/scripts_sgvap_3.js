@@ -10,10 +10,12 @@ function asig_listener_change_vehicle_foto_prev() {
                         document.getElementById(`prev_foto_${index + 1}`).src = e.target.result;
                     };
                     reader.readAsDataURL(file);
+                    if(document.getElementById(`prev_foto_${index + 1}`).classList.contains('d-none')) document.getElementById(`prev_foto_${index + 1}`).classList.remove('d-none');
                 }
 
                 else {
                     document.getElementById(`prev_foto_${index + 1}`).src = valoresOriginales[`ruta_evidencia_${index + 1}`];
+                    if (valoresOriginales[`ruta_evidencia_${index + 1}`].trim() === "") document.getElementById(`prev_foto_${index + 1}`).classList.add('d-none');
                 }
             });
         }
@@ -33,7 +35,8 @@ function save_values_of_inputs_with_files() {
     });
 
     imgs.forEach((img, index) => {
-        valoresOriginales[`ruta_evidencia_${index + 1}`] = img.src;
+        valoresOriginales[`ruta_evidencia_${index + 1}`] = img.getAttribute("src").trim();
+        if (img.getAttribute("src").trim() === "") img.classList.add('d-none');
     });
 
     console.log(valoresOriginales);
@@ -80,4 +83,23 @@ function ask_before_submit_with_files() {
 
         form.requestSubmit();
     }
+}
+
+function asign_change_listener_select_loan_status() {
+    document.getElementById("fecha_devolucion").addEventListener('change', function () {
+        const prestamoStatus = document.getElementById('prestamo_status');
+        const enPrestamo = document.getElementById('is_on_loan');
+
+        if (this.value.trim() !== "") {
+            prestamoStatus.value = "entregado";
+            prestamoStatus.style.backgroundColor = "lightgreen";
+            enPrestamo.value = "NO";
+            enPrestamo.style.backgroundColor = "lightgreen";
+        } else {
+            prestamoStatus.value = "no_entregado";
+            prestamoStatus.style.backgroundColor = "lightcoral";
+            enPrestamo.value = "SI";
+            enPrestamo.style.backgroundColor = "lightcoral";
+        }
+    });
 }
