@@ -294,6 +294,7 @@
 
                 <div class="row g-3">
                     <div class="col-sm-6">
+                        <h3 class="fw-bold text-center" style="font-size: 1.3rem;">Evidencia 1</h3>
                         <label class="form-label d-block w-100" style="cursor: pointer;" title="Cambiar fotografía">
                             <img id="prev_foto_1" class="imageResponsive my-2 img_file" alt="img"
                                 src="{{ asset('img/sin_img.jpg') }}"
@@ -307,6 +308,7 @@
                         </div>
                     </div>
                     <div class="col-sm-6">
+                        <h3 class="fw-bold text-center" style="font-size: 1.3rem;">Evidencia 2</h3>
                         <label class="form-label d-block w-100" style="cursor: pointer;" title="Cambiar fotografía">
                             <img id="prev_foto_2" class="imageResponsive my-2 img_file" alt="img"
                                 src="{{ asset('img/sin_img.jpg') }}"
@@ -320,6 +322,7 @@
                         </div>
                     </div>
                     <div class="col-sm-6">
+                        <h3 class="fw-bold text-center" style="font-size: 1.3rem;">Evidencia 3</h3>
                         <label class="form-label d-block w-100" style="cursor: pointer;" title="Cambiar fotografía">
                             <img id="prev_foto_3" class="imageResponsive my-2 img_file" alt="img"
                                 src="{{ asset('img/sin_img.jpg') }}"
@@ -333,6 +336,7 @@
                         </div>
                     </div>
                     <div class="col-sm-6">
+                        <h3 class="fw-bold text-center" style="font-size: 1.3rem;">Evidencia 4</h3>
                         <label class="form-label d-block w-100" style="cursor: pointer;" title="Cambiar fotografía">
                             <img id="prev_foto_4" class="imageResponsive my-2 img_file" alt="img"
                                 src="{{ asset('img/prueba_seat.jpg') }}"
@@ -346,6 +350,7 @@
                         </div>
                     </div>
                     <div class="col-sm-6 mx-auto">
+                        <h3 class="fw-bold text-center" style="font-size: 1.3rem;">Evidencia 5</h3>
                         <label class="form-label d-block w-100" style="cursor: pointer;" title="Cambiar fotografía">
                             <img id="prev_foto_5" class="imageResponsive my-2 img_file" alt="img"
                                 src=" "
