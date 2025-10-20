@@ -233,26 +233,39 @@
 
                     <hr class="my-4 mb-2">
 
-                    <div class="d-flex flex-row justify-content-end align-items-stretch gap-3" style="height: 60px">
-                        <div style="height: 100%; border-width: 3px; border-color: rgba(0, 0, 0, 0.148); border-right-style: solid;" class="px-2 pe-3 d-flex flex-row align-items-stretch gap-3">
-                            <button style="height: 100%; width:4rem; padding: 0px; !important" type="button" class="d-none button-custom btn rounded-3 m-0" id="cancel" onclick="cancel_edit_mode()">
-                                <img src="{{asset('img/cancel.png')}}" alt="cancelar" style="height: 100%; width: 4rem;">
+                <div class="d-flex flex-row justify-content-end align-items-stretch gap-3" style="height: 60px">
+                    @if ('concluido' !== 'concluido')
+                        <div style="height: 100%;" class="d-flex flex-row align-items-stretch gap-3">
+                            <button style="height: 100%; width:4rem; padding: 0px; !important" type="button"
+                                class="d-none button-custom btn rounded-3 m-0" id="cancel"
+                                onclick="cancel_edit_mode()">
+                                <img src="{{ asset('img/cancel.png') }}" alt="cancelar"
+                                    style="height: 100%; width: 4rem;">
                             </button>
-                            <button style="height: 100%; width:4rem; padding: 0px; !important" type="button" class="button-custom btn rounded-3 m-0" id="edit" onclick="enable_inpus_edit_mode()">
-                                <img src="{{asset('img/lapiz.png')}}" alt="editar" style="height: 100%; width: 4rem;">
+                            <button style="height: 100%; width:4rem; padding: 0px; !important" type="button"
+                                class="button-custom btn rounded-3 m-0" id="edit"
+                                onclick="enable_inpus_edit_mode()">
+                                <img src="{{ asset('img/lapiz.png') }}" alt="editar"
+                                    style="height: 100%; width: 4rem;">
                             </button>
-                            <button style="height: 100%; width:4rem; padding: 0px; !important" type="button" class="button-custom btn rounded-3 m-0" disabled id="save" onclick="ask_before_submit()">
-                                <img src="{{asset('img/guardar.png')}}" alt="guardar" style="height: 100%; width: 4rem;">
+                            <button style="height: 100%; width:4rem; padding: 0px; !important" type="button"
+                                class="button-custom btn rounded-3 m-0" disabled id="save"
+                                onclick="ask_before_submit()">
+                                <img src="{{ asset('img/guardar.png') }}" alt="guardar"
+                                    style="height: 100%; width: 4rem;">
                             </button>
                         </div>
+                    @else
                         <div style="height: 100%;" class="px-2 ps-0 d-flex flex-row align-items-stretch gap-3">
-                            <button style="height: 100%; width:4rem; padding: 0px; !important" type="button" class="button-custom btn rounded-3 m-0" disabled id="pdf">
-                                <img src="{{asset('img/pdf.png')}}" alt="pdf" style="height: 100%; width: 4rem;">
+                            <button style="height: 100%; width:4rem; padding: 0px; !important" type="button"
+                                class="button-custom btn rounded-3 m-0" disabled id="button_generate_pdf" onclick="generate_pdf_project()">
+                                <img src="{{ asset('img/pdf.png') }}" alt="pdf" style="height: 100%; width: 4rem;">
                             </button>
                         </div>
-                    </div>
+                    @endif
+                </div>
 
-                    <hr class="my-4 mb-2">
+                <hr class="my-4 mb-2">
             </form>
         </div>
     </div>
