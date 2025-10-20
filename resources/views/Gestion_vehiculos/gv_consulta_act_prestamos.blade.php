@@ -193,7 +193,7 @@
                 </div>
             </div>
 
-            <div class="w-100 div-secondary my-5">
+            <div class="w-100 div-secondary my-5 pb-4">
 
                 <h2 class="mb-3 fw-bold" style="font-size: 1.5rem;">Datos del prestamo:</h2>
 
@@ -241,7 +241,7 @@
                     <div class="col-sm-6">
                         <label for="fecha_prestamo" class="form-label fw-bold">Fecha del prestamo</label>
                         <input form="actualizar_version_2" type="date" class="form-control sm-form-control"
-                            id="fecha_prestamo" name="fecha_prestamo" value="2025-12-12" required disabled>
+                            id="fecha_prestamo" name="fecha_prestamo" value="2025-12-12" required readonly>
                         <div class="invalid-feedback">
                             Ingresa una fecha válida.
                         </div>
@@ -251,10 +251,10 @@
                         <label for="prestamo_status" class="form-label fw-bold">Estado del prestamo</label>
                         <select form="actualizar_version_2" name="prestamo_status" id="prestamo_status"
                             class="form-control form-select" aria-label="Default select example" required disabled>
-                            <option value="entregado" selected>
+                            <option value="entregado">
                                 CONCLUIDO
                             </option>
-                            <option value="no_entregado">
+                            <option value="no_entregado" selected>
                                 PENDIENTE
                             </option>
                         </select>
@@ -380,7 +380,7 @@
                 <hr class="my-4 mb-2">
 
                 <div class="d-flex flex-row justify-content-end align-items-stretch gap-3" style="height: 60px">
-                    @if ('entregado' !== 'entregado')
+                    @if ('entregado_' !== 'entregado')
                         <div style="height: 100%;" class="d-flex flex-row align-items-stretch gap-3">
                             <button style="height: 100%; width:4rem; padding: 0px; !important" type="button"
                                 class="d-none button-custom btn rounded-3 m-0" id="cancel"

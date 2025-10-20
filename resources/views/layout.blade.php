@@ -1093,8 +1093,15 @@ l838 0 -282 -282 c-304 -305 -305 -307 -288 -395 9 -49 69 -109 118 -118 91
                 asig_listener_change_vehicle_foto_prev()
                 save_values_of_inputs_with_files()
             }
-            if (document.getElementById("prestamo_vehicular_act_form")) {
+            if (document.getElementById("button_generate_pdf")) {
                 enable_button_pdf_generator()
+            }
+            if (document.getElementById("prestamo_vehicular_act_form")) {
+                document.getElementById('prestamo_status').addEventListener('mousedown', function(e){
+                    e.preventDefault(); // bloquea la apertura del select.
+                });
+                document.getElementById('prestamo_status').style.backgroundColor = 'var(--bs-secondary-bg)';
+                asign_change_listener_select_loan_status()
             }
         });
     </script>
