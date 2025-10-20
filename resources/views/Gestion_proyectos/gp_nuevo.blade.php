@@ -42,7 +42,7 @@
                 <div class="col-sm-6">
                     <label for="monto_cobrar" class="form-label fw-bold">Monto a cobrar</label>
                     <div class="input-group">
-                        <span class="input-group-text">$</span>
+                        <span class="input-group-text">💰</span>
                         <input type="number" class="form-control" aria-label="Amount (to the nearest dollar)"
                             id="monto_cobrar" name="monto_cobrar" placeholder="0.000" step="0.00000001" min="0"
                             value="" required>
@@ -53,9 +53,100 @@
                 </div>
 
                 <div class="col-sm-6">
-                    <label for="estimado_viaticos" class="form-label fw-bold">Estimado en viáticos</label>
+                    <label for="monto_est_vtc_alimentos" class="form-label fw-bold">Estimado de viático alimentos</label>
                     <div class="input-group">
-                        <span class="input-group-text">$</span>
+                        <span class="input-group-text">🍞</span>
+                        <input type="number" class="form-control" aria-label="Amount (to the nearest dollar)"
+                            id="monto_est_vtc_alimentos" name="monto_est_vtc_alimentos" placeholder="0.000" step="0.00000001"
+                            min="0" value="">
+                        <div class="invalid-feedback">
+                            Ingresa un estimado válido.
+                        </div>
+                    </div>
+                </div>
+
+                <div class="col-sm-6">
+                    <label for="monto_est_vtc_tras_local" class="form-label fw-bold">Estimado de viático traslado local</label>
+                    <div class="input-group">
+                        <span class="input-group-text">🚗</span>
+                        <input type="number" class="form-control" aria-label="Amount (to the nearest dollar)"
+                            id="monto_est_vtc_tras_local" name="monto_est_vtc_tras_local" placeholder="0.000" step="0.00000001"
+                            min="0" value="">
+                        <div class="invalid-feedback">
+                            Ingresa un estimado válido.
+                        </div>
+                    </div>
+                </div>
+
+                <div class="col-sm-6">
+                    <label for="monto_est_vtc_tras_externo" class="form-label fw-bold">Estimado de viático traslado externo</label>
+                    <div class="input-group">
+                        <span class="input-group-text">✈️</span>
+                        <input type="number" class="form-control" aria-label="Amount (to the nearest dollar)"
+                            id="monto_est_vtc_tras_externo" name="monto_est_vtc_tras_externo" placeholder="0.000" step="0.00000001"
+                            min="0" value="">
+                        <div class="invalid-feedback">
+                            Ingresa un estimado válido.
+                        </div>
+                    </div>
+                </div>
+
+                <div class="col-sm-6">
+                    <label for="monto_est_vtc_com_bancaria" class="form-label fw-bold">Estimado de viático comisión bancaria</label>
+                    <div class="input-group">
+                        <span class="input-group-text">🏦</span>
+                        <input type="number" class="form-control" aria-label="Amount (to the nearest dollar)"
+                            id="monto_est_vtc_com_bancaria" name="monto_est_vtc_com_bancaria" placeholder="0.000" step="0.00000001"
+                            min="0" value="">
+                        <div class="invalid-feedback">
+                            Ingresa un estimado válido.
+                        </div>
+                    </div>
+                </div>
+
+                <div class="col-sm-6">
+                    <label for="monto_est_vtc_gasolina" class="form-label fw-bold">Estimado de viático gasolina</label>
+                    <div class="input-group">
+                        <span class="input-group-text">⛽</span>
+                        <input type="number" class="form-control" aria-label="Amount (to the nearest dollar)"
+                            id="monto_est_vtc_gasolina" name="monto_est_vtc_gasolina" placeholder="0.000" step="0.00000001"
+                            min="0" value="">
+                        <div class="invalid-feedback">
+                            Ingresa un estimado válido.
+                        </div>
+                    </div>
+                </div>
+
+                <div class="col-sm-6">
+                    <label for="monto_est_vtc_caseta" class="form-label fw-bold">Estimado de viático caseta</label>
+                    <div class="input-group">
+                        <span class="input-group-text">🛣️</span>
+                        <input type="number" class="form-control" aria-label="Amount (to the nearest dollar)"
+                            id="monto_est_vtc_caseta" name="monto_est_vtc_caseta" placeholder="0.000" step="0.00000001"
+                            min="0" value="">
+                        <div class="invalid-feedback">
+                            Ingresa un estimado válido.
+                        </div>
+                    </div>
+                </div>
+
+                <div class="col-sm-6">
+                    <label for="monto_est_vtc_hospedaje" class="form-label fw-bold">Estimado de viático hospedaje</label>
+                    <div class="input-group">
+                        <span class="input-group-text">🏨</span>
+                        <input type="number" class="form-control" aria-label="Amount (to the nearest dollar)"
+                            id="monto_est_vtc_hospedaje" name="monto_est_vtc_hospedaje" placeholder="0.000" step="0.00000001"
+                            min="0" value="">
+                        <div class="invalid-feedback">
+                            Ingresa un estimado válido.
+                        </div>
+                    </div>
+                </div>
+
+                <div class="col-sm-6">
+                    <label for="estimado_viaticos" class="form-label fw-bold">Estimado en viáticos total</label>
+                    <div class="input-group">
+                        <span class="input-group-text">💵</span>
                         <input type="number" class="form-control" aria-label="Amount (to the nearest dollar)"
                             id="estimado_viaticos" name="estimado_viaticos" placeholder="0.000" step="0.00000001"
                             min="0" value="" required>
