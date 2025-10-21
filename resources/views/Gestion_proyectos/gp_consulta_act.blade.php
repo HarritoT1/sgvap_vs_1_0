@@ -258,7 +258,7 @@
                     @else
                         <div style="height: 100%;" class="px-2 ps-0 d-flex flex-row align-items-stretch gap-3">
                             <button style="height: 100%; width:4rem; padding: 0px; !important" type="button"
-                                class="button-custom btn rounded-3 m-0"  id="button_generate_pdf" onclick="generate_pdf_project()">
+                                class="button-custom btn rounded-3 m-0"  id="button_generate_pdf_project" onclick="generate_pdf_project()">
                                 <img src="{{ asset('img/pdf.png') }}" alt="pdf" style="height: 100%; width: 4rem;">
                             </button>
                         </div>
@@ -266,6 +266,10 @@
                 </div>
 
                 <hr class="my-4 mb-2">
+
+                <input type="hidden" id="razon_social" value="RAZON_SOCIAL_1">
+                <input type="hidden" id="ubicacion" value="Av Estanislao Ramírez Ruiz 301, Amp. Selene, Tláhuac, 13420 Ciudad de México, CDMX">
+                <input type="hidden" id="customer_status" value="activo">
             </form>
         </div>
     </div>

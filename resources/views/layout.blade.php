@@ -20,6 +20,7 @@
     <script src="{{ asset('js/scripts_sgvap.js') }}" type="text/javascript"></script>
     <script src="{{ asset('js/scripts_sgvap_2.js') }}" type="text/javascript"></script>
     <script src="{{ asset('js/scripts_sgvap_3.js') }}" type="text/javascript"></script>
+    <script src="{{ asset('js/scripts_sgvap_4.js') }}" type="text/javascript"></script>
     <script src="{{ asset('js/jspdf.umd.min.js') }}" type="text/javascript"></script>
     <script src="{{ asset('js/jspdf.plugin.autotable.min.js') }}" type="text/javascript"></script>
     <link href="{{ asset('css/checkout.css') }}" rel="stylesheet">

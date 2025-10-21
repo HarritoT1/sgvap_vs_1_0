@@ -380,7 +380,7 @@
                 <hr class="my-4 mb-2">
 
                 <div class="d-flex flex-row justify-content-end align-items-stretch gap-3" style="height: 60px">
-                    @if ('entregado_' !== 'entregado')
+                    @if ('entregado' !== 'entregado')
                         <div style="height: 100%;" class="d-flex flex-row align-items-stretch gap-3">
                             <button style="height: 100%; width:4rem; padding: 0px; !important" type="button"
                                 class="d-none button-custom btn rounded-3 m-0" id="cancel"
