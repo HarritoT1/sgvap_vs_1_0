@@ -37,7 +37,7 @@
                         </div>
                     </div>
 
-                    <div class="col-sm-6">
+                    <div class="col-sm-6 mx-auto">
                         <label for="status" class="form-label fw-bold">Estado del cliente</label>
                         <select name="status" id="status" class="form-control form-select"
                             aria-label="Default select example" required disabled>
