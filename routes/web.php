@@ -179,3 +179,11 @@ Route::get('/gc_consulta_act_filtro', function () {
 Route::get('/gc_consulta_act', function () {
     return view('Gestion_clientes/gc_consulta_act'); //http://127.0.0.1:8000/gc_consulta_act
 });
+
+Route::get('/ge_corte_x_dia_delete', function () {
+    return view('Gestion_empleados/ge_corte_x_dia_delete'); //http://127.0.0.1:8000/ge_corte_x_dia_delete
+});
+
+Route::post('/empleado_corte_x_dia_consulta_filtro', function () {
+    return response()->json([["id" => 1, "fecha_dispersion_dia" => "2025-12-24", "employee_name" => "Miguel Angel Mancera", "project_name" => "uetamo"], ["id" => 2, "fecha_dispersion_dia" => "2025-12-25", "employee_name" => "Jose Cruz", "project_name" => "parajilla"], ["id" => 3, "fecha_dispersion_dia" => "2025-12-26", "employee_name" => "Luis Joel", "project_name" => "zacatenco"]]);
+});
