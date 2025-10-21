@@ -92,7 +92,7 @@ select:focus {
 ul.nav details,
 ul.nav summary,
 ul.nav {
-  font-size: .875rem !important;
+  font-size: 1rem !important;
   font-weight: bold !important;
 }
 
