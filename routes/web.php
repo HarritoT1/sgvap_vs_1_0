@@ -167,3 +167,15 @@ Route::post('/prestamo_consulta_filtro', function () {
 Route::get('/gv_consulta_act_prestamos', function () {
     return view('Gestion_vehiculos/gv_consulta_act_prestamos'); //http://127.0.0.1:8000/gv_consulta_act_prestamos
 });
+
+Route::get('/gc_nuevo', function () {
+    return view('Gestion_clientes/gc_nuevo'); //http://127.0.0.1:8000/gc_nuevo
+});
+
+Route::get('/gc_consulta_act_filtro', function () {
+    return view('Gestion_clientes/gc_consulta_act_filtro'); //http://127.0.0.1:8000/gc_consulta_act_filtro
+});
+
+Route::get('/gc_consulta_act', function () {
+    return view('Gestion_clientes/gc_consulta_act'); //http://127.0.0.1:8000/gc_consulta_act
+});
