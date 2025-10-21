@@ -71,3 +71,34 @@ function find_2 (id) {
   const form = document.getElementById('actualizar');
   return form.querySelector(`#${id}`);
 }
+
+function asig_listener_autocomplete_rfc_cliente () {
+    document.getElementById('input_find_rfc_cliente').addEventListener('input', function () {
+        const query = this.value;
+        const sugerencias = document.getElementById('sugerencias_rfc_cliente');
+
+        if (query.length < 2) {
+            sugerencias.innerHTML = '';
+            return;
+        }
+
+        console.log("buscando rfc de clientes...");
+
+        fetch(`/clientes/buscar-rfc?q=${query}`, {
+            method: 'GET',
+            headers: {
+                'X-CSRF-TOKEN': document.querySelector('meta[name="csrf-token"]').content,
+                'Accept': 'application/json',
+            }
+        })
+            .then(res => res.json())
+            .then(data => {
+                sugerencias.innerHTML = '';
+                data.forEach(cust => {
+                    const option = document.createElement('option');
+                    option.value = cust.id + " - " + cust.razon_social; // ejemplo: id - razon_social
+                    sugerencias.appendChild(option);
+                });
+            });
+    });
+}

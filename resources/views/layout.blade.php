@@ -1054,6 +1054,9 @@ l838 0 -282 -282 c-304 -305 -305 -307 -288 -395 9 -49 69 -109 118 -118 91
             if (document.getElementById("input_find_id_proyect")) {
                 asig_listener_autocomplete_id_proyect()
             }
+            if (document.getElementById("input_find_rfc_cliente")) {
+                asig_listener_autocomplete_rfc_cliente()
+            }
             if (document.getElementById("ajuste_retiro")) {
                 document.getElementById("ajuste_retiro").addEventListener('change', (e) => {
                     show_part_extra_ecore(e)
