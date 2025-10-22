@@ -225,9 +225,9 @@
 
                     <div class="col-sm-6 mx-auto">
                         <label for="notas" class="form-label fw-bold">Notas</label>
-                        <div class="input-group">
+                        <div class="input-group" style="min-height: 10rem !important;">
                             <span class="input-group-text">📝</span>
-                            <textarea id="notas" name="notas" class="form-control" aria-label="Notas" maxlength="300" disabled style="height: 1.5rem;">Visita de supervisión programada. Revisar documentos y actas previas.</textarea>
+                            <textarea id="notas" name="notas" class="form-control" aria-label="Notas" maxlength="300" disabled style="resize: none; overflow-y: auto;">Visita de supervisión programada. Revisar documentos y actas previas.</textarea>
                         </div>
                     </div>
 

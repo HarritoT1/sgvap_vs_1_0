@@ -203,10 +203,10 @@
 
                     <div class="col-sm-6">
                         <label for="notas" class="form-label fw-bold">Notas</label>
-                        <div class="input-group">
+                        <div class="input-group" style="min-height: 10rem !important;">
                             <span class="input-group-text">📝</span>
                             <textarea id="notas" name="notas" class="form-control" aria-label="Notas" maxlength="300"
-                                style="height: 1.5rem;"></textarea>
+                                style="resize: none; overflow-y: auto;"></textarea>
                         </div>
                     </div>
 
