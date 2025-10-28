@@ -9,7 +9,7 @@ Route::get('/', function () {
 
 Route::get('/login', function () {
     return view('Login_inicio_soporte/login'); //http://127.0.0.1:8000/login
-});
+})->name("login.index");
 
 Route::get('/inicio', function () {
     return view('Login_inicio_soporte/inicio'); //http://127.0.0.1:8000/inicio
