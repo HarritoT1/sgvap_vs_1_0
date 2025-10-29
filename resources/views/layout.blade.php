@@ -1206,7 +1206,7 @@ l-68 45 0 51 c1 283 222 551 505 611 96 20 97 20 125 -19z"/>
     <!--<script src="https://cdn.jsdelivr.net/npm/chart.js@4.3.2/dist/chart.umd.js"
         integrity="sha384-eI7PSr3L1XLISH8JdDII5YN/njoSsxfbrkCTnJrzXt+ENP5MOVBxD+l6sEG4zoLp" crossorigin="anonymous">-->
     </script>
-    <script src="{{ asset('js/dashboard.js') }}"></script>
+    <!--<script src="{{ asset('js/dashboard.js') }}"></script>-->
     <script src="{{ asset('js/checkout.js') }}"></script>
     <!--<script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.5.0/Chart.min.js"></script>-->
     <!--<script src="https://cdnjs.cloudflare.com/ajax/libs/xlsx/0.18.5/xlsx.full.min.js"></script>-->
