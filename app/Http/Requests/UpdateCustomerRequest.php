@@ -23,9 +23,10 @@ class UpdateCustomerRequest extends FormRequest
     public function rules(): array
     {
         return [
-            'id' => 'required|string|exists:customers,id|max:50',
-            'razon_social' => 'required|string|max:200',
+            'id' => 'required|string|max:50|unique:customers,id,' . $this->input('id_customer'),
+            'razon_social' => 'required|string|max:200|unique:customers,razon_social,' . $this->input('id_customer'),
             'ubicacion' => 'required|string|max:300',
+            'status' => 'required|in:activo,inactivo',
         ];
     }
 }

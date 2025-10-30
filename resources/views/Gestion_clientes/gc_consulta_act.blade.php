@@ -11,6 +11,9 @@
                 class="needs-validation p-1" novalidate>
                 @csrf
                 @method('PUT')
+
+                <input type="hidden" name="id_customer" value="{{ $customer->id }}">
+
                 <div class="row g-3">
                     <div class="col-sm-6">
                         <label for="id" class="form-label fw-bold">RFC</label>

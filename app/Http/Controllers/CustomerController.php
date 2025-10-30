@@ -37,7 +37,7 @@ class CustomerController extends Controller
     {
         $data = $request->validated();
 
-        $customer = Customer::findOrFail($data['id']);
+        $customer = Customer::findOrFail($request->input('id_customer'));
         $customer->update($data);
 
         return redirect()->route('clientes.consulta_act', ['id' => $customer->id])
