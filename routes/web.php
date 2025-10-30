@@ -144,18 +144,6 @@ Route::get('/gv_consulta_act_prestamos/{id}', function () {
     return view('Gestion_vehiculos/gv_consulta_act_prestamos'); //http://127.0.0.1:8000/gv_consulta_act_prestamos
 })->name("vehiculos.consulta_act_prestamos")->where('id', '[0-9]+');
 
-Route::get('/gc_nuevo', function () {
-    return view('Gestion_clientes/gc_nuevo'); //http://127.0.0.1:8000/gc_nuevo
-})->name("clientes.nuevo");
-
-Route::get('/gc_consulta_act_filtro', function () {
-    return view('Gestion_clientes/gc_consulta_act_filtro'); //http://127.0.0.1:8000/gc_consulta_act_filtro
-})->name("clientes.consulta_filtro");
-
-Route::get('/gc_consulta_act/{id}', function () {
-    return view('Gestion_clientes/gc_consulta_act'); //http://127.0.0.1:8000/gc_consulta_act
-})->name("clientes.consulta_act");
-
 Route::get('/ge_corte_x_dia_delete', function () {
     return view('Gestion_empleados/ge_corte_x_dia_delete'); //http://127.0.0.1:8000/ge_corte_x_dia_delete
 })->name("empleados.corte_x_dia_delete");
@@ -182,6 +170,19 @@ Route::middleware(['auth', 'inactive'])->group(function () {
     Route::get('/contacto', function () {
         return view('Login_inicio_soporte/contacto'); //http://127.0.0.1:8000/contacto
     })->name("contacto.index");
+
+    /* GESTION CLIENTES */
+    Route::get('/gc_nuevo', function () {
+        return view('Gestion_clientes/gc_nuevo'); //http://127.0.0.1:8000/gc_nuevo
+    })->name("clientes.nuevo");
+
+    Route::get('/gc_consulta_act_filtro', function () {
+        return view('Gestion_clientes/gc_consulta_act_filtro'); //http://127.0.0.1:8000/gc_consulta_act_filtro
+    })->name("clientes.consulta_filtro");
+
+    Route::get('/gc_consulta_act/{id}', function () {
+        return view('Gestion_clientes/gc_consulta_act'); //http://127.0.0.1:8000/gc_consulta_act
+    })->name("clientes.consulta_act");
 
     /* GESTION PROYECTOS */
     Route::get('/gp_nuevo', function () {
