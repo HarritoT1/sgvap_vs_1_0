@@ -7,13 +7,15 @@
         <div class="w-100 div-secondary">
 
             <h2 class="mb-3 fw-bold" style="font-size: 1.5rem;">Datos del cliente:</h2>
-            <form id="actualizar" action="#" method="post" enctype="application/x-www-form-urlencoded" autocomplete="off"
+            <form id="actualizar" action="{{ route('clientes.update') }}" method="post" enctype="application/x-www-form-urlencoded" autocomplete="off"
                 class="needs-validation p-1" novalidate>
+                @csrf
+                @method('PUT')
                 <div class="row g-3">
                     <div class="col-sm-6">
                         <label for="id" class="form-label fw-bold">RFC</label>
                         <input type="text" class="form-control" id="id" name="id" placeholder=""
-                            value="{{ $customer->id }}" required maxlength="50" disabled>
+                            value="{{ old('id', $customer->id) }}" required maxlength="50" disabled>
                         <div class="invalid-feedback">
                             Ingresa un RFC válido.
                         </div>
@@ -22,7 +24,7 @@
                     <div class="col-sm-6">
                         <label for="razon_social" class="form-label fw-bold">Razón social</label>
                         <input type="text" class="form-control" id="razon_social" name="razon_social" placeholder=""
-                            value="{{ $customer->razon_social }}" required maxlength="200" disabled>
+                            value="{{ old('razon_social', $customer->razon_social) }}" required maxlength="200" disabled>
                         <div class="invalid-feedback">
                             Ingresa una razón social válida.
                         </div>
@@ -31,7 +33,7 @@
                     <div class="col-12">
                         <label for="ubicacion" class="form-label fw-bold">Ubicación</label>
                         <input type="text" class="form-control" id="ubicacion" name="ubicacion" placeholder=""
-                            value="{{ $customer->ubicacion }}" required maxlength="300" disabled>
+                            value="{{ old('ubicacion', $customer->ubicacion) }}" required maxlength="300" disabled>
                         <div class="invalid-feedback">
                             Ingresa una ubicación válida.
                         </div>

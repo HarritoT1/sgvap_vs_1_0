@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Models\Customer;
 use App\Http\Requests\StoreCutomerRequest;
+use App\Http\Requests\UpdateCustomerRequest;
 
 class CustomerController extends Controller
 {
@@ -30,5 +31,16 @@ class CustomerController extends Controller
         ]);
         $customer = Customer::findOrFail($data['id']);
         return view('Gestion_clientes.gc_consulta_act', ['customer' => $customer]);
+    }
+
+    public function update(UpdateCustomerRequest $request)
+    {
+        $data = $request->validated();
+
+        $customer = Customer::findOrFail($data['id']);
+        $customer->update($data);
+
+        return redirect()->route('clientes.consulta_act', ['id' => $customer->id])
+            ->with('success', 'Cliente actualizado exitosamente ;).');
     }
 }
