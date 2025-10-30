@@ -3,7 +3,7 @@
 
 @section('content')
 <div class="w-100 my-3 div-main text-center">
-    <h1 class="my-3" style="font-size: 3rem;">Bienvenid@ usuari@ $user:</h1>
+    <h1 class="my-3" style="font-size: 3rem;">Bienvenid@ usuari@ admin:</h1>
     <h2 class="fw-bold my-3" style="font-size: 2rem;">SGVAP (Sistema Web de Gestión de Viáticos y Personal en Proyectos Foráneos).</h2>
     <img src="{{asset('img/icono_sgvap.png')}}" alt="icono_sgvap" class="imageResponsive my-4" style="width: 10rem;">
     <hr class="my-4">
