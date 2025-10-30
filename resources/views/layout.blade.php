@@ -1116,8 +1116,7 @@ l-68 45 0 51 c1 283 222 551 505 611 96 20 97 20 125 -19z" />
                             <li class="nav-item">
                                 <form action="{{ route('logout.perform') }}" method="post" class="m-0 p-0">
                                     @csrf
-                                    <button class="nav-link d-flex align-items-center gap-2 text-white fw-bold"
-                                        onclick="this.form.requestSubmit();" type="button">
+                                    <button class="nav-link d-flex align-items-center gap-2 text-white fw-bold" type="submit">
                                         <svg class="bi">
                                             <use xlink:href="#salir" />
                                         </svg>

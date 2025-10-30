@@ -4,25 +4,9 @@ use Illuminate\Support\Facades\Route;
 use Phiki\Phast\Root;
 use App\Http\Controllers\LoginController;
 
-Route::get('/', function () {
+/*Route::get('/', function () {
     return view('welcome');
-}); //http://127.0.0.1:8000/
-
-Route::get('/contacto', function () {
-    return view('Login_inicio_soporte/contacto'); //http://127.0.0.1:8000/contacto
-})->name("contacto.index");
-
-Route::get('/gp_nuevo', function () {
-    return view('Gestion_proyectos/gp_nuevo'); //http://127.0.0.1:8000/gp_nuevo
-})->name("proyectos.nuevo");
-
-Route::get('/gp_consulta_act_filtro', function () {
-    return view('Gestion_proyectos/gp_consulta_act_filtro'); //http://127.0.0.1:8000/gp_consulta_act_filtro
-})->name("proyectos.consulta_filtro");
-
-Route::get('/gp_consulta_act/{id}', function () {
-    return view('Gestion_proyectos/gp_consulta_act'); //http://127.0.0.1:8000/gp_consulta_act
-})->name("proyectos.consulta_act");
+}); //http://127.0.0.1:8000/*/
 
 Route::get('/ge_nuevo', function () {
     return view('Gestion_empleados/ge_nuevo'); //http://127.0.0.1:8000/ge_nuevo
@@ -121,7 +105,7 @@ Route::get('/gdm_hospedaje_disp_consulta_act_filtro', function () {
 })->name("dispersiones.hospedaje_disp_consulta_act_filtro");
 
 Route::post('/hospedaje_disp_consulta_filtro', function () {
-    return response()->json([["id" => 1, "fecha_dispersion" => "2025-12-24", "project_name" => "uetamo", "razon_social" => "ASFG-AH4D"], ["id" => 2, "fecha_dispersion" => "2025-12-25", "project_name" => "parajilla", "razon_social" => "ZXCW-RT56"], ["id" => 3, "fecha_dispersion" => "2025-12-26", "project_name" => "zacatenco", "razon_social" => "QWER-YUI7"], ["id" => 1, "fecha_dispersion" => "2025-12-24", "project_name" => "uetamo", "razon_social" => "ASFG-AH4D"], ["id" => 2, "fecha_dispersion" => "2025-12-25", "project_name" => "parajilla", "razon_social" => "ZXCW-RT56"], ["id" => 3, "fecha_dispersion" => "2025-12-26", "project_name" => "zacatenco", "razon_social" => "QWER-YUI7"],["id" => 1, "fecha_dispersion" => "2025-12-24", "project_name" => "uetamo", "razon_social" => "ASFG-AH4D"], ["id" => 2, "fecha_dispersion" => "2025-12-25", "project_name" => "parajilla", "razon_social" => "ZXCW-RT56"], ["id" => 3, "fecha_dispersion" => "2025-12-26", "project_name" => "zacatenco", "razon_social" => "QWER-YUI7"],["id" => 1, "fecha_dispersion" => "2025-12-24", "project_name" => "uetamo", "razon_social" => "ASFG-AH4D"], ["id" => 2, "fecha_dispersion" => "2025-12-25", "project_name" => "parajilla", "razon_social" => "ZXCW-RT56"], ["id" => 3, "fecha_dispersion" => "2025-12-26", "project_name" => "zacatenco", "razon_social" => "QWER-YUI7"]]);
+    return response()->json([["id" => 1, "fecha_dispersion" => "2025-12-24", "project_name" => "uetamo", "razon_social" => "ASFG-AH4D"], ["id" => 2, "fecha_dispersion" => "2025-12-25", "project_name" => "parajilla", "razon_social" => "ZXCW-RT56"], ["id" => 3, "fecha_dispersion" => "2025-12-26", "project_name" => "zacatenco", "razon_social" => "QWER-YUI7"], ["id" => 1, "fecha_dispersion" => "2025-12-24", "project_name" => "uetamo", "razon_social" => "ASFG-AH4D"], ["id" => 2, "fecha_dispersion" => "2025-12-25", "project_name" => "parajilla", "razon_social" => "ZXCW-RT56"], ["id" => 3, "fecha_dispersion" => "2025-12-26", "project_name" => "zacatenco", "razon_social" => "QWER-YUI7"], ["id" => 1, "fecha_dispersion" => "2025-12-24", "project_name" => "uetamo", "razon_social" => "ASFG-AH4D"], ["id" => 2, "fecha_dispersion" => "2025-12-25", "project_name" => "parajilla", "razon_social" => "ZXCW-RT56"], ["id" => 3, "fecha_dispersion" => "2025-12-26", "project_name" => "zacatenco", "razon_social" => "QWER-YUI7"], ["id" => 1, "fecha_dispersion" => "2025-12-24", "project_name" => "uetamo", "razon_social" => "ASFG-AH4D"], ["id" => 2, "fecha_dispersion" => "2025-12-25", "project_name" => "parajilla", "razon_social" => "ZXCW-RT56"], ["id" => 3, "fecha_dispersion" => "2025-12-26", "project_name" => "zacatenco", "razon_social" => "QWER-YUI7"]]);
 });
 
 Route::get('/gdm_hospedaje_disp_consulta_act/{id}', function () {
@@ -181,8 +165,8 @@ Route::post('/empleado_corte_x_dia_consulta_filtro', function () {
 });
 
 // CONTROLADORES FINALES (PRODUCCION).
-Route::get('/login', function () {
-    return view('Login_inicio_soporte/login'); //http://127.0.0.1:8000/login
+Route::get('/', function () {
+    return view('Login_inicio_soporte/login'); //http://127.0.0.1:8000
 })->name("login.index");
 
 Route::post('/login', [LoginController::class, 'login'])->name('login.perform');
@@ -190,7 +174,25 @@ Route::post('/login', [LoginController::class, 'login'])->name('login.perform');
 Route::post('/logout', [LoginController::class, 'logout'])->name('logout.perform');
 
 Route::middleware(['auth', 'inactive'])->group(function () {
+    /* LOGIN INICIO SOPORTE */
     Route::get('/inicio', function () {
         return view('Login_inicio_soporte/inicio'); //http://127.0.0.1:8000/inicio
     })->name("inicio.index");
+
+    Route::get('/contacto', function () {
+        return view('Login_inicio_soporte/contacto'); //http://127.0.0.1:8000/contacto
+    })->name("contacto.index");
+
+    /* GESTION PROYECTOS */
+    Route::get('/gp_nuevo', function () {
+        return view('Gestion_proyectos/gp_nuevo'); //http://127.0.0.1:8000/gp_nuevo
+    })->name("proyectos.nuevo");
+
+    Route::get('/gp_consulta_act_filtro', function () {
+        return view('Gestion_proyectos/gp_consulta_act_filtro'); //http://127.0.0.1:8000/gp_consulta_act_filtro
+    })->name("proyectos.consulta_filtro");
+
+    Route::get('/gp_consulta_act/{id}', function () {
+        return view('Gestion_proyectos/gp_consulta_act'); //http://127.0.0.1:8000/gp_consulta_act
+    })->name("proyectos.consulta_act");
 });

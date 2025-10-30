@@ -26,14 +26,16 @@ class LoginController extends Controller
 
         return redirect()->intended(route('inicio.index'));
     }
-    
+
     public function logout(Request $request)
     {
-        Auth::logout();
+        if (Auth::check()) {
+            Auth::logout();
+        }
 
         $request->session()->invalidate();
         $request->session()->regenerateToken();
 
-        return redirect('/login');
+        return redirect('/')->with('status', 'Has cerrado sesión correctamente. ¡Hasta luego! ✌︎︎');
     }
 }

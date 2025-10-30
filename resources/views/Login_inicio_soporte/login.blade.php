@@ -269,6 +269,12 @@
                                 </ul>
                             </div>
                         @endif
+
+                        @if (session('status'))
+                            <div class="alert alert-success mt-3" role="alert">
+                                {{ session('status') }}
+                            </div>
+                        @endif
                     </form>
                 </div>
             </div>
