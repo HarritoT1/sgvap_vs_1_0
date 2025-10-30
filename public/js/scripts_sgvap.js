@@ -64,9 +64,9 @@ function ask_before_submit() {
     }
 }
 
-function ask_before_submit_new() {
+function ask_before_submit_new(id_form) {
     if (confirm("¿Está seguro de esta operación?")) {
-        const form = document.querySelector("form");
+        const form = document.getElementById(id_form);
         form.requestSubmit();
     }
 }

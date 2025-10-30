@@ -4,10 +4,21 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Models\Customer;
+use App\Http\Requests\StoreCutomerRequest;
 
 class CustomerController extends Controller
 {
     //
+    public function create(StoreCutomerRequest $request)
+    {
+        $data = $request->validated();
+
+        $customer = Customer::create($data);
+
+        return redirect()->route('clientes.consulta_act', ['id' => $customer->id])
+            ->with('success', 'Cliente creado exitosamente ;).');
+    }
+
     public function show(Request $request)
     {
         $data = $request->validate([

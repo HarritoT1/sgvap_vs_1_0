@@ -177,6 +177,8 @@ Route::middleware(['auth', 'inactive'])->group(function () {
         return view('Gestion_clientes/gc_nuevo'); //http://127.0.0.1:8000/gc_nuevo
     })->name("clientes.nuevo");
 
+    Route::post('/customer_create', [CustomerController::class, 'create'])->name('clientes.create');
+
     Route::get('/gc_consulta_act_filtro', function () {
         return view('Gestion_clientes/gc_consulta_act_filtro'); //http://127.0.0.1:8000/gc_consulta_act_filtro
     })->name("clientes.consulta_filtro");

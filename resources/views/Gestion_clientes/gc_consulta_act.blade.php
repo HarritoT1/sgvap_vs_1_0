@@ -68,13 +68,20 @@
                             <button style="height: 100%; width:4rem; padding: 0px; !important" type="button"
                                 class="button-custom btn rounded-3 m-0" disabled id="save"
                                 onclick="ask_before_submit()">
-                                <img src="{{ asset('img/guardar.png') }}" alt="guardar"
-                                    style="height: 100%; width: 4rem;">
+                                <img src="{{ asset('img/guardar.png') }}" alt="guardar" style="height: 100%; width: 4rem;">
                             </button>
                         </div>
                     </div>
 
                     <hr class="my-4 mb-2">
+
+                    @if (session('success'))
+                        <div class="alert alert-success" role="alert">
+                            <ul class="mb-0">
+                                <li>{{ session('success') }}</li>
+                            </ul>
+                        </div>
+                    @endif
             </form>
         </div>
     </div>
