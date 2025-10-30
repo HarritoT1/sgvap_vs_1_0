@@ -768,8 +768,8 @@ l-6 -58 -135 0 c-130 0 -136 -1 -159 -25 -33 -32 -33 -78 0 -110 23 -24 29
 -370 82 -574 184 -1044 654 -1228 1228 -38 118 -72 271 -82 370 -3 33 -8 79
 -11 103 l-5 42 56 0 c46 0 60 4 80 25 33 32 33 78 0 110 -20 21 -34 25 -80 25
 l-56 0 6 63 c27 259 82 465 179 672 304 642 906 1048 1639 1104 14 1 17 -8 17
--54z"/>
-<path d="M2370 4229 c-580 -66 -1060 -409 -1315 -941 -330 -687 -172 -1489
+-54z" />
+                <path d="M2370 4229 c-580 -66 -1060 -409 -1315 -941 -330 -687 -172 -1489
 388 -1978 635 -555 1551 -569 2197 -33 590 490 762 1304 425 2011 -124 260
 -294 467 -523 638 -97 72 -326 190 -443 228 -227 73 -498 101 -729 75z m490
 -179 c284 -58 528 -183 729 -375 244 -233 396 -512 463 -850 31 -157 31 -416
@@ -788,24 +788,24 @@ l-56 0 6 63 c27 259 82 465 179 672 304 642 906 1048 1639 1104 14 1 17 -8 17
 -1601 c-11 -67 -88 -132 -157 -132 -69 0 -146 65 -157 132 l-5 33 162 0 162 0
 -5 -33z m-407 -167 c14 -18 49 -49 78 -69 142 -94 320 -61 430 79 l21 27 83
 -17 c293 -59 517 -323 518 -613 l0 -52 -67 -44 c-479 -309 -1158 -308 -1625 1
-l-68 45 0 51 c1 283 222 551 505 611 96 20 97 20 125 -19z"/>
-<path d="M640 4787 c-49 -16 -133 -102 -148 -153 -8 -26 -12 -112 -12 -233 0
+l-68 45 0 51 c1 283 222 551 505 611 96 20 97 20 125 -19z" />
+                <path d="M640 4787 c-49 -16 -133 -102 -148 -153 -8 -26 -12 -112 -12 -233 0
 -190 0 -192 25 -216 15 -16 36 -25 55 -25 19 0 40 9 55 25 25 24 25 26 25 215
 0 257 -17 240 240 240 189 0 191 0 215 25 33 32 33 78 0 110 -24 25 -25 25
--222 24 -113 -1 -213 -6 -233 -12z"/>
-<path d="M4039 4790 c-9 -5 -22 -23 -29 -40 -15 -35 0 -84 31 -100 10 -6 101
+-222 24 -113 -1 -213 -6 -233 -12z" />
+                <path d="M4039 4790 c-9 -5 -22 -23 -29 -40 -15 -35 0 -84 31 -100 10 -6 101
 -10 204 -10 251 0 235 16 235 -237 1 -198 3 -208 48 -232 30 -16 65 -7 92 21
 19 20 20 35 20 211 0 228 -6 254 -75 322 -31 32 -65 55 -91 63 -50 14 -411 16
--435 2z"/>
-<path d="M525 948 c-43 -23 -45 -34 -45 -231 0 -228 6 -254 75 -322 68 -69 94
+-435 2z" />
+                <path d="M525 948 c-43 -23 -45 -34 -45 -231 0 -228 6 -254 75 -322 68 -69 94
 -75 322 -75 176 0 191 1 211 20 28 27 37 62 21 92 -24 45 -34 47 -232 48 -253
-0 -237 -16 -237 237 -1 197 -3 208 -47 231 -27 15 -42 15 -68 0z"/>
-<path d="M4505 935 c-25 -24 -25 -26 -25 -215 0 -257 17 -240 -240 -240 -189
+0 -237 -16 -237 237 -1 197 -3 208 -47 231 -27 15 -42 15 -68 0z" />
+                <path d="M4505 935 c-25 -24 -25 -26 -25 -215 0 -257 17 -240 -240 -240 -189
 0 -191 0 -215 -25 -16 -15 -25 -36 -25 -55 0 -19 9 -40 25 -55 24 -25 26 -25
 216 -25 230 0 256 6 324 75 69 68 75 94 75 324 0 190 0 192 -25 216 -15 16
--36 25 -55 25 -19 0 -40 -9 -55 -25z"/>
+-36 25 -55 25 -19 0 -40 -9 -55 -25z" />
             </g>
-        </symbol>        
+        </symbol>
     </svg>
 
     <header class="navbar sticky-top flex-md-nowrap p-0 shadow" data-bs-theme="dark"
@@ -1105,8 +1105,8 @@ l-68 45 0 51 c1 283 222 551 505 611 96 20 97 20 125 -19z"/>
                         <hr class="my-3 hr-sidebar">
                         <ul class="nav flex-column">
                             <li class="nav-item">
-                                <a class="nav-link d-flex align-items-center gap-2 text-white fw-bold" href="/contacto"
-                                    target="_self">
+                                <a class="nav-link d-flex align-items-center gap-2 text-white fw-bold"
+                                    href="/contacto" target="_self">
                                     <svg class="bi">
                                         <use xlink:href="#info_developer" />
                                     </svg>
@@ -1114,13 +1114,16 @@ l-68 45 0 51 c1 283 222 551 505 611 96 20 97 20 125 -19z"/>
                                 </a>
                             </li>
                             <li class="nav-item">
-                                <a class="nav-link d-flex align-items-center gap-2 text-white fw-bold"
-                                    href="{{route('logout.perform')}}"target="_self">
-                                    <svg class="bi">
-                                        <use xlink:href="#salir" />
-                                    </svg>
-                                    Salir.
-                                </a>
+                                <form action="{{ route('logout.perform') }}" method="post" class="m-0 p-0">
+                                    @csrf
+                                    <button class="nav-link d-flex align-items-center gap-2 text-white fw-bold"
+                                        onclick="this.form.requestSubmit();" type="button">
+                                        <svg class="bi">
+                                            <use xlink:href="#salir" />
+                                        </svg>
+                                        Salir.
+                                    </button>
+                                </form>
                             </li>
                         </ul>
                     </div>
@@ -1175,10 +1178,12 @@ l-68 45 0 51 c1 283 222 551 505 611 96 20 97 20 125 -19z"/>
             if (document.getElementById("crear_dm_gasolina") || document.getElementById("monto_dispersado")) {
                 asig_listener_autocomputed_inputs()
             }
-            if (document.getElementById('crear_dm_caseta') || document.getElementById("label_caseta_importe_total")) {
+            if (document.getElementById('crear_dm_caseta') || document.getElementById(
+                "label_caseta_importe_total")) {
                 asig_listener_autocomputed_inputs_caseta()
             }
-            if (document.getElementById('crear_dm_hospedaje') || document.getElementById("label_hospedaje_importe_total")) {
+            if (document.getElementById('crear_dm_hospedaje') || document.getElementById(
+                    "label_hospedaje_importe_total")) {
                 asig_listener_autocomputed_inputs_hospedaje()
             }
             if (document.getElementById("xls_gasoline")) {
@@ -1192,7 +1197,7 @@ l-68 45 0 51 c1 283 222 551 505 611 96 20 97 20 125 -19z"/>
                 enable_button_pdf_generator()
             }
             if (document.getElementById("prestamo_vehicular_act_form")) {
-                document.getElementById('prestamo_status').addEventListener('mousedown', function(e){
+                document.getElementById('prestamo_status').addEventListener('mousedown', function(e) {
                     e.preventDefault(); // bloquea la apertura del select.
                 });
                 document.getElementById('prestamo_status').style.backgroundColor = 'var(--bs-secondary-bg)';
@@ -1204,7 +1209,8 @@ l-68 45 0 51 c1 283 222 551 505 611 96 20 97 20 125 -19z"/>
     <script src="{{ asset('js/bootstrap.bundle.min.js') }}"></script>
 
     <!--<script src="https://cdn.jsdelivr.net/npm/chart.js@4.3.2/dist/chart.umd.js"
-        integrity="sha384-eI7PSr3L1XLISH8JdDII5YN/njoSsxfbrkCTnJrzXt+ENP5MOVBxD+l6sEG4zoLp" crossorigin="anonymous">-->
+        integrity="sha384-eI7PSr3L1XLISH8JdDII5YN/njoSsxfbrkCTnJrzXt+ENP5MOVBxD+l6sEG4zoLp" crossorigin="anonymous">
+        -- >
     </script>
     <!--<script src="{{ asset('js/dashboard.js') }}"></script>-->
     <script src="{{ asset('js/checkout.js') }}"></script>

@@ -8,10 +8,6 @@ Route::get('/', function () {
     return view('welcome');
 }); //http://127.0.0.1:8000/
 
-Route::get('/inicio', function () {
-    return view('Login_inicio_soporte/inicio'); //http://127.0.0.1:8000/inicio
-})->name("inicio.index");
-
 Route::get('/contacto', function () {
     return view('Login_inicio_soporte/contacto'); //http://127.0.0.1:8000/contacto
 })->name("contacto.index");
@@ -192,3 +188,9 @@ Route::get('/login', function () {
 Route::post('/login', [LoginController::class, 'login'])->name('login.perform');
 
 Route::post('/logout', [LoginController::class, 'logout'])->name('logout.perform');
+
+Route::middleware(['auth', 'inactive'])->group(function () {
+    Route::get('/inicio', function () {
+        return view('Login_inicio_soporte/inicio'); //http://127.0.0.1:8000/inicio
+    })->name("inicio.index");
+});
