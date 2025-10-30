@@ -3,13 +3,10 @@
 use Illuminate\Support\Facades\Route;
 use Phiki\Phast\Root;
 
+
 Route::get('/', function () {
     return view('welcome');
 }); //http://127.0.0.1:8000/
-
-Route::get('/login', function () {
-    return view('Login_inicio_soporte/login'); //http://127.0.0.1:8000/login
-})->name("login.index");
 
 Route::get('/inicio', function () {
     return view('Login_inicio_soporte/inicio'); //http://127.0.0.1:8000/inicio
@@ -93,7 +90,7 @@ Route::post('/gasolina_disp_consulta_filtro', function () {
 
 Route::get('/gdm_gasolina_disp_consulta_act/{id}', function () {
     return view('Gestion_dispersiones_monetarias/gdm_gasolina_disp_consulta_act'); //http://127.0.0.1:8000/gdm_gasolina_disp_consulta_act
-})->name("dispersiones.gasolina_disp_consulta_act");
+})->name("dispersiones.gasolina_disp_consulta_act")->where('id', '[0-9]+');
 
 Route::get('/gdm_graficas_gasolina', function () {
     return view('Gestion_dispersiones_monetarias/gdm_graficas_gasolina'); //http://127.0.0.1:8000/gdm_graficas_gasolina
@@ -113,7 +110,7 @@ Route::post('/caseta_disp_consulta_filtro', function () {
 
 Route::get('/gdm_caseta_disp_consulta_act/{id}', function () {
     return view('Gestion_dispersiones_monetarias/gdm_caseta_disp_consulta_act'); //http://127.0.0.1:8000/gdm_caseta_disp_consulta_act
-})->name("dispersiones.caseta_disp_consulta_act");
+})->name("dispersiones.caseta_disp_consulta_act")->where('id', '[0-9]+');
 
 Route::get('/gdm_graficas_caseta', function () {
     return view('Gestion_dispersiones_monetarias/gdm_graficas_caseta'); //http://127.0.0.1:8000/gdm_graficas_caseta
@@ -133,7 +130,7 @@ Route::post('/hospedaje_disp_consulta_filtro', function () {
 
 Route::get('/gdm_hospedaje_disp_consulta_act/{id}', function () {
     return view('Gestion_dispersiones_monetarias/gdm_hospedaje_disp_consulta_act'); //http://127.0.0.1:8000/gdm_hospedaje_disp_consulta_act
-})->name("dispersiones.hospedaje_disp_consulta_act");
+})->name("dispersiones.hospedaje_disp_consulta_act")->where('id', '[0-9]+');
 
 Route::get('/gdm_graficas_hospedaje', function () {
     return view('Gestion_dispersiones_monetarias/gdm_graficas_hospedaje'); //http://127.0.0.1:8000/gdm_graficas_hospedaje
@@ -165,7 +162,7 @@ Route::post('/prestamo_consulta_filtro', function () {
 
 Route::get('/gv_consulta_act_prestamos/{id}', function () {
     return view('Gestion_vehiculos/gv_consulta_act_prestamos'); //http://127.0.0.1:8000/gv_consulta_act_prestamos
-})->name("vehiculos.consulta_act_prestamos");
+})->name("vehiculos.consulta_act_prestamos")->where('id', '[0-9]+');
 
 Route::get('/gc_nuevo', function () {
     return view('Gestion_clientes/gc_nuevo'); //http://127.0.0.1:8000/gc_nuevo
@@ -186,3 +183,10 @@ Route::get('/ge_corte_x_dia_delete', function () {
 Route::post('/empleado_corte_x_dia_consulta_filtro', function () {
     return response()->json([["id" => 1, "fecha_dispersion_dia" => "2025-12-24", "employee_name" => "Miguel Angel Mancera", "project_name" => "uetamo"], ["id" => 2, "fecha_dispersion_dia" => "2025-12-25", "employee_name" => "Jose Cruz", "project_name" => "parajilla"], ["id" => 3, "fecha_dispersion_dia" => "2025-12-26", "employee_name" => "Luis Joel", "project_name" => "zacatenco"]]);
 });
+
+// CONTROLADORES FINALES (PRODUCCION).
+Route::get('/login', function () {
+    return view('Login_inicio_soporte/login'); //http://127.0.0.1:8000/login
+})->name("login.index");
+
+Route::post('/login', [App\Http\Controllers\LoginController::class, 'login'])->name('login.perform');
