@@ -228,14 +228,15 @@
                         style="width: 6rem;">
                 </div>
                 <div class="col-md-10 mx-auto col-lg-5">
-                    <form id="login" action="#" method="post" enctype="application/x-www-form-urlencoded"
+                    <form id="login" action="{{route('login.perform')}}" method="post" enctype="application/x-www-form-urlencoded"
                         autocomplete="off" class="needs-validation p-4 p-md-5 border rounded-3 text-center" novalidate
                         style="background-color: var(--login-color);">
+                        @csrf
                         <div class="form-floating mb-3">
-                            <input type="text" class="form-control" id="user" placeholder="username"
-                                name="user" value="" required pattern="^[a-zA-Z0-9_]{4,20}$"
+                            <input type="text" class="form-control" id="name" placeholder="name"
+                                name="name" value="" required pattern="^[a-zA-Z0-9_]{4,20}$"
                                 maxlength="20">
-                            <label for="user">Usuario</label>
+                            <label for="name">Usuario</label>
                             <div class="invalid-feedback">
                                 Ingresa un usuario válido.
                             </div>

@@ -10,7 +10,7 @@ class LoginController extends Controller
     public function login(Request $request)
     {
         $credentials = $request->validate([
-            'user' => 'required|string|min:5|max:20|regex:^[a-zA-Z0-9_]{4,20}$',
+            'name' => 'required|string|min:5|max:20|regex:/^[a-zA-Z0-9_]{4,20}$/',
             'password' => 'required|string|min:5|max:20',
         ]);
 
@@ -24,8 +24,9 @@ class LoginController extends Controller
         // Guarda marca de última actividad para middleware de inactividad.
         $request->session()->put('last_activity', now()->timestamp);
 
-        return redirect()->intended(route('login.index'));
+        return redirect()->intended(route('inicio.index'));
     }
+    
     public function logout(Request $request)
     {
         Auth::logout();

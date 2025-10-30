@@ -2,7 +2,7 @@
 
 use Illuminate\Support\Facades\Route;
 use Phiki\Phast\Root;
-
+use App\Http\Controllers\LoginController;
 
 Route::get('/', function () {
     return view('welcome');
@@ -189,4 +189,6 @@ Route::get('/login', function () {
     return view('Login_inicio_soporte/login'); //http://127.0.0.1:8000/login
 })->name("login.index");
 
-Route::post('/login', [App\Http\Controllers\LoginController::class, 'login'])->name('login.perform');
+Route::post('/login', [LoginController::class, 'login'])->name('login.perform');
+
+Route::post('/logout', [LoginController::class, 'logout'])->name('logout.perform');
