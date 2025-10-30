@@ -26,7 +26,7 @@ class SessionTimeout
         if ($last) {
             $elapsed = ($now - (int)$last) / 60; // minutos.
 
-            if ($elapsed > 2/*$inactivityMinutes*/) {
+            if ($elapsed > 15/*$inactivityMinutes*/) {
                 // timeout por inactividad: cerrar sesión y devolver respuesta.
                 if (Auth::check()) {
                     Auth::logout();

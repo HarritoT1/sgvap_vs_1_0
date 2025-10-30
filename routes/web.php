@@ -3,6 +3,7 @@
 use Illuminate\Support\Facades\Route;
 use Phiki\Phast\Root;
 use App\Http\Controllers\LoginController;
+use App\Http\Controllers\CustomerController;
 
 /*Route::get('/', function () {
     return view('welcome');
@@ -180,9 +181,7 @@ Route::middleware(['auth', 'inactive'])->group(function () {
         return view('Gestion_clientes/gc_consulta_act_filtro'); //http://127.0.0.1:8000/gc_consulta_act_filtro
     })->name("clientes.consulta_filtro");
 
-    Route::get('/gc_consulta_act/{id}', function () {
-        return view('Gestion_clientes/gc_consulta_act'); //http://127.0.0.1:8000/gc_consulta_act
-    })->name("clientes.consulta_act");
+    Route::get('/gc_consulta_act', [CustomerController::class, 'show'])->name("clientes.consulta_act"); //http://127.0.0.1:8000/gc_consulta_act?id=AQGN311928WDF
 
     /* GESTION PROYECTOS */
     Route::get('/gp_nuevo', function () {

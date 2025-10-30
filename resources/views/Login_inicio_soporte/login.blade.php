@@ -228,8 +228,9 @@
                         style="width: 6rem;">
                 </div>
                 <div class="col-md-10 mx-auto col-lg-5">
-                    <form id="login" action="{{route('login.perform')}}" method="post" enctype="application/x-www-form-urlencoded"
-                        autocomplete="off" class="needs-validation p-4 p-md-5 border rounded-3 text-center" novalidate
+                    <form id="login" action="{{ route('login.perform') }}" method="post"
+                        enctype="application/x-www-form-urlencoded" autocomplete="off"
+                        class="needs-validation p-4 p-md-5 border rounded-3 text-center" novalidate
                         style="background-color: var(--login-color);">
                         @csrf
                         <div class="form-floating mb-3">
@@ -261,7 +262,7 @@
                             C.V.</small>
 
                         @if ($errors->any())
-                            <div class="alert alert-danger mt-3" role="alert">
+                            <div class="alert alert-danger mt-3 text-justify" role="alert">
                                 <ul class="mb-0">
                                     @foreach ($errors->all() as $error)
                                         <li>{{ $error }}</li>
@@ -272,7 +273,9 @@
 
                         @if (session('status'))
                             <div class="alert alert-success mt-3" role="alert">
-                                {{ session('status') }}
+                                <ul class="mb-0">
+                                    <li>{{ session('status') }}</li>
+                                </ul>
                             </div>
                         @endif
                     </form>
