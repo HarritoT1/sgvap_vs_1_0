@@ -847,7 +847,7 @@ l-68 45 0 51 c1 283 222 551 505 611 96 20 97 20 125 -19z" />
                         <ul class="nav flex-column">
                             <li class="nav-item">
                                 <a class="nav-link d-flex align-items-center gap-2 active text-white fw-bold"
-                                    aria-current="page" href="/inicio" target="_self">
+                                    aria-current="page" href="{{ route('inicio.index') }}" target="_self">
                                     <svg class="bi">
                                         <use xlink:href="#inicio" />
                                     </svg>
@@ -1106,7 +1106,7 @@ l-68 45 0 51 c1 283 222 551 505 611 96 20 97 20 125 -19z" />
                         <ul class="nav flex-column">
                             <li class="nav-item">
                                 <a class="nav-link d-flex align-items-center gap-2 text-white fw-bold"
-                                    href="/contacto" target="_self">
+                                    href="{{ route('contacto.index') }}" target="_self">
                                     <svg class="bi">
                                         <use xlink:href="#info_developer" />
                                     </svg>
