@@ -49,7 +49,7 @@ function ask_before_submit() {
 
         const huboCambios = Array.from(inputs).some(
             (input) => {
-                if (!(input.type === 'radio')) return valoresOriginales[input.name] !== input.value;
+                if (!(input.type === 'radio')) return valoresOriginales[input.name] !== input.value.trim();
                 if (input.type === 'radio' && input.checked === true) return valoresOriginales[input.name] !== input.value;
             }
         );
@@ -82,7 +82,7 @@ function asig_listener_autocomplete_rfc() {
         const query = this.value;
         const sugerencias = document.getElementById('sugerencias_rfc');
 
-        if (query.length < 2) {
+        if (query.length < 1) {
             sugerencias.innerHTML = '';
             return;
         }
@@ -96,7 +96,7 @@ function asig_listener_autocomplete_rfc() {
                 'Accept': 'application/json',
             }
         })
-            .then(res => res.json())
+            .then(res => {if(res.ok) { return res.json() } else { throw new Error('Error en la respuesta del servidor') }})
             .then(data => {
                 sugerencias.innerHTML = '';
                 data.forEach(emp => {
@@ -104,6 +104,8 @@ function asig_listener_autocomplete_rfc() {
                     option.value = emp.id + " - " + emp.nombre; // ejemplo: id - nombre
                     sugerencias.appendChild(option);
                 });
+            }).catch(err => {
+                console.error("Error al buscar RFC de clientes:", err);
             });
     });
 }
@@ -113,7 +115,7 @@ function asig_listener_autocomplete_id_proyect() {
         const query = this.value;
         const sugerencias = document.getElementById('sugerencias_id_proyect');
 
-        if (query.length < 2) {
+        if (query.length < 1) {
             sugerencias.innerHTML = '';
             return;
         }
@@ -127,7 +129,7 @@ function asig_listener_autocomplete_id_proyect() {
                 'Accept': 'application/json',
             }
         })
-            .then(res => res.json())
+            .then(res => {if(res.ok) { return res.json() } else { throw new Error('Error en la respuesta del servidor') }})
             .then(data => {
                 sugerencias.innerHTML = '';
                 data.forEach(proyect => {
@@ -135,6 +137,8 @@ function asig_listener_autocomplete_id_proyect() {
                     option.value = proyect.id + " - " + proyect.nombre; // ejemplo: id - nombre
                     sugerencias.appendChild(option);
                 });
+            }).catch(err => {
+                console.error("Error al buscar RFC de clientes:", err);
             });
     });
 }

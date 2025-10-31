@@ -9,9 +9,7 @@ use Symfony\Component\HttpFoundation\Response;
 class SanitizeId
 {
     /**
-     * Handle an incoming request.
-     *
-     * @param  \Closure(\Illuminate\Http\Request): (\Symfony\Component\HttpFoundation\Response)  $next
+     * Maneja la sanitización del parámetro 'id' en la request.
      */
     public function handle(Request $request, Closure $next)
     {

@@ -22,7 +22,6 @@ class CustomerController extends Controller
 
     public function show(Request $request)
     {
-        dd($request->all());
         $data = $request->validate([
             'id' => 'required|string|exists:customers,id|max:50',
         ], [
