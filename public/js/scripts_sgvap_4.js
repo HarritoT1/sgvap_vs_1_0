@@ -77,7 +77,7 @@ function asig_listener_autocomplete_rfc_cliente() {
         const query = this.value;
         const sugerencias = document.getElementById('sugerencias_rfc_cliente');
 
-        if (query.length < 2) {
+        if (query.length < 1) {
             sugerencias.innerHTML = '';
             return;
         }
@@ -91,7 +91,7 @@ function asig_listener_autocomplete_rfc_cliente() {
                 'Accept': 'application/json',
             }
         })
-            .then(res => res.json())
+            .then(res => {if(res.ok) { return res.json() } else { throw new Error('Error en la respuesta del servidor') }})
             .then(data => {
                 sugerencias.innerHTML = '';
                 data.forEach(cust => {
@@ -99,6 +99,8 @@ function asig_listener_autocomplete_rfc_cliente() {
                     option.value = cust.id + " - " + cust.razon_social; // ejemplo: id - razon_social
                     sugerencias.appendChild(option);
                 });
+            }).catch(err => {
+                console.error("Error al buscar RFC de clientes:", err);
             });
     });
 }

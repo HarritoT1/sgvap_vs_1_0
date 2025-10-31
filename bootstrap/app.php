@@ -17,6 +17,7 @@ return Application::configure(basePath: dirname(__DIR__))
         */
 
         $middleware->alias([
+            'sanitize' => App\Http\Middleware\SanitizeId::class,
             'auth' => App\Http\Middleware\Authenticate::class,
             'inactive' => App\Http\Middleware\SessionTimeout::class,
         ]);

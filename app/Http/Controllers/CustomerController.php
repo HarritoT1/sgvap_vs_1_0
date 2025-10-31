@@ -22,6 +22,7 @@ class CustomerController extends Controller
 
     public function show(Request $request)
     {
+        dd($request->all());
         $data = $request->validate([
             'id' => 'required|string|exists:customers,id|max:50',
         ], [
@@ -42,5 +43,20 @@ class CustomerController extends Controller
 
         return redirect()->route('clientes.consulta_act', ['id' => $customer->id])
             ->with('success', 'Cliente actualizado exitosamente ;).');
+    }
+
+    public function buscarRFC(Request $request)
+    {
+        $query = $request->input('q');
+
+        $customers = Customer::where('id', 'like', $query.'%')
+                             ->limit(10)
+                             ->get();
+
+        if($customers->isEmpty()) {
+            return response()->json(['message' => 'No se encontraron resultados.'], 404);
+        }
+
+        return response()->json($customers);
     }
 }

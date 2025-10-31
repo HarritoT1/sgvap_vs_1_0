@@ -186,7 +186,9 @@ Route::middleware(['auth', 'inactive'])->group(function () {
     Route::get('/gc_consulta_act', [CustomerController::class, 'show'])->name("clientes.consulta_act"); //http://127.0.0.1:8000/gc_consulta_act?id=AQGN311928WDF
 
     Route::put('/customer_update', [CustomerController::class, 'update'])->name('clientes.update');
-    
+
+    Route::get('/clientes/buscar-rfc', [CustomerController::class, 'buscarRFC'])->middleware('sanitize')->name('clientes.buscar_rfc');
+
     /* GESTION PROYECTOS */
     Route::get('/gp_nuevo', function () {
         return view('Gestion_proyectos/gp_nuevo'); //http://127.0.0.1:8000/gp_nuevo
@@ -200,3 +202,4 @@ Route::middleware(['auth', 'inactive'])->group(function () {
         return view('Gestion_proyectos/gp_consulta_act'); //http://127.0.0.1:8000/gp_consulta_act
     })->name("proyectos.consulta_act");
 });
+
