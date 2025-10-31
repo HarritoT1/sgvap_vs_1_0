@@ -105,7 +105,7 @@ function asig_listener_autocomplete_rfc() {
                     sugerencias.appendChild(option);
                 });
             }).catch(err => {
-                console.error("Error al buscar RFC de clientes:", err);
+                console.warn("Error al buscar RFC de empleados:", err);
             });
     });
 }
@@ -138,7 +138,7 @@ function asig_listener_autocomplete_id_proyect() {
                     sugerencias.appendChild(option);
                 });
             }).catch(err => {
-                console.error("Error al buscar RFC de clientes:", err);
+                console.warn("Error al buscar id de proyectos:", err);
             });
     });
 }
