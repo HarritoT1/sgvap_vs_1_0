@@ -44,7 +44,7 @@
                         style="background-color: var(--botones-color);">Registrar cliente</button>
 
                     @if ($errors->any())
-                        <div class="alert alert-danger mt-3">
+                        <div class="alert alert-danger mt-3 text-justify" role="alert">
                             <h6>Por favor corrige los errores debajo:</h6>
                             <ul>
                                 @foreach ($errors->all() as $error)

@@ -100,7 +100,7 @@ function asig_listener_autocomplete_rfc_cliente() {
                     sugerencias.appendChild(option);
                 });
             }).catch(err => {
-                console.warn("Error al buscar RFC de clientes:", err);
+                console.warn("Error al buscar RFC de clientes:", err.message);
             });
     });
 }

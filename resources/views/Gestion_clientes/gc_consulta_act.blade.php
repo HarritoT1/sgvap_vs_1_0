@@ -81,7 +81,7 @@
                     <hr class="my-4 mb-2">
 
                     @if (session('success'))
-                        <div class="alert alert-success" role="alert">
+                        <div class="alert alert-success mt-3 text-justify" role="alert">
                             <ul class="mb-0">
                                 <li>{{ session('success') }}</li>
                             </ul>
