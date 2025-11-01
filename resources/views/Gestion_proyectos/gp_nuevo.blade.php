@@ -8,13 +8,14 @@
         <div class="w-100 div-secondary">
 
             <h2 class="mb-3 fw-bold" style="font-size: 1.5rem;">Datos del proyecto:</h2>
-            <form id="crear_proyecto" action="#" method="post" enctype="application/x-www-form-urlencoded"
-                autocomplete="off" class="needs-validation p-1" novalidate>
+            <form id="crear_proyecto" action="{{ route('projects.create') }}" method="post"
+                enctype="application/x-www-form-urlencoded" autocomplete="off" class="needs-validation p-1" novalidate>
+                @csrf
                 <div class="row g-3">
                     <div class="col-sm-6">
                         <label for="id" class="form-label fw-bold">id</label>
                         <input type="text" class="form-control" id="id" name="id" placeholder=""
-                            value="" required maxlength="80">
+                            value="{{ old('id') }}" required maxlength="80">
                         <div class="invalid-feedback">
                             Ingresa un id válido.
                         </div>
@@ -23,7 +24,7 @@
                     <div class="col-sm-6">
                         <label for="nombre" class="form-label fw-bold">Nombre</label>
                         <input type="text" class="form-control" id="nombre" name="nombre" placeholder=""
-                            value="" required maxlength="150">
+                            value="{{ old('nombre') }}" required maxlength="150">
                         <div class="invalid-feedback">
                             Ingresa un nombre válido.
                         </div>
@@ -32,7 +33,7 @@
                     <div class="col-sm-6">
                         <label for="sitio" class="form-label fw-bold">Sitio</label>
                         <input type="text" class="form-control" id="sitio" name="sitio" placeholder=""
-                            value="" required maxlength="50">
+                            value="{{ old('sitio') }}" required maxlength="50">
                         <div class="invalid-feedback">
                             Ingresa un sitio válido.
                         </div>
@@ -45,12 +46,13 @@
                             <option value="" selected>
                                 NINGUNO
                             </option>
-                            <option value="RFC_1">
-                                RAZON_SOCIAL_1
-                            </option>
-                            <option value="RFC_2">
-                                RAZON_SOCIAL_2
-                            </option>
+                            @if (!empty($customers))
+                                @foreach ($customers as $customer)
+                                    <option value="{{ $customer->id }}">
+                                        {{ $customer->razon_social }}
+                                    </option>
+                                @endforeach
+                            @endif
                         </select>
                         <div class="invalid-feedback">
                             Selecciona un cliente por favor.
@@ -63,7 +65,7 @@
                             <span class="input-group-text">💰</span>
                             <input type="number" class="form-control" aria-label="Amount (to the nearest dollar)"
                                 id="monto_cobrar" name="monto_cobrar" placeholder="0.000" step="0.00000001" min="0"
-                                value="" required>
+                                value="{{ old('monto_cobrar') }}" required>
                             <div class="invalid-feedback">
                                 Ingresa un monto válido.
                             </div>
@@ -77,7 +79,7 @@
                             <span class="input-group-text">🍞</span>
                             <input type="number" class="form-control" aria-label="Amount (to the nearest dollar)"
                                 id="monto_est_vtc_alimentos" name="monto_est_vtc_alimentos" placeholder="0.000"
-                                step="0.00000001" min="0" value="">
+                                step="0.00000001" min="0" value="{{ old('monto_est_vtc_alimentos') }}">
                             <div class="invalid-feedback">
                                 Ingresa un estimado válido.
                             </div>
@@ -91,7 +93,7 @@
                             <span class="input-group-text">🚗</span>
                             <input type="number" class="form-control" aria-label="Amount (to the nearest dollar)"
                                 id="monto_est_vtc_tras_local" name="monto_est_vtc_tras_local" placeholder="0.000"
-                                step="0.00000001" min="0" value="">
+                                step="0.00000001" min="0" value="{{ old('monto_est_vtc_tras_local') }}">
                             <div class="invalid-feedback">
                                 Ingresa un estimado válido.
                             </div>
@@ -105,7 +107,7 @@
                             <span class="input-group-text">✈️</span>
                             <input type="number" class="form-control" aria-label="Amount (to the nearest dollar)"
                                 id="monto_est_vtc_tras_externo" name="monto_est_vtc_tras_externo" placeholder="0.000"
-                                step="0.00000001" min="0" value="">
+                                step="0.00000001" min="0" value="{{ old('monto_est_vtc_tras_externo') }}">
                             <div class="invalid-feedback">
                                 Ingresa un estimado válido.
                             </div>
@@ -119,7 +121,7 @@
                             <span class="input-group-text">🏦</span>
                             <input type="number" class="form-control" aria-label="Amount (to the nearest dollar)"
                                 id="monto_est_vtc_com_bancaria" name="monto_est_vtc_com_bancaria" placeholder="0.000"
-                                step="0.00000001" min="0" value="">
+                                step="0.00000001" min="0" value="{{ old('monto_est_vtc_com_bancaria') }}">
                             <div class="invalid-feedback">
                                 Ingresa un estimado válido.
                             </div>
@@ -133,7 +135,7 @@
                             <span class="input-group-text">⛽</span>
                             <input type="number" class="form-control" aria-label="Amount (to the nearest dollar)"
                                 id="monto_est_vtc_gasolina" name="monto_est_vtc_gasolina" placeholder="0.000"
-                                step="0.00000001" min="0" value="">
+                                step="0.00000001" min="0" value="{{ old('monto_est_vtc_gasolina') }}">
                             <div class="invalid-feedback">
                                 Ingresa un estimado válido.
                             </div>
@@ -146,7 +148,7 @@
                             <span class="input-group-text">🛣️</span>
                             <input type="number" class="form-control" aria-label="Amount (to the nearest dollar)"
                                 id="monto_est_vtc_caseta" name="monto_est_vtc_caseta" placeholder="0.000"
-                                step="0.00000001" min="0" value="">
+                                step="0.00000001" min="0" value="{{ old('monto_est_vtc_caseta') }}">
                             <div class="invalid-feedback">
                                 Ingresa un estimado válido.
                             </div>
@@ -160,7 +162,7 @@
                             <span class="input-group-text">🏨</span>
                             <input type="number" class="form-control" aria-label="Amount (to the nearest dollar)"
                                 id="monto_est_vtc_hospedaje" name="monto_est_vtc_hospedaje" placeholder="0.000"
-                                step="0.00000001" min="0" value="">
+                                step="0.00000001" min="0" value="{{ old('monto_est_vtc_hospedaje') }}">
                             <div class="invalid-feedback">
                                 Ingresa un estimado válido.
                             </div>
@@ -173,7 +175,7 @@
                             <span class="input-group-text">💵</span>
                             <input type="number" class="form-control" aria-label="Amount (to the nearest dollar)"
                                 id="estimado_viaticos" name="estimado_viaticos" placeholder="0.000" step="0.00000001"
-                                min="0" value="" required>
+                                min="0" value="{{ old('estimado_viaticos') }}" required>
                             <div class="invalid-feedback">
                                 Ingresa un estimado válido.
                             </div>
@@ -185,7 +187,7 @@
                         <div class="input-group">
                             <span class="input-group-text">⌛</span>
                             <input type="text" class="form-control" id="estimado_tiempo" name="estimado_tiempo"
-                                placeholder="" value="" required maxlength="150">
+                                placeholder="" value="{{ old('estimado_tiempo') }}" required maxlength="150">
                             <div class="invalid-feedback">
                                 Ingresa un estimado válido.
                             </div>
@@ -195,7 +197,7 @@
                     <div class="col-sm-6">
                         <label for="fecha_limite" class="form-label fw-bold">Fecha limite</label>
                         <input type="date" class="form-control sm-form-control" id="fecha_limite" name="fecha_limite"
-                            value="" required>
+                            value="{{ old('fecha_limite') }}" required>
                         <div class="invalid-feedback">
                             Ingresa una fecha válida.
                         </div>
@@ -206,7 +208,7 @@
                         <div class="input-group" style="min-height: 10rem !important;">
                             <span class="input-group-text">📝</span>
                             <textarea id="notas" name="notas" class="form-control" aria-label="Notas" maxlength="300"
-                                style="resize: none; overflow-y: auto;"></textarea>
+                                style="resize: none; overflow-y: auto;">{{ old('notas') }}</textarea>
                         </div>
                     </div>
 
