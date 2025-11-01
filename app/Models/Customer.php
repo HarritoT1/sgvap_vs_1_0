@@ -39,8 +39,7 @@ class Customer extends Model
 	protected $fillable = [
 		'id',
 		'razon_social',
-		'ubicacion',
-		'status',
+		'ubicacion'
 	];
 
 	public function projects()
