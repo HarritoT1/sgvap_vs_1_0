@@ -215,8 +215,26 @@
                     <hr class="my-4 mb-2">
 
                     <button class="d-block mx-auto btn btn-primary btn-lg fw-bold button-custom" type="button"
-                        onclick="ask_before_submit_new()" style="background-color: var(--botones-color);">Crear
+                        onclick="ask_before_submit_new('crear_proyecto')" style="background-color: var(--botones-color);">Crear
                         proyecto</button>
+
+                    @if ($errors->any())
+                        <div class="alert alert-danger mt-3 text-justify" role="alert">
+                            <h6>Por favor corrige los errores debajo:</h6>
+                            <ul>
+                                @foreach ($errors->all() as $error)
+                                    <li>{{ $error }}</li>
+                                @endforeach
+                            </ul>
+                        </div>
+                    @endif
+
+                    <!-- Success Message Borrar -->
+                    @if(session('success'))
+                        <div class="alert alert-success mt-3 text-justify" role="alert">
+                            {{ session('success') }}
+                        </div>
+                    @endif
             </form>
         </div>
     </div>

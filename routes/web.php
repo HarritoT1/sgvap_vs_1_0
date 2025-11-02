@@ -5,6 +5,7 @@ use Phiki\Phast\Root;
 use App\Http\Controllers\LoginController;
 use App\Http\Controllers\CustomerController;
 use App\Http\Controllers\ProjectController;
+use App\Models\Customer;
 
 /*Route::get('/', function () {
     return view('welcome');
@@ -192,7 +193,7 @@ Route::middleware(['auth', 'inactive'])->group(function () {
 
     /* GESTION PROYECTOS */
     Route::get('/gp_nuevo', function () {
-        return view('Gestion_proyectos/gp_nuevo'); //http://127.0.0.1:8000/gp_nuevo
+        return view('Gestion_proyectos/gp_nuevo', ['customers' => Customer::all()]); //http://127.0.0.1:8000/gp_nuevo
     })->name("proyectos.nuevo");
 
     Route::post('/project_create', [ProjectController::class, 'create'])->name('projects.create');
