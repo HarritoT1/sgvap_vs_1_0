@@ -9,7 +9,7 @@ class UpdateCustomerRequest extends FormRequest
     /**
      * Determine if the user is authorized to make this request.
      */
-    public function authorize()
+    public function authorize(): bool
     {
         // Devuelve true si el usuario puede hacer esta acción.
         return true;
