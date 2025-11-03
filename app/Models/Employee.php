@@ -9,6 +9,7 @@ namespace App\Models;
 use Carbon\Carbon;
 use Illuminate\Database\Eloquent\Collection;
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\Factories\HasFactory;
 
 /**
  * Class Employee
@@ -29,6 +30,8 @@ use Illuminate\Database\Eloquent\Model;
  */
 class Employee extends Model
 {
+	use HasFactory;
+
 	protected $table = 'employees';
 	public $incrementing = false;
 	public $timestamps = false;
@@ -38,11 +41,11 @@ class Employee extends Model
 	];
 
 	protected $fillable = [
+		'id',
 		'nombre',
 		'puesto',
 		'status',
 		'modo',
-		'last_update'
 	];
 
 	public function daily_expense_reports()
