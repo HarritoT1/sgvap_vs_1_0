@@ -18,7 +18,7 @@
                     <div class="col-sm-6">
                         <label for="id" class="form-label fw-bold">RFC</label>
                         <input type="text" class="form-control" id="id" name="id" placeholder=""
-                            value="{{ old('id', $customer->id) }}" required maxlength="50" disabled>
+                            value="{{ $customer->id }}" required maxlength="50" disabled>
                         <div class="invalid-feedback">
                             Ingresa un RFC válido.
                         </div>
@@ -27,7 +27,7 @@
                     <div class="col-sm-6">
                         <label for="razon_social" class="form-label fw-bold">Razón social</label>
                         <input type="text" class="form-control" id="razon_social" name="razon_social" placeholder=""
-                            value="{{ old('razon_social', $customer->razon_social) }}" required maxlength="200" disabled>
+                            value="{{ $customer->razon_social }}" required maxlength="200" disabled>
                         <div class="invalid-feedback">
                             Ingresa una razón social válida.
                         </div>
@@ -36,7 +36,7 @@
                     <div class="col-12">
                         <label for="ubicacion" class="form-label fw-bold">Ubicación</label>
                         <input type="text" class="form-control" id="ubicacion" name="ubicacion" placeholder=""
-                            value="{{ old('ubicacion', $customer->ubicacion) }}" required maxlength="300" disabled>
+                            value="{{ $customer->ubicacion }}" required maxlength="300" disabled>
                         <div class="invalid-feedback">
                             Ingresa una ubicación válida.
                         </div>
@@ -84,6 +84,17 @@
                         <div class="alert alert-success mt-3 text-justify" role="alert">
                             <ul class="mb-0">
                                 <li>{{ session('success') }}</li>
+                            </ul>
+                        </div>
+                    @endif
+
+                    @if ($errors->any())
+                        <div class="alert alert-danger mt-3 text-justify" role="alert">
+                            <h6>Por favor corrige los errores debajo:</h6>
+                            <ul>
+                                @foreach ($errors->all() as $error)
+                                    <li>{{ $error }}</li>
+                                @endforeach
                             </ul>
                         </div>
                     @endif

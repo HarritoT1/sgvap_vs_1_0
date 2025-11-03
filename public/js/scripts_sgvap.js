@@ -101,7 +101,7 @@ function asig_listener_autocomplete_rfc() {
                 sugerencias.innerHTML = '';
                 data.forEach(emp => {
                     const option = document.createElement('option');
-                    option.value = emp.id + " -> " + emp.nombre; // ejemplo: id - nombre
+                    option.value = emp.id + " → " + emp.nombre; // ejemplo: id - nombre
                     sugerencias.appendChild(option);
                 });
             }).catch(err => {
@@ -134,7 +134,7 @@ function asig_listener_autocomplete_id_proyect() {
                 sugerencias.innerHTML = '';
                 data.forEach(proyect => {
                     const option = document.createElement('option');
-                    option.value = proyect.id + " -> " + proyect.razon_social; // ejemplo: id - razon_social
+                    option.value = proyect.id + " → " + proyect.razon_social; // ejemplo: id - razon_social
                     sugerencias.appendChild(option);
                 });
             }).catch(err => {
