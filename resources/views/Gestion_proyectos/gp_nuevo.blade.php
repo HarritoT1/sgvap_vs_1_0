@@ -228,13 +228,6 @@
                             </ul>
                         </div>
                     @endif
-
-                    <!-- Success Message Borrar -->
-                    @if(session('success'))
-                        <div class="alert alert-success mt-3 text-justify" role="alert">
-                            {{ session('success') }}
-                        </div>
-                    @endif
             </form>
         </div>
     </div>

@@ -35,6 +35,7 @@ function save_values_of_inputs() {
 
     valoresOriginales = {};
     inputs.forEach(input => {
+        if(input.classList.contains('ignore')) return;
         if (!(input.type === 'radio')) valoresOriginales[input.name] = input.value;
         if (input.type === 'radio' && input.checked === true) valoresOriginales[input.name] = input.value;
     });
@@ -49,6 +50,7 @@ function ask_before_submit() {
 
         const huboCambios = Array.from(inputs).some(
             (input) => {
+                if(input.classList.contains('ignore')) return false;
                 if (!(input.type === 'radio')) return valoresOriginales[input.name] !== input.value.trim();
                 if (input.type === 'radio' && input.checked === true) return valoresOriginales[input.name] !== input.value;
             }
@@ -134,7 +136,7 @@ function asig_listener_autocomplete_id_proyect() {
                 sugerencias.innerHTML = '';
                 data.forEach(proyect => {
                     const option = document.createElement('option');
-                    option.value = proyect.id + " → " + proyect.razon_social; // ejemplo: id - razon_social
+                    option.value = proyect.id + " → " + proyect.nombre; // ejemplo: id - nombre
                     sugerencias.appendChild(option);
                 });
             }).catch(err => {

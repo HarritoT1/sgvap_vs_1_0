@@ -43,13 +43,13 @@ function generate_pdf_project() {
 
     doc.setFontSize(13);
 
-    doc.text(`$ ${Number(find_2('monto_est_vtc_alimentos').value).toLocaleString("es-MX")} MXN`, 75, 333, { align: "left" });
-    doc.text(`$ ${Number(find_2('monto_est_vtc_tras_local').value).toLocaleString("es-MX")} MXN`, 120, 333, { align: "left" });
-    doc.text(`$ ${Number(find_2('monto_est_vtc_tras_externo').value).toLocaleString("es-MX")} MXN`, 160, 333, { align: "left" });
-    doc.text(`$ ${Number(find_2('monto_est_vtc_com_bancaria').value).toLocaleString("es-MX")} MXN`, 205, 333, { align: "left" });
-    doc.text(`$ ${Number(find_2('monto_est_vtc_gasolina').value).toLocaleString("es-MX")} MXN`, 245, 333, { align: "left" });
-    doc.text(`$ ${Number(find_2('monto_est_vtc_caseta').value).toLocaleString("es-MX")} MXN`, 285, 333, { align: "left" });
-    doc.text(`$ ${Number(find_2('monto_est_vtc_hospedaje').value).toLocaleString("es-MX")} MXN`, 325, 333, { align: "left" });
+    doc.text(`$ ${Number(find_2('monto_est_vtc_alimentos').value).toLocaleString("es-MX")}`, 75, 333, { align: "left" });
+    doc.text(`$ ${Number(find_2('monto_est_vtc_tras_local').value).toLocaleString("es-MX")}`, 120, 333, { align: "left" });
+    doc.text(`$ ${Number(find_2('monto_est_vtc_tras_externo').value).toLocaleString("es-MX")}`, 160, 333, { align: "left" });
+    doc.text(`$ ${Number(find_2('monto_est_vtc_com_bancaria').value).toLocaleString("es-MX")}`, 203, 333, { align: "left" });
+    doc.text(`$ ${Number(find_2('monto_est_vtc_gasolina').value).toLocaleString("es-MX")}`, 245, 333, { align: "left" });
+    doc.text(`$ ${Number(find_2('monto_est_vtc_caseta').value).toLocaleString("es-MX")}`, 285, 333, { align: "left" });
+    doc.text(`$ ${Number(find_2('monto_est_vtc_hospedaje').value).toLocaleString("es-MX")}`, 325, 333, { align: "left" });
 
     doc.setFont("times", "bold");
     doc.setFontSize(30);

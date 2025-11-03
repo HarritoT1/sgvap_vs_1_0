@@ -12,7 +12,7 @@
                 </div>
 
                 <div class="modal-body p-5 pt-0" style="max-width: 100%;">
-                    <form id="buscar_proyecto" action="#" method="get" enctype="application/x-www-form-urlencoded"
+                    <form id="buscar_proyecto" action="{{ route('projects.consulta_act') }}" method="get" enctype="application/x-www-form-urlencoded"
             autocomplete="off" class="needs-validation p-1" novalidate>
                         <div class="form-floating mb-3" style="max-width: 100%;">
                             <input type="text" class="form-control rounded-3" id="input_find_id_proyect" name="id" placeholder="" value="" required maxlength="80" list="sugerencias_id_proyect">
@@ -28,6 +28,17 @@
                         <small class="fw-bold d-block mx-auto my-2 text-center text-body-secondary"
                             style="font-size: 1.2rem">¡¡¡Ingrese el id sin espacios!!!</small>
                         <hr class="mt-4">
+
+                        @if($errors->any())
+                            <div class="alert alert-danger mt-3 text-justify" role="alert">
+                                <h6>Por favor corrige los errores debajo:</h6>
+                                <ul>
+                                    @foreach ($errors->all() as $error)
+                                        <li>{{ $error }}</li>
+                                    @endforeach
+                                </ul>
+                            </div>
+                        @endif
                     </form>
                 </div>
             </div>

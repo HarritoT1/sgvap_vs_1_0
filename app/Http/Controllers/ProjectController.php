@@ -6,7 +6,7 @@ use Illuminate\Http\Request;
 use App\Http\Requests\StoreProjectRequest;
 use App\Http\Requests\UpdateProjectRequest;
 use App\Models\Project;
-
+use App\Models\Customer;
 
 class ProjectController extends Controller
 {
@@ -36,7 +36,7 @@ class ProjectController extends Controller
             'id.max' => 'El id no puede exceder los 80 caracteres.',
         ]);
         $project = Project::findOrFail($data['id']);
-        return view('Gestion_proyectos.gp_consulta_act', ['project' => $project]);
+        return view('Gestion_proyectos.gp_consulta_act', ['project' => $project, 'customers' => Customer::all()]);
     }
 
     public function update(UpdateProjectRequest $request)

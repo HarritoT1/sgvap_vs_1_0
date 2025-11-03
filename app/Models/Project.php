@@ -82,7 +82,8 @@ class Project extends Model
 		'estimado_viaticos',
 		'estimado_tiempo',
 		'fecha_limite',
-		'notas'
+		'notas',
+		'status',
 	];
 
 	public function customer()

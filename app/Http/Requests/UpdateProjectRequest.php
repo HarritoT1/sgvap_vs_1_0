@@ -59,9 +59,9 @@ class UpdateProjectRequest extends FormRequest
             'monto_est_vtc_hospedaje' => 'nullable|numeric|min:0',
             'estimado_viaticos' => 'required|numeric|min:0',
             'estimado_tiempo' => 'required|string|max:150',
-            'fecha_limite' => 'required|date|after:yesterday',
+            'fecha_limite' => 'required|date', /* |after:yesterday */
             'notas' => 'nullable|string|max:300',
-            'status' => 'required|in:activo,inactivo'
+            'status' => 'required|in:activo,concluido'
         ];
     }
 
@@ -113,6 +113,9 @@ class UpdateProjectRequest extends FormRequest
             'fecha_limite.after' => 'La fecha límite debe ser posterior a ayer.',
 
             'notas.max' => 'Las notas no deben exceder los 300 caracteres.',
+
+            'status.required' => 'El estado del proyecto es obligatorio.',
+            'status.in' => 'El estado del proyecto debe ser "activo" o "concluido".',
         ];
     }
 }
