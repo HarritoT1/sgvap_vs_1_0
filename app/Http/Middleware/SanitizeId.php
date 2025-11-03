@@ -15,7 +15,7 @@ class SanitizeId
     {
         if ($request->has('id')) {
             // Ejemplo: "ABC123 - EMPRESA XYZ" → "ABC123"
-            $cleanId = trim(explode('-', $request->input('id'))[0]);
+            $cleanId = trim(explode('->', $request->input('id'))[0]);
             $request->merge(['id' => $cleanId]);
         }
 

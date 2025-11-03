@@ -194,17 +194,19 @@ Route::middleware(['auth', 'inactive'])->group(function () {
     /* GESTION PROYECTOS */
     Route::get('/gp_nuevo', function () {
         return view('Gestion_proyectos/gp_nuevo', ['customers' => Customer::all()]); //http://127.0.0.1:8000/gp_nuevo
-    })->name("proyectos.nuevo");
+    })->name("projects.nuevo");
 
     Route::post('/project_create', [ProjectController::class, 'create'])->name('projects.create');
 
     Route::get('/gp_consulta_act_filtro', function () {
         return view('Gestion_proyectos/gp_consulta_act_filtro'); //http://127.0.0.1:8000/gp_consulta_act_filtro
-    })->name("proyectos.consulta_filtro");
+    })->name("projects.consulta_filtro");
 
-    Route::get('/gp_consulta_act/{id}', function () {
-        return view('Gestion_proyectos/gp_consulta_act'); //http://127.0.0.1:8000/gp_consulta_act
-    })->name("proyectos.consulta_act");
+    Route::get('/gp_consulta_act', [ProjectController::class, 'show'])->middleware('sanitize')->name("projects.consulta_act"); //http://127.0.0.1:8000/gp_consulta_act?id=PRJ-0042-TXI
+
+    Route::put('/project_update', [ProjectController::class, 'update'])->name('projects.update');
+
+    Route::get('/projects/buscar-id', [ProjectController::class, 'buscarID'])->name('projects.buscar_id');
 });
 
 

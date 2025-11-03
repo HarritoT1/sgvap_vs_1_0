@@ -96,7 +96,7 @@ function asig_listener_autocomplete_rfc_cliente() {
                 sugerencias.innerHTML = '';
                 data.forEach(cust => {
                     const option = document.createElement('option');
-                    option.value = cust.id + " - " + cust.razon_social; // ejemplo: id - razon_social
+                    option.value = cust.id + " -> " + cust.razon_social; // ejemplo: id - razon_social
                     sugerencias.appendChild(option);
                 });
             }).catch(err => {

@@ -257,7 +257,7 @@
                         </div>
                         <button class="w-100 btn btn-lg btn-primary button-custom" type="submit"
                             style="background-color: black; color: white; border-width: 0;">Iniciar sesión</button>
-                        <hr class="my-4">
+                        <hr class="my-4 text-black">
                         <small class="fw-bold" style="color: black;">© Desarrollado por Ecore Network S.A de
                             C.V.</small>
 

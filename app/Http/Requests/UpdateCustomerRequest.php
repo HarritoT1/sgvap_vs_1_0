@@ -29,4 +29,23 @@ class UpdateCustomerRequest extends FormRequest
             'status' => 'required|in:activo,inactivo',
         ];
     }
+
+    public function messages()
+    {
+        return [
+            'id.required' => 'El campo RFC es obligatorio.',
+            'id.unique' => 'El RFC ya existe en la base de datos.',
+            'id.max' => 'El RFC no puede exceder los 50 caracteres.',
+
+            'razon_social.required' => 'El campo Razón Social es obligatorio.',
+            'razon_social.unique' => 'La Razón Social ya existe en la base de datos.',
+            'razon_social.max' => 'La Razón Social no puede exceder los 200 caracteres.',
+
+            'ubicacion.required' => 'El campo Ubicación es obligatorio.',
+            'ubicacion.max' => 'La Ubicación no puede exceder los 300 caracteres.',
+
+            'status.required' => 'El campo status es obligatorio.',
+            'status.in' => 'El campo status no es válido.',
+        ];
+    }
 }

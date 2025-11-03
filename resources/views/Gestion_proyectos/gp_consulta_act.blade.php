@@ -216,7 +216,8 @@
 
                     <div class="col-sm-6">
                         <label for="fecha_creacion" class="form-label fw-bold">Fecha y hora de creación</label>
-                        <input type="text" class="form-control" id="fecha_creacion" name="fecha_creacion" placeholder=""
+                        <!-- Elimine name="fecha_creacion" -->
+                        <input type="text" class="form-control" id="fecha_creacion" placeholder=""
                             value="2025-10-20 14:30:00" required readonly>
                         <div class="invalid-feedback">
                             Ingresa una fecha de creación válida.

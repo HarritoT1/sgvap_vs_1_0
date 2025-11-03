@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Http\Requests\StoreProjectRequest;
+use App\Http\Requests\UpdateProjectRequest;
 use App\Models\Project;
 
 
@@ -21,44 +22,42 @@ class ProjectController extends Controller
                 ->withInput();
         }
 
-        /*return redirect()->route('projects.consulta_act', ['id' => $project->id])
-            ->with('success', 'Poryecto creado exitosamente ;).');*/
-            return redirect()->back()
+        return redirect()->route('projects.consulta_act', ['id' => $project->id])
             ->with('success', 'Proyecto creado exitosamente ;).');
     }
-/*
+
     public function show(Request $request)
     {
         $data = $request->validate([
-            'id' => 'required|string|exists:customers,id|max:50',
+            'id' => 'required|string|exists:projects,id|max:80',
         ], [
-            'id.required' => 'El campo RFC es obligatorio.',
-            'id.exists' => 'El RFC proporcionado no existe en la base de datos.',
-            'id.max' => 'El RFC no puede exceder los 50 caracteres.',
+            'id.required' => 'El campo id es obligatorio.',
+            'id.exists' => 'El id proporcionado no existe en la base de datos.',
+            'id.max' => 'El id no puede exceder los 80 caracteres.',
         ]);
-        $customer = Customer::findOrFail($data['id']);
-        return view('Gestion_clientes.gc_consulta_act', ['customer' => $customer]);
+        $project = Project::findOrFail($data['id']);
+        return view('Gestion_proyectos.gp_consulta_act', ['project' => $project]);
     }
 
-    public function update(UpdateCustomerRequest $request)
+    public function update(UpdateProjectRequest $request)
     {
         try {
             $data = $request->validated();
 
             // Buscar el cliente existente.
-            $customer = Customer::findOrFail($request->input('id_customer'));
+            $project = Project::findOrFail($request->input('id_project'));
 
             // Intentar actualizar.
-            $customer->update($data);
+            $project->update($data);
 
             return redirect()
-                ->route('clientes.consulta_act', ['id' => $customer->id])
-                ->with('success', 'Cliente actualizado exitosamente ;).');
+                ->route('projects.consulta_act', ['id' => $project->id])
+                ->with('success', 'Proyecto actualizado exitosamente ;).');
         } catch (\Illuminate\Database\Eloquent\ModelNotFoundException $e) {
             // Si el cliente no existe (por manipulación del id).
             return redirect()
                 ->back()
-                ->withErrors(['id_customer' => 'El cliente que intenta actualizar no existe.'])
+                ->withErrors(['id_project' => 'El proyecto que intenta actualizar no existe.'])
                 ->withInput();
         } catch (\Illuminate\Database\QueryException $e) {
             // Si ocurre un error de base de datos (ej. violación de unique).
@@ -70,24 +69,23 @@ class ProjectController extends Controller
             // Cualquier otro error inesperado.
             return redirect()
                 ->back()
-                ->withErrors(['general' => 'Ocurrió un error inesperado al actualizar el cliente.'])
+                ->withErrors(['general' => 'Ocurrió un error inesperado al actualizar el proyecto.'])
                 ->withInput();
         }
     }
 
-    public function buscarRFC(Request $request)
+    public function buscarID(Request $request)
     {
         $query = $request->input('q');
 
-        $customers = Customer::where('id', 'like', $query . '%')
+        $projects = Project::where('id', 'like', $query . '%')
             ->limit(10)
             ->get();
 
-        if ($customers->isEmpty()) {
+        if ($projects->isEmpty()) {
             return response()->json(['message' => 'No se encontraron resultados.'], 404);
         }
 
-        return response()->json($customers);
+        return response()->json($projects);
     }
-        */
 }
