@@ -51,7 +51,7 @@ class EmployeeController extends Controller
 
             return redirect()
                 ->route('empleados.consulta_act', ['id' => $employee->id])
-                ->with('success', 'Proyecto actualizado exitosamente ;).');
+                ->with('success', 'Empleado actualizado exitosamente ;).');
         } catch (\Illuminate\Database\Eloquent\ModelNotFoundException $e) {
             // Si el empleado no existe (por manipulación del id).
             return redirect()

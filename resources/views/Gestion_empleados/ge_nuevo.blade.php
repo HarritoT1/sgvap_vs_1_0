@@ -7,13 +7,14 @@
         <div class="w-100 div-secondary">
 
             <h2 class="mb-3 fw-bold" style="font-size: 1.5rem;">Datos del empleado:</h2>
-            <form id="crear_empleado" action="#" method="post" enctype="application/x-www-form-urlencoded"
+            <form id="crear_empleado" action="{{ route('empleados.create') }}" method="post" enctype="application/x-www-form-urlencoded"
                 autocomplete="off" class="needs-validation p-1" novalidate>
+                @csrf
                 <div class="row g-3">
                     <div class="col-sm-6">
                         <label for="id" class="form-label fw-bold">RFC</label>
                         <input type="text" class="form-control" id="id" name="id" placeholder=""
-                            value="" required maxlength="50">
+                            value="{{ old('id') }}" required maxlength="50">
                         <div class="invalid-feedback">
                             Ingresa un RFC válido.
                         </div>
@@ -22,7 +23,7 @@
                     <div class="col-sm-6">
                         <label for="puesto" class="form-label fw-bold">Puesto</label>
                         <input type="text" class="form-control" id="puesto" name="puesto" placeholder=""
-                            value="" required maxlength="100">
+                            value="{{ old('puesto') }}" required maxlength="100">
                         <div class="invalid-feedback">
                             Ingresa un puesto válido.
                         </div>
@@ -31,7 +32,7 @@
                     <div class="col-sm-6">
                         <label for="nombre" class="form-label fw-bold">Nombre</label>
                         <input type="text" class="form-control" id="nombre" name="nombre" placeholder=""
-                            value="" required maxlength="100">
+                            value="{{ old('nombre') }}" required maxlength="100">
                         <div class="invalid-feedback">
                             Ingresa un sitio válido.
                         </div>
@@ -59,8 +60,19 @@
 
                     <hr class="my-4 mb-2">
 
-                    <button class="d-block mx-auto btn btn-primary btn-lg fw-bold button-custom" type="button" onclick="ask_before_submit_new()"
-                        style="background-color: var(--botones-color);">Crear proyecto</button>
+                    <button class="d-block mx-auto btn btn-primary btn-lg fw-bold button-custom" type="button" onclick="ask_before_submit_new('crear_empleado');"
+                        style="background-color: var(--botones-color);">Registrar empleado</button>
+
+                    @if ($errors->any())
+                        <div class="alert alert-danger mt-3 text-justify" role="alert">
+                            <h6>Por favor corrige los errores debajo:</h6>
+                            <ul>
+                                @foreach ($errors->all() as $error)
+                                    <li>{{ $error }}</li>
+                                @endforeach
+                            </ul>
+                        </div>
+                    @endif
             </form>
         </div>
     </div>

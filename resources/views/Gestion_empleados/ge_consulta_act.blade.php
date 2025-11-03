@@ -2,18 +2,24 @@
 
 @section('content')
     <div class="w-100 my-3 div-main">
-        <h1 class="fw-bold my-3" style="font-size: 2rem; text-align:justify">Datos del empleado con el RFC: $id
+        <h1 class="fw-bold my-3" style="font-size: 2rem; text-align:justify">Datos del empleado con el RFC:
+            {{ $employee->id }}
         </h1>
         <div class="w-100 div-secondary">
 
             <h2 class="mb-3 fw-bold" style="font-size: 1.5rem;">Datos del empleado:</h2>
-            <form id="actualizar" action="#" method="post" enctype="application/x-www-form-urlencoded" autocomplete="off"
-                class="needs-validation p-1" novalidate>
+            <form id="actualizar" action="{{ route('empleados.update') }}" method="post"
+                enctype="application/x-www-form-urlencoded" autocomplete="off" class="needs-validation p-1" novalidate>
+                @csrf
+                @method('PUT')
+
+                <input type="hidden" name="id_employee" value="{{ $employee->id }}">
+
                 <div class="row g-3">
                     <div class="col-sm-6">
                         <label for="id" class="form-label fw-bold">RFC</label>
                         <input type="text" class="form-control" id="id" name="id" placeholder=""
-                            value="" required maxlength="50" disabled>
+                            value="{{ $employee->id }}" required maxlength="50" disabled>
                         <div class="invalid-feedback">
                             Ingresa un RFC válido.
                         </div>
@@ -22,7 +28,7 @@
                     <div class="col-sm-6">
                         <label for="puesto" class="form-label fw-bold">Puesto</label>
                         <input type="text" class="form-control" id="puesto" name="puesto" placeholder=""
-                            value="" required maxlength="100" disabled>
+                            value="{{ $employee->puesto }}" required maxlength="100" disabled>
                         <div class="invalid-feedback">
                             Ingresa un puesto válido.
                         </div>
@@ -31,7 +37,7 @@
                     <div class="col-sm-6">
                         <label for="nombre" class="form-label fw-bold">Nombre</label>
                         <input type="text" class="form-control" id="nombre" name="nombre" placeholder=""
-                            value="" required maxlength="100" disabled>
+                            value="{{ $employee->nombre }}" required maxlength="100" disabled>
                         <div class="invalid-feedback">
                             Ingresa un sitio válido.
                         </div>
@@ -41,10 +47,10 @@
                         <label for="status" class="form-label fw-bold">Estado del empleado</label>
                         <select name="status" id="status" class="form-control form-select"
                             aria-label="Default select example" required disabled>
-                            <option value="activo" selected>
+                            <option value="activo" @if ($employee->status == 'activo') selected @endif>
                                 ACTIVO
                             </option>
-                            <option value="inactivo">
+                            <option value="inactivo" @if ($employee->status == 'inactivo') selected @endif>
                                 INACTIVO
                             </option>
                         </select>
@@ -58,12 +64,12 @@
                         <div class="text-center">
                             <div class="form-check form-check-inline">
                                 <input class="form-check-input" type="radio" name="modo" id="interno" value="interno"
-                                    required checked disabled>
+                                    required disabled @if ($employee->modo == 'interno') checked @endif>
                                 <label class="form-check-label fw-bold" for="interno">Interno</label>
                             </div>
                             <div class="form-check form-check-inline">
                                 <input class="form-check-input" type="radio" name="modo" id="contratista"
-                                    value="contratista" required disabled>
+                                    value="contratista" required disabled @if ($employee->modo == 'contratista') checked @endif>
                                 <label class="form-check-label fw-bold" for="contratista">Contratista</label>
                             </div>
                             <!-- Aquí va el feedback para el grupo -->
@@ -95,6 +101,25 @@
                     </div>
 
                     <hr class="my-4 mb-2">
+
+                    @if (session('success'))
+                        <div class="alert alert-success mt-3 text-justify" role="alert">
+                            <ul class="mb-0">
+                                <li>{{ session('success') }}</li>
+                            </ul>
+                        </div>
+                    @endif
+
+                    @if ($errors->any())
+                        <div class="alert alert-danger mt-3 text-justify" role="alert">
+                            <h6>Por favor corrige los errores debajo:</h6>
+                            <ul>
+                                @foreach ($errors->all() as $error)
+                                    <li>{{ $error }}</li>
+                                @endforeach
+                            </ul>
+                        </div>
+                    @endif
             </form>
         </div>
     </div>
