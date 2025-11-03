@@ -15,10 +15,11 @@ class DatabaseSeeder extends Seeder
      */
     public function run(): void
     {
-        $this->truncateTables(['customers', 'projects', 'employees',]);
+        $this->truncateTables(['customers', 'projects', 'employees', 'daily_expense_reports',]);
         $this->call(CustomerSeeder::class);
         $this->call(ProjectSeeder::class);
         $this->call(EmployeeSeeder::class);
+        $this->call(DailyExpenseReportSeeder::class);
     }
 
     protected function truncateTables(array $tables)

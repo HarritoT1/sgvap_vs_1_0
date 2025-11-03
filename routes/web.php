@@ -13,10 +13,6 @@ use App\Models\Employee;
     return view('welcome');
 }); //http://127.0.0.1:8000/*/
 
-Route::get('/ge_corte_x_dia', function () {
-    return view('Gestion_empleados/ge_corte_x_dia'); //http://127.0.0.1:8000/ge_corte_x_dia
-})->name("empleados.corte_x_dia");
-
 Route::get('/ge_retiro_semanal_filtro', function () {
     return view('Gestion_empleados/ge_retiro_semanal_filtro'); //http://127.0.0.1:8000/ge_retiro_semanal_filtro
 })->name("empleados.retiro_semanal_filtro");
@@ -137,14 +133,6 @@ Route::get('/gv_consulta_act_prestamos/{id}', function () {
     return view('Gestion_vehiculos/gv_consulta_act_prestamos'); //http://127.0.0.1:8000/gv_consulta_act_prestamos
 })->name("vehiculos.consulta_act_prestamos")->where('id', '[0-9]+');
 
-Route::get('/ge_corte_x_dia_delete', function () {
-    return view('Gestion_empleados/ge_corte_x_dia_delete'); //http://127.0.0.1:8000/ge_corte_x_dia_delete
-})->name("empleados.corte_x_dia_delete");
-
-Route::post('/empleado_corte_x_dia_consulta_filtro', function () {
-    return response()->json([["id" => 1, "fecha_dispersion_dia" => "2025-12-24", "employee_name" => "Miguel Angel Mancera", "project_name" => "uetamo"], ["id" => 2, "fecha_dispersion_dia" => "2025-12-25", "employee_name" => "Jose Cruz", "project_name" => "parajilla"], ["id" => 3, "fecha_dispersion_dia" => "2025-12-26", "employee_name" => "Luis Joel", "project_name" => "zacatenco"]]);
-});
-
 // CONTROLADORES FINALES (PRODUCCION).
 Route::get('/', function () {
     return view('Login_inicio_soporte/login'); //http://127.0.0.1:8000
@@ -214,4 +202,16 @@ Route::middleware(['auth', 'inactive'])->group(function () {
     Route::put('/empleado_update', [EmployeeController::class, 'update'])->name('empleados.update');
 
     Route::get('/empleados/buscar-rfc', [EmployeeController::class, 'buscarRFC'])->name('empleados.buscar_rfc');
+
+    Route::get('/ge_corte_x_dia', function () {
+        return view('Gestion_empleados/ge_corte_x_dia'); //http://127.0.0.1:8000/ge_corte_x_dia
+    })->name("empleados.corte_x_dia");
+
+    Route::get('/ge_corte_x_dia_delete', function () {
+        return view('Gestion_empleados/ge_corte_x_dia_delete'); //http://127.0.0.1:8000/ge_corte_x_dia_delete
+    })->name("empleados.corte_x_dia_delete");
+
+    Route::post('/empleado_corte_x_dia_consulta_filtro', function () {
+        return response()->json([["id" => 1, "fecha_dispersion_dia" => "2025-12-24", "employee_name" => "Miguel Angel Mancera", "project_name" => "uetamo"], ["id" => 2, "fecha_dispersion_dia" => "2025-12-25", "employee_name" => "Jose Cruz", "project_name" => "parajilla"], ["id" => 3, "fecha_dispersion_dia" => "2025-12-26", "employee_name" => "Luis Joel", "project_name" => "zacatenco"]]);
+    });
 });

@@ -8,6 +8,7 @@ namespace App\Models;
 
 use Carbon\Carbon;
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\Factories\HasFactory;
 
 /**
  * Class DailyExpenseReport
@@ -31,10 +32,13 @@ use Illuminate\Database\Eloquent\Model;
  */
 class DailyExpenseReport extends Model
 {
+	use HasFactory;
+
 	protected $table = 'daily_expense_reports';
 	public $timestamps = false;
 
 	protected $casts = [
+		'id' => 'int',
 		'fecha_dispersion_dia' => 'datetime',
 		'desayuno' => 'float',
 		'comida' => 'float',
@@ -53,7 +57,6 @@ class DailyExpenseReport extends Model
 		'traslado_local',
 		'traslado_externo',
 		'comision_bancaria',
-		'last_update',
 		'employee_id',
 		'project_id'
 	];
