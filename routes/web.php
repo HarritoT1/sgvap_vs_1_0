@@ -5,23 +5,13 @@ use Phiki\Phast\Root;
 use App\Http\Controllers\LoginController;
 use App\Http\Controllers\CustomerController;
 use App\Http\Controllers\ProjectController;
+use App\Http\Controllers\EmployeeController;
 use App\Models\Customer;
+use App\Models\Employee;
 
 /*Route::get('/', function () {
     return view('welcome');
 }); //http://127.0.0.1:8000/*/
-
-Route::get('/ge_nuevo', function () {
-    return view('Gestion_empleados/ge_nuevo'); //http://127.0.0.1:8000/ge_nuevo
-})->name("empleados.nuevo");
-
-Route::get('/ge_consulta_act_filtro', function () {
-    return view('Gestion_empleados/ge_consulta_act_filtro'); //http://127.0.0.1:8000/ge_consulta_act_filtro
-})->name("empleados.consulta_filtro");
-
-Route::get('/ge_consulta_act/{id}', function () {
-    return view('Gestion_empleados/ge_consulta_act'); //http://127.0.0.1:8000/ge_consulta_act
-})->name("empleados.consulta_act");
 
 Route::get('/ge_corte_x_dia', function () {
     return view('Gestion_empleados/ge_corte_x_dia'); //http://127.0.0.1:8000/ge_corte_x_dia
@@ -207,6 +197,21 @@ Route::middleware(['auth', 'inactive'])->group(function () {
     Route::put('/project_update', [ProjectController::class, 'update'])->name('projects.update');
 
     Route::get('/projects/buscar-id', [ProjectController::class, 'buscarID'])->name('projects.buscar_id');
+
+    /* GESTION EMPLEADOS */
+    Route::get('/ge_nuevo', function () {
+        return view('Gestion_empleados/ge_nuevo'); //http://127.0.0.1:8000/ge_nuevo
+    })->name("empleados.nuevo");
+
+    Route::post('/employee_create', [EmployeeController::class, 'create'])->name('empleados.create');
+
+    Route::get('/ge_consulta_act_filtro', function () {
+        return view('Gestion_empleados/ge_consulta_act_filtro'); //http://127.0.0.1:8000/ge_consulta_act_filtro
+    })->name("empleados.consulta_filtro");
+
+    Route::get('/ge_consulta_act', [EmployeeController::class, 'show'])->middleware('sanitize')->name("empleados.consulta_act"); //http://127.0.0.1:8000/ge_consulta_act?id=EMP-0001-MNB
+
+    Route::put('/empleado_update', [EmployeeController::class, 'update'])->name('empleados.update');
+
+    Route::get('/empleados/buscar-rfc', [EmployeeController::class, 'buscarRFC'])->name('empleados.buscar_rfc');
 });
-
-
