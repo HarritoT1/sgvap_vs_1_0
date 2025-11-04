@@ -8,6 +8,7 @@ namespace App\Models;
 
 use Carbon\Carbon;
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\Factories\HasFactory;
 
 /**
  * Class ExtraEcoreDebt
@@ -26,10 +27,13 @@ use Illuminate\Database\Eloquent\Model;
  */
 class ExtraEcoreDebt extends Model
 {
+	use HasFactory;
+
 	protected $table = 'extra_ecore_debts';
 	public $timestamps = false;
 
 	protected $casts = [
+		'id' => 'int',
 		'monto_extra_ecore' => 'float',
 		'fecha_descontar' => 'datetime',
 		'last_update' => 'datetime'
@@ -40,7 +44,6 @@ class ExtraEcoreDebt extends Model
 		'campo_descontar',
 		'fecha_descontar',
 		'status',
-		'last_update',
 		'employee_id'
 	];
 
