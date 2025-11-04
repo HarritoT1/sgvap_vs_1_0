@@ -170,13 +170,14 @@ async function validar_form_generator() {
         // 3. Si Laravel devolvió redirect con errores → no habrá JSON → deja que la recarga suceda...
         const contentType = response.headers.get("content-type") || "";
         if (!contentType.includes("application/json")) {
+            window.location.reload();
             return; // aquí no forzamos reload, Laravel ya maneja la bolsa de errores...
         }
 
         // 4. Parsear el JSON válido.
         const data = await response.json();
 
-        if (data.generacion_formulario) {
+        if (data.generate) {
             // Mostrar segunda parte del formulario.
             const segundaParte = document.getElementById('segunda-parte-formulario');
             if (segundaParte) {
@@ -184,18 +185,18 @@ async function validar_form_generator() {
             }
 
             // Si viene deuda extra, precargarla.
-            if (data.extra_ecore_debt) {
-                console.log("Deuda extra recibida:", data.extra_ecore_debt);
+            if (data.with_debt) {
+                console.log("Deuda extra recibida:", data.with_debt);
 
                 // Obtener input basado en el campo a descontar.
-                const fieldId = data.extra_ecore_debt.campo_descontar;
+                const fieldId = data.campo_descontar;
                 const inputPreloadedValue = document.getElementById(fieldId);
 
-                document.getElementById("id_e").value = data.extra_ecore.id;
+                document.getElementById("id_extra_ecore_debt").value = data.id_extra_ecore_debt;
 
                 if (inputPreloadedValue) {
-                    inputPreloadedValue.value = data.extra_ecore_debt.monto_extra_ecore * -1;
-                    inputPreloadedValue.disabled = true; // Bloquea el input para que no se modifique.
+                    inputPreloadedValue.value = data.monto_extra_ecore * -1;
+                    inputPreloadedValue.readOnly = true; // Bloquea el input para que no se modifique.
                 } else {
                     console.warn(`No se encontró el input con id = "${fieldId}"`);
                 }

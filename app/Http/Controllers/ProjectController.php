@@ -41,9 +41,9 @@ class ProjectController extends Controller
 
     public function update(UpdateProjectRequest $request)
     {
+        $data = $request->validated();
+        
         try {
-            $data = $request->validated();
-
             // Buscar el cliente existente.
             $project = Project::findOrFail($request->input('id_project'));
 

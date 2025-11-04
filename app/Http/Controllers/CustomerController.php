@@ -40,9 +40,10 @@ class CustomerController extends Controller
 
     public function update(UpdateCustomerRequest $request)
     {
+        
+        $data = $request->validated();
+        
         try {
-            $data = $request->validated();
-
             // Buscar el cliente existente.
             $customer = Customer::findOrFail($request->input('id_customer'));
 

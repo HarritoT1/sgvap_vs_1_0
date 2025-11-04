@@ -6,11 +6,13 @@ use Illuminate\Http\Request;
 use App\Models\DailyExpenseReport;
 use App\Models\Employee;
 use App\Models\Project;
+use App\Models\ExtraEcoreDebt;
 
 class DailyExpenseReportController extends Controller
 {
     public function possible_generate_form(Request $request)
     {
+        // Validar primero (fuera del try).
         $data = $request->validate([
             'employee_id' => 'required|string|exists:employees,id|max:50',
             'fecha_dispersion_dia' => 'required|date',
@@ -18,27 +20,49 @@ class DailyExpenseReportController extends Controller
             'employee_id.required' => 'El RFC es obligatorio.',
             'employee_id.exists' => 'El RFC proporcionado no existe en la base de datos.',
             'employee_id.max' => 'El RFC no puede exceder los 50 caracteres.',
-
             'fecha_dispersion_dia.required' => 'La fecha de corte es obligatoria.',
             'fecha_dispersion_dia.date' => 'La fecha de corte no es una fecha válida.',
         ]);
 
-        // Validar que el empleado exista y sea activo, además, que el registro a crear no exista ya.
-        $employee = Employee::findOrFail($data['employee_id']);
+        try {
+            $employee = Employee::findOrFail($data['employee_id']);
 
-        if (!$employee->status == 'activo') {
-            return back()->withErrors(['employee_id' => 'El empleado no está activo en el sistema SGVAP.']);
+            if ($employee->status !== 'activo') {
+                return back()->withErrors([
+                    'employee_id' => 'El empleado no está activo en el sistema SGVAP.'
+                ]);
+            }
+
+            if (DailyExpenseReport::where('employee_id', $data['employee_id'])
+                ->where('fecha_dispersion_dia', $data['fecha_dispersion_dia'])
+                ->exists()
+            ) {
+                return back()->withErrors([
+                    'employee_id' => 'Ya existe un reporte de gastos diarios para este empleado en la fecha proporcionada.'
+                ]);
+            }
+
+            $adeudo = ExtraEcoreDebt::where('employee_id', $data['employee_id'])
+                ->where('status', 'pendiente')
+                ->where('fecha_descontar', '=', $data['fecha_dispersion_dia'])
+                ->first();
+
+            if ($adeudo) {
+                return response()->json([
+                    'generate' => true,
+                    'with_debt' => true,
+                    'id_extra_ecore_debt' => $adeudo->id,
+                    'campo_descontar' => $adeudo->campo_descontar,
+                    'monto_extra_ecore' => $adeudo->monto_extra_ecore,
+                ], 200);
+            }
+
+            return response()->json(['generate' => true, 'with_debt' => false], 200);
+
+        } catch (\Exception $e) { // Manejo de errores generales (DB, ModelNotFound, "ValidationException" => NO, etc.)
+            return back()->withErrors([
+                'generate' => 'Error en el sistema al generar el formulario de reporte de gastos diarios para este empleado en la fecha proporcionada.'
+            ]);
         }
-
-        if (DailyExpenseReport::where('employee_id', $data['employee_id'])
-            ->where('fecha_dispersion_dia', $data['fecha_dispersion_dia'])
-            ->exists()) {
-            return back()->withErrors(['employee_id' => 'Ya existe un reporte de gastos diarios para este empleado en la fecha proporcionada.']);
-        }
-
-        // Validar si no hay un registro extra_ecore_debs que deba cobrarse al renderizar el formulario.
-        //...
-
-        return response()->json(['generate' => true], 200);
     }
 }

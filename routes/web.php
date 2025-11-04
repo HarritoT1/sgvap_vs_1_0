@@ -6,6 +6,7 @@ use App\Http\Controllers\LoginController;
 use App\Http\Controllers\CustomerController;
 use App\Http\Controllers\ProjectController;
 use App\Http\Controllers\EmployeeController;
+use App\Http\Controllers\DailyExpenseReportController;
 use App\Models\Customer;
 use App\Models\Employee;
 
@@ -206,6 +207,10 @@ Route::middleware(['auth', 'inactive'])->group(function () {
     Route::get('/ge_corte_x_dia', function () {
         return view('Gestion_empleados/ge_corte_x_dia'); //http://127.0.0.1:8000/ge_corte_x_dia
     })->name("empleados.corte_x_dia");
+
+    Route::post('/validar_form_generator', [DailyExpenseReportController::class, 'possible_generate_form'])->name('empleados.validar_form_generator');
+
+    /*********************************/
 
     Route::get('/ge_corte_x_dia_delete', function () {
         return view('Gestion_empleados/ge_corte_x_dia_delete'); //http://127.0.0.1:8000/ge_corte_x_dia_delete

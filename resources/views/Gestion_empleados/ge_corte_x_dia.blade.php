@@ -6,7 +6,7 @@
             para generar el
             formulario de corte:
         </h1>
-        <form id="crear_corte_dia" action="#" method="post" enctype="application/x-www-form-urlencoded" autocomplete="off"
+        <form id="crear_corte_dia" action="{{ route('') }}" method="post" enctype="application/x-www-form-urlencoded" autocomplete="off"
             class="needs-validation p-1" novalidate>
             <div class="row g-3">
                 <div class="col-sm-6">
@@ -36,7 +36,7 @@
                     corte</button>
         </form>
 
-        <div class="w-100 div-secondary px-5 py-5 d-block" id="segunda-parte-formulario"> <!-- Cambiar a d-none -->
+        <div class="w-100 div-secondary px-5 py-5 d-none" id="segunda-parte-formulario"> <!-- Cambiar a d-none -->
             <h2 class="mb-3 fw-bold" style="font-size: 1.5rem;">Llena los datos del formulario para el corte de $nombre del
                 día $fecha:</h2>
             <div class="row g-3">
@@ -198,7 +198,7 @@
                     </div>
                 </div>
 
-                <input type="hidden" name="id_e" value="">
+                <input type="hidden" name="id_extra_ecore_debt" value="">
 
                 <hr class="my-4 mb-2">
 

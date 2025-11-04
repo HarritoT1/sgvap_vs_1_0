@@ -40,9 +40,9 @@ class EmployeeController extends Controller
 
     public function update(UpdateEmployeeRequest $request)
     {
+        $data = $request->validated();
+        
         try {
-            $data = $request->validated();
-
             // Buscar el empleado existente.
             $employee = Employee::findOrFail($request->input('id_employee'));
 
