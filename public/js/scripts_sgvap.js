@@ -147,6 +147,10 @@ function asig_listener_autocomplete_id_proyect() {
 
 async function validar_form_generator() {
     // 1. Obtener valores del formulario.
+    const divErrosPart1 = document.getElementById('errors_part_1');
+    divErrosPart1.classList.add('d-none');
+    divErrosPart1.querySelector('ul').innerHTML = '';
+
     const rfc = document.getElementById('input_find_rfc').value.trim();
     const fecha = document.getElementById('fecha_dispersion_dia').value;
 
@@ -168,16 +172,30 @@ async function validar_form_generator() {
         });
 
         // 3. Si Laravel devolvió redirect con errores → no habrá JSON → deja que la recarga suceda...
-        const contentType = response.headers.get("content-type") || "";
-        if (!contentType.includes("application/json")) {
-            window.location.reload();
-            return; // aquí no forzamos reload, Laravel ya maneja la bolsa de errores...
-        }
+        //const contentType = response.headers.get("content-type") || "";
+        //if (!contentType.includes("application/json")) {
+        //    return; // aquí no forzamos reload, Laravel ya maneja la bolsa de errores...
+        //}
 
         // 4. Parsear el JSON válido.
         const data = await response.json();
 
+        if (!response.ok) {
+            divErrosPart1.classList.remove('d-none');
+            divErrosPart1.querySelector('ul').innerHTML = `
+                <li>${data.error}</li>
+            `;
+            return;
+        }
+
         if (data.generate) {
+            //ReadOnly para inputs de la primera parte.
+            document.getElementById('input_find_rfc').readOnly = true;
+            document.getElementById('fecha_dispersion_dia').readOnly = true;
+
+            //Desactivar botón de generar formulario.
+            document.getElementById('btn_generar_formulario').setAttribute('disabled', 'true');
+
             // Mostrar segunda parte del formulario.
             const segundaParte = document.getElementById('segunda-parte-formulario');
             if (segundaParte) {

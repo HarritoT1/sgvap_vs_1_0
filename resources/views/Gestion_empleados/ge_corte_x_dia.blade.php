@@ -6,8 +6,10 @@
             para generar el
             formulario de corte:
         </h1>
-        <form id="crear_corte_dia" action="{{ route('') }}" method="post" enctype="application/x-www-form-urlencoded" autocomplete="off"
+        <form id="crear_corte_dia" action="" method="post" enctype="application/x-www-form-urlencoded" autocomplete="off"
             class="needs-validation p-1" novalidate>
+            @csrf
+
             <div class="row g-3">
                 <div class="col-sm-6">
                     <label for="input_find_rfc" class="form-label fw-bold">RFC</label>
@@ -32,8 +34,14 @@
                 <hr class="my-4 mb-2">
 
                 <button class="d-block mx-auto btn btn-primary btn-lg fw-bold button-custom" type="button"
-                    onclick="validar_form_generator()" style="background-color: var(--botones-color);">Generar formulario de
+                    onclick="validar_form_generator()" style="background-color: var(--botones-color);" id="btn_generar_formulario">Generar formulario de
                     corte</button>
+
+                <div class="alert alert-danger mt-3 text-justify d-none" role="alert" id="errors_part_1">
+                    <h6>Por favor corrige los errores debajo:</h6>
+                    <ul>
+                    </ul>
+                </div>
         </form>
 
         <div class="w-100 div-secondary px-5 py-5 d-none" id="segunda-parte-formulario"> <!-- Cambiar a d-none -->
@@ -45,7 +53,7 @@
                     <div class="input-group">
                         <span class="input-group-text">$</span>
                         <input type="number" class="form-control" aria-label="Amount (to the nearest dollar)"
-                            id="desayuno" name="desayuno" placeholder="0.000" step="0.00000001" value=""
+                            id="desayuno" name="desayuno" placeholder="0.000" step="any" value="{{ old('desayuno') }}"
                             form="crear_corte_dia">
                         <div class="invalid-feedback">
                             Ingresa un monto válido.
@@ -58,7 +66,7 @@
                     <div class="input-group">
                         <span class="input-group-text">$</span>
                         <input type="number" class="form-control" aria-label="Amount (to the nearest dollar)"
-                            id="comida" name="comida" placeholder="0.000" step="0.00000001" value=""
+                            id="comida" name="comida" placeholder="0.000" step="any" value="{{ old('comida') }}"
                             form="crear_corte_dia">
                         <div class="invalid-feedback">
                             Ingresa un monto válido.
@@ -71,7 +79,7 @@
                     <div class="input-group">
                         <span class="input-group-text">$</span>
                         <input type="number" class="form-control" aria-label="Amount (to the nearest dollar)"
-                            id="cena" name="cena" placeholder="0.000" step="0.00000001" value=""
+                            id="cena" name="cena" placeholder="0.000" step="any" value="{{ old('cena') }}"
                             form="crear_corte_dia">
                         <div class="invalid-feedback">
                             Ingresa un monto válido.
@@ -84,8 +92,8 @@
                     <div class="input-group">
                         <span class="input-group-text">$</span>
                         <input type="number" class="form-control" aria-label="Amount (to the nearest dollar)"
-                            id="traslado_local" name="traslado_local" placeholder="0.000" step="0.00000001" value=""
-                            form="crear_corte_dia">
+                            id="traslado_local" name="traslado_local" placeholder="0.000" step="any"
+                            value="{{ old('traslado_local') }}" form="crear_corte_dia">
                         <div class="invalid-feedback">
                             Ingresa un monto válido.
                         </div>
@@ -97,8 +105,8 @@
                     <div class="input-group">
                         <span class="input-group-text">$</span>
                         <input type="number" class="form-control" aria-label="Amount (to the nearest dollar)"
-                            id="traslado_externo" name="traslado_externo" placeholder="0.000" step="0.00000001"
-                            value="" form="crear_corte_dia">
+                            id="traslado_externo" name="traslado_externo" placeholder="0.000" step="any"
+                            value="{{ old('traslado_externo') }}" form="crear_corte_dia">
                         <div class="invalid-feedback">
                             Ingresa un monto válido.
                         </div>
@@ -110,8 +118,8 @@
                     <div class="input-group">
                         <span class="input-group-text">$</span>
                         <input type="number" class="form-control" aria-label="Amount (to the nearest dollar)"
-                            id="comision_bancaria" name="comision_bancaria" placeholder="0.000" step="0.00000001"
-                            value="" form="crear_corte_dia">
+                            id="comision_bancaria" name="comision_bancaria" placeholder="0.000" step="any"
+                            value="{{ old('comision_bancaria') }}" form="crear_corte_dia">
                         <div class="invalid-feedback">
                             Ingresa un monto válido.
                         </div>
@@ -130,7 +138,7 @@
                     </datalist>
                 </div>
 
-                <div class="col-12 d-flex flex-row justify-content-evenly alig-items-center"> 
+                <div class="col-12 d-flex flex-row justify-content-evenly alig-items-center">
                     <div style="width: 30%">
                         <hr class="w-100" style="border-style: solid; border-width: 3px;">
                     </div>
@@ -153,7 +161,7 @@
                     <div class="input-group">
                         <span class="input-group-text">$</span>
                         <input type="number" class="form-control" aria-label="Amount (to the nearest dollar)"
-                            id="monto_extra_ecore" name="monto_extra_ecore" placeholder="0.000" step="0.00000001"
+                            id="monto_extra_ecore" name="monto_extra_ecore" placeholder="0.000" step="any"
                             min="0" value="" form="crear_corte_dia">
                         <div class="invalid-feedback">
                             Ingresa un monto válido.
@@ -198,20 +206,22 @@
                     </div>
                 </div>
 
-                <input type="hidden" name="id_extra_ecore_debt" value="">
+                <input type="hidden" name="id_extra_ecore_debt" id="id_extra_ecore_debt" value="">
 
                 <hr class="my-4 mb-2">
 
-                <button class="d-block mx-auto btn btn-primary btn-lg fw-bold button-custom" type="button" onclick="ask_before_submit_new()"
-                    form="crear_corte_dia" style="background-color: var(--botones-color);">Registrar corte del
+                <button class="d-block mx-auto btn btn-primary btn-lg fw-bold button-custom" type="button"
+                    onclick="ask_before_submit_new()" form="crear_corte_dia"
+                    style="background-color: var(--botones-color);">Registrar corte del
                     día</button>
 
                 <hr class="my-2">
             </div>
         </div>
 
-        <h2 class="fw-bold mt-4 mb-1" style="font-size: 1.8rem; text-align:justify">Límite de presupuesto de viáticos:</h2>
-        
+        <h2 class="fw-bold mt-4 mb-1" style="font-size: 1.8rem; text-align:justify">Límite de presupuesto de viáticos:
+        </h2>
+
         <div class="container my-4 d-none" id="contenedor_barra_presupuesto_viaticos">
             <div class="label-row">
                 <div><strong>Barra segmentada</strong> — límite: $<span id="limitDisplay"></span></div>
@@ -231,7 +241,7 @@
         <hr class="my-4">
 
         <h2 class="fw-bold mt-4 mb-1" style="font-size: 1.8rem; text-align:justify">Límite de fecha de entrega:</h2>
-        
+
         <div class="container my-4 d-none" id="contenedor_barra_fecha_limite">
             <div class="label-row">
                 <div><strong>Barra de progreso</strong> — fecha límite: <span id="limitDisplay1"></span></div>
@@ -248,7 +258,8 @@
 
         <hr class="my-4">
 
-        <p class="text-center fw-bold" style="font-size: 1.2rem; color: var(--empresa-color);">¡Nota!: En la barra de presupuesto de viáticos no se considera IVA y Sí Vale!</p>        
+        <p class="text-center fw-bold" style="font-size: 1.2rem; color: var(--empresa-color);">¡Nota!: En la barra de
+            presupuesto de viáticos no se considera IVA y Sí Vale!</p>
 
     </div>
 @endsection

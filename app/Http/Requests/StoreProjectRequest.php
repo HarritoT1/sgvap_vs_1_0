@@ -32,6 +32,11 @@ class StoreProjectRequest extends FormRequest
             'monto_est_vtc_caseta' => $this->emptyToNull($this->input('monto_est_vtc_caseta')),
             'monto_est_vtc_hospedaje' => $this->emptyToNull($this->input('monto_est_vtc_hospedaje')),
             'notas' => $this->emptyToNull($this->input('notas')),
+
+            'id' => trim($this->input('id')),
+            'nombre' => trim($this->input('nombre')),
+            'sitio' => trim($this->input('sitio')),
+            'estimado_tiempo' => trim($this->input('estimado_tiempo')),
         ]);
     }
 

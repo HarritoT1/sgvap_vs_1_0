@@ -15,6 +15,15 @@ class StoreEmployeeRequest extends FormRequest
         return true;
     }
 
+    protected function prepareForValidation() {
+        // Preparar datos antes de la validación si es necesario.
+        $this->merge([
+            'id' => trim($this->input('id')),
+            'nombre' => trim($this->input('nombre')),
+            'puesto' => trim($this->input('puesto')),
+        ]);
+    }
+
     /**
      * Get the validation rules that apply to the request.
      *

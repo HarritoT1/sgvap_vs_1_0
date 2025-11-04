@@ -15,6 +15,15 @@ class UpdateCustomerRequest extends FormRequest
         return true;
     }
 
+    protected function prepareForValidation() {
+        // Preparar datos antes de la validación si es necesario.
+        $this->merge([
+            'id' => trim($this->input('id')),
+            'razon_social' => trim($this->input('razon_social')),
+            'ubicacion' => trim($this->input('ubicacion')),
+        ]);
+    }
+
     /**
      * Get the validation rules that apply to the request.
      *

@@ -64,7 +64,7 @@
                         <div class="input-group">
                             <span class="input-group-text">💰</span>
                             <input type="number" class="form-control" aria-label="Amount (to the nearest dollar)"
-                                id="monto_cobrar" name="monto_cobrar" placeholder="0.000" step="0.00000001" min="0"
+                                id="monto_cobrar" name="monto_cobrar" placeholder="0.000" step="any" min="0"
                                 value="{{ old('monto_cobrar') }}" required>
                             <div class="invalid-feedback">
                                 Ingresa un monto válido.
@@ -79,7 +79,7 @@
                             <span class="input-group-text">🍞</span>
                             <input type="number" class="form-control" aria-label="Amount (to the nearest dollar)"
                                 id="monto_est_vtc_alimentos" name="monto_est_vtc_alimentos" placeholder="0.000"
-                                step="0.00000001" min="0" value="{{ old('monto_est_vtc_alimentos') }}">
+                                step="any" min="0" value="{{ old('monto_est_vtc_alimentos') }}">
                             <div class="invalid-feedback">
                                 Ingresa un estimado válido.
                             </div>
@@ -93,7 +93,7 @@
                             <span class="input-group-text">🚗</span>
                             <input type="number" class="form-control" aria-label="Amount (to the nearest dollar)"
                                 id="monto_est_vtc_tras_local" name="monto_est_vtc_tras_local" placeholder="0.000"
-                                step="0.00000001" min="0" value="{{ old('monto_est_vtc_tras_local') }}">
+                                step="any" min="0" value="{{ old('monto_est_vtc_tras_local') }}">
                             <div class="invalid-feedback">
                                 Ingresa un estimado válido.
                             </div>
@@ -107,7 +107,7 @@
                             <span class="input-group-text">✈️</span>
                             <input type="number" class="form-control" aria-label="Amount (to the nearest dollar)"
                                 id="monto_est_vtc_tras_externo" name="monto_est_vtc_tras_externo" placeholder="0.000"
-                                step="0.00000001" min="0" value="{{ old('monto_est_vtc_tras_externo') }}">
+                                step="any" min="0" value="{{ old('monto_est_vtc_tras_externo') }}">
                             <div class="invalid-feedback">
                                 Ingresa un estimado válido.
                             </div>
@@ -121,7 +121,7 @@
                             <span class="input-group-text">🏦</span>
                             <input type="number" class="form-control" aria-label="Amount (to the nearest dollar)"
                                 id="monto_est_vtc_com_bancaria" name="monto_est_vtc_com_bancaria" placeholder="0.000"
-                                step="0.00000001" min="0" value="{{ old('monto_est_vtc_com_bancaria') }}">
+                                step="any" min="0" value="{{ old('monto_est_vtc_com_bancaria') }}">
                             <div class="invalid-feedback">
                                 Ingresa un estimado válido.
                             </div>
@@ -135,7 +135,7 @@
                             <span class="input-group-text">⛽</span>
                             <input type="number" class="form-control" aria-label="Amount (to the nearest dollar)"
                                 id="monto_est_vtc_gasolina" name="monto_est_vtc_gasolina" placeholder="0.000"
-                                step="0.00000001" min="0" value="{{ old('monto_est_vtc_gasolina') }}">
+                                step="any" min="0" value="{{ old('monto_est_vtc_gasolina') }}">
                             <div class="invalid-feedback">
                                 Ingresa un estimado válido.
                             </div>
@@ -148,7 +148,7 @@
                             <span class="input-group-text">🛣️</span>
                             <input type="number" class="form-control" aria-label="Amount (to the nearest dollar)"
                                 id="monto_est_vtc_caseta" name="monto_est_vtc_caseta" placeholder="0.000"
-                                step="0.00000001" min="0" value="{{ old('monto_est_vtc_caseta') }}">
+                                step="any" min="0" value="{{ old('monto_est_vtc_caseta') }}">
                             <div class="invalid-feedback">
                                 Ingresa un estimado válido.
                             </div>
@@ -162,7 +162,7 @@
                             <span class="input-group-text">🏨</span>
                             <input type="number" class="form-control" aria-label="Amount (to the nearest dollar)"
                                 id="monto_est_vtc_hospedaje" name="monto_est_vtc_hospedaje" placeholder="0.000"
-                                step="0.00000001" min="0" value="{{ old('monto_est_vtc_hospedaje') }}">
+                                step="any" min="0" value="{{ old('monto_est_vtc_hospedaje') }}">
                             <div class="invalid-feedback">
                                 Ingresa un estimado válido.
                             </div>
@@ -174,7 +174,7 @@
                         <div class="input-group">
                             <span class="input-group-text">💵</span>
                             <input type="number" class="form-control" aria-label="Amount (to the nearest dollar)"
-                                id="estimado_viaticos" name="estimado_viaticos" placeholder="0.000" step="0.00000001"
+                                id="estimado_viaticos" name="estimado_viaticos" placeholder="0.000" step="any"
                                 min="0" value="{{ old('estimado_viaticos') }}" required>
                             <div class="invalid-feedback">
                                 Ingresa un estimado válido.

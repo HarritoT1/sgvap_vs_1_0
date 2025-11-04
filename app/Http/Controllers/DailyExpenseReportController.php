@@ -28,18 +28,18 @@ class DailyExpenseReportController extends Controller
             $employee = Employee::findOrFail($data['employee_id']);
 
             if ($employee->status !== 'activo') {
-                return back()->withErrors([
-                    'employee_id' => 'El empleado no está activo en el sistema SGVAP.'
-                ]);
+                return response()->json([
+                    'error' => 'El empleado no está activo en el sistema SGVAP.'
+                ], 403);
             }
 
             if (DailyExpenseReport::where('employee_id', $data['employee_id'])
                 ->where('fecha_dispersion_dia', $data['fecha_dispersion_dia'])
                 ->exists()
             ) {
-                return back()->withErrors([
-                    'employee_id' => 'Ya existe un reporte de gastos diarios para este empleado en la fecha proporcionada.'
-                ]);
+                return response()->json([
+                    'error' => 'Ya existe un reporte de gastos diarios para este empleado en la fecha proporcionada.'
+                ], 403);
             }
 
             $adeudo = ExtraEcoreDebt::where('employee_id', $data['employee_id'])
@@ -60,9 +60,9 @@ class DailyExpenseReportController extends Controller
             return response()->json(['generate' => true, 'with_debt' => false], 200);
 
         } catch (\Exception $e) { // Manejo de errores generales (DB, ModelNotFound, "ValidationException" => NO, etc.)
-            return back()->withErrors([
-                'generate' => 'Error en el sistema al generar el formulario de reporte de gastos diarios para este empleado en la fecha proporcionada.'
-            ]);
+            return response()->json([
+                'error' => 'Error en el sistema al generar el formulario de reporte de gastos diarios para este empleado en la fecha proporcionada.'
+            ], 403);
         }
     }
 }
