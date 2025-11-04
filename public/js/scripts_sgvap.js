@@ -212,6 +212,7 @@ async function validar_form_generator() {
                 const fieldId = data.campo_descontar;
                 const inputPreloadedValue = document.getElementById(fieldId);
 
+                document.getElementById("id_extra_ecore_debt").name = "id_extra_ecore_debt";
                 document.getElementById("id_extra_ecore_debt").value = data.id_extra_ecore_debt;
 
                 if (inputPreloadedValue) {

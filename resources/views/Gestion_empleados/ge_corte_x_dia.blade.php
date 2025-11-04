@@ -205,7 +205,7 @@
                     </div>
                 </div>
 
-                <input type="hidden" name="id_extra_ecore_debt" id="id_extra_ecore_debt" value="">
+                <input type="hidden" id="id_extra_ecore_debt">
 
                 <hr class="my-4 mb-2">
 
