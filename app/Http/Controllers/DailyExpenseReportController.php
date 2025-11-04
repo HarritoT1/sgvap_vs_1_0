@@ -12,6 +12,9 @@ class DailyExpenseReportController extends Controller
 {
     public function possible_generate_form(Request $request)
     {
+        $cleanEmployeeId = trim(explode('→', $request->input('employee_id'))[0]);
+        $request->merge(['employee_id' => $cleanEmployeeId]);
+
         // Validar primero (fuera del try).
         $data = $request->validate([
             'employee_id' => 'required|string|exists:employees,id|max:50',
@@ -54,10 +57,11 @@ class DailyExpenseReportController extends Controller
                     'id_extra_ecore_debt' => $adeudo->id,
                     'campo_descontar' => $adeudo->campo_descontar,
                     'monto_extra_ecore' => $adeudo->monto_extra_ecore,
+                    'employee_name' => $employee->nombre,
                 ], 200);
             }
 
-            return response()->json(['generate' => true, 'with_debt' => false], 200);
+            return response()->json(['generate' => true, 'with_debt' => false, 'employee_name' => $employee->nombre,], 200);
 
         } catch (\Exception $e) { // Manejo de errores generales (DB, ModelNotFound, "ValidationException" => NO, etc.)
             return response()->json([

@@ -189,6 +189,8 @@ async function validar_form_generator() {
         }
 
         if (data.generate) {
+            document.getElementById('h2_2da_parte').textContent = `Llena los datos del formulario para el corte de ${data.employee_name} del día ${document.getElementById('fecha_dispersion_dia').value}:`;
+
             //ReadOnly para inputs de la primera parte.
             document.getElementById('input_find_rfc').readOnly = true;
             document.getElementById('fecha_dispersion_dia').readOnly = true;

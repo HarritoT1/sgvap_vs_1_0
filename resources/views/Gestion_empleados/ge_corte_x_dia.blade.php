@@ -45,8 +45,7 @@
         </form>
 
         <div class="w-100 div-secondary px-5 py-5 d-none" id="segunda-parte-formulario"> <!-- Cambiar a d-none -->
-            <h2 class="mb-3 fw-bold" style="font-size: 1.5rem;">Llena los datos del formulario para el corte de $nombre del
-                día $fecha:</h2>
+            <h2 class="mb-3 fw-bold" style="font-size: 1.5rem;" id="h2_2da_parte"></h2>
             <div class="row g-3">
                 <div class="col-sm-6">
                     <label for="desayuno" class="form-label fw-bold">Desayuno</label>
