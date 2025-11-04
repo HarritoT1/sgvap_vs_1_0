@@ -128,7 +128,7 @@
                 </div>
 
                 <div class="col-12">
-                    <label for="input_find_id_proyect" class="form-label fw-bold">Id del proyecto</label>
+                    <label for="input_find_id_proyect" class="form-label fw-bold">Id del proyecto activo</label>
                     <input type="text" class="form-control" id="input_find_id_proyect" name="project_id"
                         placeholder="" value="" required maxlength="80" list="sugerencias_id_proyect"
                         form="crear_corte_dia">

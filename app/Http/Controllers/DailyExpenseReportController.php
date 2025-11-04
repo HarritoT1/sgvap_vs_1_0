@@ -62,11 +62,56 @@ class DailyExpenseReportController extends Controller
             }
 
             return response()->json(['generate' => true, 'with_debt' => false, 'employee_name' => $employee->nombre,], 200);
-
         } catch (\Exception $e) { // Manejo de errores generales (DB, ModelNotFound, "ValidationException" => NO, etc.)
             return response()->json([
                 'error' => 'Error en el sistema al generar el formulario de reporte de gastos diarios para este empleado en la fecha proporcionada.'
             ], 403);
+        }
+    }
+
+    public function ask_info_about_project(Request $request)
+    {
+        $query = trim(explode('→', $request->input('q'))[0]);
+        $request->merge(['q' => $query]);
+
+        try {
+            $project = Project::where('id', 'like', $query . '%')
+                ->firstOrFail();
+
+            return response()->json([
+                'generacion_progress_bar' => true,
+                'project' => [
+                    'estimado_viaticos' => $project->estimado_viaticos,
+                    'fecha_creacion' => $project->fecha_creacion->toIso8601String(),
+                    'fecha_limite' => $project->fecha_limite->toIso8601String(),
+                    'nombre' => $project->nombre,
+                    'totales_viaticos_table_daily' => [
+                        'total_alimentos' => $project->daily_expense_reports->reduce(function ($c, $n) {
+                            return $c + (($n->desayuno ?? 0) + ($n->comida ?? 0) + ($n->cena ?? 0));
+                        }, 0),
+                        'total_traslados' => $project->daily_expense_reports->reduce(function ($c, $n) {
+                            return $c + (($n->traslado_local ?? 0) + ($n->traslado_externo ?? 0));
+                        }, 0),
+                        'total_comision' => $project->daily_expense_reports->reduce(function ($c, $n) {
+                            return $c + ($n->comision_bancaria ?? 0);
+                        }, 0),
+                    ],
+                    'totales_viaticos_table_gasoline' => [
+                        'total_gasolina' => 0,
+                    ],
+                    'totales_viaticos_table_tag' => [
+                        'total_caseta' => 0,
+                    ],
+                    'totales_viaticos_lodging' => [
+                        'total_hospedaje' => 0,
+                    ],
+                ],
+            ], 200);
+        } catch (\Exception $e) {
+            return response()->json([
+                'exists' => false,
+                'message' => 'El proyecto no existe en la base de datos.'
+            ], 404);
         }
     }
 }

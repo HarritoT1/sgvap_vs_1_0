@@ -284,7 +284,7 @@ async function ask_values_of_proyect_progress_bar() {
     console.log(`Generando valores de las barras de progreso del proyecto con id: ${input_id_proyect}...`)
 
     try {
-        /*const response = await fetch(`/proyectprogressbargenerator?q=${input_id_proyect}`, {
+        const response = await fetch(`/ask_info_about_project?q=${input_id_proyect}`, {
             method: 'GET', 
             headers: {
                 'X-CSRF-TOKEN': document.querySelector('meta[name="csrf-token"]').content,
@@ -292,32 +292,48 @@ async function ask_values_of_proyect_progress_bar() {
             }
         });
     
-        const data = await response.json();*/
-        const data = {
+        const data = await response.json();
+
+        /*const data = {
             generacion_progress_bar: true,
             project: {
+                estimado_viaticos: 260000,
                 fecha_creacion: "2025-09-01T22:35:12.000000Z",
                 fecha_limite: "2025-12-22",
-                nombre: "Proyecto de prueba"
+                nombre: "Proyecto de prueba",
+                totales_viaticos_table_daily: {
+                    total_alimentos: 20000,
+                    total_traslados: 90000,
+                    total_comision: 20000,
+                },
+                totales_viaticos_table_gasoline: {
+                    total_gasolina: 90000,
+                },
+                totales_viaticos_table_tag: {
+                    total_caseta: 90000,
+                },
+                totales_viaticos_lodging: {
+                    total_hospedaje: 90000,
+                },
             }
-        };
+        };*/
 
-        if (/*data.generacion_progress_bar ||*/ true) {
+        if (data.generacion_progress_bar) {
             /* 1RA BARRA DE PROGRESO. */
 
-            /*const monto_alimentos = data.totales_viaticos_table_daily.total_alimentos;
-            const monto_traslados = data.totales_viaticos_table_daily.total_traslados;
-            const monto_comision = data.totales_viaticos_table_daily.total_comision;
-            const monto_gasolina = data.totales_viaticos_table_gasoline.total_comision;
-            const monto_caseta = data.totales_viaticos_table_tag.total_comision;
-            const monto_hospedaje = data.totales_viaticos_lodging_daily.total_comision;
+            const monto_alimentos = data.project.totales_viaticos_table_daily.total_alimentos;
+            const monto_traslados = data.project.totales_viaticos_table_daily.total_traslados;
+            const monto_comision = data.project.totales_viaticos_table_daily.total_comision;
+            const monto_gasolina = data.project.totales_viaticos_table_gasoline.total_gasolina;
+            const monto_caseta = data.project.totales_viaticos_table_tag.total_caseta;
+            const monto_hospedaje = data.project.totales_viaticos_lodging.total_hospedaje;
             const limit = data.project.estimado_viaticos;
-            const values = [monto_alimentos, monto_traslados, monto_comision, monto_gasolina, monto_caseta, monto_hospedaje];*/
+            const values = [monto_alimentos, monto_traslados, monto_comision, monto_gasolina, monto_caseta, monto_hospedaje];
 
-            const limit = 260000; // límite requerido.
+            //const limit = 260000; // límite requerido.
             // --- EJEMPLO: modifica estos valores como necesites ---
             //const values = [50000, 70000, 20000, 30000]; // suma=170000 (< limit).
-            const values = [20000, 90000, 20000, 90000, 90000, 90000]; // ejemplo > limit.
+            //const values = [20000, 90000, 20000, 90000, 90000, 90000]; // ejemplo > limit.
             // ----------------------------------------------------
 
             const colors = ['seg-0', 'seg-1', 'seg-2', 'seg-3', 'seg-4', 'seg-5'];
@@ -437,6 +453,7 @@ async function ask_values_of_proyect_progress_bar() {
             percentTotal.textContent = `${totalPct}% usado ($${sumValues.toLocaleString('es-MX')} / $${limit.toLocaleString('es-MX')})`;
 
             /* 2DA BARRA DE PROGRESO. */
+            /*
             const fecha_limite = new Date(data.project.fecha_limite.split("T")[0] + "T00:00:00");
             const fecha_creacion = new Date(data.project.fecha_creacion.split("T")[0] + "T00:00:00");
             const fecha_actual = new Date();
@@ -505,6 +522,7 @@ async function ask_values_of_proyect_progress_bar() {
             document.getElementById('bar1').setAttribute('aria-valuemax', limit1);
             const totalPct1 = Math.round((diffDias_enteros / limit1) * 10000) / 100;
             percentTotal1.textContent = `${totalPct1}% usado (${diffDias_enteros.toLocaleString('es-MX')} días / ${limit1.toLocaleString('es-MX')} días)`;
+            */
         }
     } catch (error) {
         console.error("Error en el fetch:", error);
