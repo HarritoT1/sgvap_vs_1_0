@@ -160,6 +160,8 @@ async function validar_form_generator() {
         return;
     }
 
+    document.getElementById('loaderCircle').classList.remove('d-none');
+
     try {
         // 2. Hacer la petición al controlador.
         const response = await fetch('/validar_form_generator', {
@@ -185,6 +187,7 @@ async function validar_form_generator() {
             divErrosPart1.querySelector('ul').innerHTML = `
                 <li>${data.error}</li>
             `;
+            document.getElementById('loaderCircle').classList.add('d-none');
             return;
         }
 
@@ -203,6 +206,8 @@ async function validar_form_generator() {
             if (segundaParte) {
                 segundaParte.classList.remove('d-none');
             }
+
+            document.getElementById('loaderCircle').classList.add('d-none');
 
             // Si viene deuda extra, precargarla.
             if (data.with_debt) {
@@ -224,8 +229,9 @@ async function validar_form_generator() {
             }
         }
     } catch (error) {
+        document.getElementById('loaderCircle').classList.add('d-none');
         console.error("Error en el fetch:", error);
-        alert("Hubo un problema al generar el corte. Intenta de nuevo.");
+        alert("Hubo un problema al generar el corte. Tal vez ingresaste un empleado que no existe en la base de datos (ツ)_/¯. \n\nIntenta de nuevo.");
     }
 }
 
