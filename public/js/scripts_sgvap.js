@@ -291,7 +291,7 @@ function show_part_extra_ecore(e) {
         fecha_input.required = false;
 
         monto_input.value = "";
-        campo_input.value = "";
+        //campo_input.value = "";
         fecha_input.value = "";
     }
 }

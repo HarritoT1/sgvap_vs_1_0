@@ -8,6 +8,7 @@ use App\Http\Controllers\ProjectController;
 use App\Http\Controllers\EmployeeController;
 use App\Http\Controllers\DailyExpenseReportController;
 use App\Models\Customer;
+use App\Models\DailyExpenseReport;
 use App\Models\Employee;
 
 /*Route::get('/', function () {
@@ -211,6 +212,8 @@ Route::middleware(['auth', 'inactive'])->group(function () {
     Route::post('/validar_form_generator', [DailyExpenseReportController::class, 'possible_generate_form'])->name('empleados.validar_form_generator');
 
     Route::get('/ask_info_about_project', [DailyExpenseReportController::class, 'ask_info_about_project'])->name('empleados.ask_info_about_project');
+
+    Route::post('/daily_create', [DailyExpenseReportController::class, 'create'])->name('dailys.create');
 
     /*********************************/
 

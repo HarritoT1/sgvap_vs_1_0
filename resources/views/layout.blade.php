@@ -865,13 +865,13 @@ l-68 45 0 51 c1 283 222 551 505 611 96 20 97 20 125 -19z" />
                                     <ul class="flex-column vineta">
                                         <li class="nav-item">
                                             <a class="nav-link d-flex align-items-center gap-2 text-white fw-bold"
-                                                href="{{ route('clientes.nuevo')}}" target="_self">
+                                                href="{{ route('clientes.nuevo') }}" target="_self">
                                                 Nuevo cliente.
                                             </a>
                                         </li>
                                         <li class="nav-item">
                                             <a class="nav-link d-flex align-items-center gap-2 text-white fw-bold"
-                                                href="{{ route('clientes.consulta_filtro')}}" target="_self">
+                                                href="{{ route('clientes.consulta_filtro') }}" target="_self">
                                                 Consultar y actualizar clientes.
                                             </a>
                                         </li>
@@ -1116,7 +1116,8 @@ l-68 45 0 51 c1 283 222 551 505 611 96 20 97 20 125 -19z" />
                             <li class="nav-item">
                                 <form action="{{ route('logout.perform') }}" method="post" class="m-0 p-0">
                                     @csrf
-                                    <button class="nav-link d-flex align-items-center gap-2 text-white fw-bold" type="submit">
+                                    <button class="nav-link d-flex align-items-center gap-2 text-white fw-bold"
+                                        type="submit">
                                         <svg class="bi">
                                             <use xlink:href="#salir" />
                                         </svg>
@@ -1159,6 +1160,15 @@ l-68 45 0 51 c1 283 222 551 505 611 96 20 97 20 125 -19z" />
                 document.getElementById("input_find_id_proyect").addEventListener('input', () => {
                     ask_values_of_proyect_progress_bar()
                 })
+
+                const rfc = document.getElementById('input_find_rfc').value.trim();
+                const fecha = document.getElementById('fecha_dispersion_dia').value;
+
+                // Validación básica antes del fetch.
+                if (rfc && fecha) {
+                    validar_form_generator();
+                    return;
+                }
             }
             if (document.getElementById("generar_corte_mensual")) {
                 alert("AVISO: Se recomienda hacer el corte mensual el último día del mes.");
@@ -1178,7 +1188,7 @@ l-68 45 0 51 c1 283 222 551 505 611 96 20 97 20 125 -19z" />
                 asig_listener_autocomputed_inputs()
             }
             if (document.getElementById('crear_dm_caseta') || document.getElementById(
-                "label_caseta_importe_total")) {
+                    "label_caseta_importe_total")) {
                 asig_listener_autocomputed_inputs_caseta()
             }
             if (document.getElementById('crear_dm_hospedaje') || document.getElementById(

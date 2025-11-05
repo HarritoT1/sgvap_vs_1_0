@@ -6,15 +6,15 @@
             para generar el
             formulario de corte:
         </h1>
-        <form id="crear_corte_dia" action="" method="post" enctype="application/x-www-form-urlencoded" autocomplete="off"
-            class="needs-validation p-1" novalidate>
+        <form id="crear_corte_dia" action="{{ route('dailys.create') }}" method="post"
+            enctype="application/x-www-form-urlencoded" autocomplete="off" class="needs-validation p-1" novalidate>
             @csrf
 
             <div class="row g-3">
                 <div class="col-sm-6">
                     <label for="input_find_rfc" class="form-label fw-bold">RFC</label>
                     <input type="text" class="form-control" id="input_find_rfc" name="employee_id" placeholder=""
-                        value="" required maxlength="50" list="sugerencias_rfc">
+                        value="{{ old('employee_id') }}" required maxlength="50" list="sugerencias_rfc">
                     <div class="invalid-feedback">
                         Ingresa un RFC válido.
                     </div>
@@ -25,7 +25,7 @@
                 <div class="col-sm-6">
                     <label for="fecha_dispersion_dia" class="form-label fw-bold">Fecha de corte</label>
                     <input type="date" class="form-control sm-form-control" id="fecha_dispersion_dia"
-                        name="fecha_dispersion_dia" value="" required>
+                        name="fecha_dispersion_dia" value="{{ old('fecha_dispersion_dia') }}" required>
                     <div class="invalid-feedback">
                         Ingresa una fecha válida.
                     </div>
@@ -34,7 +34,8 @@
                 <hr class="my-4 mb-2">
 
                 <button class="d-block mx-auto btn btn-primary btn-lg fw-bold button-custom" type="button"
-                    onclick="validar_form_generator()" style="background-color: var(--botones-color);" id="btn_generar_formulario">Generar formulario de
+                    onclick="validar_form_generator()" style="background-color: var(--botones-color);"
+                    id="btn_generar_formulario">Generar formulario de
                     corte</button>
 
                 <div class="alert alert-danger mt-3 text-justify d-none" role="alert" id="errors_part_1">
@@ -42,6 +43,14 @@
                     <ul>
                     </ul>
                 </div>
+
+                @if (session('success'))
+                    <div class="alert alert-success mt-3 text-justify" role="alert">
+                        <ul class="mb-0">
+                            <li>{{ session('success') }}</li>
+                        </ul>
+                    </div>
+                @endif
         </form>
 
         <div class="loader d-none" id="loaderCircle"></div>
@@ -145,7 +154,8 @@
                     </div>
                     <div style="width: 33%; display: flex; align-items: center; justify-content: center;">
                         <div class="form-check">
-                            <input class="form-check-input" type="checkbox" id="ajuste_retiro" name="ajuste_retiro" value="true">
+                            <input class="form-check-input" type="checkbox" id="ajuste_retiro" name="ajuste_retiro"
+                                value="true">
                             <label class="form-check-label fw-bold text-center" for="ajuste_retiro"
                                 style="font-size: 0.8rem;">
                                 <em>$ Ajuste por retiro</em>
@@ -163,7 +173,7 @@
                         <span class="input-group-text">$</span>
                         <input type="number" class="form-control" aria-label="Amount (to the nearest dollar)"
                             id="monto_extra_ecore" name="monto_extra_ecore" placeholder="0.000" step="any"
-                            min="0" value="" form="crear_corte_dia">
+                            min="0" value="{{ old('monto_extra_ecore') }}" form="crear_corte_dia">
                         <div class="invalid-feedback">
                             Ingresa un monto válido.
                         </div>
@@ -201,7 +211,7 @@
                 <div class="col-sm-6 mx-auto d-none" id="fecha_descontar_div">
                     <label for="fecha_descontar" class="form-label fw-bold">Fecha de ajuste por retiro</label>
                     <input type="date" class="form-control sm-form-control" id="fecha_descontar"
-                        name="fecha_descontar" value="" form="crear_corte_dia">
+                        name="fecha_descontar" value="{{ old('fecha_descontar') }}" form="crear_corte_dia">
                     <div class="invalid-feedback">
                         Ingresa una fecha válida.
                     </div>
@@ -217,6 +227,17 @@
                     día</button>
 
                 <hr class="my-2">
+
+                @if ($errors->any())
+                    <div class="alert alert-danger mt-3 text-justify" role="alert">
+                        <h6>Por favor corrige los errores debajo:</h6>
+                        <ul>
+                            @foreach ($errors->all() as $error)
+                                <li>{{ $error }}</li>
+                            @endforeach
+                        </ul>
+                    </div>
+                @endif
             </div>
         </div>
 
