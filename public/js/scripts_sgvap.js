@@ -223,12 +223,15 @@ async function validar_form_generator() {
         if (data.generate) {
             document.getElementById('h2_2da_parte').textContent = `Llena los datos del formulario para el corte de ${data.employee_name} del día ${document.getElementById('fecha_dispersion_dia').value}:`;
 
-            //ReadOnly para inputs de la primera parte.
+            // ReadOnly para inputs de la primera parte.
             document.getElementById('input_find_rfc').readOnly = true;
             document.getElementById('fecha_dispersion_dia').readOnly = true;
 
-            //Desactivar botón de generar formulario.
+            // Desactivar botón de generar formulario.
             document.getElementById('btn_generar_formulario').setAttribute('disabled', 'true');
+
+            // Ocultarlo.
+            document.getElementById('btn_generar_formulario').classList.add('d-none');
 
             // Mostrar segunda parte del formulario.
             const segundaParte = document.getElementById('segunda-parte-formulario');
@@ -297,7 +300,7 @@ function show_part_extra_ecore(e) {
 }
 
 async function ask_values_of_proyect_progress_bar() {
-    const input_id_proyect = document.getElementById('input_find_id_proyect').value;
+    const input_id_proyect = document.getElementById('input_find_id_proyect').value.trim();
     const contenedor_barra_presupuesto_viaticos = document.getElementById('contenedor_barra_presupuesto_viaticos');
     const contenedor_barra_fecha_limite = document.getElementById('contenedor_barra_fecha_limite');
     const overflowMsg = document.getElementById('overflowMsg');
