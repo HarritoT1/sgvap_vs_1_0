@@ -24,6 +24,7 @@ class DatabaseSeeder extends Seeder
         $this->call(ExtraEcoreDebtSeeder::class);
         $this->call(GasolineDispersionSeeder::class);
         $this->call(TagDispersionSeeder::class);
+        $this->call(LodgingDispersionSeeder::class);
     }
 
     protected function truncateTables(array $tables)

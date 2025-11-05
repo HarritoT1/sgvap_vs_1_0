@@ -8,6 +8,7 @@ namespace App\Models;
 
 use Carbon\Carbon;
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\Factories\HasFactory;
 
 /**
  * Class LodgingDispersion
@@ -31,10 +32,13 @@ use Illuminate\Database\Eloquent\Model;
  */
 class LodgingDispersion extends Model
 {
+	use HasFactory;
+
 	protected $table = 'lodging_dispersions';
 	public $timestamps = false;
 
 	protected $casts = [
+		'id' => 'int',
 		'fecha_dispersion' => 'datetime',
 		'numero_noches' => 'int',
 		'costo_x_noche' => 'float',
@@ -56,7 +60,6 @@ class LodgingDispersion extends Model
 		'base_imponible',
 		'iva_hospedaje',
 		'importe_total',
-		'last_update'
 	];
 
 	public function project()
