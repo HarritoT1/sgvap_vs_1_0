@@ -45,7 +45,7 @@
                 </div>
 
                 @if (session('success'))
-                    <div class="alert alert-success mt-3 text-justify" role="alert">
+                    <div class="alert alert-success mt-3 text-justify" role="alert" id="success_alert">
                         <ul class="mb-0">
                             <li>{{ session('success') }}</li>
                         </ul>

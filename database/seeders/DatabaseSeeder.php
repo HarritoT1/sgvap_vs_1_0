@@ -21,7 +21,7 @@ class DatabaseSeeder extends Seeder
         $this->call(ProjectSeeder::class);
         $this->call(EmployeeSeeder::class);
         $this->call(DailyExpenseReportSeeder::class);
-        $this->call(ExtraEcoreDebtSeeder::class);
+        //$this->call(ExtraEcoreDebtSeeder::class);
         $this->call(GasolineDispersionSeeder::class);
         $this->call(TagDispersionSeeder::class);
         $this->call(LodgingDispersionSeeder::class);
