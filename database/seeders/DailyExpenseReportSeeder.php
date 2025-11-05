@@ -22,7 +22,7 @@ class DailyExpenseReportSeeder extends Seeder
         $i = 0;
 
         foreach ($arrayEmployeeIds as $employeeId) {
-            DailyExpenseReport::factory()->count(1)->create([
+            DailyExpenseReport::factory()->count(10)->create([
                 'employee_id' => $employeeId, 'project_id' => $arrayProjectIds[$i],
             ]);
 
