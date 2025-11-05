@@ -7,6 +7,7 @@
 namespace App\Models;
 
 use Carbon\Carbon;
+use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
 /**
@@ -31,10 +32,13 @@ use Illuminate\Database\Eloquent\Model;
  */
 class GasolineDispersion extends Model
 {
+	use HasFactory;
+
 	protected $table = 'gasoline_dispersions';
 	public $timestamps = false;
 
 	protected $casts = [
+		'id' => 'int',
 		'fecha_dispersion' => 'datetime',
 		'costo_lt' => 'float',
 		'cant_litros' => 'float',
@@ -55,7 +59,6 @@ class GasolineDispersion extends Model
 		'base_imponible',
 		'iva_acumulado',
 		'importe_total',
-		'last_update'
 	];
 
 	public function project()

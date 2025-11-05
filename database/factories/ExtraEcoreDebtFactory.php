@@ -15,6 +15,9 @@ class ExtraEcoreDebtFactory extends Factory
      *
      * @return array<string, mixed>
      */
+
+    protected $model = \App\Models\ExtraEcoreDebt::class;
+
     public function definition(): array
     {
         $campos = ['desayuno', 'comida', 'cena', 'traslado_local', 'traslado_externo', 'comision_bancaria'];

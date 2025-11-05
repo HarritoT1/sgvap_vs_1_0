@@ -14,6 +14,9 @@ class EmployeeFactory extends Factory
      *
      * @return array<string, mixed>
      */
+
+    protected $model = \App\Models\Employee::class;
+
     public function definition(): array
     {
         return [

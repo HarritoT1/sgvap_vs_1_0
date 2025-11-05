@@ -21,6 +21,8 @@ class UserFactory extends Factory
      *
      * @return array<string, mixed>
      */
+    protected $model = \App\Models\User::class;
+
     public function definition(): array
     {
         return [

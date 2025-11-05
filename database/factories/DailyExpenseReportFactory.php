@@ -16,6 +16,9 @@ class DailyExpenseReportFactory extends Factory
      *
      * @return array<string, mixed>
      */
+
+    protected $model = \App\Models\DailyExpenseReport::class;
+
     public function definition(): array
     {
         return [
