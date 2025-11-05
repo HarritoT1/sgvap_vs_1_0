@@ -37,9 +37,11 @@ class StoreDailyExpenseReportRequest extends FormRequest
 
             'employee_id' => trim(explode('→', $this->input('employee_id'))[0]),
             'project_id' => trim(explode('→', $this->input('project_id'))[0]),
-
-            'ajuste_retiro' => (bool) $this->input('ajuste_retiro'),
         ]);
+
+        if ($this->has('ajuste_retiro')) {
+            $this->merge(['ajuste_retiro' => (bool) $this->input('ajuste_retiro'),]);
+        }
     }
 
     /**

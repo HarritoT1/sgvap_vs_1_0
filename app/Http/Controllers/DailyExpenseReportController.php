@@ -8,6 +8,7 @@ use App\Models\Employee;
 use App\Models\Project;
 use App\Models\ExtraEcoreDebt;
 use App\Http\Requests\StoreDailyExpenseReportRequest;
+use Illuminate\Support\Facades\DB;
 
 class DailyExpenseReportController extends Controller
 {
@@ -130,60 +131,66 @@ class DailyExpenseReportController extends Controller
         $data = $request->validated();
 
         try {
-            //Primero validar que project_id pertenezca a un proyecto activo.
-            $project = Project::findOrFail($data['project_id']);
-            if ($project->status !== 'activo') {
-                return back()->withErrors(['project_id' => 'El proyecto seleccionado ya está concluido.'])
-                    ->withInput();
-            }
 
-            //Si viene el registro de un adeudo, validar que no sea para el mismo campo_descontar, fecha_descontar y employee_id.
-            if ($request->has('ajuste_retiro')) {
-
-                $exist = ExtraEcoreDebt::where('employee_id', $data['employee_id'])
-                    ->where('campo_descontar', $data['campo_descontar'])
-                    ->where('fecha_descontar', $data['fecha_descontar'])
-                    ->exists();
-
-                if ($exist) {
-                    return back()->withErrors(['ajuste_retiro' => 'Ya existe un adeudo creado para el mismo campo a descontar en la misma fecha para este empleado.'])
-                        ->withInput();
+            /*
+                Si falla el insert o save en ExtraEcoreDebt o DailyExpenseReport, ninguno se guarda.
+                Si hay error de conexión o findOrFail lanza excepción, todo se revierte.
+                Mantiene tus back()->withErrors() intactos, pero en bloque transaccional.
+            */
+            DB::transaction(function () use ($data, $request) {
+                // 1. Validar que el proyecto esté activo.
+                $project = Project::findOrFail($data['project_id']);
+                if ($project->status !== 'activo') {
+                    throw new \Exception('El proyecto seleccionado ya está concluido.');
                 }
 
-                //Caso contrario registrar el adeudo.
-                ExtraEcoreDebt::create([
+                // 2. Si viene el registro de un adeudo, validar duplicado.
+                if ($request->has('ajuste_retiro')) {
+                    $exist = ExtraEcoreDebt::where('employee_id', $data['employee_id'])
+                        ->where('campo_descontar', $data['campo_descontar'])
+                        ->where('fecha_descontar', $data['fecha_descontar'])
+                        ->exists();
+
+                    if ($exist) {
+                        throw new \Exception('Ya existe un adeudo creado para el mismo campo a descontar en la misma fecha para este empleado.');
+                    }
+
+                    ExtraEcoreDebt::create([
+                        'employee_id' => $data['employee_id'],
+                        'campo_descontar' => $data['campo_descontar'],
+                        'monto_extra_ecore' => $data['monto_extra_ecore'],
+                        'fecha_descontar' => $data['fecha_descontar'],
+                    ]);
+                }
+
+                // 3. Si se cobró un adeudo, marcarlo como descontado.
+                if ($request->has('id_extra_ecore_debt')) {
+                    $adeudo = ExtraEcoreDebt::findOrFail($request->input('id_extra_ecore_debt'));
+                    $adeudo->status = 'descontado';
+                    $adeudo->save();
+                }
+
+                // 4. Registrar el reporte de gastos diarios.
+                DailyExpenseReport::create([
+                    'fecha_dispersion_dia' => $data['fecha_dispersion_dia'],
+                    'desayuno' => $data['desayuno'] ?? 0,
+                    'comida' => $data['comida'] ?? 0,
+                    'cena' => $data['cena'] ?? 0,
+                    'traslado_local' => $data['traslado_local'] ?? 0,
+                    'traslado_externo' => $data['traslado_externo'] ?? 0,
+                    'comision_bancaria' => $data['comision_bancaria'] ?? 0,
                     'employee_id' => $data['employee_id'],
-                    'campo_descontar' => $data['campo_descontar'],
-                    'monto_extra_ecore' => $data['monto_extra_ecore'],
-                    'fecha_descontar' => $data['fecha_descontar']
+                    'project_id' => $data['project_id'],
                 ]);
-            }
-
-            //Si se cobró un adeudo, marcarlo como descontado.
-            if ($request->has('id_extra_ecore_debt')) {
-                $adeudo = ExtraEcoreDebt::findOrFail($request->input('id_extra_ecore_debt'));
-                $adeudo->status = 'descontado';
-                $adeudo->save();
-            }
-
-            //Finalmente registrar el reporte de gastos diarios.
-            DailyExpenseReport::create([
-                'fecha_dispersion_dia' => $data['fecha_dispersion_dia'],
-                'desayuno' => $data['desayuno'] ?? 0,
-                'comida' => $data['comida'] ?? 0,
-                'cena' => $data['cena'] ?? 0,
-                'traslado_local' => $data['traslado_local'] ?? 0,
-                'traslado_externo' => $data['traslado_externo'] ?? 0,
-                'comision_bancaria' => $data['comision_bancaria'] ?? 0,
-                'employee_id' => $data['employee_id'],
-                'project_id' => $data['project_id'],
-            ]);
+            });
         } catch (\Exception $e) {
-            return back()->withErrors(['error' => 'No se pudo registrar el reporte de gastos diarios: ' . $e->getMessage()])
+            return back()
+                ->withErrors(['error' => 'No se pudo registrar el reporte de gastos diarios: ' . $e->getMessage()])
                 ->withInput();
         }
 
-        return redirect()->route('empleados.corte_x_dia')
+        return redirect()
+            ->route('empleados.corte_x_dia')
             ->with('success', 'Reporte de gastos diarios creado exitosamente ;).');
     }
 }
