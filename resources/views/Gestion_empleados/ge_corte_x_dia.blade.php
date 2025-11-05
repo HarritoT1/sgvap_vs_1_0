@@ -212,7 +212,7 @@
                 <hr class="my-4 mb-2">
 
                 <button class="d-block mx-auto btn btn-primary btn-lg fw-bold button-custom" type="button"
-                    onclick="ask_before_submit_new()" form="crear_corte_dia"
+                    onclick="ask_before_submit_new('crear_corte_dia')" form="crear_corte_dia"
                     style="background-color: var(--botones-color);">Registrar corte del
                     día</button>
 

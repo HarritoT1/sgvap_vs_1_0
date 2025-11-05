@@ -35,7 +35,7 @@ function save_values_of_inputs() {
 
     valoresOriginales = {};
     inputs.forEach(input => {
-        if(input.classList.contains('ignore')) return;
+        if (input.classList.contains('ignore')) return;
         if (!(input.type === 'radio')) valoresOriginales[input.name] = input.value;
         if (input.type === 'radio' && input.checked === true) valoresOriginales[input.name] = input.value;
     });
@@ -50,7 +50,7 @@ function ask_before_submit() {
 
         const huboCambios = Array.from(inputs).some(
             (input) => {
-                if(input.classList.contains('ignore')) return false;
+                if (input.classList.contains('ignore')) return false;
                 if (!(input.type === 'radio')) return valoresOriginales[input.name] !== input.value.trim();
                 if (input.type === 'radio' && input.checked === true) return valoresOriginales[input.name] !== input.value;
             }
@@ -68,8 +68,37 @@ function ask_before_submit() {
 
 function ask_before_submit_new(id_form) {
     if (confirm("¿Está seguro de esta operación?")) {
-        const form = document.getElementById(id_form);
-        form.requestSubmit();
+        if (id_form === 'crear_corte_dia') {
+
+            const divErrosPart1 = document.getElementById('errors_part_1');
+            divErrosPart1.classList.add('d-none');
+            divErrosPart1.querySelector('ul').innerHTML = '';
+
+            //Tenemos que validar que por lo menos lleno un solo campo de viatico.
+            const input_desayuno = document.getElementById('desayuno').value.trim();
+            const input_comida = document.getElementById('comida').value.trim();
+            const input_cena = document.getElementById('cena').value.trim();
+            const input_traslado_local = document.getElementById('traslado_local').value.trim();
+            const input_traslado_externo = document.getElementById('traslado_externo').value.trim();
+            const input_comision_bancaria = document.getElementById('comision_bancaria').value.trim();
+
+            if ((input_desayuno === '' && input_comida === '' && input_cena === '' && input_traslado_local === '' && input_traslado_externo === '' && input_comision_bancaria === '') || (input_desayuno === '0' && input_comida === '0' && input_cena === '0' && input_traslado_local === '0' && input_traslado_externo === '0' && input_comision_bancaria === '0')) {
+
+                divErrosPart1.classList.remove('d-none');
+                divErrosPart1.querySelector('ul').innerHTML = `
+                    <li>Debes ingresar al menos un monto de algún viático para registrar el corte del día.</li>
+                `;
+            }
+
+            else {
+                const form = document.getElementById(id_form);
+                form.requestSubmit();
+            }
+        }
+        else {
+            const form = document.getElementById(id_form);
+            form.requestSubmit();
+        }
     }
 }
 
@@ -98,7 +127,7 @@ function asig_listener_autocomplete_rfc() {
                 'Accept': 'application/json',
             }
         })
-            .then(res => {if(res.ok) { return res.json() } else { throw new Error('Error en la respuesta del servidor') }})
+            .then(res => { if (res.ok) { return res.json() } else { throw new Error('Error en la respuesta del servidor') } })
             .then(data => {
                 sugerencias.innerHTML = '';
                 data.forEach(emp => {
@@ -131,7 +160,7 @@ function asig_listener_autocomplete_id_proyect() {
                 'Accept': 'application/json',
             }
         })
-            .then(res => {if(res.ok) { return res.json() } else { throw new Error('Error en la respuesta del servidor') }})
+            .then(res => { if (res.ok) { return res.json() } else { throw new Error('Error en la respuesta del servidor') } })
             .then(data => {
                 sugerencias.innerHTML = '';
                 data.forEach(proyect => {
@@ -291,13 +320,13 @@ async function ask_values_of_proyect_progress_bar() {
 
     try {
         const response = await fetch(`/ask_info_about_project?q=${input_id_proyect}`, {
-            method: 'GET', 
+            method: 'GET',
             headers: {
                 'X-CSRF-TOKEN': document.querySelector('meta[name="csrf-token"]').content,
                 'Accept': 'application/json',
             }
         });
-    
+
         const data = await response.json();
 
         /*const data = {
@@ -325,7 +354,7 @@ async function ask_values_of_proyect_progress_bar() {
         };*/
 
         if (data.generacion_progress_bar) {
-            
+
             if (contenedor_barra_presupuesto_viaticos.classList.contains("d-none")) contenedor_barra_presupuesto_viaticos.classList.remove('d-none');
             if (contenedor_barra_fecha_limite.classList.contains("d-none")) contenedor_barra_fecha_limite.classList.remove('d-none');
 
@@ -461,7 +490,7 @@ async function ask_values_of_proyect_progress_bar() {
             percentTotal.textContent = `${totalPct}% usado ($${sumValues.toLocaleString('es-MX')} / $${limit.toLocaleString('es-MX')})`;
 
             /* 2DA BARRA DE PROGRESO. */
-            
+
             const fecha_limite = new Date(data.project.fecha_limite.split("T")[0] + "T00:00:00");
             const fecha_creacion = new Date(data.project.fecha_creacion.split("T")[0] + "T00:00:00");
             const fecha_actual = new Date();
@@ -528,13 +557,13 @@ async function ask_values_of_proyect_progress_bar() {
             document.getElementById('bar1').setAttribute('aria-valuemax', limit1);
             const totalPct1 = Math.round((diffDias_enteros / limit1) * 10000) / 100;
             percentTotal1.textContent = `${totalPct1}% usado (${diffDias_enteros.toLocaleString('es-MX')} días / ${limit1.toLocaleString('es-MX')} días)`;
-            
+
         }
 
         else {
             if (!(contenedor_barra_presupuesto_viaticos.classList.contains("d-none"))) contenedor_barra_presupuesto_viaticos.classList.add('d-none');
             if (!(contenedor_barra_fecha_limite.classList.contains("d-none"))) contenedor_barra_fecha_limite.classList.add('d-none');
-            
+
             if (!(overflowMsg.style.display === 'none')) overflowMsg.style.display = 'none';
             if (!(overflowMsg1.style.display === 'none')) overflowMsg1.style.display = 'none';
             if (!(wrap.style.border === 'solid 3px rgba(88, 88, 88, 0.4)')) wrap.style.border = 'solid 3px rgba(88, 88, 88, 0.4)';
@@ -1120,7 +1149,7 @@ async function get_results_and_show_them_like_links(endpoint, concepto_dispersio
                         }
                         a.href = `/gdm_${concepto_dispersion}_disp_consulta_act/${item.id}`;
                     }
-                    else { 
+                    else {
                         a.textContent = `Prestamo de vehículo con placa ${item.vehicle_id} al empleado ${item.employee_name} el ${item.fecha_prestamo}.`;
                         a.href = `/gv_consulta_act_prestamos/${item.id}`;
                     }
