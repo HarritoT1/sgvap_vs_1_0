@@ -6,19 +6,21 @@
             de diferentes cortes de viáticos diarios y proceder con su eliminación:
         </h1>
 
-        <div id="div_mensaje_success" class="alert alert-success alerta_result d-flex justify-content-center align-items-center" role="alert">
+        <div id="div_mensaje_success"
+            class="alert alert-success alerta_result d-flex justify-content-center align-items-center" role="alert">
             <p class="m-0 p-0">¡Corte diario eliminado exitosamente!</p>
         </div>
 
-        <div id="div_mensaje_error" class="alert alert-danger alerta_result d-flex justify-content-center align-items-center" role="alert">
-            <p class="m-0 p-0">¡Ups. Ocurrio un error!</p>
+        <div id="div_mensaje_error" class="alert alert-danger alerta_result d-flex justify-content-center align-items-center"
+            role="alert">
+            <p class="m-0 p-0">¡Ups. Ocurrio un error al eliminar el corte diario!</p>
         </div>
 
         <div class="w-100 div-secondary px-5 py-4 d-block">
             <h2 class="mb-3 fw-bold" style="font-size: 1.5rem; text-align:justify">Datos del corte diario:
             </h2>
-            <form id="consultar_corte_diario_filtro" action="#" method="get" enctype="application/x-www-form-urlencoded"
-                autocomplete="off" class="needs-validation p-1" novalidate>
+            <form id="consultar_corte_diario_filtro" action="#" method="get"
+                enctype="application/x-www-form-urlencoded" autocomplete="off" class="needs-validation p-1" novalidate>
                 <div class="row g-3">
                     <div class="col-sm-6" style="max-width: 100%;" id="campo_mes">
                         <label for="mes" class="form-label fw-bold" style="font-size: 1.2rem;">Mes de cortes</label>
@@ -70,10 +72,10 @@
                     </div>
 
                     <div class="col-sm-6" style="max-width: 100%;" id="campo_id_employee">
-                        <label for="input_find_rfc" class="form-label fw-bold" style="font-size: 1.2rem;">RFC del empleado en cuestión</label>
+                        <label for="input_find_rfc" class="form-label fw-bold" style="font-size: 1.2rem;">RFC del empleado
+                            en cuestión</label>
                         <input type="text" class="form-control rounded-3" id="input_find_rfc" name="employee_id"
-                            placeholder="" value="" maxlength="50" list="sugerencias_rfc"
-                            style="height: 3.5rem;">
+                            placeholder="" value="" maxlength="50" list="sugerencias_rfc" style="height: 3.5rem;">
                         <div class="invalid-feedback">
                             Ingresa un RFC válido.
                         </div>
@@ -87,6 +89,11 @@
                         onclick="get_results_and_show_them_like_buttons('/empleado_corte_x_dia_consulta_filtro', 'Corte diario')"
                         style="background-color: var(--botones-color);">Consultar</button>
 
+                    <div class="alert alert-danger mt-3 text-justify d-none" role="alert" id="errors_part_1">
+                        <h6>Por favor corrige los errores debajo:</h6>
+                        <ul>
+                        </ul>
+                    </div>
                 </div>
             </form>
         </div>
@@ -99,11 +106,13 @@
         </h2>
 
         <!--<div id="div_mensaje" class="alert alert-info d-none" role="alert">
-                    </div>-->
+                        </div>-->
 
         <ul class="flex-column vineta d-none"
             style="text-align:justify; overflow-y: auto; overflow-x: hidden; height: 22rem; padding-right: 2rem;"
             id="lista_resultados"></ul>
+
+        <div class="loader d-none my-5" id="loaderCircle"></div>
     </div>
 
     <br>

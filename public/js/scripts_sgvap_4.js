@@ -91,7 +91,7 @@ function asig_listener_autocomplete_rfc_cliente() {
                 'Accept': 'application/json',
             }
         })
-            .then(res => {if(res.ok) { return res.json() } else { throw new Error('Error en la respuesta del servidor') }})
+            .then(res => { if (res.ok) { return res.json() } else { throw new Error('Error en la respuesta del servidor') } })
             .then(data => {
                 sugerencias.innerHTML = '';
                 data.forEach(cust => {
@@ -106,10 +106,17 @@ function asig_listener_autocomplete_rfc_cliente() {
 }
 
 async function get_results_and_show_them_like_buttons(endpoint, concepto) {
+    const divErrosPart1 = document.getElementById('errors_part_1');
+    divErrosPart1.classList.add('d-none');
+    divErrosPart1.querySelector('ul').innerHTML = '';
+
     const list = document.getElementById('lista_resultados');
     if (!list.classList.contains('d-none')) list.classList.add('d-none');
     list.innerHTML = ''; // Limpiar resultados previos.
-    const form = document.querySelector("form");
+
+    document.getElementById('loaderCircle').classList.remove('d-none');
+
+    const form = document.getElementById("consultar_corte_diario_filtro");
     const inputs = form.querySelectorAll("input, select");
     const data = {};
 
@@ -131,6 +138,8 @@ async function get_results_and_show_them_like_buttons(endpoint, concepto) {
                 headers: {
                     'X-CSRF-TOKEN': document.querySelector('meta[name="csrf-token"]').content,
                     'Accept': 'application/json',
+                    //Comentando 'Accept': 'application/json' --> status code = 302 redirección.
+                    //Si Laravel detecta que el request espera JSON (por ejemplo, porque el encabezado Accept: application/json está presente o porque usas fetch, axios, etc.), no redirige: → devuelve una respuesta JSON con el código 422 y la lista de errores en el cuerpo.
                     "Content-Type": "application/json"
                 },
                 body: JSON.stringify(data)
@@ -155,7 +164,7 @@ async function get_results_and_show_them_like_buttons(endpoint, concepto) {
                     <img class="imageResponsive mx-0 img-button-delete" src="http://127.0.0.1:8000/img/borrar.png" alt="borrar" style="width: 2rem;">`;
                     button.onclick = function () {
                         if (confirm("¿Estas seguro de eliminar esta dispersión? La acción no podra ser revertida.")) {
-                            fetch(`/ge_corte_x_dia_borrar/${item.id}`, {
+                            fetch(`/ge_corte_x_dia_destroy/${item.id}`, {
                                 method: 'DELETE',
                                 headers: {
                                     'X-CSRF-TOKEN': document.querySelector('meta[name="csrf-token"]').content,
@@ -163,7 +172,7 @@ async function get_results_and_show_them_like_buttons(endpoint, concepto) {
                                 }
                             })
                                 .then(res => {
-                                    if(res.ok) {
+                                    if (res.ok) {
                                         div_success.style.visibility = "visible";
                                         div_success.style.opacity = "1";
                                         li.remove();
@@ -188,16 +197,33 @@ async function get_results_and_show_them_like_buttons(endpoint, concepto) {
                     list.appendChild(li);
                 });
 
+                document.getElementById('loaderCircle').classList.add('d-none');
+
                 list.classList.remove('d-none');
+
+                return;
             }
 
             else {
-                throw new Error(response.message || 'Error en la respuesta del servidor');
+                let errmsg = "";
+
+                if (response.status == 422) errmsg = result.errors.employee_id[0];
+
+                else errmsg = result.err;
+
+                divErrosPart1.classList.remove('d-none');
+                divErrosPart1.querySelector('ul').innerHTML = `
+                <li>${errmsg}</li>
+            `;
+                document.getElementById('loaderCircle').classList.add('d-none');
+                return;
+                //throw new Error(response.message || 'Error en la respuesta del servidor');
             }
         }
 
     } catch (error) {
         console.error("Error en el fetch:", error);
-        alert("Hubo un problema al obtener los datos. Intenta de nuevo.");
+        alert("Hubo un problema al consultar los cortes diarios. \n\nIntenta de nuevo.");
+        document.getElementById('loaderCircle').classList.add('d-none');
     }
 }

@@ -175,11 +175,12 @@ function asig_listener_autocomplete_id_proyect() {
 }
 
 async function validar_form_generator() {
-    // 1. Obtener valores del formulario.
+    
     const divErrosPart1 = document.getElementById('errors_part_1');
     divErrosPart1.classList.add('d-none');
     divErrosPart1.querySelector('ul').innerHTML = '';
 
+    // 1. Obtener valores del formulario.
     const rfc = document.getElementById('input_find_rfc').value.trim();
     const fecha = document.getElementById('fecha_dispersion_dia').value;
 
