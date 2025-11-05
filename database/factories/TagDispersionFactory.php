@@ -3,6 +3,8 @@
 namespace Database\Factories;
 
 use Illuminate\Database\Eloquent\Factories\Factory;
+use App\Models\Project;
+use App\Models\Vehicle;
 
 /**
  * @extends \Illuminate\Database\Eloquent\Factories\Factory<\App\Models\TagDispersion>
@@ -16,21 +18,21 @@ class TagDispersionFactory extends Factory
      */
 
     protected $model = \App\Models\TagDispersion::class;
-    
+
     public function definition(): array
     {
-        $base_imponible = $this->faker->randomFloat(6, 100, 5000); // Monto base sin IVA
-        $iva_caseta = round($base_imponible * 0.16, 6); // IVA del 16%
-        $importe_total = round($base_imponible + $iva_caseta, 6);
+        $importe_total = (float) round($this->faker->randomFloat(2, 50, 500)); // Importe total entre 50 y 500 MXN.
+        $base_imponible = $importe_total / 1.16; // Suponiendo IVA 16%
+        $iva_caseta = $importe_total - $base_imponible;
 
         return [
-            'fecha_dispersion' => $this->faker->dateTimeBetween('-2 years', 'now')->format('Y-m-d'),
-            'project_id' => \App\Models\Project::query()->inRandomOrder()->value('id'),
-            'vehicle_id' => \App\Models\Vehicle::query()->inRandomOrder()->value('id'),
+            'fecha_dispersion' => $this->faker->dateTimeBetween('-1 years', 'now'),
+            'project_id' => Project::query()->inRandomOrder()->value('id'),
+            'vehicle_id' => null,//Vehicle::query()->inRandomOrder()->value('id'),
             'nombre_caseta' => $this->faker->city() . ' - ' . $this->faker->city(), // Ej: "Puebla - CDMX"
-            'base_imponible' => $base_imponible,
-            'iva_caseta' => $iva_caseta,
-            'importe_total' => $importe_total,
+            'base_imponible' => round($base_imponible, 6),
+            'iva_caseta' => round($iva_caseta, 6),
+            'importe_total' => round($importe_total, 6),
         ];
     }
 }

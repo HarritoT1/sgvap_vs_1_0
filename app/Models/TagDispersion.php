@@ -8,6 +8,7 @@ namespace App\Models;
 
 use Carbon\Carbon;
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\Factories\HasFactory;
 
 /**
  * Class TagDispersion
@@ -29,10 +30,13 @@ use Illuminate\Database\Eloquent\Model;
  */
 class TagDispersion extends Model
 {
+	use HasFactory;
+
 	protected $table = 'tag_dispersions';
 	public $timestamps = false;
 
 	protected $casts = [
+		'id' => 'int',
 		'fecha_dispersion' => 'datetime',
 		'base_imponible' => 'float',
 		'iva_caseta' => 'float',
@@ -48,7 +52,6 @@ class TagDispersion extends Model
 		'base_imponible',
 		'iva_caseta',
 		'importe_total',
-		'last_update'
 	];
 
 	public function project()
