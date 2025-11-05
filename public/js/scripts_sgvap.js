@@ -271,15 +271,21 @@ async function ask_values_of_proyect_progress_bar() {
     const input_id_proyect = document.getElementById('input_find_id_proyect').value;
     const contenedor_barra_presupuesto_viaticos = document.getElementById('contenedor_barra_presupuesto_viaticos');
     const contenedor_barra_fecha_limite = document.getElementById('contenedor_barra_fecha_limite');
+    const overflowMsg = document.getElementById('overflowMsg');
+    const overflowMsg1 = document.getElementById('overflowMsg1');
+    const wrap = document.getElementById('barWrap');
+    const wrap1 = document.getElementById('barWrap1');
+
+    if (!(overflowMsg.style.display === 'none')) overflowMsg.style.display = 'none';
+    if (!(overflowMsg1.style.display === 'none')) overflowMsg1.style.display = 'none';
+    if (!(wrap.style.border === 'solid 3px rgba(88, 88, 88, 0.4)')) wrap.style.border = 'solid 3px rgba(88, 88, 88, 0.4)';
+    if (!(wrap1.style.border === 'solid 3px rgba(88, 88, 88, 0.4)')) wrap1.style.border = 'solid 3px rgba(88, 88, 88, 0.4)';
 
     if (input_id_proyect.length < 5) {
         if (!(contenedor_barra_presupuesto_viaticos.classList.contains("d-none"))) contenedor_barra_presupuesto_viaticos.classList.add('d-none');
         if (!(contenedor_barra_fecha_limite.classList.contains("d-none"))) contenedor_barra_fecha_limite.classList.add('d-none');
         return;
     }
-
-    if (contenedor_barra_presupuesto_viaticos.classList.contains("d-none")) contenedor_barra_presupuesto_viaticos.classList.remove('d-none');
-    if (contenedor_barra_fecha_limite.classList.contains("d-none")) contenedor_barra_fecha_limite.classList.remove('d-none');
 
     console.log(`Generando valores de las barras de progreso del proyecto con id: ${input_id_proyect}...`)
 
@@ -319,6 +325,10 @@ async function ask_values_of_proyect_progress_bar() {
         };*/
 
         if (data.generacion_progress_bar) {
+            
+            if (contenedor_barra_presupuesto_viaticos.classList.contains("d-none")) contenedor_barra_presupuesto_viaticos.classList.remove('d-none');
+            if (contenedor_barra_fecha_limite.classList.contains("d-none")) contenedor_barra_fecha_limite.classList.remove('d-none');
+
             /* 1RA BARRA DE PROGRESO. */
 
             const monto_alimentos = data.project.totales_viaticos_table_daily.total_alimentos;
@@ -341,7 +351,6 @@ async function ask_values_of_proyect_progress_bar() {
 
             const bar = document.getElementById('bar');
             const legend = document.getElementById('legend');
-            const overflowMsg = document.getElementById('overflowMsg');
             const percentTotal = document.getElementById('percentTotal');
             const limitDisplay = document.getElementById('limitDisplay');
             limitDisplay.textContent = limit.toLocaleString('es-MX');
@@ -442,7 +451,6 @@ async function ask_values_of_proyect_progress_bar() {
                 overflowMsg.style.display = 'block';
                 overflowMsg.textContent = `Desbordamiento: la suma de segmentos excede el límite en $${excedente.toLocaleString('es-MX')}. La barra se muestra escalada para visualización.`;
                 // Estilizamos la barra con borde de advertencia.
-                const wrap = document.getElementById('barWrap');
                 wrap.style.border = 'var(--overflow-border)';
             }
 
@@ -453,7 +461,7 @@ async function ask_values_of_proyect_progress_bar() {
             percentTotal.textContent = `${totalPct}% usado ($${sumValues.toLocaleString('es-MX')} / $${limit.toLocaleString('es-MX')})`;
 
             /* 2DA BARRA DE PROGRESO. */
-            /*
+            
             const fecha_limite = new Date(data.project.fecha_limite.split("T")[0] + "T00:00:00");
             const fecha_creacion = new Date(data.project.fecha_creacion.split("T")[0] + "T00:00:00");
             const fecha_actual = new Date();
@@ -468,7 +476,6 @@ async function ask_values_of_proyect_progress_bar() {
             const labels1 = ['Días usados'];
 
             const bar1 = document.getElementById('bar1');
-            const overflowMsg1 = document.getElementById('overflowMsg1');
             const percentTotal1 = document.getElementById('percentTotal1');
             const limitDisplay1 = document.getElementById('limitDisplay1');
             limitDisplay1.textContent = fecha_limite.toLocaleDateString();
@@ -514,15 +521,24 @@ async function ask_values_of_proyect_progress_bar() {
                 const excedente = diffDias_enteros - limit1;
                 overflowMsg1.style.display = 'block';
                 overflowMsg1.textContent = `Desbordamiento: la fecha actual excede en ${excedente.toLocaleString('es-MX')} días a la fecha límite del proyecto. La barra se muestra escalada para visualización.`;
-                const wrap = document.getElementById('barWrap1');
-                wrap.style.border = 'var(--overflow-border)';
+                wrap1.style.border = 'var(--overflow-border)';
             }
 
             document.getElementById('bar1').setAttribute('aria-valuenow', diffDias_enteros);
             document.getElementById('bar1').setAttribute('aria-valuemax', limit1);
             const totalPct1 = Math.round((diffDias_enteros / limit1) * 10000) / 100;
             percentTotal1.textContent = `${totalPct1}% usado (${diffDias_enteros.toLocaleString('es-MX')} días / ${limit1.toLocaleString('es-MX')} días)`;
-            */
+            
+        }
+
+        else {
+            if (!(contenedor_barra_presupuesto_viaticos.classList.contains("d-none"))) contenedor_barra_presupuesto_viaticos.classList.add('d-none');
+            if (!(contenedor_barra_fecha_limite.classList.contains("d-none"))) contenedor_barra_fecha_limite.classList.add('d-none');
+            
+            if (!(overflowMsg.style.display === 'none')) overflowMsg.style.display = 'none';
+            if (!(overflowMsg1.style.display === 'none')) overflowMsg1.style.display = 'none';
+            if (!(wrap.style.border === 'solid 3px rgba(88, 88, 88, 0.4)')) wrap.style.border = 'solid 3px rgba(88, 88, 88, 0.4)';
+            if (!(wrap1.style.border === 'solid 3px rgba(88, 88, 88, 0.4)')) wrap1.style.border = 'solid 3px rgba(88, 88, 88, 0.4)';
         }
     } catch (error) {
         console.error("Error en el fetch:", error);

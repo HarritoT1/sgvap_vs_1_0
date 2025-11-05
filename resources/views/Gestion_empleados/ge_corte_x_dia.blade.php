@@ -145,7 +145,7 @@
                     </div>
                     <div style="width: 33%; display: flex; align-items: center; justify-content: center;">
                         <div class="form-check">
-                            <input class="form-check-input" type="checkbox" id="ajuste_retiro">
+                            <input class="form-check-input" type="checkbox" id="ajuste_retiro" name="ajuste_retiro" value="true">
                             <label class="form-check-label fw-bold text-center" for="ajuste_retiro"
                                 style="font-size: 0.8rem;">
                                 <em>$ Ajuste por retiro</em>

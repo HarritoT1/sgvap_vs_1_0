@@ -97,21 +97,30 @@ class DailyExpenseReportController extends Controller
                         }, 0),
                     ],
                     'totales_viaticos_table_gasoline' => [
-                        'total_gasolina' => 0,
+                        'total_gasolina' => $project->gasoline_dispersions->reduce(function ($c, $n) {
+                            return $c + ($n->monto_dispersado ?? 0);
+                        }, 0),
                     ],
                     'totales_viaticos_table_tag' => [
-                        'total_caseta' => 0,
+                        'total_caseta' => $project->tag_dispersions->reduce(function ($c, $n) {
+                            return $c + ($n->importe_total ?? 0);
+                        }, 0),
                     ],
                     'totales_viaticos_lodging' => [
-                        'total_hospedaje' => 0,
+                        'total_hospedaje' => $project->lodging_dispersions->reduce(function ($c, $n) {
+                            return $c + ($n->importe_total ?? 0);
+                        }, 0),
                     ],
                 ],
             ], 200);
+        } catch (\Illuminate\Database\Eloquent\ModelNotFoundException $e) {
+            return response()->json([
+                'generacion_progress_bar' => false,
+            ], 404);
         } catch (\Exception $e) {
             return response()->json([
-                'exists' => false,
-                'message' => 'El proyecto no existe en la base de datos.'
-            ], 404);
+                'generacion_progress_bar' => false,
+            ], 403);
         }
     }
 }
