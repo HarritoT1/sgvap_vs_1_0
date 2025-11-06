@@ -271,4 +271,58 @@ class DailyExpenseReportController extends Controller
             'success' => 'Reporte de gastos diarios eliminado exitosamente.',
         ], 200);
     }
+
+    public function find_semanal(Request $request)
+    {
+        // --- Sanitización previa ---
+        $cleanEmployeeId = trim(explode('→', $request->input('employee_id'))[0]);
+        $request->merge(['employee_id' => $cleanEmployeeId]);
+
+        // Validar primero (fuera del try).
+        $data = $request->validate([
+            'employee_id' => 'required|string|exists:employees,id|max:50',
+            'fecha_inicio_semana' => 'required|date|before_or_equal:fecha_fin_semana',
+            'fecha_fin_semana' => 'required|date|after_or_equal:fecha_inicio_semana',
+        ], [
+            'employee_id.required' => 'El RFC es obligatorio.',
+            'employee_id.exists' => 'El RFC proporcionado no existe en la base de datos.',
+            'employee_id.max' => 'El RFC no puede exceder los 50 caracteres.',
+            'fecha_inicio_semana.required' => 'La fecha de inicio de la semana es obligatoria.',
+            'fecha_inicio_semana.date' => 'La fecha de inicio de la semana no es una fecha válida.',
+            'fecha_inicio_semana.before_or_equal' => 'La fecha de inicio no puede ser posterior a la fecha de fin.',
+            'fecha_fin_semana.required' => 'La fecha de fin de la semana es obligatoria.',
+            'fecha_fin_semana.date' => 'La fecha de fin de la semana no es una fecha válida.',
+            'fecha_fin_semana.after_or_equal' => 'La fecha de fin no puede ser anterior a la de inicio.',
+        ]);
+
+        try {
+            $employee_name = Employee::findOrFail($data['employee_id'])->nombre;
+
+            $semanal_records = DailyExpenseReport::where('fecha_dispersion_dia', '>=', $data['fecha_inicio_semana'])
+                ->where('fecha_dispersion_dia', '<=', $data['fecha_fin_semana'])
+                ->where('employee_id', $data['employee_id'])
+                ->orderBy('fecha_dispersion_dia', 'asc')
+                ->get();
+
+            return view('Gestion_empleados.ge_retiro_semanal', ['semanal_records' => $semanal_records, 'employee_name' => $employee_name]);
+        } catch (\Illuminate\Database\Eloquent\ModelNotFoundException $e) {
+            // Si el empleado no existe (por manipulación del id).
+            return redirect()
+                ->back()
+                ->withErrors(['employee_id' => 'El empleado en cuestión no existe.'])
+                ->withInput();
+        } catch (\Illuminate\Database\QueryException $e) {
+            // Si ocurre un error de base de datos (ej. violación de unique).
+            return redirect()
+                ->back()
+                ->withErrors(['database' => 'Error al consultar el retiro semanal del empleado: ' . $e->getMessage()])
+                ->withInput();
+        } catch (\Exception $e) {
+            // Cualquier otro error inesperado.
+            return redirect()
+                ->back()
+                ->withErrors(['general' => 'Ocurrió un error inesperado al consultar el retiro semanal del empleado: ' . $e->getMessage()])
+                ->withInput();
+        }
+    }
 }

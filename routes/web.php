@@ -15,14 +15,6 @@ use App\Models\Employee;
     return view('welcome');
 }); //http://127.0.0.1:8000/*/
 
-Route::get('/ge_retiro_semanal_filtro', function () {
-    return view('Gestion_empleados/ge_retiro_semanal_filtro'); //http://127.0.0.1:8000/ge_retiro_semanal_filtro
-})->name("empleados.retiro_semanal_filtro");
-
-Route::get('/ge_retiro_semanal/{id}', function () {
-    return view('Gestion_empleados/ge_retiro_semanal'); //http://127.0.0.1:8000/ge_retiro_semanal
-})->name("empleados.retiro_semanal");
-
 Route::get('/ge_corte_x_mes_filtro', function () {
     return view('Gestion_empleados/ge_corte_x_mes_filtro'); //http://127.0.0.1:8000/ge_corte_x_mes_filtro
 })->name("empleados.corte_x_mes_filtro");
@@ -215,8 +207,6 @@ Route::middleware(['auth', 'inactive'])->group(function () {
 
     Route::post('/daily_create', [DailyExpenseReportController::class, 'create'])->name('dailys.create');
 
-    /*********************************/
-
     Route::get('/ge_corte_x_dia_delete', function () {
         return view('Gestion_empleados/ge_corte_x_dia_delete'); //http://127.0.0.1:8000/ge_corte_x_dia_delete
     })->name("empleados.corte_x_dia_delete");
@@ -224,4 +214,12 @@ Route::middleware(['auth', 'inactive'])->group(function () {
     Route::post('/empleado_corte_x_dia_consulta_filtro', [DailyExpenseReportController::class, 'find'])->name('dailys.find');
 
     Route::delete('/ge_corte_x_dia_destroy/{id}', [DailyExpenseReportController::class, 'destroy'])->name('dailys.destroy')->where('id', '[0-9]+');
+
+    /************************************************/
+
+    Route::get('/ge_retiro_semanal_filtro', function () {
+        return view('Gestion_empleados/ge_retiro_semanal_filtro'); //http://127.0.0.1:8000/ge_retiro_semanal_filtro
+    })->name("empleados.retiro_semanal_filtro");
+
+    Route::get('/ge_retiro_semanal_find', [DailyExpenseReportController::class, 'find_semanal'])->name('dailys.find_semanal');
 });

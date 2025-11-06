@@ -13,21 +13,27 @@
                 </div>
 
                 <div class="modal-body p-5 pt-0" style="max-width: 100%;">
-                    <form id="generar_retiro_semanal" action="#" method="get"
+                    <form id="generar_retiro_semanal" action="{{ route('dailys.find_semanal') }}" method="get"
                         enctype="application/x-www-form-urlencoded" autocomplete="off" class="needs-validation p-1"
                         novalidate>
+                        @csrf
+
                         <div class="col-12 mb-3" style="max-width: 100%;">
-                            <label for="fecha_inicio_semana" class="form-label fw-bold" style="font-size: 1.2rem;">Día de inicio de semana</label>
+                            <label for="fecha_inicio_semana" class="form-label fw-bold" style="font-size: 1.2rem;">Día de
+                                inicio de semana</label>
                             <input type="date" class="form-control sm-form-control" id="fecha_inicio_semana"
-                                name="fecha_inicio_semana" value="" required style="height: 3.5rem;">
+                                name="fecha_inicio_semana" value="{{ old('fecha_inicio_semana') }}" required
+                                style="height: 3.5rem;">
                             <div class="invalid-feedback">
                                 Ingresa una fecha válida.
                             </div>
                         </div>
                         <div class="col-12 mb-3" style="max-width: 100%;">
-                            <label for="fecha_fin_semana" class="form-label fw-bold" style="font-size: 1.2rem;">Día de finalizado de semana</label>
+                            <label for="fecha_fin_semana" class="form-label fw-bold" style="font-size: 1.2rem;">Día de
+                                finalizado de semana</label>
                             <input type="date" class="form-control sm-form-control" id="fecha_fin_semana"
-                                name="fecha_fin_semana" value="" required style="height: 3.5rem;">
+                                name="fecha_fin_semana" value="{{ old('fecha_fin_semana') }}" required
+                                style="height: 3.5rem;">
                             <div class="invalid-feedback">
                                 Ingresa una fecha válida.
                             </div>
@@ -35,7 +41,8 @@
                         <div class="col-12 mb-3" style="max-width: 100%;">
                             <label for="input_find_rfc" class="form-label fw-bold" style="font-size: 1.2rem;">RFC</label>
                             <input type="text" class="form-control rounded-3" id="input_find_rfc" name="employee_id"
-                                placeholder="" value="" required maxlength="50" list="sugerencias_rfc" style="height: 3.5rem;">
+                                placeholder="" value="" required maxlength="50" list="sugerencias_rfc"
+                                style="height: 3.5rem;">
                             <div class="invalid-feedback">
                                 Ingresa un RFC válido.
                             </div>
@@ -47,6 +54,17 @@
                         <small class="fw-bold d-block mx-auto my-2 text-center text-body-secondary"
                             style="font-size: 1.2rem">¡¡¡Ingrese el RFC sin espacios!!!</small>
                         <hr class="mt-4">
+
+                        @if ($errors->any())
+                            <div class="alert alert-danger mt-3 text-justify" role="alert">
+                                <h6>Por favor corrige los errores debajo:</h6>
+                                <ul>
+                                    @foreach ($errors->all() as $error)
+                                        <li>{{ $error }}</li>
+                                    @endforeach
+                                </ul>
+                            </div>
+                        @endif
                     </form>
                 </div>
             </div>
