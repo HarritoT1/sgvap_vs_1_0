@@ -222,4 +222,6 @@ Route::middleware(['auth', 'inactive'])->group(function () {
     })->name("empleados.corte_x_dia_delete");
 
     Route::post('/empleado_corte_x_dia_consulta_filtro', [DailyExpenseReportController::class, 'find'])->name('dailys.find');
+
+    Route::delete('/ge_corte_x_dia_destroy/{id}', [DailyExpenseReportController::class, 'destroy'])->name('dailys.destroy')->where('id', '[0-9]+');
 });

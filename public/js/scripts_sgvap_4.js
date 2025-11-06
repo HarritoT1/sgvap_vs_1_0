@@ -160,7 +160,7 @@ async function get_results_and_show_them_like_buttons(endpoint, concepto) {
                     button.style.border = "none";
                     button.style.backgroundColor = "transparent";
                     button.style.cursor = "pointer";
-                    button.innerHTML = `<div>${concepto} del empleado ${item.employee_name} el ${item.fecha_dispersion_dia} para el proyecto ${item.project_name}.</div>
+                    button.innerHTML = `<div>${concepto} del empleado ${item.employee_name} el ${item.fecha_dispersion_dia_string} para el proyecto ${item.project_name}</div>
                     <img class="imageResponsive mx-0 img-button-delete" src="http://127.0.0.1:8000/img/borrar.png" alt="borrar" style="width: 2rem;">`;
                     button.onclick = function () {
                         if (confirm("¿Estas seguro de eliminar esta dispersión? La acción no podra ser revertida.")) {

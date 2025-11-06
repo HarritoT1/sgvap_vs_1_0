@@ -234,16 +234,41 @@ class DailyExpenseReportController extends Controller
 
             $result = $query->get();
 
+            $result->each(function ($item) {
+                $item->fecha_dispersion_dia_string = $item->fecha_dispersion_dia->toDateString();
+                $item->employee_name = $item->employee->nombre;
+                $item->project_name = $item->project->nombre;
+
+                $item->makeHidden(['employee', 'project']); // Esto elimina las relaciones del resultado serializado, pero sin romper el modelo.
+            });
+
             // --- Respuesta ---
             if ($result->isEmpty()) {
                 return response()->json(['err' => 'No se encontraron resultados asociados este empleado.'], 404);
             }
 
-            return response()->json($result, 200);
+            return response()->json($result);
         } catch (\Exception $e) {
             return response()->json([
                 'err' => 'Error en el sistema al consultar reportes de gastos diarios: ' . $e->getMessage(),
             ], 500);
         }
+    }
+
+    public function destroy($id)
+    {
+        try {
+            $report = DailyExpenseReport::findOrFail($id);
+
+            $report->delete();
+        } catch (\Exception $e) {
+            return response()->json([
+                'err' => 'Error en el sistema al eliminar el reporte de gastos diarios: ' . $e->getMessage(),
+            ], 500);
+        }
+
+        return response()->json([
+            'success' => 'Reporte de gastos diarios eliminado exitosamente.',
+        ], 200);
     }
 }
