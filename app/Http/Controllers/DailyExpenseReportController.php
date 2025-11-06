@@ -304,7 +304,33 @@ class DailyExpenseReportController extends Controller
                 ->orderBy('fecha_dispersion_dia', 'asc')
                 ->get();
 
-            return view('Gestion_empleados.ge_retiro_semanal', ['semanal_records' => $semanal_records, 'employee_name' => $employee_name]);
+            // --- Respuesta ---
+            if ($semanal_records->isEmpty()) {
+                return redirect()
+                    ->back()
+                    ->withErrors(['data' => 'El empleado no tiene ningún registro de reportes de gastos diarios en esta semana.'])
+                    ->withInput();
+            }
+
+            //dd($semanal_records->isEmpty());
+
+            //dd($semanal_records);
+
+            $total_alimentos = $semanal_records->reduce(function ($c, $n) {
+                return $c + (($n->desayuno ?? 0) + ($n->comida ?? 0) + ($n->cena ?? 0));
+            }, 0);
+            $total_traslados = $semanal_records->reduce(function ($c, $n) {
+                return $c + (($n->traslado_local ?? 0) + ($n->traslado_externo ?? 0));
+            }, 0);
+            
+            $total_comision = $semanal_records->reduce(function ($c, $n) {
+                return $c + ($n->comision_bancaria ?? 0);
+            }, 0);
+
+            $total_a_retirar = $total_alimentos + $total_traslados + $total_comision;
+
+            return view('Gestion_empleados.ge_retiro_semanal', ['semanal_records' => $semanal_records, 'employee_name' => $employee_name, 'total_alimentos' => $total_alimentos, 'total_traslados' => $total_traslados, 'total_comision' => $total_comision, 'total_a_retirar' => $total_a_retirar]);
+            
         } catch (\Illuminate\Database\Eloquent\ModelNotFoundException $e) {
             // Si el empleado no existe (por manipulación del id).
             return redirect()
