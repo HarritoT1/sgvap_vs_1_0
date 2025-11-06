@@ -175,7 +175,7 @@
                             id="monto_extra_ecore" name="monto_extra_ecore" placeholder="0.000" step="any"
                             min="0" value="{{ old('monto_extra_ecore') }}" form="crear_corte_dia">
                         <div class="invalid-feedback">
-                            Ingresa un monto válido.
+                            Ingresa un monto numérico válido (positivo).
                         </div>
                     </div>
                 </div>
