@@ -7,6 +7,7 @@ use App\Http\Controllers\CustomerController;
 use App\Http\Controllers\ProjectController;
 use App\Http\Controllers\EmployeeController;
 use App\Http\Controllers\DailyExpenseReportController;
+use App\Http\Controllers\MonthlyExpenseCutController;
 use App\Models\Customer;
 use App\Models\DailyExpenseReport;
 use App\Models\Employee;
@@ -15,17 +16,9 @@ use App\Models\Employee;
     return view('welcome');
 }); //http://127.0.0.1:8000/*/
 
-Route::get('/ge_corte_x_mes_filtro', function () {
-    return view('Gestion_empleados/ge_corte_x_mes_filtro'); //http://127.0.0.1:8000/ge_corte_x_mes_filtro
-})->name("empleados.corte_x_mes_filtro");
-
 Route::get('/ge_consulta_corte_x_año_filtro', function () {
     return view('Gestion_empleados/ge_consulta_corte_x_año_filtro'); //http://127.0.0.1:8000/ge_consulta_corte_x_año_filtro
 })->name("empleados.consulta_corte_x_año_filtro");
-
-Route::get('/ge_corte_x_mes/{id}', function () {
-    return view('Gestion_empleados/ge_corte_x_mes'); //http://127.0.0.1:8000/ge_corte_x_mes
-})->name("empleados.corte_x_mes");
 
 Route::get('/ge_consulta_corte_x_año_especifico/{id}', function () {
     return view('Gestion_empleados/ge_consulta_corte_x_año_especifico'); //http://127.0.0.1:8000/ge_consulta_corte_x_año_especifico
@@ -215,11 +208,17 @@ Route::middleware(['auth', 'inactive'])->group(function () {
 
     Route::delete('/ge_corte_x_dia_destroy/{id}', [DailyExpenseReportController::class, 'destroy'])->name('dailys.destroy')->where('id', '[0-9]+');
 
-    /************************************************/
-
     Route::get('/ge_retiro_semanal_filtro', function () {
         return view('Gestion_empleados/ge_retiro_semanal_filtro'); //http://127.0.0.1:8000/ge_retiro_semanal_filtro
     })->name("empleados.retiro_semanal_filtro");
 
     Route::get('/ge_retiro_semanal_find', [DailyExpenseReportController::class, 'find_semanal'])->name('dailys.find_semanal');
+
+    Route::get('/ge_corte_x_mes_filtro', function () {
+        return view('Gestion_empleados/ge_corte_x_mes_filtro'); //http://127.0.0.1:8000/ge_corte_x_mes_filtro
+    })->name("empleados.corte_x_mes_filtro");
+
+    Route::post('/generate_data_for_corte_mensual', [MonthlyExpenseCutController::class, 'generate_data_for_corte_mensual'])->name('empleados.generate_data_for_corte_mensual');
+
+    Route::get('/ge_corte_x_mes', [MonthlyExpenseCutController::class, 'show_monthly_cut'])->name("empleados.corte_x_mes");
 });

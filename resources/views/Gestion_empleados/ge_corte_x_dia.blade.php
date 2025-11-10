@@ -184,22 +184,22 @@
                     <label for="campo_descontar" class="form-label fw-bold">Campo de ajuste por retiro</label>
                     <select name="campo_descontar" id="campo_descontar" class="form-control form-select"
                         aria-label="Default select example" form="crear_corte_dia">
-                        <option value="desayuno" selected>
+                        <option value="desayuno" @if(old('campo_descontar') == "desayuno") selected @endif>
                             DESAYUNO
                         </option>
-                        <option value="comida">
+                        <option value="comida" @if(old('campo_descontar') == "comida") selected @endif>
                             COMIDA
                         </option>
-                        <option value="cena">
+                        <option value="cena" @if(old('campo_descontar') == "cena") selected @endif>
                             CENA
                         </option>
-                        <option value="traslado_local">
+                        <option value="traslado_local" @if(old('campo_descontar') == "traslado_local") selected @endif>
                             TRASLADO LOCAL
                         </option>
-                        <option value="traslado_externo">
+                        <option value="traslado_externo" @if(old('campo_descontar') == "traslado_externo") selected @endif>
                             TRASLADO EXTERNO
                         </option>
-                        <option value="comision_bancaria">
+                        <option value="comision_bancaria" @if(old('campo_descontar') == "comision_bancaria") selected @endif>
                             COMISIÓN BANCARIA
                         </option>
                     </select>

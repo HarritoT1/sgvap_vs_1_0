@@ -13,48 +13,49 @@
                 </div>
 
                 <div class="modal-body p-5 pt-0" style="max-width: 100%;">
-                    <form id="generar_form_corte_mensual" action="#" method="post"
+                    <form id="generar_form_corte_mensual" action="{{ route('empleados.generate_data_for_corte_mensual') }}" method="post"
                         enctype="application/x-www-form-urlencoded" autocomplete="off" class="needs-validation p-1"
                         novalidate>
                         @csrf
-                        
+
                         <div class="col-12 mb-3" style="max-width: 100%;" id="campo_mes">
                             <label for="mes" class="form-label fw-bold" style="font-size: 1.2rem;">Mes</label>
-                            <select name="mes" id="mes" class="form-control form-select" aria-label="Default select example" required style="height: 3.5rem;">
-                                <option value="1" selected>
+                            <select name="mes" id="mes" class="form-control form-select"
+                                aria-label="Default select example" required style="height: 3.5rem;">
+                                <option value="1" @if(old('mes') == "1") selected @endif>
                                     ENERO
                                 </option>
-                                <option value="2">
+                                <option value="2" @if(old('mes') == "2") selected @endif>
                                     FEBRERO
                                 </option>
-                                <option value="3">
+                                <option value="3" @if(old('mes') == "3") selected @endif> 
                                     MARZO
                                 </option>
-                                <option value="4">
+                                <option value="4" @if(old('mes') == "4") selected @endif>
                                     ABRIL
                                 </option>
-                                <option value="5">
+                                <option value="5" @if(old('mes') == "5") selected @endif>
                                     MAYO
                                 </option>
-                                <option value="6">
+                                <option value="6" @if(old('mes') == "6") selected @endif>
                                     JUNIO
                                 </option>
-                                <option value="7">
+                                <option value="7" @if(old('mes') == "7") selected @endif>
                                     JULIO
                                 </option>
-                                <option value="8">
+                                <option value="8" @if(old('mes') == "8") selected @endif>
                                     AGOSTO
                                 </option>
-                                <option value="9">
+                                <option value="9" @if(old('mes') == "9") selected @endif>
                                     SEPTIEMBRE
                                 </option>
-                                <option value="10">
+                                <option value="10" @if(old('mes') == "10") selected @endif>
                                     OCTUBRE
                                 </option>
-                                <option value="11">
+                                <option value="11" @if(old('mes') == "11") selected @endif>
                                     NOVIEMBRE
                                 </option>
-                                <option value="12">
+                                <option value="12" @if(old('mes') == "12") selected @endif>
                                     DICIEMBRE
                                 </option>
                             </select>
@@ -65,7 +66,7 @@
                         <div class="col-12 mb-3" style="max-width: 100%;">
                             <label for="anio" class="form-label fw-bold" style="font-size: 1.2rem;">Año</label>
                             <input type="number" class="form-control" id="anio" name="anio" placeholder="2025"
-                                step="1" min="2000" value="" required style="height: 3.5rem;">
+                                step="1" min="2000" max="2150" value="{{ old('anio')  }}" required style="height: 3.5rem;">
                             <div class="invalid-feedback">
                                 Ingresa una año válido.
                             </div>
@@ -86,6 +87,17 @@
                         <small class="fw-bold d-block mx-auto my-2 text-center text-body-secondary"
                             style="font-size: 1.2rem">¡¡¡Ingrese el RFC sin espacios!!!</small>
                         <hr class="mt-4">
+
+                        @if ($errors->any())
+                            <div class="alert alert-danger mt-3 text-justify" role="alert">
+                                <h6>Por favor corrige los errores debajo:</h6>
+                                <ul>
+                                    @foreach ($errors->all() as $error)
+                                        <li>{{ $error }}</li>
+                                    @endforeach
+                                </ul>
+                            </div>
+                        @endif
                     </form>
                 </div>
             </div>

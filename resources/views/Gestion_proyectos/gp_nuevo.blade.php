@@ -43,12 +43,13 @@
                         <label for="customer_id" class="form-label fw-bold">Cliente 🤝🏻</label>
                         <select name="customer_id" id="customer_id" class="form-control form-select"
                             aria-label="Default select example" required>
-                            <option value="" selected>
+                            <option value="">
                                 NINGUNO
                             </option>
                             @if (!empty($customers))
                                 @foreach ($customers as $customer)
-                                    <option value="{{ $customer->id }}">
+                                    <option value="{{ $customer->id }}"
+                                        {{ old('customer_id') == $customer->id ? 'selected' : '' }}>
                                         {{ $customer->razon_social }}
                                     </option>
                                 @endforeach
@@ -147,8 +148,8 @@
                         <div class="input-group">
                             <span class="input-group-text">🛣️</span>
                             <input type="number" class="form-control" aria-label="Amount (to the nearest dollar)"
-                                id="monto_est_vtc_caseta" name="monto_est_vtc_caseta" placeholder="0.000"
-                                step="any" min="0" value="{{ old('monto_est_vtc_caseta') }}">
+                                id="monto_est_vtc_caseta" name="monto_est_vtc_caseta" placeholder="0.000" step="any"
+                                min="0" value="{{ old('monto_est_vtc_caseta') }}">
                             <div class="invalid-feedback">
                                 Ingresa un estimado válido.
                             </div>
@@ -215,7 +216,8 @@
                     <hr class="my-4 mb-2">
 
                     <button class="d-block mx-auto btn btn-primary btn-lg fw-bold button-custom" type="button"
-                        onclick="ask_before_submit_new('crear_proyecto')" style="background-color: var(--botones-color);">Crear
+                        onclick="ask_before_submit_new('crear_proyecto')"
+                        style="background-color: var(--botones-color);">Crear
                         proyecto</button>
 
                     @if ($errors->any())
