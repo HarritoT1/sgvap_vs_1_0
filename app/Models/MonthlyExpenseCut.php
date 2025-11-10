@@ -8,6 +8,7 @@ namespace App\Models;
 
 use Carbon\Carbon;
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\Factories\HasFactory;
 
 /**
  * Class MonthlyExpenseCut
@@ -30,10 +31,13 @@ use Illuminate\Database\Eloquent\Model;
  */
 class MonthlyExpenseCut extends Model
 {
+	use HasFactory;
+
 	protected $table = 'monthly_expense_cuts';
 	public $timestamps = false;
 
 	protected $casts = [
+		'id' => 'int',
 		'mes' => 'int',
 		'anio' => 'int',
 		'total_alimentos_mes' => 'float',
@@ -54,7 +58,6 @@ class MonthlyExpenseCut extends Model
 		'total_comision_bancaria_mes',
 		'total_comision_sivale_mes',
 		'total_iva_mes',
-		'last_update',
 		'employee_id'
 	];
 

@@ -16,6 +16,8 @@
                     <form id="generar_form_corte_mensual" action="#" method="post"
                         enctype="application/x-www-form-urlencoded" autocomplete="off" class="needs-validation p-1"
                         novalidate>
+                        @csrf
+                        
                         <div class="col-12 mb-3" style="max-width: 100%;" id="campo_mes">
                             <label for="mes" class="form-label fw-bold" style="font-size: 1.2rem;">Mes</label>
                             <select name="mes" id="mes" class="form-control form-select" aria-label="Default select example" required style="height: 3.5rem;">
