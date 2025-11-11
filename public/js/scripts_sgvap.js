@@ -183,7 +183,7 @@ function asig_listener_autocomplete_id_proyect() {
 }
 
 async function validar_form_generator() {
-    
+
     const divErrosPart1 = document.getElementById('errors_part_1');
     divErrosPart1.classList.add('d-none');
     divErrosPart1.querySelector('ul').innerHTML = '';
@@ -589,6 +589,7 @@ async function ask_values_of_proyect_progress_bar() {
 
 async function show_all_personnel(e, anio_query, id_query) {
     const check_show = document.getElementById('tables_of_all_personnel');
+    const divWarningsPart1 = document.getElementById('warnings_part_1');
 
     if (e.target.checked) {
         check_show.innerHTML = '';
@@ -604,33 +605,34 @@ async function show_all_personnel(e, anio_query, id_query) {
                 }
             });
 
-            const data = await response.json();
+            if (response.ok) {
+                const data = await response.json();
 
-            // Lógica de presentación: renderizar cada tabla por separado.
-            // data is an array of objects, each object represents an row in the table monthly_expense_cuts.
-            // some objects have the same employee_id, so we need to group them by employee_id.
+                // Lógica de presentación: renderizar cada tabla por separado.
+                // data is an array of objects, each object represents an row in the table monthly_expense_cuts.
+                // some objects have the same employee_id, so we need to group them by employee_id.
 
-            let currentEmployeeId = null;
-            let currentTable = null;
-            let hr = document.createElement('hr');
-            hr.className = 'my-4 mb-2';
+                let currentEmployeeId = null;
+                let currentTable = null;
+                let hr = document.createElement('hr');
+                hr.className = 'my-4 mb-2';
 
-            data.forEach(record => {
-                if (record.employee_id !== currentEmployeeId) {
-                    console.log("Nuevo empleado detectado, creando nueva tabla para id:", record.employee_id);
-                    // New employee detected, create a new table.
-                    if (currentTable) {
-                        // Append the previous table to the container.
-                        check_show.appendChild(currentTable);
-                        check_show.appendChild(hr.cloneNode()); // add a horizontal line between tables.
-                        currentTable = null;
-                    }
+                data.forEach(record => {
+                    if (record.employee_id !== currentEmployeeId) {
+                        console.log("Nuevo empleado detectado, creando nueva tabla para id:", record.employee_id);
+                        // New employee detected, create a new table.
+                        if (currentTable) {
+                            // Append the previous table to the container.
+                            check_show.appendChild(currentTable);
+                            check_show.appendChild(hr.cloneNode()); // add a horizontal line between tables.
+                            currentTable = null;
+                        }
 
-                    // Create a new table for the new employee.
-                    currentEmployeeId = record.employee_id;
-                    currentTable = document.createElement('div');
-                    currentTable.className = 'table-responsive small my-4';
-                    currentTable.innerHTML = `<h2 class="fw-bold my-3" style="font-size: 2rem; text-align:justify">Corte anual ${record.anio} del empleado ${record.employee_name}: </h2>
+                        // Create a new table for the new employee.
+                        currentEmployeeId = record.employee_id;
+                        currentTable = document.createElement('div');
+                        currentTable.className = 'table-responsive small my-4';
+                        currentTable.innerHTML = `<h2 class="fw-bold my-3" style="font-size: 2rem; text-align:justify">Corte anual ${record.anio} del empleado ${record.employee_name}: </h2>
                     <table class="table table-striped table-sm">
                         <thead>
                             <tr class="text-center">
@@ -658,14 +660,14 @@ async function show_all_personnel(e, anio_query, id_query) {
                         </tbody>
                     </table>
                     `;
-                } else {
-                    // Same employee, append a new row to the current table.
-                    console.log("Mismo empleado, agregando fila a la tabla actual para id:", record.employee_id);
-                    const tbody = currentTable.querySelector('tbody');
-                    const newRow = document.createElement('tr');
-                    newRow.className = 'text-center';
-                    newRow.style.fontSize = '1.2rem';
-                    newRow.innerHTML = `
+                    } else {
+                        // Same employee, append a new row to the current table.
+                        console.log("Mismo empleado, agregando fila a la tabla actual para id:", record.employee_id);
+                        const tbody = currentTable.querySelector('tbody');
+                        const newRow = document.createElement('tr');
+                        newRow.className = 'text-center';
+                        newRow.style.fontSize = '1.2rem';
+                        newRow.innerHTML = `
                         <td>${record.mesName}</td>
                         <td>${record.anio}</td>
                         <td>$ ${record.total_alimentos_mes.toLocaleString('es-MX')}</td>
@@ -675,15 +677,36 @@ async function show_all_personnel(e, anio_query, id_query) {
                         <td>$ ${record.total_comision_sivale_mes.toLocaleString('es-MX')}</td>
                         <td>$ ${record.total_iva_mes.toLocaleString('es-MX')}</td>
                     `;
-                    tbody.appendChild(newRow);
-                }
-            });
+                        tbody.appendChild(newRow);
+                    }
+                });
 
-            if (currentTable) {
-                // Append the previous table to the container.
-                check_show.appendChild(currentTable);
-                check_show.appendChild(hr.cloneNode()); // add a horizontal line between tables.
-                currentTable = null;
+                if (currentTable) {
+                    // Append the previous table to the container.
+                    check_show.appendChild(currentTable);
+                    check_show.appendChild(hr.cloneNode()); // add a horizontal line between tables.
+                    currentTable = null;
+                }
+            }
+
+            else {
+                const data = await response.json();
+
+                document.getElementById('loaderCircle').classList.add('d-none');
+                check_show.classList.add('d-none');
+                check_show.innerHTML = '';
+
+                divWarningsPart1.querySelector('ul').innerHTML = `
+                    <li>${data.error}</li>
+                `;
+
+                divWarningsPart1.classList.remove('d-none');
+
+                setTimeout(() => {
+                    divWarningsPart1.classList.add('d-none');
+                    divWarningsPart1.querySelector('ul').innerHTML = ``;
+                    e.target.checked = false;
+                }, 10000);
             }
 
         } catch (error) {
@@ -701,6 +724,9 @@ async function show_all_personnel(e, anio_query, id_query) {
     } else {
         check_show.classList.add('d-none');
         check_show.innerHTML = '';
+
+        divWarningsPart1.classList.add('d-none');
+        divWarningsPart1.querySelector('ul').innerHTML = ``;
     }
 }
 

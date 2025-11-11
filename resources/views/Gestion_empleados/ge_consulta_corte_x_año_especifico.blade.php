@@ -71,8 +71,14 @@
             </div>
         @endif
 
+        <div class="alert alert-warning mt-3 text-justify d-none" role="alert" id="warnings_part_1">
+            <h6 class="fw-bold">AVISO:</h6>
+            <ul style="text-align: justify;">
+            </ul>
+        </div>
+
         <div class="loader d-none" id="loaderCircle"></div>
-        
+
         <div id="tables_of_all_personnel" class="d-none"></div>
     </div>
 @endsection
