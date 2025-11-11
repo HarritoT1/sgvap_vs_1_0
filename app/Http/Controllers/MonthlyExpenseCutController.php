@@ -137,7 +137,52 @@ class MonthlyExpenseCutController extends Controller
                 ->withInput();
         }
 
-        return redirect()->route('empleados.consulta_corte_x_año_especifico', ['anio' => $data['anio'], 'id' => $data['employee_id']])
+        return redirect()->route('empleados.consulta_corte_x_año_especifico', ['anio' => $data['anio'], 'employee_id' => $data['employee_id']])
             ->with('success', 'Corte mensual del empleado registrado exitosamente ;).');
+    }
+
+    public function show_year_cuts(Request $request)
+    {
+        // --- Sanitización previa ---
+        $cleanEmployeeId = trim(explode('→', $request->input('employee_id'))[0]);
+        $request->merge(['employee_id' => $cleanEmployeeId]);
+
+        // --- Validación ---
+        $data = $request->validate([
+            'employee_id' => 'required|string|exists:employees,id|max:50',
+            'anio' => 'required|integer|min:2000|max:2150',
+        ], [
+            'employee_id.required' => 'El RFC es obligatorio.',
+            'employee_id.exists' => 'El RFC proporcionado no existe en la base de datos.',
+            'employee_id.max' => 'El RFC no puede exceder los 50 caracteres.',
+
+            'anio.required' => 'El año es obligatorio.',
+            'anio.integer' => 'Debes mandar un número de año válido.',
+            'anio.min' => 'El año debe ser mayor o igual a 2000.',
+            'anio.max' => 'El año debe ser menor o igual a 2150.',
+        ]);
+
+        try {
+            $monthlyCuts = MonthlyExpenseCut::where('employee_id', $data['employee_id'])
+                ->where('anio', $data['anio'])
+                ->orderBy('mes', 'asc')
+                ->get();
+
+            if ($monthlyCuts->isEmpty()) {
+                return redirect()->back()->withErrors(['data' => 'Este empleado no cuenta con cortes mensuales, para este año, no hay resumen que mostrar.'])->withInput();
+            }
+
+            $employee = Employee::findOrFail($data['employee_id']);
+
+            $monthlyCuts->each(function ($cut) {
+                $cut->mesName = Str::upper(Carbon::create()->month($cut->mes)->locale('es')->monthName);;
+            });
+
+        } catch (\Exception $e) {
+            return back()->withErrors(['error' => 'No se pudo generar el resumen anual ' . $data['anio'] . ' del empleado.'])
+                ->withInput();
+        }
+
+        return view('Gestion_empleados/ge_consulta_corte_x_año_especifico', ['employee' => $employee, 'cuts' => $monthlyCuts, 'anio' => $data['anio']]);
     }
 }

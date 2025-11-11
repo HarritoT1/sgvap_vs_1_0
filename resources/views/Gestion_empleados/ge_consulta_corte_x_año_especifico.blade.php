@@ -2,8 +2,9 @@
 
 @section('content')
     <div class="w-100 my-3 div-main">
-        <h2 class="fw-bold my-3" style="font-size: 2rem; text-align:justify" id="corte_anio_especifico">Corte anual $anio del
-            empleado $nombre:
+        <h2 class="fw-bold my-3" style="font-size: 2rem; text-align:justify" id="corte_anio_especifico">Corte anual
+            {{ $anio }} del
+            empleado {{ $employee->nombre }}:
         </h2>
         <script>
             let anio_query = 2025;
@@ -24,66 +25,20 @@
                     </tr>
                 </thead>
                 <tbody>
-                    <tr class="text-center" style="font-size: 1.2rem;">
-                        <td>enero</td>
-                        <td>2025</td>
-                        <td>$ 1,260.00</td>
-                        <td>$ 0</td>
-                        <td>$ 3,918.90</td>
-                        <td>$ 69.45</td>
-                        <td>$ 52.58</td>
-                        <td>$ 848.15</td>
-                    </tr>
-                    <tr class="text-center" style="font-size: 1.2rem;">
-                        <td>febrero</td>
-                        <td>2025</td>
-                        <td>$ 1,260.00</td>
-                        <td>$ 0</td>
-                        <td>$ 3,918.90</td>
-                        <td>$ 69.45</td>
-                        <td>$ 52.58</td>
-                        <td>$ 848.15</td>
-                    </tr>
-                    <tr class="text-center" style="font-size: 1.2rem;">
-                        <td>marzo</td>
-                        <td>2025</td>
-                        <td>$ 1,260.00</td>
-                        <td>$ 0</td>
-                        <td>$ 3,918.90</td>
-                        <td>$ 69.45</td>
-                        <td>$ 52.58</td>
-                        <td>$ 848.15</td>
-                    </tr>
-                    <tr class="text-center" style="font-size: 1.2rem;">
-                        <td>abril</td>
-                        <td>2025</td>
-                        <td>$ 1,260.00</td>
-                        <td>$ 0</td>
-                        <td>$ 3,918.90</td>
-                        <td>$ 69.45</td>
-                        <td>$ 52.58</td>
-                        <td>$ 848.15</td>
-                    </tr>
-                    <tr class="text-center" style="font-size: 1.2rem;">
-                        <td>mayo</td>
-                        <td>2025</td>
-                        <td>$ 1,260.00</td>
-                        <td>$ 0</td>
-                        <td>$ 3,918.90</td>
-                        <td>$ 69.45</td>
-                        <td>$ 52.58</td>
-                        <td>$ 848.15</td>
-                    </tr>
-                    <tr class="text-center" style="font-size: 1.2rem;">
-                        <td>junio</td>
-                        <td>2025</td>
-                        <td>$ 1,260.00</td>
-                        <td>$ 0</td>
-                        <td>$ 3,918.90</td>
-                        <td>$ 69.45</td>
-                        <td>$ 52.58</td>
-                        <td>$ 848.15</td>
-                    </tr>
+                    @if (!empty($cuts))
+                        @foreach ($cuts as $cut)
+                            <tr class="text-center" style="font-size: 1.2rem;">
+                                <td>{{ $cut->mesName }}</td>
+                                <td>{{ $cut->anio }}</td>
+                                <td>$ {{ $cut->total_alimentos_mes ?? 0 }}</td>
+                                <td>$ {{ $cut->total_traslado_local_mes ?? 0 }}</td>
+                                <td>$ {{ $cut->total_traslado_externo_mes ?? 0 }}</td>
+                                <td>$ {{ $cut->total_comision_bancaria_mes ?? 0 }}</td>
+                                <td>$ {{ $cut->total_comision_sivale_mes ?? 0 }}</td>
+                                <td>$ {{ $cut->total_iva_mes ?? 0 }}</td>
+                            </tr>
+                        @endforeach
+                    @endif
                 </tbody>
             </table>
         </div>

@@ -231,7 +231,7 @@
                 @if ($errors->any())
                     <div class="alert alert-danger mt-3 text-justify" role="alert">
                         <h6>Por favor corrige los errores debajo:</h6>
-                        <ul>
+                        <ul style="text-align: justify;">
                             @foreach ($errors->all() as $error)
                                 <li>{{ $error }}</li>
                             @endforeach

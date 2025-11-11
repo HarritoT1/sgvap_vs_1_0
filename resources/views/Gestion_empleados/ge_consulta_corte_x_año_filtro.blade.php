@@ -13,13 +13,14 @@
                 </div>
 
                 <div class="modal-body p-5 pt-0" style="max-width: 100%;">
-                    <form id="consultar_corte_mensual" action="#" method="post"
-                        enctype="application/x-www-form-urlencoded" autocomplete="off" class="needs-validation p-1"
-                        novalidate>
+                    <form id="consultar_corte_mensual" action="{{ route('empleados.consulta_corte_x_año_especifico') }}"
+                        method="get" enctype="application/x-www-form-urlencoded" autocomplete="off"
+                        class="needs-validation p-1" novalidate>
                         <div class="col-12 mb-3" style="max-width: 100%;">
                             <label for="anio" class="form-label fw-bold" style="font-size: 1.2rem;">Año</label>
                             <input type="number" class="form-control" id="anio" name="anio" placeholder="2025"
-                                step="1" min="2000" value="" required style="height: 3.5rem;">
+                                step="1" min="2000" max="2150" value="{{ old('anio') }}" required
+                                style="height: 3.5rem;">
                             <div class="invalid-feedback">
                                 Ingresa una año válido.
                             </div>
@@ -40,6 +41,17 @@
                         <small class="fw-bold d-block mx-auto my-2 text-center text-body-secondary"
                             style="font-size: 1.2rem">¡¡¡Ingrese el RFC sin espacios!!!</small>
                         <hr class="mt-4">
+
+                        @if ($errors->any())
+                            <div class="alert alert-danger mt-3 text-justify" role="alert">
+                                <h6>Por favor corrige los errores debajo:</h6>
+                                <ul style="text-align: justify;">
+                                    @foreach ($errors->all() as $error)
+                                        <li>{{ $error }}</li>
+                                    @endforeach
+                                </ul>
+                            </div>
+                        @endif
                     </form>
                 </div>
             </div>
