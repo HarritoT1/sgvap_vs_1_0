@@ -1179,6 +1179,13 @@ l-68 45 0 51 c1 283 222 551 505 611 96 20 97 20 125 -19z" />
             if (document.getElementById("generar_corte_mensual")) {
                 alert("AVISO: Se recomienda hacer el corte mensual el último día del mes, antes de hacer el corte es importante que rectifiques la información. \n\nEsta acción no podrá ser revertida.");
             }
+            if (document.getElementById("corte_anio_especifico")) {
+                if (document.getElementById('success_alert')) {
+                    setTimeout(() => {
+                        document.getElementById('success_alert').remove();
+                    }, 4000);
+                }
+            }
             if (document.getElementById("include_all_personnel")) {
                 document.getElementById("include_all_personnel").addEventListener('change', (e) => {
                     show_all_personnel(e, anio_query, id_query)

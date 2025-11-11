@@ -2,7 +2,8 @@
 
 @section('content')
     <div class="w-100 my-3 div-main">
-        <h2 class="fw-bold my-3" style="font-size: 2rem; text-align:justify">Corte anual $anio del empleado $nombre:
+        <h2 class="fw-bold my-3" style="font-size: 2rem; text-align:justify" id="corte_anio_especifico">Corte anual $anio del
+            empleado $nombre:
         </h2>
         <script>
             let anio_query = 2025;
@@ -94,7 +95,8 @@
             <div style="width: 30%; display: flex; align-items: center; justify-content: center;">
                 <div class="form-check">
                     <input class="form-check-input" type="checkbox" id="include_all_personnel">
-                    <label class="form-check-label fw-bold text-center" for="include_all_personnel" style="font-size: 0.8rem;">
+                    <label class="form-check-label fw-bold text-center" for="include_all_personnel"
+                        style="font-size: 0.8rem;">
                         <em>Incluír todo el personal</em>
                     </label>
                 </div>
@@ -105,7 +107,15 @@
         </div>
 
         <hr class="my-4 mb-2">
-        
+
+        @if (session('success'))
+            <div class="alert alert-success mt-3 text-justify" role="alert" id="success_alert">
+                <ul class="mb-0">
+                    <li>{{ session('success') }}</li>
+                </ul>
+            </div>
+        @endif
+
         <div id="tables_of_all_personnel" class="d-none"></div>
     </div>
 @endsection

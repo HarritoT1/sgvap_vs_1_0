@@ -216,11 +216,13 @@ Route::middleware(['auth', 'inactive'])->group(function () {
 
     Route::post('/monthly_create', [MonthlyExpenseCutController::class, 'create'])->name('monthlys.create');
 
-    Route::get('/ge_consulta_corte_x_año_especifico', function () { //{id}
-        return view('Gestion_empleados/ge_consulta_corte_x_año_especifico'); //http://127.0.0.1:8000/ge_consulta_corte_x_año_especifico
-    })->name("empleados.consulta_corte_x_año_especifico");
-
     Route::get('/ge_consulta_corte_x_año_filtro', function () {
         return view('Gestion_empleados/ge_consulta_corte_x_año_filtro'); //http://127.0.0.1:8000/ge_consulta_corte_x_año_filtro
     })->name("empleados.consulta_corte_x_año_filtro");
+
+    /*****************************/
+
+    Route::get('/ge_consulta_corte_x_año_especifico', function () { 
+        return view('Gestion_empleados/ge_consulta_corte_x_año_especifico'); //http://127.0.0.1:8000/ge_consulta_corte_x_año_especifico
+    })->name("empleados.consulta_corte_x_año_especifico");
 });

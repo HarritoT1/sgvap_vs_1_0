@@ -137,7 +137,7 @@ class MonthlyExpenseCutController extends Controller
                 ->withInput();
         }
 
-        return redirect()->route('empleados.consulta_corte_x_año_especifico')
+        return redirect()->route('empleados.consulta_corte_x_año_especifico', ['anio' => $data['anio'], 'id' => $data['employee_id']])
             ->with('success', 'Corte mensual del empleado registrado exitosamente ;).');
     }
 }
