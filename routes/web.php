@@ -16,10 +16,6 @@ use App\Models\Employee;
     return view('welcome');
 }); //http://127.0.0.1:8000/*/
 
-Route::get('/ge_consulta_corte_x_año_especifico/{id}', function () {
-    return view('Gestion_empleados/ge_consulta_corte_x_año_especifico'); //http://127.0.0.1:8000/ge_consulta_corte_x_año_especifico
-})->name("empleados.consulta_corte_x_año_especifico");
-
 Route::get('/ge_graficas_viaticos', function () {
     return view('Gestion_empleados/ge_graficas_viaticos'); //http://127.0.0.1:8000/ge_graficas_viaticos
 })->name("empleados.graficas_viaticos");
@@ -214,9 +210,15 @@ Route::middleware(['auth', 'inactive'])->group(function () {
         return view('Gestion_empleados/ge_corte_x_mes_filtro'); //http://127.0.0.1:8000/ge_corte_x_mes_filtro
     })->name("empleados.corte_x_mes_filtro");
 
-    Route::post('/generate_data_for_corte_mensual', [MonthlyExpenseCutController::class, 'generate_data_for_corte_mensual'])->name('empleados.generate_data_for_corte_mensual');
+    Route::post('/generate_data_for_corte_mensual', [MonthlyExpenseCutController::class, 'generate_data_for_corte_mensual'])->name('monthlys.generate_data_for_corte_mensual');
 
-    Route::get('/ge_corte_x_mes', [MonthlyExpenseCutController::class, 'show_monthly_cut'])->name("empleados.corte_x_mes");
+    Route::get('/ge_corte_x_mes', [MonthlyExpenseCutController::class, 'show_monthly_cut'])->name("empleados.corte_x_mes"); //http://127.0.0.1:8000/ge_corte_x_mes?employee=FVV431303686&mes=3&mesName=MARZO&anio=2001&total_alimentos_mes=1200&total_traslado_local_mes=600&total_traslado_externo_mes=0&total_comision_bancaria_mes=800
+
+    Route::post('/monthly_create', [MonthlyExpenseCutController::class, 'create'])->name('monthlys.create');
+
+    Route::get('/ge_consulta_corte_x_año_especifico', function () { //{id}
+        return view('Gestion_empleados/ge_consulta_corte_x_año_especifico'); //http://127.0.0.1:8000/ge_consulta_corte_x_año_especifico
+    })->name("empleados.consulta_corte_x_año_especifico");
 
     Route::get('/ge_consulta_corte_x_año_filtro', function () {
         return view('Gestion_empleados/ge_consulta_corte_x_año_filtro'); //http://127.0.0.1:8000/ge_consulta_corte_x_año_filtro

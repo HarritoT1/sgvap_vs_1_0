@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Http\Requests\StoreMonthlyExpenseCutRequest;
 use Illuminate\Http\Request;
 use App\Models\Employee;
 use App\Models\MonthlyExpenseCut;
@@ -108,9 +109,8 @@ class MonthlyExpenseCutController extends Controller
             }, 0);
 
             $nombreMes = Str::upper(Carbon::create()->month((int) $data['mes'])->locale('es')->monthName);
-            
-            return redirect()->route('empleados.corte_x_mes', ['employee' => $employee->id, 'mes' => $data['mes'], 'mesName' => $nombreMes, 'anio' => $data['anio'], 'total_alimentos_mes' => $total_alimentos_mes, 'total_traslado_local_mes' => $total_traslado_local_mes, 'total_traslado_externo_mes' => $total_traslado_externo_mes, 'total_comision_bancaria_mes' => $total_comision_bancaria_mes]);
 
+            return redirect()->route('empleados.corte_x_mes', ['employee' => $employee->id, 'mes' => $data['mes'], 'mesName' => $nombreMes, 'anio' => $data['anio'], 'total_alimentos_mes' => $total_alimentos_mes, 'total_traslado_local_mes' => $total_traslado_local_mes, 'total_traslado_externo_mes' => $total_traslado_externo_mes, 'total_comision_bancaria_mes' => $total_comision_bancaria_mes]);
         } catch (\Exception $e) {
             return back()
                 ->withErrors(['error' => 'No se pudo generar el formulario del corte mensual para este empleado: ' . $e->getMessage()])
@@ -124,5 +124,20 @@ class MonthlyExpenseCutController extends Controller
         $data['employee'] = Employee::findOrFail($data['employee']);
 
         return view('Gestion_empleados/ge_corte_x_mes', $data);
+    }
+
+    public function create(StoreMonthlyExpenseCutRequest $request)
+    {
+        $data = $request->validated();
+
+        try {
+            MonthlyExpenseCut::create($data);
+        } catch (\Exception $e) {
+            return back()->withErrors(['error' => 'No se pudo registrar el corte mensual del empleado: ' . $e->getMessage()])
+                ->withInput();
+        }
+
+        return redirect()->route('empleados.consulta_corte_x_año_especifico')
+            ->with('success', 'Corte mensual del empleado registrado exitosamente ;).');
     }
 }

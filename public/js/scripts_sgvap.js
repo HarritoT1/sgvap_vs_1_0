@@ -95,6 +95,14 @@ function ask_before_submit_new(id_form) {
                 form.requestSubmit();
             }
         }
+
+        else if (id_form === 'generar_corte_mensual') {
+            if (confirm("Está acción sera definitiva en la base de datos. De click en ACEPTAR para continuar.")) {
+                const form = document.getElementById(id_form);
+                form.requestSubmit();
+            }
+        }
+
         else {
             const form = document.getElementById(id_form);
             form.requestSubmit();

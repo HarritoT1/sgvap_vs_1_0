@@ -13,7 +13,7 @@
                 </div>
 
                 <div class="modal-body p-5 pt-0" style="max-width: 100%;">
-                    <form id="generar_form_corte_mensual" action="{{ route('empleados.generate_data_for_corte_mensual') }}"
+                    <form id="generar_form_corte_mensual" action="{{ route('monthlys.generate_data_for_corte_mensual') }}"
                         method="post" enctype="application/x-www-form-urlencoded" autocomplete="off"
                         class="needs-validation p-1" novalidate>
                         @csrf
