@@ -13,49 +13,49 @@
                 </div>
 
                 <div class="modal-body p-5 pt-0" style="max-width: 100%;">
-                    <form id="generar_form_corte_mensual" action="{{ route('empleados.generate_data_for_corte_mensual') }}" method="post"
-                        enctype="application/x-www-form-urlencoded" autocomplete="off" class="needs-validation p-1"
-                        novalidate>
+                    <form id="generar_form_corte_mensual" action="{{ route('empleados.generate_data_for_corte_mensual') }}"
+                        method="post" enctype="application/x-www-form-urlencoded" autocomplete="off"
+                        class="needs-validation p-1" novalidate>
                         @csrf
 
                         <div class="col-12 mb-3" style="max-width: 100%;" id="campo_mes">
                             <label for="mes" class="form-label fw-bold" style="font-size: 1.2rem;">Mes</label>
                             <select name="mes" id="mes" class="form-control form-select"
                                 aria-label="Default select example" required style="height: 3.5rem;">
-                                <option value="1" @if(old('mes') == "1") selected @endif>
+                                <option value="1" @if (old('mes') == '1') selected @endif>
                                     ENERO
                                 </option>
-                                <option value="2" @if(old('mes') == "2") selected @endif>
+                                <option value="2" @if (old('mes') == '2') selected @endif>
                                     FEBRERO
                                 </option>
-                                <option value="3" @if(old('mes') == "3") selected @endif> 
+                                <option value="3" @if (old('mes') == '3') selected @endif>
                                     MARZO
                                 </option>
-                                <option value="4" @if(old('mes') == "4") selected @endif>
+                                <option value="4" @if (old('mes') == '4') selected @endif>
                                     ABRIL
                                 </option>
-                                <option value="5" @if(old('mes') == "5") selected @endif>
+                                <option value="5" @if (old('mes') == '5') selected @endif>
                                     MAYO
                                 </option>
-                                <option value="6" @if(old('mes') == "6") selected @endif>
+                                <option value="6" @if (old('mes') == '6') selected @endif>
                                     JUNIO
                                 </option>
-                                <option value="7" @if(old('mes') == "7") selected @endif>
+                                <option value="7" @if (old('mes') == '7') selected @endif>
                                     JULIO
                                 </option>
-                                <option value="8" @if(old('mes') == "8") selected @endif>
+                                <option value="8" @if (old('mes') == '8') selected @endif>
                                     AGOSTO
                                 </option>
-                                <option value="9" @if(old('mes') == "9") selected @endif>
+                                <option value="9" @if (old('mes') == '9') selected @endif>
                                     SEPTIEMBRE
                                 </option>
-                                <option value="10" @if(old('mes') == "10") selected @endif>
+                                <option value="10" @if (old('mes') == '10') selected @endif>
                                     OCTUBRE
                                 </option>
-                                <option value="11" @if(old('mes') == "11") selected @endif>
+                                <option value="11" @if (old('mes') == '11') selected @endif>
                                     NOVIEMBRE
                                 </option>
-                                <option value="12" @if(old('mes') == "12") selected @endif>
+                                <option value="12" @if (old('mes') == '12') selected @endif>
                                     DICIEMBRE
                                 </option>
                             </select>
@@ -66,7 +66,8 @@
                         <div class="col-12 mb-3" style="max-width: 100%;">
                             <label for="anio" class="form-label fw-bold" style="font-size: 1.2rem;">Año</label>
                             <input type="number" class="form-control" id="anio" name="anio" placeholder="2025"
-                                step="1" min="2000" max="2150" value="{{ old('anio')  }}" required style="height: 3.5rem;">
+                                step="1" min="2000" max="2150" value="{{ old('anio') }}" required
+                                style="height: 3.5rem;">
                             <div class="invalid-feedback">
                                 Ingresa una año válido.
                             </div>
@@ -97,6 +98,12 @@
                                     @endforeach
                                 </ul>
                             </div>
+
+                            @if ($errors->has('status'))
+                                <p class="text-center"><a href="{{ route('empleados.consulta_corte_x_año_filtro') }}"
+                                        class="link-danger link-offset-2 link-underline-opacity-25 link-underline-opacity-100-hover">Rectificar
+                                        estado anual de un empleado.</a></p>
+                            @endif
                         @endif
                     </form>
                 </div>

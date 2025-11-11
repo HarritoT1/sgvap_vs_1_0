@@ -64,7 +64,7 @@ class MonthlyExpenseCutController extends Controller
                 if ($faltaCorte) {
                     return back()
                         ->withErrors([
-                            'error' => "A este empleado le hace falta el corte mensual del mes {$mes_anterior_name} del año {$anio_anterior}, por favor rectifica su estado anual."
+                            'status' => "A este empleado le hace falta el corte mensual del mes {$mes_anterior_name} del año {$anio_anterior}, por favor rectifica su estado anual."
                         ])
                         ->withInput();
                 }
@@ -113,7 +113,7 @@ class MonthlyExpenseCutController extends Controller
 
         } catch (\Exception $e) {
             return back()
-                ->withErrors(['error' => 'No se pudo registrar el corte mensual para este empleado: ' . $e->getMessage()])
+                ->withErrors(['error' => 'No se pudo generar el formulario del corte mensual para este empleado: ' . $e->getMessage()])
                 ->withInput();
         }
     }

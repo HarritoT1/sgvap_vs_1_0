@@ -913,43 +913,43 @@ l-68 45 0 51 c1 283 222 551 505 611 96 20 97 20 125 -19z" />
                                     <ul class="flex-column vineta">
                                         <li class="nav-item">
                                             <a class="nav-link d-flex align-items-center gap-2 text-white fw-bold"
-                                                href="/ge_nuevo" target="_self">
+                                                href="{{ route('empleados.nuevo') }}" target="_self">
                                                 Registrar empleados.
                                             </a>
                                         </li>
                                         <li class="nav-item">
                                             <a class="nav-link d-flex align-items-center gap-2 text-white fw-bold"
-                                                href="/ge_consulta_act_filtro" target="_self">
+                                                href="{{ route('empleados.consulta_filtro') }}" target="_self">
                                                 Consultar y actualizar empleados.
                                             </a>
                                         </li>
                                         <li class="nav-item">
                                             <a class="nav-link d-flex align-items-center gap-2 text-white fw-bold"
-                                                href="/ge_corte_x_dia" target="_self">
+                                                href="{{ route('empleados.corte_x_dia') }}" target="_self">
                                                 Corte por día de viáticos.
                                             </a>
                                         </li>
                                         <li class="nav-item">
                                             <a class="nav-link d-flex align-items-center gap-2 text-white fw-bold"
-                                                href="/ge_corte_x_dia_delete" target="_self">
+                                                href="{{ route('empleados.corte_x_dia_delete') }}" target="_self">
                                                 Eliminar corte por día de viáticos.
                                             </a>
                                         </li>
                                         <li class="nav-item">
                                             <a class="nav-link d-flex align-items-center gap-2 text-white fw-bold"
-                                                href="/ge_retiro_semanal_filtro" target="_self">
+                                                href="{{ route('empleados.retiro_semanal_filtro') }}" target="_self">
                                                 Consultar retiros semanales.
                                             </a>
                                         </li>
                                         <li class="nav-item">
                                             <a class="nav-link d-flex align-items-center gap-2 text-white fw-bold"
-                                                href="/ge_corte_x_mes_filtro" target="_self">
+                                                href="{{ route('empleados.corte_x_mes_filtro') }}" target="_self">
                                                 Corte mensual de viáticos.
                                             </a>
                                         </li>
                                         <li class="nav-item">
                                             <a class="nav-link d-flex align-items-center gap-2 text-white fw-bold"
-                                                href="/ge_consulta_corte_x_año_filtro" target="_self">
+                                                href="{{ route('empleados.consulta_corte_x_año_filtro') }}" target="_self">
                                                 Consultar cortes en un año específico.
                                             </a>
                                         </li>
