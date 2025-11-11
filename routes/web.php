@@ -16,14 +16,6 @@ use App\Models\Employee;
     return view('welcome');
 }); //http://127.0.0.1:8000/*/
 
-Route::get('/ge_graficas_viaticos', function () {
-    return view('Gestion_empleados/ge_graficas_viaticos'); //http://127.0.0.1:8000/ge_graficas_viaticos
-})->name("empleados.graficas_viaticos");
-
-Route::get('/ge_graficas_x_viatico', function () {
-    return view('Gestion_empleados/ge_graficas_x_viatico'); //http://127.0.0.1:8000/ge_graficas_x_viatico
-})->name("empleados.graficas_x_viatico");
-
 Route::get('/gdm_gasolina_alta_dispersion', function () {
     return view('Gestion_dispersiones_monetarias/gdm_gasolina_alta_dispersion'); //http://127.0.0.1:8000/gdm_gasolina_alta_dispersion
 })->name("dispersiones.gasolina_alta_dispersion");
@@ -223,4 +215,12 @@ Route::middleware(['auth', 'inactive'])->group(function () {
     Route::get('/ge_consulta_corte_x_año_especifico', [MonthlyExpenseCutController::class, 'show_year_cuts'])->name("empleados.consulta_corte_x_año_especifico");
 
     Route::get('/allpersonneltables', [MonthlyExpenseCutController::class, 'generate_data_for_all_personnel'])->name("monthlys.allpersonneltables");
+
+    Route::get('/ge_graficas_viaticos', function () {
+        return view('Gestion_empleados/ge_graficas_viaticos'); //http://127.0.0.1:8000/ge_graficas_viaticos
+    })->name("empleados.graficas_viaticos");
+
+    Route::get('/ge_graficas_x_viatico', function () {
+        return view('Gestion_empleados/ge_graficas_x_viatico'); //http://127.0.0.1:8000/ge_graficas_x_viatico
+    })->name("empleados.graficas_x_viatico");
 });

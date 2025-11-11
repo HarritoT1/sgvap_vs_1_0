@@ -955,13 +955,13 @@ l-68 45 0 51 c1 283 222 551 505 611 96 20 97 20 125 -19z" />
                                         </li>
                                         <li class="nav-item">
                                             <a class="nav-link d-flex align-items-center gap-2 text-white fw-bold"
-                                                href="/ge_graficas_viaticos" target="_self">
+                                                href="{{ route('empleados.graficas_viaticos') }}" target="_self">
                                                 Gráficas de barras de viáticos.
                                             </a>
                                         </li>
                                         <li class="nav-item">
                                             <a class="nav-link d-flex align-items-center gap-2 text-white fw-bold"
-                                                href="/ge_graficas_x_viatico" target="_self">
+                                                href="{{ route('empleados.graficas_x_viatico') }}" target="_self">
                                                 Gráficas de pastel por viáticos.
                                             </a>
                                         </li>
