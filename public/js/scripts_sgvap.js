@@ -593,9 +593,10 @@ async function show_all_personnel(e, anio_query, id_query) {
     if (e.target.checked) {
         check_show.innerHTML = '';
         console.log("Cargando tablas de cada el empleado...");
+        document.getElementById('loaderCircle').classList.remove('d-none');
 
         try {
-            /*const response = await fetch(`/allpersonneltables?anio=${anio_query}&id=${id_query}`, {
+            const response = await fetch(`/allpersonneltables?anio=${anio_query}&id=${id_query}`, {
                 method: 'GET',
                 headers: {
                     'X-CSRF-TOKEN': document.querySelector('meta[name="csrf-token"]').content,
@@ -603,7 +604,7 @@ async function show_all_personnel(e, anio_query, id_query) {
                 }
             });
 
-            const data = await response.json();*/
+            const data = await response.json();
 
             // Lógica de presentación: renderizar cada tabla por separado.
             // data is an array of objects, each object represents an row in the table monthly_expense_cuts.
@@ -614,7 +615,7 @@ async function show_all_personnel(e, anio_query, id_query) {
             let hr = document.createElement('hr');
             hr.className = 'my-4 mb-2';
 
-            datas.forEach(record => {
+            data.forEach(record => {
                 if (record.employee_id !== currentEmployeeId) {
                     console.log("Nuevo empleado detectado, creando nueva tabla para id:", record.employee_id);
                     // New employee detected, create a new table.
@@ -629,7 +630,7 @@ async function show_all_personnel(e, anio_query, id_query) {
                     currentEmployeeId = record.employee_id;
                     currentTable = document.createElement('div');
                     currentTable.className = 'table-responsive small my-4';
-                    currentTable.innerHTML = `<h2 class="fw-bold my-3" style="font-size: 2rem; text-align:justify">Corte anual ${record.anio} del empleado ${record.nombre}: </h2>
+                    currentTable.innerHTML = `<h2 class="fw-bold my-3" style="font-size: 2rem; text-align:justify">Corte anual ${record.anio} del empleado ${record.employee_name}: </h2>
                     <table class="table table-striped table-sm">
                         <thead>
                             <tr class="text-center">
@@ -645,7 +646,7 @@ async function show_all_personnel(e, anio_query, id_query) {
                         </thead>
                         <tbody>
                             <tr class="text-center" style="font-size: 1.2rem;">
-                                <td>${record.mes}</td>
+                                <td>${record.mesName}</td>
                                 <td>${record.anio}</td>
                                 <td>$ ${record.total_alimentos_mes.toLocaleString('es-MX')}</td>
                                 <td>$ ${record.total_traslado_local_mes.toLocaleString('es-MX')}</td>
@@ -665,7 +666,7 @@ async function show_all_personnel(e, anio_query, id_query) {
                     newRow.className = 'text-center';
                     newRow.style.fontSize = '1.2rem';
                     newRow.innerHTML = `
-                        <td>${record.mes}</td>
+                        <td>${record.mesName}</td>
                         <td>${record.anio}</td>
                         <td>$ ${record.total_alimentos_mes.toLocaleString('es-MX')}</td>
                         <td>$ ${record.total_traslado_local_mes.toLocaleString('es-MX')}</td>
@@ -688,8 +689,13 @@ async function show_all_personnel(e, anio_query, id_query) {
         } catch (error) {
             console.error("Error en el fetch:", error);
             alert("Hubo un problema al cargar las tablas de empleados. Intenta de nuevo.");
+            document.getElementById('loaderCircle').classList.add('d-none');
+            check_show.classList.add('d-none');
+            check_show.innerHTML = '';
+            return;
         }
 
+        document.getElementById('loaderCircle').classList.add('d-none');
         check_show.classList.remove('d-none');
 
     } else {
@@ -698,6 +704,7 @@ async function show_all_personnel(e, anio_query, id_query) {
     }
 }
 
+/*
 const datas = [
     {
         employee_id: 1,
@@ -760,6 +767,7 @@ const datas = [
         total_iva_mes: 230.00
     }
 ];
+*/
 
 // Luego puedes usar este array `datas` directamente en tu función para probar la lógica de renderizado.
 

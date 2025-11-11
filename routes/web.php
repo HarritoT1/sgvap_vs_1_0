@@ -221,4 +221,6 @@ Route::middleware(['auth', 'inactive'])->group(function () {
     })->name("empleados.consulta_corte_x_año_filtro");
 
     Route::get('/ge_consulta_corte_x_año_especifico', [MonthlyExpenseCutController::class, 'show_year_cuts'])->name("empleados.consulta_corte_x_año_especifico");
+
+    Route::get('/allpersonneltables', [MonthlyExpenseCutController::class, 'generate_data_for_all_personnel'])->name("monthlys.allpersonneltables");
 });

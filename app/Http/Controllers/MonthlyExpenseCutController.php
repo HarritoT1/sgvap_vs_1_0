@@ -175,14 +175,44 @@ class MonthlyExpenseCutController extends Controller
             $employee = Employee::findOrFail($data['employee_id']);
 
             $monthlyCuts->each(function ($cut) {
-                $cut->mesName = Str::upper(Carbon::create()->month($cut->mes)->locale('es')->monthName);;
+                $cut->mesName = Str::upper(Carbon::create()->month($cut->mes)->locale('es')->monthName);
             });
-
         } catch (\Exception $e) {
             return back()->withErrors(['error' => 'No se pudo generar el resumen anual ' . $data['anio'] . ' del empleado.'])
                 ->withInput();
         }
 
         return view('Gestion_empleados/ge_consulta_corte_x_año_especifico', ['employee' => $employee, 'cuts' => $monthlyCuts, 'anio' => $data['anio']]);
+    }
+
+    public function generate_data_for_all_personnel(Request $request)
+    {
+        try {
+            $employee_id_ignore = $request->input('id');
+            $anio = $request->input('anio');
+
+            $monthly_cuts_of_all_personnel = MonthlyExpenseCut::where('anio', $anio)
+                ->where('employee_id', '!=', $employee_id_ignore)
+                ->orderBy('employee_id')
+                ->orderBy('mes')
+                ->get();
+
+            if ($monthly_cuts_of_all_personnel->isEmpty()) {
+                return response()->json([
+                    'error' => 'No hay resumenes de cortes anuales disponibles de otros empleados para este año.'
+                ], 404);
+            }
+
+            $monthly_cuts_of_all_personnel->each(function ($cut) {
+                $cut->employee_name = Employee::findOrFail($cut->employee_id)->nombre;
+                $cut->mesName = Str::upper(Carbon::create()->month($cut->mes)->locale('es')->monthName);
+            });
+
+            return response()->json($monthly_cuts_of_all_personnel, 200);
+        } catch (\Exception $e) { // Manejo de errores generales (DB, ModelNotFound, "ValidationException" => NO, etc.)
+            return response()->json([
+                'error' => 'Error en el sistema SGVAP al consultar los cortes anuales de todo el personal.'
+            ], 500);
+        }
     }
 }

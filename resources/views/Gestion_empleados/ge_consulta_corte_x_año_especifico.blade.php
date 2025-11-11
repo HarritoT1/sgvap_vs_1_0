@@ -7,8 +7,8 @@
             empleado {{ $employee->nombre }}:
         </h2>
         <script>
-            let anio_query = 2025;
-            let id_query = 2025;
+            let anio_query = @json($anio);
+            let id_query = @json($employee->id);
         </script>
         <div class="table-responsive small">
             <table class="table table-striped table-sm">
@@ -71,6 +71,8 @@
             </div>
         @endif
 
+        <div class="loader d-none" id="loaderCircle"></div>
+        
         <div id="tables_of_all_personnel" class="d-none"></div>
     </div>
 @endsection
