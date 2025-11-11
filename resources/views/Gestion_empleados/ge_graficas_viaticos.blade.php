@@ -3,7 +3,7 @@
 @section('content')
     <div class="w-100 my-3 div-main">
         <h1 class="fw-bold my-3" style="font-size: 1.8rem; text-align:justify" id="graficas_barras">Gráficas de barras
-            completando proyectos |
+            contemplando proyectos |
             empleados.
         </h1>
 
@@ -12,6 +12,8 @@
             </h2>
             <form id="generar_graficas_viaticos_barras" action="#" method="get"
                 enctype="application/x-www-form-urlencoded" autocomplete="off" class="needs-validation p-1" novalidate>
+                @csrf
+
                 <div class="row g-3">
                     <div class="col-sm-6" style="max-width: 100%;" id="campo_mes">
                         <label for="mes" class="form-label fw-bold" style="font-size: 1.2rem;">Mes</label>
@@ -89,7 +91,7 @@
                     <hr class="my-4 mb-2">
 
                     <button class="d-block mx-auto btn btn-primary btn-lg fw-bold button-custom" type="button"
-                        onclick="ask_before_submit_new()" style="background-color: var(--botones-color);">Generar</button>
+                        onclick="ask_before_submit_new('generar_graficas_viaticos_barras')" style="background-color: var(--botones-color);">Generar</button>
             </form>
         </div>
     </div>
