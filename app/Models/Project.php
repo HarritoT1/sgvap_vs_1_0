@@ -10,6 +10,7 @@ use Carbon\Carbon;
 use Illuminate\Database\Eloquent\Collection;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
+use Illuminate\Support\Facades\DB;
 
 /**
  * Class Project
@@ -115,4 +116,23 @@ class Project extends Model
 	{
 		return $this->hasMany(VehicleLoan::class);
 	}
+
+	public static function generate_data_graphics_vts($mes = null, $projectId = null)
+    {	
+        $viaticos_por_proyecto = self::select(
+            'projects.id',
+            'projects.nombre AS nombre',
+            DB::raw('SUM(COALESCE(daily_expense_reports.desayuno, 0) + COALESCE(daily_expense_reports.comida, 0) + COALESCE(daily_expense_reports.cena, 0)) AS total_alimentos'),
+            DB::raw('SUM(daily_expense_reports.traslado_local) AS total_traslado_local'),
+            DB::raw('SUM(daily_expense_reports.traslado_externo) AS total_traslado_externo'),
+            DB::raw('SUM(daily_expense_reports.comision_bancaria) AS total_comision_bancaria')
+        )
+            ->join('daily_expense_reports', 'daily_expense_reports.project_id', '=', 'projects.id')
+            ->when($mes, fn($q) => $q->whereMonth('daily_expense_reports.fecha_dispersion_dia', $mes))
+            ->when($projectId, fn($q) => $q->where('daily_expense_reports.project_id', $projectId))
+            ->groupBy('projects.id', 'projects.nombre')
+            ->get();
+
+        return $viaticos_por_proyecto;
+    }
 }
