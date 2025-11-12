@@ -90,36 +90,36 @@ class Employee extends Model
 		return $viaticos_por_empleado;
 	}
 
-	public static function generate_data_alimentos_pie_graphic($mes = 0, $personnel_inactive = false)
+	public static function generate_data_alimentos_pie_graphic($mes = 0, $year = 0, $personnel_inactive = false)
 	{
-		$data_alimentos = collect(DB::select('graf_pastel_vtc_alimento(?)', [$mes]));
+		$data_alimentos = collect(DB::select('CALL graf_pastel_vtc_alimento(?, ?)', [$mes, $year]));
 
 		if (!$personnel_inactive) return $data_alimentos->where('status', 'activo');
 
 		return $data_alimentos;
 	}
 
-	public static function generate_data_tras_local_pie_graphic($mes = 0, $personnel_inactive = false)
+	public static function generate_data_tras_local_pie_graphic($mes = 0, $year = 0, $personnel_inactive = false)
 	{
-		$data_tras_local = collect(DB::select('graf_pastel_vtc_traslado_local(?)', [$mes]));
+		$data_tras_local = collect(DB::select('CALL graf_pastel_vtc_traslado_local(?, ?)', [$mes, $year]));
 
 		if (!$personnel_inactive) return $data_tras_local->where('status', 'activo');
 
 		return $data_tras_local;
 	}
 
-	public static function generate_data_tras_externo_pie_graphic($mes = 0, $personnel_inactive = false)
+	public static function generate_data_tras_externo_pie_graphic($mes = 0, $year = 0, $personnel_inactive = false)
 	{
-		$data_tras_externo = collect(DB::select('graf_pastel_vtc_traslado_externo(?)', [$mes]));
+		$data_tras_externo = collect(DB::select('CALL graf_pastel_vtc_traslado_externo(?, ?)', [$mes, $year]));
 
 		if (!$personnel_inactive) return $data_tras_externo->where('status', 'activo');
 
 		return $data_tras_externo;
 	}
 
-	public static function generate_data_com_bancaria_pie_graphic($mes = 0, $personnel_inactive = false)
+	public static function generate_data_com_bancaria_pie_graphic($mes = 0, $year = 0, $personnel_inactive = false)
 	{
-		$data_com_bancaria = collect(DB::select('graf_pastel_vtc_com_bancaria(?)', [$mes]));
+		$data_com_bancaria = collect(DB::select('CALL graf_pastel_vtc_com_bancaria(?, ?)', [$mes, $year]));
 
 		if (!$personnel_inactive) return $data_com_bancaria->where('status', 'activo');
 

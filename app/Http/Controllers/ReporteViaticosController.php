@@ -75,22 +75,49 @@ class ReporteViaticosController extends Controller
 
     public function pasteles(Request $request)
     {
-        // Capturamos filtros opcionales desde GET.
-        $mes                = $request->filled('mes') ? $request->input('mes') : 0;
+        // --- Sanitización previa ---
+        if ($request->has('mes')) {
+            $cleanMes = trim($request->input('mes'));
+            $request->merge(['mes' => $cleanMes === '' ? 0 : (int) $cleanMes]);
+        }
+
+        if ($request->has('year')) {
+            $cleanYear = trim($request->input('year'));
+            $request->merge(['year' => $cleanYear === '' ? 0 : $cleanYear]);
+        }
+
         $personnel_inactive = $request->has('personnel_inactive');
         $proyects_inactive  = $request->has('proyects_inactive');
 
-        // Llamada a métodos estáticos ya pulidos.
-        $data_alimentos = Employee::generate_data_alimentos_pie_graphic($mes, $personnel_inactive);
-        $data_tras_local = Employee::generate_data_tras_local_pie_graphic($mes, $personnel_inactive);
-        $data_tras_externo = Employee::generate_data_tras_externo_pie_graphic($mes, $personnel_inactive);
-        $data_com_bancaria = Employee::generate_data_com_bancaria_pie_graphic($mes, $personnel_inactive);
-        $data_gasolina = Project::generate_data_gasolina_pie_graphic($mes, $proyects_inactive);
-        $data_caseta = Project::generate_data_caseta_pie_graphic($mes, $proyects_inactive);
-        $data_hospedaje = Project::generate_data_hospedaje_pie_graphic($mes, $proyects_inactive);
+        // --- Validación ---
+        $data = $request->validate([
+            'mes' => 'nullable|integer|min:0|max:12',
+            'year' => 'nullable|integer|min:0|max:2150',
+        ], [
+            'mes.integer' => 'Debes mandar un número de mes válido.',
+            'mes.min' => 'El mes debe ser mayor o igual a 1.',
+            'mes.max' => 'El mes debe ser menor o igual a 12.',
+            'year.integer' => 'Debes mandar un número de año válido.',
+            'year.min' => 'El año debe ser mayor o igual a 2000.',
+            'year.max' => 'El año debe ser menor o igual a 2150.',
+        ]);
 
-        // Retornar a vista o API
-        return view('reportes.viaticos', compact(
+        try {
+            // Llamada a métodos estáticos ya pulidos.
+            $data_alimentos = Employee::generate_data_alimentos_pie_graphic($data['mes'] ?? 0, $data['year'] ?? 0, $personnel_inactive);
+            $data_tras_local = Employee::generate_data_tras_local_pie_graphic($data['mes'] ?? 0, $data['year'] ?? 0, $personnel_inactive);
+            $data_tras_externo = Employee::generate_data_tras_externo_pie_graphic($data['mes'] ?? 0, $data['year'] ?? 0, $personnel_inactive);
+            $data_com_bancaria = Employee::generate_data_com_bancaria_pie_graphic($data['mes'] ?? 0, $data['year'] ?? 0, $personnel_inactive);
+
+            $data_gasolina = Project::generate_data_gasolina_pie_graphic($data['mes'] ?? 0, $data['year'] ?? 0, $proyects_inactive);
+            $data_caseta = Project::generate_data_caseta_pie_graphic($data['mes'] ?? 0, $data['year'] ?? 0, $proyects_inactive);
+            $data_hospedaje = Project::generate_data_hospedaje_pie_graphic($data['mes'] ?? 0, $data['year'] ?? 0, $proyects_inactive);
+        } catch (\Exception $e) {
+            return back()->withErrors(['error' => 'El sistema no pudo generar las gráficas por viático: ' . $e->getMessage()])
+                ->withInput();
+        }
+
+        return view('Gestion_empleados.ge_graficas_x_viatico', compact(
             'data_alimentos',
             'data_tras_local',
             'data_tras_externo',

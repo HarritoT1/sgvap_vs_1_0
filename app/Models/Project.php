@@ -137,27 +137,27 @@ class Project extends Model
 		return $viaticos_por_proyecto;
 	}
 
-	public static function generate_data_gasolina_pie_graphic($mes = 0, $proyects_inactive = false)
+	public static function generate_data_gasolina_pie_graphic($mes = 0, $year = 0, $proyects_inactive = false)
 	{
-		$data_gasolina = collect(DB::select('graf_pastel_gasolina(?)', [$mes]));
+		$data_gasolina = collect(DB::select('CALL graf_pastel_gasolina(?, ?)', [$mes, $year]));
 
 		if (!$proyects_inactive) return $data_gasolina->where('status', 'activo');
 
 		return $data_gasolina;
 	}
 
-	public static function generate_data_caseta_pie_graphic($mes = 0, $proyects_inactive = false)
+	public static function generate_data_caseta_pie_graphic($mes = 0, $year = 0, $proyects_inactive = false)
 	{
-		$data_caseta = collect(DB::select('graf_pastel_caseta(?)', [$mes]));
+		$data_caseta = collect(DB::select('CALL graf_pastel_caseta(?, ?)', [$mes, $year]));
 
 		if (!$proyects_inactive) return $data_caseta->where('status', 'activo');
 
 		return $data_caseta;
 	}
 
-	public static function generate_data_hospedaje_pie_graphic($mes = 0, $proyects_inactive = false)
+	public static function generate_data_hospedaje_pie_graphic($mes = 0, $year = 0, $proyects_inactive = false)
 	{
-		$data_hospedaje = collect(DB::select('graf_pastel_hospedaje(?)', [$mes]));
+		$data_hospedaje = collect(DB::select('CALL graf_pastel_hospedaje(?, ?)', [$mes, $year]));
 
 		if (!$proyects_inactive) return $data_hospedaje->where('status', 'activo');
 

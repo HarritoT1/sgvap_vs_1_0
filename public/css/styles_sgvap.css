@@ -355,26 +355,34 @@ div.do_responsive_div {
 
 div.do_responsive_div2 {
   width: 100%;
-  overflow: hidden;
-  height: 25rem;
+  overflow-y: auto;
+  overflow-x: hidden;
+  height: 30rem;
   margin-bottom: 1.5rem;
 }
 
-@media (min-width: 992px) {
+/*@media (min-width: 992px) {
+  div.do_responsive_div2 {
+    width: 48%;
+  }
+}*/
+
+@media (min-width: 1600px) {
   div.do_responsive_div2 {
     width: 48%;
   }
 }
 
-@media (min-width: 1200px) {
+/*@media (min-width: 1200px) {
   div.do_responsive_div2 {
     width: 32%;
   }
-}
+}*/
 
 .do_responsive_div2 canvas {
   width: 100% !important;
-  height: 100% !important;
+  min-height: 100% !important;
+  overflow-y: auto;
 }
 
 div.do_responsive_div3 {

@@ -218,6 +218,6 @@ Route::middleware(['auth', 'inactive'])->group(function () {
     Route::get('/allpersonneltables', [MonthlyExpenseCutController::class, 'generate_data_for_all_personnel'])->name("monthlys.allpersonneltables");
 
     Route::get('/ge_graficas_viaticos', [ReporteViaticosController::class, 'barras'])->name("empleados.graficas_viaticos"); //http://127.0.0.1:8000/ge_graficas_viaticos
-
+    
     Route::get('/ge_graficas_x_viatico', [ReporteViaticosController::class, 'pasteles'])->name("empleados.graficas_x_viatico");
 });
