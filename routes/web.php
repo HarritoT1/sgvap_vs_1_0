@@ -8,6 +8,7 @@ use App\Http\Controllers\ProjectController;
 use App\Http\Controllers\EmployeeController;
 use App\Http\Controllers\DailyExpenseReportController;
 use App\Http\Controllers\MonthlyExpenseCutController;
+use App\Http\Controllers\ReporteViaticosController;
 use App\Models\Customer;
 use App\Models\DailyExpenseReport;
 use App\Models\Employee;
@@ -216,9 +217,7 @@ Route::middleware(['auth', 'inactive'])->group(function () {
 
     Route::get('/allpersonneltables', [MonthlyExpenseCutController::class, 'generate_data_for_all_personnel'])->name("monthlys.allpersonneltables");
 
-    Route::get('/ge_graficas_viaticos', function () {
-        return view('Gestion_empleados/ge_graficas_viaticos'); //http://127.0.0.1:8000/ge_graficas_viaticos
-    })->name("empleados.graficas_viaticos");
+    Route::get('/ge_graficas_viaticos', [ReporteViaticosController::class, 'barras'])->name("empleados.graficas_viaticos"); //http://127.0.0.1:8000/ge_graficas_viaticos
 
     Route::get('/ge_graficas_x_viatico', function () {
         return view('Gestion_empleados/ge_graficas_x_viatico'); //http://127.0.0.1:8000/ge_graficas_x_viatico

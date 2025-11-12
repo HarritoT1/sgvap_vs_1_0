@@ -69,7 +69,7 @@ class Employee extends Model
 		return $this->hasMany(VehicleLoan::class);
 	}
 
-	public static function generate_data_graphics_vts($mes = null, $projectId = null, $rfc = null)
+	public static function generate_data_graphics_vts($mes = null, $year = null, $projectId = null, $rfc = null)
 	{
 		$viaticos_por_empleado = self::select(
 			'employees.id',
@@ -81,6 +81,7 @@ class Employee extends Model
 		)
 			->join('daily_expense_reports', 'daily_expense_reports.employee_id', '=', 'employees.id')
 			->when($mes, fn($q) => $q->whereMonth('daily_expense_reports.fecha_dispersion_dia', $mes))
+			->when($year, fn($q) => $q->whereYear('daily_expense_reports.fecha_dispersion_dia', $year))
 			->when($projectId, fn($q) => $q->where('daily_expense_reports.project_id', $projectId))
 			->when($rfc, fn($q) => $q->where('daily_expense_reports.employee_id', $rfc))
 			->groupBy('employees.id', 'employees.nombre')

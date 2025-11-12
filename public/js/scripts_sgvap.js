@@ -103,6 +103,33 @@ function ask_before_submit_new(id_form) {
             }
         }
 
+        else if (id_form === 'generar_graficas_viaticos_barras') {
+            const selectMes = document.getElementById('mes').value.trim();
+
+            let year = null;
+
+            if (selectMes !== '') {
+                while (true) {
+                    year = prompt("Filtrado por mes detectado. Por favor, ingresa el año para generar las gráficas:");
+                    if (year !== null && year.trim() !== '') break;
+                }
+            }
+
+            const form = document.getElementById(id_form);
+
+            // Si se obtuvo un año, se agrega como input oculto
+            if (year !== null && year.trim() !== '') {
+                const inputYear = document.createElement('input');
+                inputYear.type = 'hidden';
+                inputYear.name = 'year';   // clave que recibirá el backend
+                inputYear.value = year.trim();
+                form.appendChild(inputYear);
+            }
+
+            form.requestSubmit();
+        }
+
+
         else {
             const form = document.getElementById(id_form);
             form.requestSubmit();
