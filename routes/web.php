@@ -219,7 +219,5 @@ Route::middleware(['auth', 'inactive'])->group(function () {
 
     Route::get('/ge_graficas_viaticos', [ReporteViaticosController::class, 'barras'])->name("empleados.graficas_viaticos"); //http://127.0.0.1:8000/ge_graficas_viaticos
 
-    Route::get('/ge_graficas_x_viatico', function () {
-        return view('Gestion_empleados/ge_graficas_x_viatico'); //http://127.0.0.1:8000/ge_graficas_x_viatico
-    })->name("empleados.graficas_x_viatico");
+    Route::get('/ge_graficas_x_viatico', [ReporteViaticosController::class, 'pasteles'])->name("empleados.graficas_x_viatico");
 });

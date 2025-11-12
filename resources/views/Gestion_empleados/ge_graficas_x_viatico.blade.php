@@ -80,7 +80,7 @@
                     <hr class="my-4 mb-2">
 
                     <button class="d-block mx-auto btn btn-primary btn-lg fw-bold button-custom" type="button"
-                        onclick="ask_before_submit_new()" style="background-color: var(--botones-color);">Generar</button>
+                        onclick="ask_before_submit_new('generar_graficas_viaticos_pastel')" style="background-color: var(--botones-color);">Generar</button>
             </form>
         </div>
     </div>

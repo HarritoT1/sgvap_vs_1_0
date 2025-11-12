@@ -103,7 +103,7 @@ function ask_before_submit_new(id_form) {
             }
         }
 
-        else if (id_form === 'generar_graficas_viaticos_barras') {
+        else if (id_form === 'generar_graficas_viaticos_barras' || id_form === 'generar_graficas_viaticos_pastel') {
             const selectMes = document.getElementById('mes').value.trim();
 
             let year = null;

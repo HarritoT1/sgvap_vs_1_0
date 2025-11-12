@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Models\Project;
 use App\Models\Employee;
+use Illuminate\Support\Facades\DB;
 
 class ReporteViaticosController extends Controller
 {
@@ -64,12 +65,39 @@ class ReporteViaticosController extends Controller
                 $data['project_id'] ?? null,
                 $data['employee_id'] ?? null
             );
-
         } catch (\Exception $e) {
             return back()->withErrors(['error' => 'El sistema no pudo generar las gráficas de viáticos: ' . $e->getMessage()])
                 ->withInput();
         }
 
         return view('Gestion_empleados.ge_graficas_viaticos', compact('viaticos_por_proyecto', 'viaticos_por_empleado'));
+    }
+
+    public function pasteles(Request $request)
+    {
+        // Capturamos filtros opcionales desde GET.
+        $mes                = $request->filled('mes') ? $request->input('mes') : 0;
+        $personnel_inactive = $request->has('personnel_inactive');
+        $proyects_inactive  = $request->has('proyects_inactive');
+
+        // Llamada a métodos estáticos ya pulidos.
+        $data_alimentos = Employee::generate_data_alimentos_pie_graphic($mes, $personnel_inactive);
+        $data_tras_local = Employee::generate_data_tras_local_pie_graphic($mes, $personnel_inactive);
+        $data_tras_externo = Employee::generate_data_tras_externo_pie_graphic($mes, $personnel_inactive);
+        $data_com_bancaria = Employee::generate_data_com_bancaria_pie_graphic($mes, $personnel_inactive);
+        $data_gasolina = Project::generate_data_gasolina_pie_graphic($mes, $proyects_inactive);
+        $data_caseta = Project::generate_data_caseta_pie_graphic($mes, $proyects_inactive);
+        $data_hospedaje = Project::generate_data_hospedaje_pie_graphic($mes, $proyects_inactive);
+
+        // Retornar a vista o API
+        return view('reportes.viaticos', compact(
+            'data_alimentos',
+            'data_tras_local',
+            'data_tras_externo',
+            'data_com_bancaria',
+            'data_gasolina',
+            'data_caseta',
+            'data_hospedaje'
+        ));
     }
 }
