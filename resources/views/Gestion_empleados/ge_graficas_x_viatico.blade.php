@@ -130,10 +130,7 @@
             ->pluck('total_gasolina')
             ->map(fn($value) => (float) $value)
             ->toArray();
-        $data_caseta_Array_yValues = $data_caseta
-            ->pluck('total_caseta')
-            ->map(fn($value) => (float) $value)
-            ->toArray();
+        $data_caseta_Array_yValues = $data_caseta->pluck('total_caseta')->map(fn($value) => (float) $value)->toArray();
         $data_hospedaje_Array_yValues = $data_hospedaje
             ->pluck('total_hospedaje')
             ->map(fn($value) => (float) $value)
@@ -151,47 +148,119 @@
 
     <div class="d-flex gap-2 justify-content-between align-items-stretch px-2 flex-wrap">
         <div class="p-3 d-inline-block rounded-3 do_responsive_div2" style="box-shadow: 0px 7px 11px 0px rgba(0,0,0,0.75);">
-            <canvas id="myChartAlimento" data-yValues='@json($data_alimentos_Array_yValues)'
-                data-xValues='@json($data_alimentos_Array_xValues)' data-title="Viático Alimentos:">
-            </canvas>
+            @if ($data_alimentos->isNotEmpty())
+                <canvas id="myChartAlimento" data-yValues='@json($data_alimentos_Array_yValues)'
+                    data-xValues='@json($data_alimentos_Array_xValues)' data-title="Viático Alimentos:">
+                </canvas>
+            @else
+                <p class="fs-5 fw-bold text-secondary text-center">Viático Alimentos:</p>
+                <div class="alert alert-warning" role="alert" style="text-align: center;">
+                    No hay datos suficientes para generar está gráfica ¯\_(ツ)_/¯.
+                    <br>
+                    <br>
+                    ¡Rellena los filtros!
+                </div>
+            @endif
         </div>
 
         <div class="p-3 d-inline-block rounded-3 do_responsive_div2" style="box-shadow: 0px 7px 11px 0px rgba(0,0,0,0.75);">
-            <canvas id="myChartTrasLocal" data-yValues='@json($data_tras_local_Array_yValues)'
-                data-xValues='@json($data_tras_local_Array_xValues)' data-title="Viático Traslados Locales:">
-            </canvas>
+            @if ($data_tras_local->isNotEmpty())
+                <canvas id="myChartTrasLocal" data-yValues='@json($data_tras_local_Array_yValues)'
+                    data-xValues='@json($data_tras_local_Array_xValues)' data-title="Viático Traslados Locales:">
+                </canvas>
+            @else
+                <p class="fs-5 fw-bold text-secondary text-center">Viático Traslados Locales:</p>
+                <div class="alert alert-warning" role="alert" style="text-align: center;">
+                    No hay datos suficientes para generar está gráfica ¯\_(ツ)_/¯.
+                    <br>
+                    <br>
+                    ¡Rellena los filtros!
+                </div>
+            @endif
         </div>
 
         <div class="p-3 d-inline-block rounded-3 do_responsive_div2" style="box-shadow: 0px 7px 11px 0px rgba(0,0,0,0.75);">
-            <canvas id="myChartTrasExterno" data-yValues='@json($data_tras_externo_Array_yValues)'
-                data-xValues='@json($data_tras_externo_Array_xValues)' data-title="Viático Traslados Externos:">
-            </canvas>
-        </div>
-
-        <div class="p-3 d-inline-block rounded-3 do_responsive_div2" style="box-shadow: 0px 7px 11px 0px rgba(0,0,0,0.75);">
-            <canvas id="myChartComBancaria" data-yValues='@json($data_com_bancaria_Array_yValues)'
-                data-xValues='@json($data_com_bancaria_Array_xValues)' data-title="Viático Comisión Bancaria:">
-            </canvas>
-        </div>
-
-        <div class="p-3 d-inline-block rounded-3 do_responsive_div2" style="box-shadow: 0px 7px 11px 0px rgba(0,0,0,0.75);">
-            <canvas id="myChartGasolina" data-yValues='@json($data_gasolina_Array_yValues)'
-                data-xValues='@json($data_gasolina_Array_xValues)' data-title="Viático Gasolina:">
-            </canvas>
+            @if ($data_tras_externo->isNotEmpty())
+                <canvas id="myChartTrasExterno" data-yValues='@json($data_tras_externo_Array_yValues)'
+                    data-xValues='@json($data_tras_externo_Array_xValues)' data-title="Viático Traslados Externos:">
+                </canvas>
+            @else
+                <p class="fs-5 fw-bold text-secondary text-center">Viático Traslados Externos:</p>
+                <div class="alert alert-warning" role="alert" style="text-align: center;">
+                    No hay datos suficientes para generar está gráfica ¯\_(ツ)_/¯.
+                    <br>
+                    <br>
+                    ¡Rellena los filtros!
+                </div>
+            @endif
         </div>
 
         <div class="p-3 d-inline-block rounded-3 do_responsive_div2"
             style="box-shadow: 0px 7px 11px 0px rgba(0,0,0,0.75);">
-            <canvas id="myChartCaseta" data-yValues='@json($data_caseta_Array_yValues)'
-                data-xValues='@json($data_caseta_Array_xValues)' data-title="Viático Caseta:">
-            </canvas>
+            @if ($data_com_bancaria->isNotEmpty())
+                <canvas id="myChartComBancaria" data-yValues='@json($data_com_bancaria_Array_yValues)'
+                    data-xValues='@json($data_com_bancaria_Array_xValues)' data-title="Viático Comisión Bancaria:">
+                </canvas>
+            @else
+                <p class="fs-5 fw-bold text-secondary text-center">Viático Comisión Bancaria:</p>
+                <div class="alert alert-warning" role="alert" style="text-align: center;">
+                    No hay datos suficientes para generar está gráfica ¯\_(ツ)_/¯.
+                    <br>
+                    <br>
+                    ¡Rellena los filtros!
+                </div>
+            @endif
         </div>
 
         <div class="p-3 d-inline-block rounded-3 do_responsive_div2"
             style="box-shadow: 0px 7px 11px 0px rgba(0,0,0,0.75);">
-            <canvas id="myChartHospedaje" data-yValues='@json($data_hospedaje_Array_yValues)'
-                data-xValues='@json($data_hospedaje_Array_xValues)' data-title="Viático Hospedaje:">
-            </canvas>
+            @if ($data_gasolina->isNotEmpty())
+                <canvas id="myChartGasolina" data-yValues='@json($data_gasolina_Array_yValues)'
+                    data-xValues='@json($data_gasolina_Array_xValues)' data-title="Viático Gasolina:">
+                </canvas>
+            @else
+                <p class="fs-5 fw-bold text-secondary text-center">Viático Gasolina:</p>
+                <div class="alert alert-warning" role="alert" style="text-align: center;">
+                    No hay datos suficientes para generar está gráfica ¯\_(ツ)_/¯.
+                    <br>
+                    <br>
+                    ¡Rellena los filtros!
+                </div>
+            @endif
+        </div>
+
+        <div class="p-3 d-inline-block rounded-3 do_responsive_div2"
+            style="box-shadow: 0px 7px 11px 0px rgba(0,0,0,0.75);">
+            @if ($data_caseta->isNotEmpty())
+                <canvas id="myChartCaseta" data-yValues='@json($data_caseta_Array_yValues)'
+                    data-xValues='@json($data_caseta_Array_xValues)' data-title="Viático Caseta:">
+                </canvas>
+            @else
+                <p class="fs-5 fw-bold text-secondary text-center">Viático Caseta:</p>
+                <div class="alert alert-warning" role="alert" style="text-align: center;">
+                    No hay datos suficientes para generar está gráfica ¯\_(ツ)_/¯.
+                    <br>
+                    <br>
+                    ¡Rellena los filtros!
+                </div>
+            @endif
+        </div>
+
+        <div class="p-3 d-inline-block rounded-3 do_responsive_div2"
+            style="box-shadow: 0px 7px 11px 0px rgba(0,0,0,0.75);">
+            @if ($data_hospedaje->isNotEmpty())
+                <canvas id="myChartHospedaje" data-yValues='@json($data_hospedaje_Array_yValues)'
+                    data-xValues='@json($data_hospedaje_Array_xValues)' data-title="Viático Hospedaje:">
+                </canvas>
+            @else
+                <p class="fs-5 fw-bold text-secondary text-center">Viático Hospedaje:</p>
+                <div class="alert alert-warning" role="alert" style="text-align: center;">
+                    No hay datos suficientes para generar está gráfica ¯\_(ツ)_/¯.
+                    <br>
+                    <br>
+                    ¡Rellena los filtros!
+                </div>
+            @endif
         </div>
     </div>
 
