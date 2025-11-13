@@ -36,7 +36,7 @@ class GasolineDispersionFactory extends Factory
         return [
             'fecha_dispersion' => $this->faker->dateTimeBetween('-1 years', 'now'),
             'project_id' => Project::query()->inRandomOrder()->value('id'),
-            'vehicle_id' => null,//Vehicle::query()->inRandomOrder()->value('id'),
+            'vehicle_id' => Vehicle::query()->inRandomOrder()->value('id'),
             'costo_lt' => $costo_lt,
             'cant_litros' => $cant_litros,
             'monto_dispersado' => round($monto_dispersado, 6),

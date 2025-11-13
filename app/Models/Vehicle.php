@@ -8,6 +8,7 @@ namespace App\Models;
 
 use Carbon\Carbon;
 use Illuminate\Database\Eloquent\Collection;
+use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
 /**
@@ -34,6 +35,8 @@ use Illuminate\Database\Eloquent\Model;
  */
 class Vehicle extends Model
 {
+	use HasFactory;
+
 	protected $table = 'vehicles';
 	public $incrementing = false;
 	public $timestamps = false;
@@ -46,6 +49,7 @@ class Vehicle extends Model
 	];
 
 	protected $fillable = [
+		'id',
 		'nombre_modelo',
 		'marca',
 		'anio',
@@ -56,7 +60,6 @@ class Vehicle extends Model
 		'status',
 		'is_on_loan',
 		'caracteristicas',
-		'last_update'
 	];
 
 	public function gasoline_dispersions()

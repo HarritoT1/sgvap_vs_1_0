@@ -16,10 +16,11 @@ class DatabaseSeeder extends Seeder
      */
     public function run(): void
     {
-        $this->truncateTables(['customers', 'projects', 'employees', 'daily_expense_reports', 'extra_ecore_debts', 'gasoline_dispersions', 'tag_dispersions', 'lodging_dispersions', 'monthly_expense_cuts']);
+        $this->truncateTables(['customers', 'projects', 'employees', 'daily_expense_reports', 'extra_ecore_debts', 'gasoline_dispersions', 'tag_dispersions', 'lodging_dispersions', 'monthly_expense_cuts', 'vehicles']);
         $this->call(CustomerSeeder::class);
         $this->call(ProjectSeeder::class);
         $this->call(EmployeeSeeder::class);
+        $this->call(VehicleSeeder::class);
         $this->call(DailyExpenseReportSeeder::class);
         $this->call(ExtraEcoreDebtSeeder::class);
         $this->call(GasolineDispersionSeeder::class);

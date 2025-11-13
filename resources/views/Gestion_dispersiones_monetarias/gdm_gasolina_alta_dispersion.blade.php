@@ -9,12 +9,14 @@
             <h2 class="mb-3 fw-bold" style="font-size: 1.5rem;">Datos de la dispersión:</h2>
             <form id="crear_dm_gasolina" action="#" method="post" enctype="application/x-www-form-urlencoded"
                 autocomplete="off" class="needs-validation p-1" novalidate>
+                @csrf
+
                 <div class="row g-3">
 
                     <div class="col-sm-6">
                         <label for="fecha_dispersion" class="form-label fw-bold">Fecha de la dispersión</label>
                         <input type="date" class="form-control sm-form-control" id="fecha_dispersion"
-                            name="fecha_dispersion" value="" required>
+                            name="fecha_dispersion" value="{{ old('fecha_dispersion') }}" required>
                         <div class="invalid-feedback">
                             Ingresa una fecha válida.
                         </div>
@@ -23,7 +25,8 @@
                     <div class="col-sm-6">
                         <label for="input_find_id_proyect" class="form-label fw-bold">id del proyecto</label>
                         <input type="text" class="form-control" id="input_find_id_proyect" name="project_id"
-                            placeholder="" value="" required maxlength="80" list="sugerencias_id_proyect">
+                            placeholder="" value="{{ old('project_id') }}" required maxlength="80"
+                            list="sugerencias_id_proyect">
                         <div class="invalid-feedback">
                             Ingresa un id de proyecto válido.
                         </div>
@@ -53,7 +56,7 @@
                             <span class="input-group-text">$</span>
                             <input type="number" class="form-control" aria-label="Amount (to the nearest dollar)"
                                 id="costo_lt" name="costo_lt" placeholder="0.0000" step="0.0001" min="0"
-                                value="" required>
+                                value="{{ old('costo_lt') }}" required>
                             <div class="invalid-feedback">
                                 Ingresa un costo de gasolina válido.
                             </div>
@@ -66,7 +69,7 @@
                             <span class="input-group-text">$</span>
                             <input type="number" class="form-control" aria-label="Amount (to the nearest dollar)"
                                 id="cant_litros" name="cant_litros" placeholder="0.0000" step="0.0001" min="0"
-                                value="" required>
+                                value="{{ old('cant_litros') }}" required>
                             <div class="invalid-feedback">
                                 Ingresa una cantidad de lts. de gasolina válida.
                             </div>
@@ -140,8 +143,20 @@
                     <hr class="my-4 mb-2">
 
                     <button class="d-block mx-auto btn btn-primary btn-lg fw-bold button-custom" type="button"
-                        onclick="ask_before_submit_new()" style="background-color: var(--botones-color);">Registrar
+                        onclick="ask_before_submit_new('crear_dm_gasolina')"
+                        style="background-color: var(--botones-color);">Registrar
                         dispersión</button>
+
+                    @if ($errors->any())
+                        <div class="alert alert-danger mt-3 text-justify" role="alert">
+                            <h6>Por favor corrige los errores debajo:</h6>
+                            <ul style="text-align: justify;">
+                                @foreach ($errors->all() as $error)
+                                    <li>{{ $error }}</li>
+                                @endforeach
+                            </ul>
+                        </div>
+                    @endif
 
                     <hr class="my-4 mb-2">
                 </div>
@@ -170,13 +185,15 @@
                     tu tabla.</li>
                 <li class="mb-2">La hoja de cálculo de los registros a almacenar debe ser la primera.</li>
                 <li class="mb-2">El campo <em class="fw-bold">fecha_dispersion</em> debe de ir como una cadena texto
-                    <strong>encerrada entre comillas dobles</strong>. Y cumplir el formato <strong>aaaa-mm-dd</strong>.</li>
+                    <strong>encerrada entre comillas dobles</strong>. Y cumplir el formato <strong>aaaa-mm-dd</strong>.
+                </li>
                 <li class="mb-2">Si necesitas la plantilla base .xlsx compatible, la puedes <a
                         class="text-decoration-none" download="dp_gasolina_formato_valido.xlsx"
                         href="{{ asset('img/dp_gasolina_formato_valido.xlsx') }}">descargar aquí</a>. Los campos
                     <strong>base_imponible</strong>, <strong>iva_acumulado</strong> e <strong>importe_total</strong> ya
                     vienen calculados automáticamente en esta plantilla al momento de ingresar el
-                    <strong>monto_dispersado</strong>.</li>
+                    <strong>monto_dispersado</strong>.
+                </li>
                 <li>Si cumples con todo ello tus registros serán almacenados correctamente y se te notificará aquí mismo, en
                     caso contrario, se te notificará de igual forma.</li>
             </ul>

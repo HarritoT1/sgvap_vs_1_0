@@ -17,26 +17,6 @@ use App\Models\Employee;
     return view('welcome');
 }); //http://127.0.0.1:8000/*/
 
-Route::get('/gdm_gasolina_alta_dispersion', function () {
-    return view('Gestion_dispersiones_monetarias/gdm_gasolina_alta_dispersion'); //http://127.0.0.1:8000/gdm_gasolina_alta_dispersion
-})->name("dispersiones.gasolina_alta_dispersion");
-
-Route::get('/gdm_gasolina_disp_consulta_act_filtro', function () {
-    return view('Gestion_dispersiones_monetarias/gdm_gasolina_disp_consulta_act_filtro'); //http://127.0.0.1:8000/gdm_gasolina_disp_consulta_act_filtro
-})->name("dispersiones.gasolina_disp_consulta_act_filtro");
-
-Route::post('/gasolina_disp_consulta_filtro', function () {
-    return response()->json([["id" => 1, "fecha_dispersion" => "2025-12-24", "project_name" => "uetamo", "vehicle_id" => "ASFG-AH4D"], ["id" => 2, "fecha_dispersion" => "2025-12-25", "project_name" => "parajilla", "vehicle_id" => "ZXCW-RT56"], ["id" => 3, "fecha_dispersion" => "2025-12-26", "project_name" => "zacatenco", "vehicle_id" => "QWER-YUI7"]]);
-});
-
-Route::get('/gdm_gasolina_disp_consulta_act/{id}', function () {
-    return view('Gestion_dispersiones_monetarias/gdm_gasolina_disp_consulta_act'); //http://127.0.0.1:8000/gdm_gasolina_disp_consulta_act
-})->name("dispersiones.gasolina_disp_consulta_act")->where('id', '[0-9]+');
-
-Route::get('/gdm_graficas_gasolina', function () {
-    return view('Gestion_dispersiones_monetarias/gdm_graficas_gasolina'); //http://127.0.0.1:8000/gdm_graficas_gasolina
-})->name("dispersiones.graficas_gasolina");
-
 Route::get('/gdm_caseta_alta_dispersion', function () {
     return view('Gestion_dispersiones_monetarias/gdm_caseta_alta_dispersion'); //http://127.0.0.1:8000/gdm_caseta_alta_dispersion
 })->name("dispersiones.caseta_alta_dispersion");
@@ -218,6 +198,27 @@ Route::middleware(['auth', 'inactive'])->group(function () {
     Route::get('/allpersonneltables', [MonthlyExpenseCutController::class, 'generate_data_for_all_personnel'])->name("monthlys.allpersonneltables");
 
     Route::get('/ge_graficas_viaticos', [ReporteViaticosController::class, 'barras'])->name("empleados.graficas_viaticos"); //http://127.0.0.1:8000/ge_graficas_viaticos
-    
+
     Route::get('/ge_graficas_x_viatico', [ReporteViaticosController::class, 'pasteles'])->name("empleados.graficas_x_viatico");
+
+    /******************************/
+    Route::get('/gdm_gasolina_alta_dispersion', function () {
+        return view('Gestion_dispersiones_monetarias/gdm_gasolina_alta_dispersion'); //http://127.0.0.1:8000/gdm_gasolina_alta_dispersion
+    })->name("dispersiones.gasolina_alta_dispersion");
+
+    Route::get('/gdm_gasolina_disp_consulta_act_filtro', function () {
+        return view('Gestion_dispersiones_monetarias/gdm_gasolina_disp_consulta_act_filtro'); //http://127.0.0.1:8000/gdm_gasolina_disp_consulta_act_filtro
+    })->name("dispersiones.gasolina_disp_consulta_act_filtro");
+
+    Route::post('/gasolina_disp_consulta_filtro', function () {
+        return response()->json([["id" => 1, "fecha_dispersion" => "2025-12-24", "project_name" => "uetamo", "vehicle_id" => "ASFG-AH4D"], ["id" => 2, "fecha_dispersion" => "2025-12-25", "project_name" => "parajilla", "vehicle_id" => "ZXCW-RT56"], ["id" => 3, "fecha_dispersion" => "2025-12-26", "project_name" => "zacatenco", "vehicle_id" => "QWER-YUI7"]]);
+    });
+
+    Route::get('/gdm_gasolina_disp_consulta_act/{id}', function () {
+        return view('Gestion_dispersiones_monetarias/gdm_gasolina_disp_consulta_act'); //http://127.0.0.1:8000/gdm_gasolina_disp_consulta_act
+    })->name("dispersiones.gasolina_disp_consulta_act")->where('id', '[0-9]+');
+
+    Route::get('/gdm_graficas_gasolina', function () {
+        return view('Gestion_dispersiones_monetarias/gdm_graficas_gasolina'); //http://127.0.0.1:8000/gdm_graficas_gasolina
+    })->name("dispersiones.graficas_gasolina");
 });

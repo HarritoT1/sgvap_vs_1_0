@@ -28,7 +28,7 @@ class TagDispersionFactory extends Factory
         return [
             'fecha_dispersion' => $this->faker->dateTimeBetween('-1 years', 'now'),
             'project_id' => Project::query()->inRandomOrder()->value('id'),
-            'vehicle_id' => null,//Vehicle::query()->inRandomOrder()->value('id'),
+            'vehicle_id' => Vehicle::query()->inRandomOrder()->value('id'),
             'nombre_caseta' => $this->faker->city() . ' - ' . $this->faker->city(), // Ej: "Puebla - CDMX"
             'base_imponible' => round($base_imponible, 6),
             'iva_caseta' => round($iva_caseta, 6),
