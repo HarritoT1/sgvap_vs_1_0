@@ -1160,7 +1160,7 @@ function analizar_xls(expectedHeadersParam) {
                         window.location.reload();
                     } else {
                         alert("Hubo un problema al procesar el archivo. Intenta de nuevo.");
-                        window.location.reload();
+                        //window.location.reload();
                     }
                 })
                 .catch(err => console.error("Error enviando datos:", err));

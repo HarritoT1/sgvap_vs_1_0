@@ -1,0 +1,54 @@
+<?php
+
+namespace App\Http\Controllers;
+
+use App\Http\Requests\StoreOneGasolineDispersionRequest;
+use App\Http\Requests\StoreManyGasolineDispersionRequest;
+use Illuminate\Http\Request;
+use App\Models\GasolineDispersion;
+use Illuminate\Support\Facades\DB;
+
+class GasolineDispersionController extends Controller
+{
+    public function storeOne(StoreOneGasolineDispersionRequest $request)
+    {
+        $data = $request->validated();
+
+        try {
+            $gasoline_dispersion = GasolineDispersion::create($data);
+        } catch (\Exception $e) {
+            return back()->withErrors(['error' => 'No se pudo registrar la dispersión de gasolina: ' . $e->getMessage()])
+                ->withInput();
+        }
+
+        return redirect()->route('dispersiones.gasolina_disp_consulta_act', ['id' => $gasoline_dispersion->id])
+            ->with('success', 'Dispersión de gasolina registrada exitosamente ;).');
+    }
+
+
+    public function storeMany(StoreManyGasolineDispersionRequest $request)
+    {
+        $data = $request->validated(); // array de arrays asociativos.
+
+        try {
+            $insertedCount = DB::transaction(function () use ($data) {
+                $count = 0;
+                foreach ($data as $item) {
+                    GasolineDispersion::create($item);
+                    $count++;
+                }
+                return $count; // el valor que devuelve la transacción.
+            });
+        } catch (\Exception $e) {
+            return response()->json([
+                'success' => false,
+                'errors' => 'Error en el servidor.'
+            ], 500);
+        }
+
+        return response()->json([
+            'success' => true,
+            'inserted' => $insertedCount,
+        ], 201);
+    }
+}

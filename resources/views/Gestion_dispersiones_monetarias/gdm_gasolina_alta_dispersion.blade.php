@@ -7,8 +7,8 @@
         <div class="w-100 div-secondary">
 
             <h2 class="mb-3 fw-bold" style="font-size: 1.5rem;">Datos de la dispersión:</h2>
-            <form id="crear_dm_gasolina" action="#" method="post" enctype="application/x-www-form-urlencoded"
-                autocomplete="off" class="needs-validation p-1" novalidate>
+            <form id="crear_dm_gasolina" action="{{ route('gasoline.create') }}" method="post"
+                enctype="application/x-www-form-urlencoded" autocomplete="off" class="needs-validation p-1" novalidate>
                 @csrf
 
                 <div class="row g-3">
@@ -38,12 +38,17 @@
                         <label for="vehicle_id" class="form-label fw-bold">Placa del vehículo</label>
                         <select name="vehicle_id" id="vehicle_id" class="form-control form-select"
                             aria-label="Default select example" required>
-                            <option value="ABJ3-S23D" selected>
-                                ABJ3-S23D
+                            <option value="">
+                                NINGUNO
                             </option>
-                            <option value="ABJ3-S23E">
-                                ABJ3-S23E
-                            </option>
+                            @if (!empty($vehicles))
+                                @foreach ($vehicles as $vehicle)
+                                    <option value="{{ $vehicle->id }}"
+                                        {{ old('vehicle_id') == $vehicle->id ? 'selected' : '' }}>
+                                        {{ $vehicle->id }} → {{ $vehicle->marca }} {{ $vehicle->nombre_modelo }} {{ $vehicle->color }}
+                                    </option>
+                                @endforeach
+                            @endif
                         </select>
                         <div class="invalid-feedback">
                             Ingresa una placa de vehículo válida.
@@ -146,6 +151,14 @@
                         onclick="ask_before_submit_new('crear_dm_gasolina')"
                         style="background-color: var(--botones-color);">Registrar
                         dispersión</button>
+
+                    @if (session('success'))
+                        <div class="alert alert-success mt-3 text-justify" role="alert">
+                            <ul class="mb-0">
+                                <li>{{ session('success') }}</li>
+                            </ul>
+                        </div>
+                    @endif
 
                     @if ($errors->any())
                         <div class="alert alert-danger mt-3 text-justify" role="alert">

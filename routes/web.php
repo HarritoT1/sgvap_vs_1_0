@@ -9,9 +9,11 @@ use App\Http\Controllers\EmployeeController;
 use App\Http\Controllers\DailyExpenseReportController;
 use App\Http\Controllers\MonthlyExpenseCutController;
 use App\Http\Controllers\ReporteViaticosController;
+use App\Http\Controllers\GasolineDispersionController;
 use App\Models\Customer;
 use App\Models\DailyExpenseReport;
 use App\Models\Employee;
+use App\Models\Vehicle;
 
 /*Route::get('/', function () {
     return view('welcome');
@@ -203,8 +205,14 @@ Route::middleware(['auth', 'inactive'])->group(function () {
 
     /******************************/
     Route::get('/gdm_gasolina_alta_dispersion', function () {
-        return view('Gestion_dispersiones_monetarias/gdm_gasolina_alta_dispersion'); //http://127.0.0.1:8000/gdm_gasolina_alta_dispersion
+        return view('Gestion_dispersiones_monetarias/gdm_gasolina_alta_dispersion', ['vehicles' => Vehicle::all()]); //http://127.0.0.1:8000/gdm_gasolina_alta_dispersion
     })->name("dispersiones.gasolina_alta_dispersion");
+
+    Route::post('/gasoline_create', [GasolineDispersionController::class, 'storeOne'])->name('gasoline.create');
+
+    Route::post('/gdm_gasolina_auto_alta_xls', [GasolineDispersionController::class, 'storeMany'])->name('gasoline.createMany');
+
+    /**************/
 
     Route::get('/gdm_gasolina_disp_consulta_act_filtro', function () {
         return view('Gestion_dispersiones_monetarias/gdm_gasolina_disp_consulta_act_filtro'); //http://127.0.0.1:8000/gdm_gasolina_disp_consulta_act_filtro
