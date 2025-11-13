@@ -45,7 +45,8 @@
                                 @foreach ($vehicles as $vehicle)
                                     <option value="{{ $vehicle->id }}"
                                         {{ old('vehicle_id') == $vehicle->id ? 'selected' : '' }}>
-                                        {{ $vehicle->id }} → {{ $vehicle->marca }} {{ $vehicle->nombre_modelo }} {{ $vehicle->color }}
+                                        {{ $vehicle->id }} → {{ $vehicle->marca }} {{ $vehicle->nombre_modelo }}
+                                        {{ $vehicle->color }}
                                     </option>
                                 @endforeach
                             @endif
@@ -170,6 +171,18 @@
                             </ul>
                         </div>
                     @endif
+
+                    <div class="alert alert-danger mt-3 text-justify d-none" role="alert" id="errors_part_1">
+                        <h6>Por favor corrige los errores debajo:</h6>
+                        <ul style="text-align: justify;">
+                        </ul>
+                    </div>
+
+                    <div class="alert alert-success mt-3 text-justify d-none" role="alert" id="success_part_1">
+                        <h6>Felicidades tus dispersiones se guardaron correctamente en la base de datos:</h6>
+                        <ul style="text-align: justify;">
+                        </ul>
+                    </div>
 
                     <hr class="my-4 mb-2">
                 </div>

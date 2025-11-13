@@ -1072,6 +1072,14 @@ function asig_listener_on_change() {
 }
 
 function analizar_xls(expectedHeadersParam) {
+    const divErrosPart1 = document.getElementById('errors_part_1');
+    divErrosPart1.classList.add('d-none');
+    divErrosPart1.querySelector('ul').innerHTML = '';
+
+    const divSuccessPart1 = document.getElementById('success_part_1');
+    divSuccessPart1.classList.add('d-none');
+    divSuccessPart1.querySelector('ul').innerHTML = '';
+    
     if (confirm("¿Estás seguro de que deseas analizar el archivo Excel seleccionado?")) {
         console.log("Analizando archivo Excel...");
         processExcelFile();
@@ -1114,7 +1122,7 @@ function analizar_xls(expectedHeadersParam) {
             const validHeaders = JSON.stringify(headers) === JSON.stringify(expectedHeaders);
 
             if (!validHeaders) {
-                alert("Los headers no coinciden con lo esperado o alguna otra característica mencionada no esta satisfecha.");
+                alert("Los headers no coinciden con lo esperado o alguna otra característica mencionada no esta satisfecha. ❌");
                 window.location.reload();
                 return;
             }
@@ -1128,15 +1136,15 @@ function analizar_xls(expectedHeadersParam) {
                     if (typeof row[i] === 'string' && h === 'fecha_dispersion') obj[h] = row[i].replaceAll('"', '').trim();
                     else if (typeof row[i] === 'number') obj[h] = Number(row[i].toFixed(3));
                     else if (typeof row[i] !== 'undefined') obj[h] = row[i] !== undefined ? row[i] : null;
-                    else {
-                        campo_vacio = true;
-                    }
+                    else campo_vacio = true;
+
+                    if (/^\s*$/.test(row[i])) campo_vacio = true;
                 });
                 return obj;
             });
 
             if (campo_vacio) {
-                alert("¡Ups!. Al parecer te falta llenar un campo.");
+                alert("¡Ups!. Al parecer te falta llenar un campo. ❌");
                 window.location.reload();
                 return;
             }
@@ -1156,10 +1164,27 @@ function analizar_xls(expectedHeadersParam) {
                 .then(object => {
                     console.log("Respuesta del backend:", object);
                     if (object.success) {
-                        alert("Archivo procesado correctamente. Se han registrado los datos.");
-                        window.location.reload();
+                        alert("Archivo procesado correctamente. Se han registrado los datos. ✔");
+
+                        divSuccessPart1.querySelector('ul').innerHTML = `<li>Número de dispersiones registradas exitosamente: <b>${object.inserted}<b></li>`;
+
+                        divSuccessPart1.classList.remove('d-none');
+
+                        //window.location.reload();
+
                     } else {
-                        alert("Hubo un problema al procesar el archivo. Intenta de nuevo.");
+                        alert("Hubo un problema al procesar el archivo. Intenta de nuevo. ❌");
+
+                        // Iterar sobre las claves del objeto "errors"
+                        for (const campo in object.errors) {
+                            const mensajes = object.errors[campo]; // Esto es un array.
+                            mensajes.forEach(msg => {
+                                divErrosPart1.querySelector('ul').innerHTML += `<li>FILA ${campo}: ${msg}</li>`;
+                            });
+                        }
+
+                        divErrosPart1.classList.remove('d-none');
+
                         //window.location.reload();
                     }
                 })
