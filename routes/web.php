@@ -10,6 +10,7 @@ use App\Http\Controllers\DailyExpenseReportController;
 use App\Http\Controllers\MonthlyExpenseCutController;
 use App\Http\Controllers\ReporteViaticosController;
 use App\Http\Controllers\GasolineDispersionController;
+use App\Http\Controllers\TagDispersionController;
 use App\Models\Customer;
 use App\Models\DailyExpenseReport;
 use App\Models\Employee;
@@ -18,46 +19,6 @@ use App\Models\Vehicle;
 /*Route::get('/', function () {
     return view('welcome');
 }); //http://127.0.0.1:8000/*/
-
-Route::get('/gdm_caseta_alta_dispersion', function () {
-    return view('Gestion_dispersiones_monetarias/gdm_caseta_alta_dispersion'); //http://127.0.0.1:8000/gdm_caseta_alta_dispersion
-})->name("dispersiones.caseta_alta_dispersion");
-
-Route::get('/gdm_caseta_disp_consulta_act_filtro', function () {
-    return view('Gestion_dispersiones_monetarias/gdm_caseta_disp_consulta_act_filtro'); //http://127.0.0.1:8000/gdm_caseta_disp_consulta_act_filtro
-})->name("dispersiones.caseta_disp_consulta_act_filtro");
-
-Route::post('/caseta_disp_consulta_filtro', function () {
-    return response()->json([["id" => 1, "fecha_dispersion" => "2025-12-24", "project_name" => "uetamo", "vehicle_id" => "ASFG-AH4D"], ["id" => 2, "fecha_dispersion" => "2025-12-25", "project_name" => "parajilla", "vehicle_id" => "ZXCW-RT56"], ["id" => 3, "fecha_dispersion" => "2025-12-26", "project_name" => "zacatenco", "vehicle_id" => "QWER-YUI7"]]);
-});
-
-Route::get('/gdm_caseta_disp_consulta_act/{id}', function () {
-    return view('Gestion_dispersiones_monetarias/gdm_caseta_disp_consulta_act'); //http://127.0.0.1:8000/gdm_caseta_disp_consulta_act
-})->name("dispersiones.caseta_disp_consulta_act")->where('id', '[0-9]+');
-
-Route::get('/gdm_graficas_caseta', function () {
-    return view('Gestion_dispersiones_monetarias/gdm_graficas_caseta'); //http://127.0.0.1:8000/gdm_graficas_caseta
-})->name("dispersiones.graficas_caseta");
-
-Route::get('/gdm_hospedaje_alta_dispersion', function () {
-    return view('Gestion_dispersiones_monetarias/gdm_hospedaje_alta_dispersion'); //http://127.0.0.1:8000/gdm_hospedaje_alta_dispersion
-})->name("dispersiones.hospedaje_alta_dispersion");
-
-Route::get('/gdm_hospedaje_disp_consulta_act_filtro', function () {
-    return view('Gestion_dispersiones_monetarias/gdm_hospedaje_disp_consulta_act_filtro'); //http://127.0.0.1:8000/gdm_hospedaje_disp_consulta_act_filtro
-})->name("dispersiones.hospedaje_disp_consulta_act_filtro");
-
-Route::post('/hospedaje_disp_consulta_filtro', function () {
-    return response()->json([["id" => 1, "fecha_dispersion" => "2025-12-24", "project_name" => "uetamo", "razon_social" => "ASFG-AH4D"], ["id" => 2, "fecha_dispersion" => "2025-12-25", "project_name" => "parajilla", "razon_social" => "ZXCW-RT56"], ["id" => 3, "fecha_dispersion" => "2025-12-26", "project_name" => "zacatenco", "razon_social" => "QWER-YUI7"], ["id" => 1, "fecha_dispersion" => "2025-12-24", "project_name" => "uetamo", "razon_social" => "ASFG-AH4D"], ["id" => 2, "fecha_dispersion" => "2025-12-25", "project_name" => "parajilla", "razon_social" => "ZXCW-RT56"], ["id" => 3, "fecha_dispersion" => "2025-12-26", "project_name" => "zacatenco", "razon_social" => "QWER-YUI7"], ["id" => 1, "fecha_dispersion" => "2025-12-24", "project_name" => "uetamo", "razon_social" => "ASFG-AH4D"], ["id" => 2, "fecha_dispersion" => "2025-12-25", "project_name" => "parajilla", "razon_social" => "ZXCW-RT56"], ["id" => 3, "fecha_dispersion" => "2025-12-26", "project_name" => "zacatenco", "razon_social" => "QWER-YUI7"], ["id" => 1, "fecha_dispersion" => "2025-12-24", "project_name" => "uetamo", "razon_social" => "ASFG-AH4D"], ["id" => 2, "fecha_dispersion" => "2025-12-25", "project_name" => "parajilla", "razon_social" => "ZXCW-RT56"], ["id" => 3, "fecha_dispersion" => "2025-12-26", "project_name" => "zacatenco", "razon_social" => "QWER-YUI7"]]);
-});
-
-Route::get('/gdm_hospedaje_disp_consulta_act/{id}', function () {
-    return view('Gestion_dispersiones_monetarias/gdm_hospedaje_disp_consulta_act'); //http://127.0.0.1:8000/gdm_hospedaje_disp_consulta_act
-})->name("dispersiones.hospedaje_disp_consulta_act")->where('id', '[0-9]+');
-
-Route::get('/gdm_graficas_hospedaje', function () {
-    return view('Gestion_dispersiones_monetarias/gdm_graficas_hospedaje'); //http://127.0.0.1:8000/gdm_graficas_hospedaje
-})->name("dispersiones.graficas_hospedaje");
 
 Route::get('/gv_registro_vehiculos', function () {
     return view('Gestion_vehiculos/gv_registro_vehiculos'); //http://127.0.0.1:8000/gv_registro_vehiculos
@@ -217,16 +178,62 @@ Route::middleware(['auth', 'inactive'])->group(function () {
     Route::put('/gasoline_update', [GasolineDispersionController::class, 'update'])->name('gasoline.update');
 
     Route::get('/gdm_gasolina_disp_consulta_act_filtro', function () {
-        return view('Gestion_dispersiones_monetarias/gdm_gasolina_disp_consulta_act_filtro' , ['vehicles' => Vehicle::all()]); //http://127.0.0.1:8000/gdm_gasolina_disp_consulta_act_filtro
+        return view('Gestion_dispersiones_monetarias/gdm_gasolina_disp_consulta_act_filtro', ['vehicles' => Vehicle::all()]); //http://127.0.0.1:8000/gdm_gasolina_disp_consulta_act_filtro
     })->name("dispersiones.gasolina_disp_consulta_act_filtro");
 
     Route::post('/gasolina_disp_consulta_filtro', [GasolineDispersionController::class, 'find'])->name('gasoline.find');
 
-    Route::delete('/gasolina_destroy/{dispersion}', [GasolineDispersionController::class, 'destroy'])->name('gasoline.destroy')->where('id', '[0-9]+');
-    
+    Route::delete('/gasolina_destroy/{dispersion}', [GasolineDispersionController::class, 'destroy'])->name('gasoline.destroy')->where('dispersion', '[0-9]+');
+
+    Route::get('/gdm_caseta_alta_dispersion', function () {
+        return view('Gestion_dispersiones_monetarias/gdm_caseta_alta_dispersion', ['vehicles' => Vehicle::all()]); //http://127.0.0.1:8000/gdm_caseta_alta_dispersion
+    })->name("dispersiones.caseta_alta_dispersion");
+
+    Route::post('/tag_create', [TagDispersionController::class, 'storeOne'])->name('tag.create');
+
+    Route::post('/gdm_tag_auto_alta_xls', [TagDispersionController::class, 'storeMany'])->name('tag.createMany');
+
+    Route::get('/gdm_caseta_disp_consulta_act/{dispersion}', [TagDispersionController::class, 'show'])->name("dispersiones.caseta_disp_consulta_act")->where('dispersion', '[0-9]+');
+
+    Route::put('/tag_update', [TagDispersionController::class, 'update'])->name('tag.update');
+
+    Route::get('/gdm_caseta_disp_consulta_act_filtro', function () {
+        return view('Gestion_dispersiones_monetarias/gdm_caseta_disp_consulta_act_filtro', ['vehicles' => Vehicle::all()]); //http://127.0.0.1:8000/gdm_caseta_disp_consulta_act_filtro
+    })->name("dispersiones.caseta_disp_consulta_act_filtro");
+
+    Route::post('/caseta_disp_consulta_filtro', [TagDispersionController::class, 'find'])->name('tag.find');
+
+    Route::delete('/caseta_destroy/{dispersion}', [TagDispersionController::class, 'destroy'])->name('tag.destroy')->where('dispersion', '[0-9]+');
+
     /**************/
 
+    Route::get('/gdm_hospedaje_alta_dispersion', function () {
+        return view('Gestion_dispersiones_monetarias/gdm_hospedaje_alta_dispersion'); //http://127.0.0.1:8000/gdm_hospedaje_alta_dispersion
+    })->name("dispersiones.hospedaje_alta_dispersion");
+
+    Route::get('/gdm_hospedaje_disp_consulta_act_filtro', function () {
+        return view('Gestion_dispersiones_monetarias/gdm_hospedaje_disp_consulta_act_filtro'); //http://127.0.0.1:8000/gdm_hospedaje_disp_consulta_act_filtro
+    })->name("dispersiones.hospedaje_disp_consulta_act_filtro");
+
+    Route::post('/hospedaje_disp_consulta_filtro', function () {
+        return response()->json([["id" => 1, "fecha_dispersion" => "2025-12-24", "project_name" => "uetamo", "razon_social" => "ASFG-AH4D"], ["id" => 2, "fecha_dispersion" => "2025-12-25", "project_name" => "parajilla", "razon_social" => "ZXCW-RT56"], ["id" => 3, "fecha_dispersion" => "2025-12-26", "project_name" => "zacatenco", "razon_social" => "QWER-YUI7"], ["id" => 1, "fecha_dispersion" => "2025-12-24", "project_name" => "uetamo", "razon_social" => "ASFG-AH4D"], ["id" => 2, "fecha_dispersion" => "2025-12-25", "project_name" => "parajilla", "razon_social" => "ZXCW-RT56"], ["id" => 3, "fecha_dispersion" => "2025-12-26", "project_name" => "zacatenco", "razon_social" => "QWER-YUI7"], ["id" => 1, "fecha_dispersion" => "2025-12-24", "project_name" => "uetamo", "razon_social" => "ASFG-AH4D"], ["id" => 2, "fecha_dispersion" => "2025-12-25", "project_name" => "parajilla", "razon_social" => "ZXCW-RT56"], ["id" => 3, "fecha_dispersion" => "2025-12-26", "project_name" => "zacatenco", "razon_social" => "QWER-YUI7"], ["id" => 1, "fecha_dispersion" => "2025-12-24", "project_name" => "uetamo", "razon_social" => "ASFG-AH4D"], ["id" => 2, "fecha_dispersion" => "2025-12-25", "project_name" => "parajilla", "razon_social" => "ZXCW-RT56"], ["id" => 3, "fecha_dispersion" => "2025-12-26", "project_name" => "zacatenco", "razon_social" => "QWER-YUI7"]]);
+    });
+
+    Route::get('/gdm_hospedaje_disp_consulta_act/{id}', function () {
+        return view('Gestion_dispersiones_monetarias/gdm_hospedaje_disp_consulta_act'); //http://127.0.0.1:8000/gdm_hospedaje_disp_consulta_act
+    })->name("dispersiones.hospedaje_disp_consulta_act")->where('id', '[0-9]+');
+
+
+    /************** */
     Route::get('/gdm_graficas_gasolina', function () {
         return view('Gestion_dispersiones_monetarias/gdm_graficas_gasolina'); //http://127.0.0.1:8000/gdm_graficas_gasolina
     })->name("dispersiones.graficas_gasolina");
+
+    Route::get('/gdm_graficas_caseta', function () {
+        return view('Gestion_dispersiones_monetarias/gdm_graficas_caseta'); //http://127.0.0.1:8000/gdm_graficas_caseta
+    })->name("dispersiones.graficas_caseta");
+
+    Route::get('/gdm_graficas_hospedaje', function () {
+        return view('Gestion_dispersiones_monetarias/gdm_graficas_hospedaje'); //http://127.0.0.1:8000/gdm_graficas_hospedaje
+    })->name("dispersiones.graficas_hospedaje");
 });

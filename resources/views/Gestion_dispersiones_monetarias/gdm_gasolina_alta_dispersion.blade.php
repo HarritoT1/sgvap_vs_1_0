@@ -239,7 +239,7 @@
 
             <button class="d-block mx-auto btn btn-primary btn-lg fw-bold button-custom" type="button"
                 id="button_analizar_excel"
-                onclick="analizar_xls(['fecha_dispersion', 'project_id', 'vehicle_id', 'costo_lt', 'cant_litros', 'monto_dispersado', 'base_imponible', 'iva_acumulado', 'importe_total'])"
+                onclick="analizar_xls(['fecha_dispersion', 'project_id', 'vehicle_id', 'costo_lt', 'cant_litros', 'monto_dispersado', 'base_imponible', 'iva_acumulado', 'importe_total'], '/gdm_gasolina_auto_alta_xls')"
                 style="background-color: rgb(161, 160, 160)" disabled>Analizar excel y almacenar registros</button>
         </div>
     </div>

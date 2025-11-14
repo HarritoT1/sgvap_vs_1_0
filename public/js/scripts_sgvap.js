@@ -1071,7 +1071,7 @@ function asig_listener_on_change() {
     });
 }
 
-function analizar_xls(expectedHeadersParam) {
+function analizar_xls(expectedHeadersParam, endpoint) {
     const divErrosPart1 = document.getElementById('errors_part_1');
     divErrosPart1.classList.add('d-none');
     divErrosPart1.querySelector('ul').innerHTML = '';
@@ -1152,7 +1152,7 @@ function analizar_xls(expectedHeadersParam) {
             console.log("Objetos generados:", objects);
 
             // Mandar al backend.
-            fetch('/gdm_gasolina_auto_alta_xls', {
+            fetch(endpoint, {
                 method: 'POST',
                 headers: {
                     'X-CSRF-TOKEN': document.querySelector('meta[name="csrf-token"]').content,
