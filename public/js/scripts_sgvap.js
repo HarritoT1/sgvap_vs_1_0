@@ -1079,7 +1079,7 @@ function analizar_xls(expectedHeadersParam) {
     const divSuccessPart1 = document.getElementById('success_part_1');
     divSuccessPart1.classList.add('d-none');
     divSuccessPart1.querySelector('ul').innerHTML = '';
-    
+
     if (confirm("¿Estás seguro de que deseas analizar el archivo Excel seleccionado?")) {
         console.log("Analizando archivo Excel...");
         processExcelFile();
@@ -1196,10 +1196,17 @@ function analizar_xls(expectedHeadersParam) {
 }
 
 async function get_results_and_show_them_like_links(endpoint, concepto_dispersion) {
+    const divErrosPart1 = document.getElementById('errors_part_1');
+    divErrosPart1.classList.add('d-none');
+    divErrosPart1.querySelector('ul').innerHTML = '';
+
     const list = document.getElementById('lista_resultados');
     if (!list.classList.contains('d-none')) list.classList.add('d-none');
     list.innerHTML = ''; // Limpiar resultados previos.
-    const form = document.querySelector("form");
+
+    document.getElementById('loaderCircle').classList.remove('d-none');
+
+    const form = document.getElementById("consultar_disp_gasolina_filtro");
     const inputs = form.querySelectorAll("input, select");
     const data = {};
 
@@ -1255,16 +1262,33 @@ async function get_results_and_show_them_like_links(endpoint, concepto_dispersio
                     list.appendChild(li);
                 });
 
+                document.getElementById('loaderCircle').classList.add('d-none');
+
                 list.classList.remove('d-none');
+
+                return;
             }
 
             else {
-                throw new Error(response.message || 'Error en la respuesta del servidor');
+                let errmsg = "";
+
+                if (response.status == 422) errmsg = result.errors.employee_id[0];
+
+                else errmsg = result.err;
+
+                divErrosPart1.classList.remove('d-none');
+                divErrosPart1.querySelector('ul').innerHTML = `
+                <li>${errmsg}</li>
+            `;
+                document.getElementById('loaderCircle').classList.add('d-none');
+                return;
+                //throw new Error(response.message || 'Error en la respuesta del servidor');
             }
         }
 
     } catch (error) {
         console.error("Error en el fetch:", error);
         alert("Hubo un problema al obtener los datos. Intenta de nuevo.");
+        document.getElementById('loaderCircle').classList.add('d-none');
     }
 }

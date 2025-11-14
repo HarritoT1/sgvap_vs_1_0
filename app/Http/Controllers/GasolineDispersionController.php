@@ -92,4 +92,67 @@ class GasolineDispersionController extends Controller
                 ->withInput();
         }
     }
+
+    public function find(Request $request)
+    {
+        // --- Sanitización previa ---
+        $cleanProjectId = trim(explode('→', $request->input('project_id'))[0]);
+        $cleanProjectId = $cleanProjectId === '' ? null : $cleanProjectId;
+
+        $cleanMes = trim($request->input('mes'));
+        $cleanMes = $cleanMes === '' ? null : (float) $cleanMes;
+
+        
+
+        $request->merge([
+            'employee_id' => $cleanEmployeeId,
+            'mes' => $cleanMes,
+        ]);
+
+        // --- Validación ---
+        $data = $request->validate([
+            'employee_id' => 'nullable|string|exists:employees,id|max:50',
+            'mes' => 'nullable|numeric|min:1|max:12',
+        ], [
+            'employee_id.exists' => 'El RFC proporcionado no existe en la base de datos.',
+            'employee_id.max' => 'El RFC no puede exceder los 50 caracteres.',
+            'mes.numeric' => 'Debes mandar un número de mes válido.',
+            'mes.min' => 'El mes debe ser mayor o igual a 1.',
+            'mes.max' => 'El mes debe ser menor o igual a 12.',
+        ]);
+
+        try {
+            // --- Construcción dinámica de la consulta ---
+            $query = DailyExpenseReport::orderBy('fecha_dispersion_dia', 'desc')->limit(50);
+
+            if (!empty($data['employee_id'])) {
+                $query->where('employee_id', $data['employee_id']);
+            }
+
+            if (!empty($data['mes'])) {
+                $query->whereMonth('fecha_dispersion_dia', $data['mes']);
+            }
+
+            $result = $query->get();
+
+            $result->each(function ($item) {
+                $item->fecha_dispersion_dia_string = $item->fecha_dispersion_dia->toDateString();
+                $item->employee_name = $item->employee->nombre;
+                $item->project_name = $item->project->nombre;
+
+                $item->makeHidden(['employee', 'project']); // Esto elimina las relaciones del resultado serializado, pero sin romper el modelo.
+            });
+
+            // --- Respuesta ---
+            if ($result->isEmpty()) {
+                return response()->json(['err' => 'No se encontraron resultados asociados este empleado.'], 404);
+            }
+
+            return response()->json($result);
+        } catch (\Exception $e) {
+            return response()->json([
+                'err' => 'Error en el sistema al consultar reportes de gastos diarios: ' . $e->getMessage(),
+            ], 500);
+        }
+    }
 }

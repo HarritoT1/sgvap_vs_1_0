@@ -80,9 +80,17 @@
                             vehículo</label>
                         <select name="vehicle_id" id="vehicle_id" class="form-control form-select"
                             aria-label="Default select example" style="height: 3.5rem;">
-                            <option value="" selected>
-                                NINGUNA
+                            <option value="">
+                                NINGUNO
                             </option>
+                            @if (!empty($vehicles))
+                                @foreach ($vehicles as $vehicle)
+                                    <option value="{{ $vehicle->id }}">
+                                        {{ $vehicle->id }} → {{ $vehicle->marca }} {{ $vehicle->nombre_modelo }}
+                                        {{ $vehicle->color }}
+                                    </option>
+                                @endforeach
+                            @endif
                         </select>
                         <div class="invalid-feedback">
                             Ingresa una placa de vehículo válida.
@@ -94,6 +102,12 @@
                     <button class="d-block mx-auto btn btn-primary btn-lg fw-bold button-custom" type="button"
                         onclick="get_results_and_show_them_like_links('/gasolina_disp_consulta_filtro', 'gasolina')"
                         style="background-color: var(--botones-color);">Consultar</button>
+
+                    <div class="alert alert-danger mt-3 text-justify d-none" role="alert" id="errors_part_1">
+                        <h6>Por favor corrige los errores debajo:</h6>
+                        <ul>
+                        </ul>
+                    </div>
 
                 </div>
             </form>
@@ -112,6 +126,8 @@
         <ul class="flex-column vineta d-none"
             style="text-align:justify; overflow-y: auto; overflow-x: hidden; height: 22rem; padding-right: 2rem;"
             id="lista_resultados"></ul>
+
+        <div class="loader d-none my-5" id="loaderCircle"></div>
     </div>
 
     <br>

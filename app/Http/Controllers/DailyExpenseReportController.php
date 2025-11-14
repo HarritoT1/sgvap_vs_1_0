@@ -222,7 +222,7 @@ class DailyExpenseReportController extends Controller
 
         try {
             // --- Construcción dinámica de la consulta ---
-            $query = DailyExpenseReport::orderBy('fecha_dispersion_dia', 'desc')->limit(31);
+            $query = DailyExpenseReport::orderBy('fecha_dispersion_dia', 'desc')->limit(50);
 
             if (!empty($data['employee_id'])) {
                 $query->where('employee_id', $data['employee_id']);
