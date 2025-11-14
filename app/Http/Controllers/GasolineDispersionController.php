@@ -112,23 +112,23 @@ class GasolineDispersionController extends Controller
         ]);
 
         // --- Validación ---
-            $data = $request->validate([
-                'project_id' => 'nullable|string|exists:projects,id|max:80',
-                'mes' => 'nullable|numeric|min:1|max:12',
-                'vehicle_id' => 'nullable|string|exists:vehicles,id|max:20',
-            ], [
-                'project_id.exists' => 'El identificador del proyecto proporcionado no existe en la base de datos.',
-                'project_id.max' => 'El identificador del proyecto no puede exceder los 80 caracteres.',
+        $data = $request->validate([
+            'project_id' => 'nullable|string|exists:projects,id|max:80',
+            'mes' => 'nullable|numeric|min:1|max:12',
+            'vehicle_id' => 'nullable|string|exists:vehicles,id|max:20',
+        ], [
+            'project_id.exists' => 'El identificador del proyecto proporcionado no existe en la base de datos.',
+            'project_id.max' => 'El identificador del proyecto no puede exceder los 80 caracteres.',
 
-                'mes.numeric' => 'Debes mandar un número de mes válido.',
-                'mes.min' => 'El mes debe ser mayor o igual a 1.',
-                'mes.max' => 'El mes debe ser menor o igual a 12.',
+            'mes.numeric' => 'Debes mandar un número de mes válido.',
+            'mes.min' => 'El mes debe ser mayor o igual a 1.',
+            'mes.max' => 'El mes debe ser menor o igual a 12.',
 
-                'vehicle_id.exists' => 'El vehículo proporcionado no existe en la base de datos.',
-                'vehicle_id.max' => 'El identificador del vehículo no puede exceder los 20 caracteres.',
-            ]);
+            'vehicle_id.exists' => 'El vehículo proporcionado no existe en la base de datos.',
+            'vehicle_id.max' => 'El identificador del vehículo no puede exceder los 20 caracteres.',
+        ]);
 
-            // Validamos aquí para capturar errores y responder JSON sin usar failedValidation() del FormRequest.
+        // Validamos aquí para capturar errores y responder JSON sin usar failedValidation() del FormRequest.
 
         try {
             // --- Construcción dinámica de la consulta ---
@@ -164,7 +164,6 @@ class GasolineDispersionController extends Controller
             }
 
             return response()->json($result);
-
         } catch (\Exception $e) {
             return response()->json([
                 'err' => 'Error en el sistema SGVAP al consultar las dispersiones de gasolina: ' . $e->getMessage(),
