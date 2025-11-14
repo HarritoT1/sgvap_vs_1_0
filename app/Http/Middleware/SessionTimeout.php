@@ -16,7 +16,7 @@ class SessionTimeout
     {
         // Solo aplica si hay sesión iniciada (o si quieres aplicarlo siempre, ajusta).
         // Necesitamos tener session disponible (poner middleware después de StartSession).
-        $inactivityMinutes = (int) config('session.inactivity', env('SESSION_INACTIVITY', 15));
+        $inactivityMinutes = (int) config('session.inactivity', env('SESSION_INACTIVITY', 45));
 
         // Obtener timestamp de última actividad guardado en la sesión.
         $last = $request->session()->get('last_activity');
