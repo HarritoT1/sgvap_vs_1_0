@@ -5,10 +5,11 @@
         <h1 class="fw-bold my-3" style="font-size: 2rem; text-align:justify">Detalles de la dispersión de gasolina:</h1>
         <div class="w-100 div-secondary">
 
-            <h2 class="mb-3 fw-bold" style="font-size: 1.5rem; text-align:justify;">Consulta y/o actualiza la información de la dispersión de
+            <h2 class="mb-3 fw-bold" style="font-size: 1.5rem; text-align:justify;">Consulta y/o actualiza la información de
+                la dispersión de
                 gasolina:</h2>
-            <form id="actualizar" action="{{ route('gasoline.update') }}" method="post" enctype="application/x-www-form-urlencoded" autocomplete="off"
-                class="needs-validation p-1" novalidate>
+            <form id="actualizar" action="{{ route('gasoline.update') }}" method="post"
+                enctype="application/x-www-form-urlencoded" autocomplete="off" class="needs-validation p-1" novalidate>
                 @csrf
                 @method('PUT')
 
@@ -19,7 +20,8 @@
                     <div class="col-sm-6">
                         <label for="fecha_dispersion" class="form-label fw-bold">Fecha de la dispersión</label>
                         <input type="date" class="form-control sm-form-control" id="fecha_dispersion"
-                            name="fecha_dispersion" value="{{ $dispersion->fecha_dispersion->toDateString() }}" required disabled>
+                            name="fecha_dispersion" value="{{ $dispersion->fecha_dispersion->toDateString() }}" required
+                            disabled>
                         <div class="invalid-feedback">
                             Ingresa una fecha válida.
                         </div>
@@ -28,7 +30,8 @@
                     <div class="col-sm-6">
                         <label for="input_find_id_proyect" class="form-label fw-bold">id del proyecto</label>
                         <input type="text" class="form-control" id="input_find_id_proyect" name="project_id"
-                            placeholder="" value="{{ $dispersion->project_id }}" required maxlength="80" list="sugerencias_id_proyect" disabled>
+                            placeholder="" value="{{ $dispersion->project_id }}" required maxlength="80"
+                            list="sugerencias_id_proyect" disabled>
                         <div class="invalid-feedback">
                             Ingresa un id de proyecto válido.
                         </div>
@@ -175,6 +178,11 @@
 
                     <hr class="my-4 mb-2">
 
+                    <button type="button" class="btn btn-outline-danger ms-auto" style="width: 6rem;"
+                        onclick="ask_destroy()">
+                        <b>Eliminar</b>
+                    </button>
+
                     @if (session('success'))
                         <div class="alert alert-success mt-3 text-justify" role="alert">
                             <ul class="mb-0">
@@ -194,6 +202,13 @@
                         </div>
                     @endif
                 </div>
+            </form>
+
+            <form action="{{ route('gasoline.destroy', ['dispersion' => $dispersion->id]) }}" method="post"
+                id="destroy">
+                @csrf
+                @method('DELETE')
+
             </form>
         </div>
     </div>

@@ -1301,3 +1301,9 @@ async function get_results_and_show_them_like_links(endpoint, concepto_dispersio
         document.getElementById('loaderCircle').classList.add('d-none');
     }
 }
+
+function ask_destroy() {
+    if (confirm("¿Está seguro de eliminar esta dispersión?")) document.getElementById("destroy").requestSubmit();
+
+    else return;
+}

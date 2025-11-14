@@ -221,6 +221,8 @@ Route::middleware(['auth', 'inactive'])->group(function () {
     })->name("dispersiones.gasolina_disp_consulta_act_filtro");
 
     Route::post('/gasolina_disp_consulta_filtro', [GasolineDispersionController::class, 'find'])->name('gasoline.find');
+
+    Route::delete('/gasolina_destroy/{dispersion}', [GasolineDispersionController::class, 'destroy'])->name('gasoline.destroy')->where('id', '[0-9]+');
     
     /**************/
 

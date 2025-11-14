@@ -170,4 +170,17 @@ class GasolineDispersionController extends Controller
             ], 500);
         }
     }
+
+    public function destroy($id)
+    {
+        try {
+            $gasoline_dispersion = GasolineDispersion::findOrFail($id);
+
+            $gasoline_dispersion->delete();
+        } catch (\Exception $e) {
+            return redirect()->route('dispersiones.gasolina_alta_dispersion')->withErrors(['error' => 'No se pudo eliminar la dispersión de gasolina: ' . $e->getMessage()]);
+        }
+
+        return redirect()->route('dispersiones.gasolina_alta_dispersion')->with('success', 'Dispersión de gasolina eliminada exitosamente ;).');
+    }
 }
