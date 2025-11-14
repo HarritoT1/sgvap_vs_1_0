@@ -7,14 +7,16 @@
         <div class="w-100 div-secondary">
 
             <h2 class="mb-3 fw-bold" style="font-size: 1.5rem;">Datos de la dispersión:</h2>
-            <form id="crear_dm_caseta" action="#" method="post" enctype="application/x-www-form-urlencoded"
+            <form id="crear_dm_caseta" action="{{ route('tag.create') }}" method="post" enctype="application/x-www-form-urlencoded"
                 autocomplete="off" class="needs-validation p-1" novalidate>
+                @csrf
+
                 <div class="row g-3">
 
                     <div class="col-sm-6">
                         <label for="fecha_dispersion" class="form-label fw-bold">Fecha de la dispersión</label>
                         <input type="date" class="form-control sm-form-control" id="fecha_dispersion"
-                            name="fecha_dispersion" value="" required>
+                            name="fecha_dispersion" value="{{ old('fecha_dispersion') }}" required>
                         <div class="invalid-feedback">
                             Ingresa una fecha válida.
                         </div>
@@ -23,7 +25,7 @@
                     <div class="col-sm-6">
                         <label for="input_find_id_proyect" class="form-label fw-bold">id del proyecto</label>
                         <input type="text" class="form-control" id="input_find_id_proyect" name="project_id"
-                            placeholder="" value="" required maxlength="80" list="sugerencias_id_proyect">
+                            placeholder="" value="{{ old('project_id') }}" required maxlength="80" list="sugerencias_id_proyect">
                         <div class="invalid-feedback">
                             Ingresa un id de proyecto válido.
                         </div>
@@ -35,12 +37,18 @@
                         <label for="vehicle_id" class="form-label fw-bold">Placa del vehículo</label>
                         <select name="vehicle_id" id="vehicle_id" class="form-control form-select"
                             aria-label="Default select example" required>
-                            <option value="ABJ3-S23D" selected>
-                                ABJ3-S23D
+                            <option value="">
+                                NINGUNO
                             </option>
-                            <option value="ABJ3-S23E">
-                                ABJ3-S23E
-                            </option>
+                            @if (!empty($vehicles))
+                                @foreach ($vehicles as $vehicle)
+                                    <option value="{{ $vehicle->id }}"
+                                        {{ old('vehicle_id') == $vehicle->id ? 'selected' : '' }}>
+                                        {{ $vehicle->id }} → {{ $vehicle->marca }} {{ $vehicle->nombre_modelo }}
+                                        {{ $vehicle->color }}
+                                    </option>
+                                @endforeach
+                            @endif
                         </select>
                         <div class="invalid-feedback">
                             Ingresa una placa de vehículo válida.
@@ -50,7 +58,7 @@
                     <div class="col-sm-6">
                         <label for="nombre_caseta" class="form-label fw-bold">Nombre de la caseta</label>
                         <input type="text" class="form-control" id="nombre_caseta" name="nombre_caseta" placeholder=""
-                            value="" required maxlength="100">
+                            value="{{ old('nombre_caseta') }}" required maxlength="100">
                         <div class="invalid-feedback">
                             Ingresa un id de proyecto válido.
                         </div>
@@ -67,7 +75,7 @@
                         <div class="input-group">
                             <span class="input-group-text">$</span>
                             <input type="number" class="form-control" aria-label="Amount (to the nearest dollar)"
-                                id="base_imponible" name="base_imponible" placeholder="0.000" step="0.000001" min="0"
+                                id="base_imponible" name="base_imponible" placeholder="0.000" step="any" min="0"
                                 value="" required readonly>
                             <div class="invalid-feedback">
                                 Ingresa una base imponible válida.
@@ -86,7 +94,7 @@
                         <div class="input-group">
                             <span class="input-group-text">$</span>
                             <input type="number" class="form-control" aria-label="Amount (to the nearest dollar)"
-                                id="iva_caseta" name="iva_caseta" placeholder="0.000" step="0.000001" min="0"
+                                id="iva_caseta" name="iva_caseta" placeholder="0.000" step="any" min="0"
                                 value="" required readonly>
                             <div class="invalid-feedback">
                                 Ingresa un IVA de caseta válido.
@@ -99,7 +107,7 @@
                         <div class="input-group">
                             <span class="input-group-text">$</span>
                             <input type="number" class="form-control" aria-label="Amount (to the nearest dollar)"
-                                id="importe_total" name="importe_total" placeholder="0.000" step="0.000001"
+                                id="importe_total" name="importe_total" placeholder="0.000" step="any"
                                 min="0" value="" required>
                             <div class="invalid-feedback">
                                 Ingresa un importe total válido.
@@ -110,8 +118,39 @@
                     <hr class="my-4 mb-2">
 
                     <button class="d-block mx-auto btn btn-primary btn-lg fw-bold button-custom" type="button"
-                        onclick="ask_before_submit_new()" style="background-color: var(--botones-color);">Registrar
+                        onclick="ask_before_submit_new('crear_dm_caseta')" style="background-color: var(--botones-color);">Registrar
                         dispersión</button>
+
+                    @if (session('success'))
+                        <div class="alert alert-success mt-3 text-justify" role="alert">
+                            <ul class="mb-0">
+                                <li>{{ session('success') }}</li>
+                            </ul>
+                        </div>
+                    @endif
+
+                    @if ($errors->any())
+                        <div class="alert alert-danger mt-3 text-justify" role="alert">
+                            <h6>Por favor corrige los errores debajo:</h6>
+                            <ul style="text-align: justify;">
+                                @foreach ($errors->all() as $error)
+                                    <li>{{ $error }}</li>
+                                @endforeach
+                            </ul>
+                        </div>
+                    @endif
+
+                    <div class="alert alert-danger mt-3 text-justify d-none" role="alert" id="errors_part_1">
+                        <h6>Por favor corrige los errores debajo:</h6>
+                        <ul style="text-align: justify;">
+                        </ul>
+                    </div>
+
+                    <div class="alert alert-success mt-3 text-justify d-none" role="alert" id="success_part_1">
+                        <h6>Felicidades tus dispersiones se guardaron correctamente en la base de datos:</h6>
+                        <ul style="text-align: justify;">
+                        </ul>
+                    </div>
 
                     <hr class="my-4 mb-2">
                 </div>
@@ -168,7 +207,7 @@
 
             <button class="d-block mx-auto btn btn-primary btn-lg fw-bold button-custom" type="button"
                 id="button_analizar_excel"
-                onclick="analizar_xls(['fecha_dispersion', 'project_id', 'vehicle_id', 'nombre_caseta', 'base_imponible', 'iva_caseta', 'importe_total'])"
+                onclick="analizar_xls(['fecha_dispersion', 'project_id', 'vehicle_id', 'nombre_caseta', 'base_imponible', 'iva_caseta', 'importe_total'], '/gdm_tag_auto_alta_xls')"
                 style="background-color: rgb(161, 160, 160)" disabled>Analizar excel y almacenar registros</button>
         </div>
     </div>

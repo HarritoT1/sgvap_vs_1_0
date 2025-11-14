@@ -164,7 +164,6 @@ Route::middleware(['auth', 'inactive'])->group(function () {
 
     Route::get('/ge_graficas_x_viatico', [ReporteViaticosController::class, 'pasteles'])->name("empleados.graficas_x_viatico");
 
-    /******************************/
     Route::get('/gdm_gasolina_alta_dispersion', function () {
         return view('Gestion_dispersiones_monetarias/gdm_gasolina_alta_dispersion', ['vehicles' => Vehicle::all()]); //http://127.0.0.1:8000/gdm_gasolina_alta_dispersion
     })->name("dispersiones.gasolina_alta_dispersion");

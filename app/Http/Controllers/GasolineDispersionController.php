@@ -27,7 +27,6 @@ class GasolineDispersionController extends Controller
             ->with('success', 'Dispersión de gasolina registrada exitosamente ;).');
     }
 
-
     public function storeMany(StoreManyGasolineDispersionRequest $request)
     {
         $data = $request->validated(); // array de arrays asociativos.
