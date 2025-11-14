@@ -7,6 +7,7 @@ use App\Http\Requests\StoreManyGasolineDispersionRequest;
 use Illuminate\Http\Request;
 use App\Models\GasolineDispersion;
 use Illuminate\Support\Facades\DB;
+use App\Models\Vehicle;
 
 class GasolineDispersionController extends Controller
 {
@@ -50,5 +51,10 @@ class GasolineDispersionController extends Controller
             'success' => true,
             'inserted' => $insertedCount,
         ], 201);
+    }
+
+    public function show(GasolineDispersion $dispersion)
+    {
+        return view('Gestion_dispersiones_monetarias.gdm_gasolina_disp_consulta_act', ['dispersion' => $dispersion, 'vehicles' => Vehicle::all()]);
     }
 }

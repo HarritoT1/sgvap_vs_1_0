@@ -5,16 +5,21 @@
         <h1 class="fw-bold my-3" style="font-size: 2rem; text-align:justify">Detalles de la dispersión de gasolina:</h1>
         <div class="w-100 div-secondary">
 
-            <h2 class="mb-3 fw-bold" style="font-size: 1.5rem;">Consulta y/o actualiza la información de la dispersión de
+            <h2 class="mb-3 fw-bold" style="font-size: 1.5rem; text-align:justify;">Consulta y/o actualiza la información de la dispersión de
                 gasolina:</h2>
             <form id="actualizar" action="#" method="post" enctype="application/x-www-form-urlencoded" autocomplete="off"
                 class="needs-validation p-1" novalidate>
+                @csrf
+                @method('PUT')
+
+                <input type="hidden" name="id" value="{{ $dispersion->id }}">
+
                 <div class="row g-3">
 
                     <div class="col-sm-6">
                         <label for="fecha_dispersion" class="form-label fw-bold">Fecha de la dispersión</label>
                         <input type="date" class="form-control sm-form-control" id="fecha_dispersion"
-                            name="fecha_dispersion" value="" required disabled>
+                            name="fecha_dispersion" value="{{ $dispersion->fecha_dispersion->toDateString() }}" required disabled>
                         <div class="invalid-feedback">
                             Ingresa una fecha válida.
                         </div>
@@ -23,7 +28,7 @@
                     <div class="col-sm-6">
                         <label for="input_find_id_proyect" class="form-label fw-bold">id del proyecto</label>
                         <input type="text" class="form-control" id="input_find_id_proyect" name="project_id"
-                            placeholder="" value="" required maxlength="80" list="sugerencias_id_proyect" disabled>
+                            placeholder="" value="{{ $dispersion->project_id }}" required maxlength="80" list="sugerencias_id_proyect" disabled>
                         <div class="invalid-feedback">
                             Ingresa un id de proyecto válido.
                         </div>
@@ -35,12 +40,18 @@
                         <label for="vehicle_id" class="form-label fw-bold">Placa del vehículo</label>
                         <select name="vehicle_id" id="vehicle_id" class="form-control form-select"
                             aria-label="Default select example" required disabled>
-                            <option value="ABJ3-S23D" selected>
-                                ABJ3-S23D
-                            </option>
-                            <option value="ABJ3-S23E">
-                                ABJ3-S23E
-                            </option>
+                            @if (!empty($vehicles))
+                                @foreach ($vehicles as $vehicle)
+                                    <option value="{{ $vehicle->id }}" @if ($vehicle->id == $dispersion->vehicle_id) selected @endif>
+                                        {{ $vehicle->id }} → {{ $vehicle->marca }} {{ $vehicle->nombre_modelo }}
+                                        {{ $vehicle->color }}
+                                    </option>
+                                @endforeach
+                            @else
+                                <option value="" selected>
+                                    NINGUNO
+                                </option>
+                            @endif
                         </select>
                         <div class="invalid-feedback">
                             Ingresa una placa de vehículo válida.
@@ -52,8 +63,8 @@
                         <div class="input-group">
                             <span class="input-group-text">$</span>
                             <input type="number" class="form-control" aria-label="Amount (to the nearest dollar)"
-                                id="costo_lt" name="costo_lt" placeholder="0.0000" step="0.0001" min="0"
-                                value="" required disabled>
+                                id="costo_lt" name="costo_lt" placeholder="0.0000" step="any" min="0"
+                                value="{{ $dispersion->costo_lt }}" required disabled>
                             <div class="invalid-feedback">
                                 Ingresa un costo de gasolina válido.
                             </div>
@@ -65,8 +76,8 @@
                         <div class="input-group">
                             <span class="input-group-text">$</span>
                             <input type="number" class="form-control" aria-label="Amount (to the nearest dollar)"
-                                id="cant_litros" name="cant_litros" placeholder="0.0000" step="0.0001" min="0"
-                                value="" required disabled>
+                                id="cant_litros" name="cant_litros" placeholder="0.0000" step="any" min="0"
+                                value="{{ $dispersion->cant_litros }}" required disabled>
                             <div class="invalid-feedback">
                                 Ingresa una cantidad de lts. de gasolina válida.
                             </div>
@@ -79,7 +90,7 @@
                             <span class="input-group-text">$</span>
                             <input type="number" class="form-control" aria-label="Amount (to the nearest dollar)"
                                 id="monto_dispersado" name="monto_dispersado" placeholder="0.000" step="0.000001"
-                                min="0" value="" required disabled>
+                                min="0" value="{{ $dispersion->monto_dispersado }}" required disabled>
                             <div class="invalid-feedback">
                                 Ingresa un monto dispersado válido.
                             </div>
@@ -98,7 +109,7 @@
                             <span class="input-group-text">$</span>
                             <input type="number" class="form-control" aria-label="Amount (to the nearest dollar)"
                                 id="base_imponible" name="base_imponible" placeholder="0.000" step="0.000001"
-                                min="0" value="" required readonly>
+                                min="0" value="{{ $dispersion->base_imponible }}" required readonly>
                             <div class="invalid-feedback">
                                 Ingresa una base imponible válida.
                             </div>
@@ -117,7 +128,7 @@
                             <span class="input-group-text">$</span>
                             <input type="number" class="form-control" aria-label="Amount (to the nearest dollar)"
                                 id="iva_acumulado" name="iva_acumulado" placeholder="0.000" step="0.000001"
-                                min="0" value="" required readonly>
+                                min="0" value="{{ $dispersion->iva_acumulado }}" required readonly>
                             <div class="invalid-feedback">
                                 Ingresa un IVA acumulado válido.
                             </div>
@@ -130,7 +141,7 @@
                             <span class="input-group-text">$</span>
                             <input type="number" class="form-control" aria-label="Amount (to the nearest dollar)"
                                 id="importe_total" name="importe_total" placeholder="0.000" step="0.000001"
-                                min="0" value="" required readonly>
+                                min="0" value="{{ $dispersion->importe_total }}" required readonly>
                             <div class="invalid-feedback">
                                 Ingresa un importe total válido.
                             </div>
@@ -163,6 +174,25 @@
                     </div>
 
                     <hr class="my-4 mb-2">
+
+                    @if (session('success'))
+                        <div class="alert alert-success mt-3 text-justify" role="alert">
+                            <ul class="mb-0">
+                                <li>{{ session('success') }}</li>
+                            </ul>
+                        </div>
+                    @endif
+
+                    @if ($errors->any())
+                        <div class="alert alert-danger mt-3 text-justify" role="alert">
+                            <h6>Por favor corrige los errores debajo:</h6>
+                            <ul style="text-align: justify;">
+                                @foreach ($errors->all() as $error)
+                                    <li>{{ $error }}</li>
+                                @endforeach
+                            </ul>
+                        </div>
+                    @endif
                 </div>
             </form>
         </div>
