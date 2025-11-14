@@ -1247,10 +1247,10 @@ async function get_results_and_show_them_like_links(endpoint, concepto_dispersio
                     a.style.color = "var(--empresa-color)";
                     if (concepto_dispersion !== 'prestamo') {
                         if (concepto_dispersion === 'hospedaje') {
-                            a.textContent = `Dispersión de ${concepto_dispersion} del ${item.fecha_dispersion} para proyecto ${item.project_name} en el hospedaje ${item.razon_social}.`;
+                            a.textContent = `Dispersión de ${concepto_dispersion} del ${item.fecha_dispersion_string} para proyecto ${item.project_name} en el hospedaje ${item.razon_social}.`;
                         }
                         else {
-                            a.textContent = `Dispersión de ${concepto_dispersion} del ${item.fecha_dispersion} para proyecto ${item.project_name} al vehículo con placa ${item.vehicle_id}.`;
+                            a.textContent = `Dispersión de ${concepto_dispersion} del ${item.fecha_dispersion_string} para proyecto ${item.project_name} al vehículo con placa ${item.vehicle_info}.`;
                         }
                         a.href = `/gdm_${concepto_dispersion}_disp_consulta_act/${item.id}`;
                     }
@@ -1270,17 +1270,26 @@ async function get_results_and_show_them_like_links(endpoint, concepto_dispersio
             }
 
             else {
-                let errmsg = "";
+                if (response.status == 422) {
+                    // Iterar sobre las claves del objeto "errors"
+                    for (const campo in result.errors) {
+                        const mensajes = result.errors[campo]; // Esto es un array.
+                        mensajes.forEach(msg => {
+                            divErrosPart1.querySelector('ul').innerHTML += `<li>${msg}</li>`;
+                        });
+                    }
+                }
 
-                if (response.status == 422) errmsg = result.errors.employee_id[0];
-
-                else errmsg = result.err;
+                else {
+                    divErrosPart1.querySelector('ul').innerHTML = `
+                    <li>${result.err}</li>
+                `;
+                }
 
                 divErrosPart1.classList.remove('d-none');
-                divErrosPart1.querySelector('ul').innerHTML = `
-                <li>${errmsg}</li>
-            `;
+
                 document.getElementById('loaderCircle').classList.add('d-none');
+
                 return;
                 //throw new Error(response.message || 'Error en la respuesta del servidor');
             }

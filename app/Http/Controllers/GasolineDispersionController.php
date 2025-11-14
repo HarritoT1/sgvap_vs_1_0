@@ -62,7 +62,7 @@ class GasolineDispersionController extends Controller
     public function update(UpdateOneGasolineDispersionRequest $request)
     {
         $data = $request->validated();
-        
+
         try {
             // Buscar la dispersión existente.
             $dispersion = GasolineDispersion::findOrFail($request->input('id'));
@@ -71,7 +71,7 @@ class GasolineDispersionController extends Controller
             $dispersion->update($data);
 
             return redirect()->route('dispersiones.gasolina_disp_consulta_act', ['dispersion' => $dispersion->id])
-            ->with('success', 'Dispersión de gasolina actualizada exitosamente ;).');
+                ->with('success', 'Dispersión de gasolina actualizada exitosamente ;).');
         } catch (\Illuminate\Database\Eloquent\ModelNotFoundException $e) {
             // Si la dispersión no existe (por manipulación del id).
             return redirect()
@@ -102,56 +102,72 @@ class GasolineDispersionController extends Controller
         $cleanMes = trim($request->input('mes'));
         $cleanMes = $cleanMes === '' ? null : (float) $cleanMes;
 
-        
+        $cleanVehicleId = trim($request->input('vehicle_id'));
+        $cleanVehicleId = $cleanVehicleId === '' ? null : $cleanVehicleId;
 
         $request->merge([
-            'employee_id' => $cleanEmployeeId,
+            'project_id' => $cleanProjectId,
             'mes' => $cleanMes,
+            'vehicle_id' => $cleanVehicleId,
         ]);
 
         // --- Validación ---
-        $data = $request->validate([
-            'employee_id' => 'nullable|string|exists:employees,id|max:50',
-            'mes' => 'nullable|numeric|min:1|max:12',
-        ], [
-            'employee_id.exists' => 'El RFC proporcionado no existe en la base de datos.',
-            'employee_id.max' => 'El RFC no puede exceder los 50 caracteres.',
-            'mes.numeric' => 'Debes mandar un número de mes válido.',
-            'mes.min' => 'El mes debe ser mayor o igual a 1.',
-            'mes.max' => 'El mes debe ser menor o igual a 12.',
-        ]);
+            $data = $request->validate([
+                'project_id' => 'nullable|string|exists:projects,id|max:80',
+                'mes' => 'nullable|numeric|min:1|max:12',
+                'vehicle_id' => 'nullable|string|exists:vehicles,id|max:20',
+            ], [
+                'project_id.exists' => 'El identificador del proyecto proporcionado no existe en la base de datos.',
+                'project_id.max' => 'El identificador del proyecto no puede exceder los 80 caracteres.',
+
+                'mes.numeric' => 'Debes mandar un número de mes válido.',
+                'mes.min' => 'El mes debe ser mayor o igual a 1.',
+                'mes.max' => 'El mes debe ser menor o igual a 12.',
+
+                'vehicle_id.exists' => 'El vehículo proporcionado no existe en la base de datos.',
+                'vehicle_id.max' => 'El identificador del vehículo no puede exceder los 20 caracteres.',
+            ]);
+
+            // Validamos aquí para capturar errores y responder JSON sin usar failedValidation() del FormRequest.
 
         try {
             // --- Construcción dinámica de la consulta ---
-            $query = DailyExpenseReport::orderBy('fecha_dispersion_dia', 'desc')->limit(50);
+            $query = GasolineDispersion::orderBy('fecha_dispersion', 'desc')->limit(50);
 
-            if (!empty($data['employee_id'])) {
-                $query->where('employee_id', $data['employee_id']);
+            if (!empty($data['project_id'])) {
+                $query->where('project_id', $data['project_id']);
             }
 
             if (!empty($data['mes'])) {
-                $query->whereMonth('fecha_dispersion_dia', $data['mes']);
+                $query->whereMonth('fecha_dispersion', $data['mes']);
             }
+
+            if (!empty($data['vehicle_id'])) {
+                $query->where('vehicle_id', $data['vehicle_id']);
+            }
+
+            // --- Ejecución de la consulta ---
 
             $result = $query->get();
 
             $result->each(function ($item) {
-                $item->fecha_dispersion_dia_string = $item->fecha_dispersion_dia->toDateString();
-                $item->employee_name = $item->employee->nombre;
+                $item->fecha_dispersion_string = $item->fecha_dispersion->toDateString();
+                $item->vehicle_info = $item->vehicle->id . ' → ' . $item->vehicle->marca . ' ' . $item->vehicle->nombre_modelo . ' ' . $item->vehicle->color;
                 $item->project_name = $item->project->nombre;
 
-                $item->makeHidden(['employee', 'project']); // Esto elimina las relaciones del resultado serializado, pero sin romper el modelo.
+                $item->makeHidden(['vehicle', 'project']); // Esto elimina las relaciones del resultado serializado, pero sin romper el modelo.
             });
 
             // --- Respuesta ---
             if ($result->isEmpty()) {
-                return response()->json(['err' => 'No se encontraron resultados asociados este empleado.'], 404);
+                return response()->json(['err' => 'No se encontraron resultados asociados con los filtros proporcionados.'], 404);
             }
 
             return response()->json($result);
+
         } catch (\Exception $e) {
             return response()->json([
-                'err' => 'Error en el sistema al consultar reportes de gastos diarios: ' . $e->getMessage(),
+                'err' => 'Error en el sistema SGVAP al consultar las dispersiones de gasolina: ' . $e->getMessage(),
             ], 500);
         }
     }
