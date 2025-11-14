@@ -214,6 +214,8 @@ Route::middleware(['auth', 'inactive'])->group(function () {
 
     Route::get('/gdm_gasolina_disp_consulta_act/{dispersion}', [GasolineDispersionController::class, 'show'])->name("dispersiones.gasolina_disp_consulta_act")->where('dispersion', '[0-9]+'); //http://127.0.0.1:8000/gdm_gasolina_disp_consulta_act/1
 
+    Route::put('/gasoline_update', [GasolineDispersionController::class, 'update'])->name('gasoline.update');
+    
     /**************/
 
     Route::get('/gdm_gasolina_disp_consulta_act_filtro', function () {

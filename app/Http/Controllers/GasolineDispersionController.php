@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Http\Requests\StoreOneGasolineDispersionRequest;
 use App\Http\Requests\StoreManyGasolineDispersionRequest;
+use App\Http\Requests\UpdateOneGasolineDispersionRequest;
 use Illuminate\Http\Request;
 use App\Models\GasolineDispersion;
 use Illuminate\Support\Facades\DB;
@@ -22,7 +23,7 @@ class GasolineDispersionController extends Controller
                 ->withInput();
         }
 
-        return redirect()->route('dispersiones.gasolina_disp_consulta_act', ['id' => $gasoline_dispersion->id])
+        return redirect()->route('dispersiones.gasolina_disp_consulta_act', ['dispersion' => $gasoline_dispersion->id])
             ->with('success', 'Dispersión de gasolina registrada exitosamente ;).');
     }
 
@@ -56,5 +57,39 @@ class GasolineDispersionController extends Controller
     public function show(GasolineDispersion $dispersion)
     {
         return view('Gestion_dispersiones_monetarias.gdm_gasolina_disp_consulta_act', ['dispersion' => $dispersion, 'vehicles' => Vehicle::all()]);
+    }
+
+    public function update(UpdateOneGasolineDispersionRequest $request)
+    {
+        $data = $request->validated();
+        
+        try {
+            // Buscar la dispersión existente.
+            $dispersion = GasolineDispersion::findOrFail($request->input('id'));
+
+            // Intentar actualizar.
+            $dispersion->update($data);
+
+            return redirect()->route('dispersiones.gasolina_disp_consulta_act', ['dispersion' => $dispersion->id])
+            ->with('success', 'Dispersión de gasolina actualizada exitosamente ;).');
+        } catch (\Illuminate\Database\Eloquent\ModelNotFoundException $e) {
+            // Si la dispersión no existe (por manipulación del id).
+            return redirect()
+                ->back()
+                ->withErrors(['id' => 'La dispersión que intenta actualizar no existe.'])
+                ->withInput();
+        } catch (\Illuminate\Database\QueryException $e) {
+            // Si ocurre un error de base de datos (ej. violación de unique).
+            return redirect()
+                ->back()
+                ->withErrors(['database' => 'Error al actualizar la dispersión: ' . $e->getMessage()])
+                ->withInput();
+        } catch (\Exception $e) {
+            // Cualquier otro error inesperado.
+            return redirect()
+                ->back()
+                ->withErrors(['general' => 'Ocurrió un error inesperado al actualizar la dispersión.'])
+                ->withInput();
+        }
     }
 }

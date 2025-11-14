@@ -7,7 +7,7 @@
 
             <h2 class="mb-3 fw-bold" style="font-size: 1.5rem; text-align:justify;">Consulta y/o actualiza la información de la dispersión de
                 gasolina:</h2>
-            <form id="actualizar" action="#" method="post" enctype="application/x-www-form-urlencoded" autocomplete="off"
+            <form id="actualizar" action="{{ route('gasoline.update') }}" method="post" enctype="application/x-www-form-urlencoded" autocomplete="off"
                 class="needs-validation p-1" novalidate>
                 @csrf
                 @method('PUT')
@@ -89,7 +89,7 @@
                         <div class="input-group">
                             <span class="input-group-text">$</span>
                             <input type="number" class="form-control" aria-label="Amount (to the nearest dollar)"
-                                id="monto_dispersado" name="monto_dispersado" placeholder="0.000" step="0.000001"
+                                id="monto_dispersado" name="monto_dispersado" placeholder="0.000" step="any"
                                 min="0" value="{{ $dispersion->monto_dispersado }}" required disabled>
                             <div class="invalid-feedback">
                                 Ingresa un monto dispersado válido.
@@ -108,7 +108,7 @@
                         <div class="input-group">
                             <span class="input-group-text">$</span>
                             <input type="number" class="form-control" aria-label="Amount (to the nearest dollar)"
-                                id="base_imponible" name="base_imponible" placeholder="0.000" step="0.000001"
+                                id="base_imponible" name="base_imponible" placeholder="0.000" step="any"
                                 min="0" value="{{ $dispersion->base_imponible }}" required readonly>
                             <div class="invalid-feedback">
                                 Ingresa una base imponible válida.
@@ -127,7 +127,7 @@
                         <div class="input-group">
                             <span class="input-group-text">$</span>
                             <input type="number" class="form-control" aria-label="Amount (to the nearest dollar)"
-                                id="iva_acumulado" name="iva_acumulado" placeholder="0.000" step="0.000001"
+                                id="iva_acumulado" name="iva_acumulado" placeholder="0.000" step="any"
                                 min="0" value="{{ $dispersion->iva_acumulado }}" required readonly>
                             <div class="invalid-feedback">
                                 Ingresa un IVA acumulado válido.
@@ -140,7 +140,7 @@
                         <div class="input-group">
                             <span class="input-group-text">$</span>
                             <input type="number" class="form-control" aria-label="Amount (to the nearest dollar)"
-                                id="importe_total" name="importe_total" placeholder="0.000" step="0.000001"
+                                id="importe_total" name="importe_total" placeholder="0.000" step="any"
                                 min="0" value="{{ $dispersion->importe_total }}" required readonly>
                             <div class="invalid-feedback">
                                 Ingresa un importe total válido.
