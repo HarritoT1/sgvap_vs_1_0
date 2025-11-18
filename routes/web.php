@@ -11,6 +11,7 @@ use App\Http\Controllers\MonthlyExpenseCutController;
 use App\Http\Controllers\ReporteViaticosController;
 use App\Http\Controllers\GasolineDispersionController;
 use App\Http\Controllers\TagDispersionController;
+use App\Http\Controllers\LodgingDispersionController;
 use App\Models\Customer;
 use App\Models\DailyExpenseReport;
 use App\Models\Employee;

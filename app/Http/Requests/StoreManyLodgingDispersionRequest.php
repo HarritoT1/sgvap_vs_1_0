@@ -20,9 +20,11 @@ class StoreManyLodgingDispersionRequest extends FormRequest
             if (isset($item['project_id'])) {
                 $item['project_id'] = trim(explode('→', $item['project_id'])[0]);
             }
+            
             if (isset($item['rfc_hospedaje'])) {
                 $item['rfc_hospedaje'] = trim($item['rfc_hospedaje']);
             }
+            
             if (isset($item['razon_social'])) {
                 $item['razon_social'] = trim($item['razon_social']);
             }

@@ -28,7 +28,6 @@ class StoreManyTagDispersionRequest extends FormRequest
             if (isset($item['nombre_caseta'])) {
                 $item['nombre_caseta'] = trim($item['nombre_caseta']);
             }
-
             return $item;
         })->toArray();
 
