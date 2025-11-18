@@ -113,7 +113,7 @@ class LodgingDispersionController extends Controller
         $data = $request->validate([
             'project_id' => 'nullable|string|exists:projects,id|max:80',
             'mes' => 'nullable|numeric|min:1|max:12',
-            'rfc_hospedaje' => 'nullable|string|max:50',
+            'rfc_hospedaje' => 'nullable|string|exists:lodging_dispersions,rfc_hospedaje|max:50',
         ], [
             'project_id.exists' => 'El identificador del proyecto proporcionado no existe en la base de datos.',
             'project_id.max' => 'El identificador del proyecto no puede exceder los 80 caracteres.',
@@ -122,6 +122,7 @@ class LodgingDispersionController extends Controller
             'mes.min' => 'El mes debe ser mayor o igual a 1.',
             'mes.max' => 'El mes debe ser menor o igual a 12.',
 
+            'rfc_hospedaje.exists' => 'El RFC del hospedaje proporcionado no existe en la base de datos.',
             'rfc_hospedaje.max' => 'El RFC del hospedaje no puede exceder los 50 caracteres.',
         ]);
 
