@@ -19,6 +19,9 @@ class StoreManyGasolineDispersionRequest extends FormRequest
         $data = collect($this->all())->map(function ($item) {
             if (isset($item['project_id'])) {
                 $item['project_id'] = trim(explode('→', $item['project_id'])[0]);
+            }
+
+            if (isset($item['vehicle_id'])) {
                 $item['vehicle_id'] = trim($item['vehicle_id']);
             }
             return $item;
