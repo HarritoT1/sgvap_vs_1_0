@@ -987,19 +987,19 @@ l-68 45 0 51 c1 283 222 551 505 611 96 20 97 20 125 -19z" />
                                     <ul class="flex-column vineta" style="padding-left: 75px;">
                                         <li class="nav-item">
                                             <a class="nav-link d-flex align-items-center gap-2 text-white fw-bold"
-                                                href="/gdm_gasolina_alta_dispersion" target="_self">
+                                                href="{{ route('dispersiones.gasolina_alta_dispersion') }}" target="_self">
                                                 Registrar disp. gasolina.
                                             </a>
                                         </li>
                                         <li class="nav-item">
                                             <a class="nav-link d-flex align-items-center gap-2 text-white fw-bold"
-                                                href="/gdm_gasolina_disp_consulta_act_filtro" target="_self">
+                                                href="{{ route('dispersiones.gasolina_disp_consulta_act_filtro') }}" target="_self">
                                                 Consultar y actualizar disp. gasolina.
                                             </a>
                                         </li>
                                         <li class="nav-item">
                                             <a class="nav-link d-flex align-items-center gap-2 text-white fw-bold"
-                                                href="/gdm_graficas_gasolina" target="_self">
+                                                href="{{ route('dispersiones.graficas_gasolina') }}" target="_self">
                                                 Gráficas.
                                             </a>
                                         </li>
@@ -1015,19 +1015,19 @@ l-68 45 0 51 c1 283 222 551 505 611 96 20 97 20 125 -19z" />
                                     <ul class="flex-column vineta" style="padding-left: 75px;">
                                         <li class="nav-item">
                                             <a class="nav-link d-flex align-items-center gap-2 text-white fw-bold"
-                                                href="/gdm_caseta_alta_dispersion" target="_self">
+                                                href="{{ route('dispersiones.caseta_alta_dispersion') }}" target="_self">
                                                 Registrar disp. caseta.
                                             </a>
                                         </li>
                                         <li class="nav-item">
                                             <a class="nav-link d-flex align-items-center gap-2 text-white fw-bold"
-                                                href="/gdm_caseta_disp_consulta_act_filtro" target="_self">
+                                                href="{{ route('dispersiones.caseta_disp_consulta_act_filtro') }}" target="_self">
                                                 Consultar y actualizar disp. caseta.
                                             </a>
                                         </li>
                                         <li class="nav-item">
                                             <a class="nav-link d-flex align-items-center gap-2 text-white fw-bold"
-                                                href="/gdm_graficas_caseta" target="_self">
+                                                href="{{ route('dispersiones.graficas_caseta') }}" target="_self">
                                                 Gráficas.
                                             </a>
                                         </li>
@@ -1043,19 +1043,19 @@ l-68 45 0 51 c1 283 222 551 505 611 96 20 97 20 125 -19z" />
                                     <ul class="flex-column vineta" style="padding-left: 75px;">
                                         <li class="nav-item">
                                             <a class="nav-link d-flex align-items-center gap-2 text-white fw-bold"
-                                                href="/gdm_hospedaje_alta_dispersion" target="_self">
+                                                href="{{ route('dispersiones.hospedaje_alta_dispersion') }}" target="_self">
                                                 Registrar disp. hospedaje.
                                             </a>
                                         </li>
                                         <li class="nav-item">
                                             <a class="nav-link d-flex align-items-center gap-2 text-white fw-bold"
-                                                href="/gdm_hospedaje_disp_consulta_act_filtro" target="_self">
+                                                href="{{ route('dispersiones.hospedaje_disp_consulta_act_filtro') }}" target="_self">
                                                 Consultar y actualizar disp. hospedaje.
                                             </a>
                                         </li>
                                         <li class="nav-item">
                                             <a class="nav-link d-flex align-items-center gap-2 text-white fw-bold"
-                                                href="/gdm_graficas_hospedaje" target="_self">
+                                                href="{{ route('dispersiones.graficas_hospedaje') }}" target="_self">
                                                 Gráficas.
                                             </a>
                                         </li>

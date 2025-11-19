@@ -229,16 +229,9 @@ Route::middleware(['auth', 'inactive'])->group(function () {
 
     Route::get('/lodgings/buscar-rfc', [LodgingDispersionController::class, 'buscarRFCHospedaje'])->name('lodgings.buscar_rfc_hospedaje');
 
-    /************** */
-    Route::get('/gdm_graficas_gasolina', function () {
-        return view('Gestion_dispersiones_monetarias/gdm_graficas_gasolina'); //http://127.0.0.1:8000/gdm_graficas_gasolina
-    })->name("dispersiones.graficas_gasolina");
+    Route::get('/gdm_graficas_gasolina', [ReporteViaticosController::class, 'barras_gasolina'])->name("dispersiones.graficas_gasolina"); //http://127.0.0.1:8000/gdm_graficas_gasolina
 
-    Route::get('/gdm_graficas_caseta', function () {
-        return view('Gestion_dispersiones_monetarias/gdm_graficas_caseta'); //http://127.0.0.1:8000/gdm_graficas_caseta
-    })->name("dispersiones.graficas_caseta");
+    Route::get('/gdm_graficas_caseta', [ReporteViaticosController::class, 'barras_caseta'])->name("dispersiones.graficas_caseta"); //http://127.0.0.1:8000/gdm_graficas_caseta
 
-    Route::get('/gdm_graficas_hospedaje', function () {
-        return view('Gestion_dispersiones_monetarias/gdm_graficas_hospedaje'); //http://127.0.0.1:8000/gdm_graficas_hospedaje
-    })->name("dispersiones.graficas_hospedaje");
+    Route::get('/gdm_graficas_hospedaje', [ReporteViaticosController::class, 'barras_hospedaje'])->name("dispersiones.graficas_hospedaje"); //http://127.0.0.1:8000/gdm_graficas_hospedaje
 });
