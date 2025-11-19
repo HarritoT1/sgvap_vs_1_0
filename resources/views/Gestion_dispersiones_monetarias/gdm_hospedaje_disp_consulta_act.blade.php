@@ -7,14 +7,19 @@
 
             <h2 class="mb-3 fw-bold" style="font-size: 1.5rem;">Consulta y/o actualiza la información de la dispersión de
                 hospedaje:</h2>
-            <form id="actualizar" action="#" method="post" enctype="application/x-www-form-urlencoded" autocomplete="off"
+            <form id="actualizar" action="{{ route('lodging.update') }}" method="post" enctype="application/x-www-form-urlencoded" autocomplete="off"
                 class="needs-validation p-1" novalidate>
+                @csrf
+                @method('PUT')
+
+                <input type="hidden" name="id" value="{{ $dispersion->id }}">
+
                 <div class="row g-3">
 
                     <div class="col-sm-6">
                         <label for="fecha_dispersion" class="form-label fw-bold">Fecha de la dispersión</label>
                         <input type="date" class="form-control sm-form-control" id="fecha_dispersion"
-                            name="fecha_dispersion" value="" required disabled>
+                            name="fecha_dispersion" value="{{ $dispersion->fecha_dispersion->toDateString() }}" required disabled>
                         <div class="invalid-feedback">
                             Ingresa una fecha válida.
                         </div>
@@ -23,7 +28,7 @@
                     <div class="col-sm-6">
                         <label for="input_find_id_proyect" class="form-label fw-bold">id del proyecto</label>
                         <input type="text" class="form-control" id="input_find_id_proyect" name="project_id"
-                            placeholder="" value="" required maxlength="80" list="sugerencias_id_proyect" disabled>
+                            placeholder="" value="{{ $dispersion->project_id }}" required maxlength="80" list="sugerencias_id_proyect" disabled>
                         <div class="invalid-feedback">
                             Ingresa un id de proyecto válido.
                         </div>
@@ -34,7 +39,7 @@
                     <div class="col-sm-6">
                         <label for="rfc_hospedaje" class="form-label fw-bold">RFC del hospedaje</label>
                         <input type="text" class="form-control" id="rfc_hospedaje" name="rfc_hospedaje" placeholder=""
-                            value="" required maxlength="50" disabled>
+                            value="{{ $dispersion->rfc_hospedaje }}" required maxlength="50" disabled>
                         <div class="invalid-feedback">
                             Ingresa un id de proyecto válido.
                         </div>
@@ -43,7 +48,7 @@
                     <div class="col-sm-6">
                         <label for="razon_social" class="form-label fw-bold">Razón social</label>
                         <input type="text" class="form-control" id="razon_social" name="razon_social" placeholder=""
-                            value="" required maxlength="250" disabled>
+                            value="{{ $dispersion->razon_social }}" required maxlength="250" disabled>
                         <div class="invalid-feedback">
                             Ingresa un id de proyecto válido.
                         </div>
@@ -54,7 +59,7 @@
                         <div class="input-group">
                             <span class="input-group-text">🌙</span>
                             <input type="number" class="form-control" id="numero_noches" name="numero_noches"
-                                min="1" placeholder="" step="1" value="" required disabled> 
+                                min="1" placeholder="" step="1" value="{{ $dispersion->numero_noches }}" required disabled> 
                             <div class="invalid-feedback">
                                 Ingresa un número de noches válido.
                             </div>
@@ -66,8 +71,8 @@
                         <div class="input-group">
                             <span class="input-group-text">$</span>
                             <input type="number" class="form-control" aria-label="Amount (to the nearest dollar)"
-                                id="costo_x_noche" name="costo_x_noche" placeholder="0.000" step="0.0000001" min="0"
-                                value="" required disabled>
+                                id="costo_x_noche" name="costo_x_noche" placeholder="0.000" step="any" min="0"
+                                value="{{ $dispersion->costo_x_noche }}" required disabled>
                             <div class="invalid-feedback">
                                 Ingresa un monto válido.
                             </div>
@@ -79,7 +84,7 @@
                         <div class="input-group">
                             <span class="input-group-text">👤</span>
                             <input type="number" class="form-control" id="numero_personas" name="numero_personas"
-                                min="1" placeholder="" step="1" value="" required disabled>
+                                min="1" placeholder="" step="1" value="{{ $dispersion->numero_personas }}" required disabled>
                             <div class="invalid-feedback">
                                 Ingresa un número de personas hospedadas válido.
                             </div>
@@ -97,8 +102,8 @@
                         <div class="input-group">
                             <span class="input-group-text">$</span>
                             <input type="number" class="form-control" aria-label="Amount (to the nearest dollar)"
-                                id="base_imponible" name="base_imponible" placeholder="0.000" step="0.000001"
-                                min="0" value="" required readonly>
+                                id="base_imponible" name="base_imponible" placeholder="0.000" step="any"
+                                min="0" value="{{ $dispersion->base_imponible }}" required readonly>
                             <div class="invalid-feedback">
                                 Ingresa una base imponible válida.
                             </div>
@@ -116,8 +121,8 @@
                         <div class="input-group">
                             <span class="input-group-text">$</span>
                             <input type="number" class="form-control" aria-label="Amount (to the nearest dollar)"
-                                id="iva_hospedaje" name="iva_hospedaje" placeholder="0.000" step="0.000001"
-                                min="0" value="" required readonly>
+                                id="iva_hospedaje" name="iva_hospedaje" placeholder="0.000" step="any"
+                                min="0" value="{{ $dispersion->iva_hospedaje }}" required readonly>
                             <div class="invalid-feedback">
                                 Ingresa un IVA de hospedaje válido.
                             </div>
@@ -129,8 +134,8 @@
                         <div class="input-group">
                             <span class="input-group-text">$</span>
                             <input type="number" class="form-control" aria-label="Amount (to the nearest dollar)"
-                                id="importe_total" name="importe_total" placeholder="0.000" step="0.000001"
-                                min="0" value="" required disabled>
+                                id="importe_total" name="importe_total" placeholder="0.000" step="any"
+                                min="0" value="{{ $dispersion->importe_total }}" required disabled>
                             <div class="invalid-feedback">
                                 Ingresa un importe total válido.
                             </div>
@@ -163,7 +168,38 @@
                     </div>
 
                     <hr class="my-4 mb-2">
+
+                    <button type="button" class="btn btn-outline-danger ms-auto" style="width: 6rem;"
+                        onclick="ask_destroy()">
+                        <b>Eliminar</b>
+                    </button>
+
+                    @if (session('success'))
+                        <div class="alert alert-success mt-3 text-justify" role="alert">
+                            <ul class="mb-0">
+                                <li>{{ session('success') }}</li>
+                            </ul>
+                        </div>
+                    @endif
+
+                    @if ($errors->any())
+                        <div class="alert alert-danger mt-3 text-justify" role="alert">
+                            <h6>Por favor corrige los errores debajo:</h6>
+                            <ul style="text-align: justify;">
+                                @foreach ($errors->all() as $error)
+                                    <li>{{ $error }}</li>
+                                @endforeach
+                            </ul>
+                        </div>
+                    @endif
                 </div>
+            </form>
+
+            <form action="{{ route('lodging.destroy', ['dispersion' => $dispersion->id]) }}" method="post"
+                id="destroy">
+                @csrf
+                @method('DELETE')
+
             </form>
         </div>
     </div>

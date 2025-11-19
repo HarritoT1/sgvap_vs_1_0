@@ -22,7 +22,7 @@ class LodgingDispersionController extends Controller
                 ->withInput();
         }
 
-        return redirect()->route('dispersiones.hospedaje_disp_consulta_act', ['dispersion' => $lodging_dispersion->id])
+        return redirect()->route('dispersiones.lodging_disp_consulta_act', ['dispersion' => $lodging_dispersion->id])
             ->with('success', 'Dispersión de hospedaje registrada exitosamente ;).');
     }
 
@@ -68,7 +68,7 @@ class LodgingDispersionController extends Controller
             // Intentar actualizar.
             $dispersion->update($data);
 
-            return redirect()->route('dispersiones.hospedaje_disp_consulta_act', ['dispersion' => $dispersion->id])
+            return redirect()->route('dispersiones.lodging_disp_consulta_act', ['dispersion' => $dispersion->id])
                 ->with('success', 'Dispersión de hospedaje actualizada exitosamente ;).');
         } catch (\Illuminate\Database\Eloquent\ModelNotFoundException $e) {
             // Si la dispersión no existe (por manipulación del id).

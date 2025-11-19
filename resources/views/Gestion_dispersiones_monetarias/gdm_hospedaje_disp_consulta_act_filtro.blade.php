@@ -9,7 +9,7 @@
         <div class="w-100 div-secondary px-5 py-4 d-block">
             <h2 class="mb-3 fw-bold" style="font-size: 1.5rem; text-align:justify">Datos de la dispersión:
             </h2>
-            <form id="consultar_disp_hospedaje_filtro" action="#" method="get" enctype="application/x-www-form-urlencoded"
+            <form id="consultar_disp_gasolina_filtro" action="#" method="get" enctype="application/x-www-form-urlencoded"
                 autocomplete="off" class="needs-validation p-1" novalidate>
                 <div class="row g-3">
                     <div class="col-sm-6" style="max-width: 100%;" id="campo_mes">
@@ -63,12 +63,14 @@
                     </div>
 
                     <div class="col-sm-6">
-                        <label for="rfc_hospedaje" class="form-label fw-bold" style="font-size: 1.2rem;">RFC del hospedaje</label>
-                        <input type="text" class="form-control" id="rfc_hospedaje" name="rfc_hospedaje" placeholder=""
-                            value="" maxlength="50" style="height: 3.5rem;">
+                        <label for="input_find_rfc_hospedaje" class="form-label fw-bold" style="font-size: 1.2rem;">RFC del hospedaje</label>
+                        <input type="text" class="form-control" id="input_find_rfc_hospedaje" name="rfc_hospedaje" placeholder=""
+                            value="" maxlength="50" style="height: 3.5rem;" list="sugerencias_rfc_hospedaje">
                         <div class="invalid-feedback">
                             Ingresa un RFC válido.
                         </div>
+                        <datalist id="sugerencias_rfc_hospedaje">
+                        </datalist>
                     </div>
 
                     <div class="col-sm-6 mx-auto">
@@ -90,6 +92,12 @@
                         onclick="get_results_and_show_them_like_links('/hospedaje_disp_consulta_filtro', 'hospedaje')"
                         style="background-color: var(--botones-color);">Consultar</button>
 
+                    <div class="alert alert-danger mt-3 text-justify d-none" role="alert" id="errors_part_1">
+                        <h6>Por favor corrige los errores debajo:</h6>
+                        <ul>
+                        </ul>
+                    </div>
+
                 </div>
             </form>
         </div>
@@ -107,6 +115,8 @@
         <ul class="flex-column vineta d-none"
             style="text-align:justify; overflow-y: auto; overflow-x: hidden; height: 22rem; padding-right: 2rem;"
             id="lista_resultados"></ul>
+
+        <div class="loader d-none my-5" id="loaderCircle"></div>
     </div>
 
     <br>

@@ -215,7 +215,7 @@ Route::middleware(['auth', 'inactive'])->group(function () {
 
     Route::post('/gdm_lodging_auto_alta_xls', [LodgingDispersionController::class, 'storeMany'])->name('lodging.createMany');
 
-    Route::get('/gdm_lodging_disp_consulta_act/{dispersion}', [LodgingDispersionController::class, 'show'])->name("dispersiones.lodging_disp_consulta_act")->where('dispersion', '[0-9]+');
+    Route::get('/gdm_hospedaje_disp_consulta_act/{dispersion}', [LodgingDispersionController::class, 'show'])->name("dispersiones.lodging_disp_consulta_act")->where('dispersion', '[0-9]+');
 
     Route::put('/lodging_update', [LodgingDispersionController::class, 'update'])->name('lodging.update');
 
