@@ -975,7 +975,7 @@ function generate_graphs_barras_vtc_especifico(id_canvas, xValues, yValues, titl
             }]
         },
         options: {
-            responsive: false,
+            responsive: true,
             maintainAspectRatio: false, // para que respete el tamaño del canvas.
             legend: { display: false },
             title: {

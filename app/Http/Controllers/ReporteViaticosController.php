@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Models\Project;
 use App\Models\Employee;
+use App\Models\Vehicle;
 use App\Models\GasolineDispersion;
 use App\Models\LodgingDispersion;
 use App\Models\TagDispersion;
@@ -196,11 +197,14 @@ class ReporteViaticosController extends Controller
                 $data_title_canva_projects = 'Todo lo invertido de gasolina en el proyecto: ' . $project_name;
                 $data_title_canva_vehicles = "Todo lo invertido de gasolina en el vehículo {$data['vehicle_id']} del proyecto: " . $project_name;
             }
+
+            $vehicles = Vehicle::all();
+
         } catch (\Exception $e) {
             return back()->withErrors(['error' => 'El sistema no pudo generar las gráficas de viáticos: ' . $e->getMessage()])
                 ->withInput();
         }
 
-        return view('Gestion_dispersiones_monetarias.gdm_graficas_gasolina', compact('gasolina_por_proyecto', 'gasolina_por_vehiculo', 'data_title_canva_projects', 'data_title_canva_vehicles'));
+        return view('Gestion_dispersiones_monetarias.gdm_graficas_gasolina', compact('gasolina_por_proyecto', 'gasolina_por_vehiculo', 'data_title_canva_projects', 'data_title_canva_vehicles', 'vehicles'));
     }
 }
