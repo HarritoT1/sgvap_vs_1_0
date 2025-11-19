@@ -150,6 +150,11 @@ class ReporteViaticosController extends Controller
             $request->merge(['vehicle_id' => $cleanVehicleId === '' ? null : $cleanVehicleId]);
         }
 
+        if ($request->has('year')) {
+            $cleanYear = trim($request->input('year'));
+            $request->merge(['year' => $cleanYear === '' ? null : $cleanYear]);
+        }
+
         $proyects_inactive  = $request->has('proyects_inactive');
 
         $data_title_canva_projects = '';
@@ -162,6 +167,7 @@ class ReporteViaticosController extends Controller
             'mes' => 'nullable|integer|min:1|max:12',
             'project_id' => 'nullable|string|exists:projects,id|max:80',
             'vehicle_id' => 'nullable|string|exists:vehicles,id|max:20',
+            'year' => 'nullable|integer|min:2000|max:2150',
         ], [
             'mes.integer' => 'Debes mandar un número de mes válido.',
             'mes.min' => 'El mes debe ser mayor o igual a 1.',
@@ -172,14 +178,18 @@ class ReporteViaticosController extends Controller
 
             'vehicle_id.exists' => 'El ID del vehículo proporcionado no existe en la base de datos.',
             'vehicle_id.max' => 'El ID del vehículo no puede exceder los 20 caracteres.',
+
+            'year.integer' => 'Debes mandar un número de año válido.',
+            'year.min' => 'El año debe ser mayor o igual a 2000.',
+            'year.max' => 'El año debe ser menor o igual a 2150.',
         ]);
 
         try {
 
             // Llamada a métodos estáticos ya pulidos.
-            $gasolina_por_proyecto = GasolineDispersion::gas_for_project($data['mes'] ?? null, $data['project_id'] ?? null, $proyects_inactive);
+            $gasolina_por_proyecto = GasolineDispersion::gas_for_project($data['mes'] ?? null, $data['year'] ?? null, $data['project_id'] ?? null, $proyects_inactive);
 
-            $gasolina_por_vehiculo = GasolineDispersion::gas_for_vehicle($data['mes'] ?? null, $data['project_id'] ?? null, $data['vehicle_id'] ?? null, $proyects_inactive);
+            $gasolina_por_vehiculo = GasolineDispersion::gas_for_vehicle($data['mes'] ?? null, $data['year'] ?? null, $data['project_id'] ?? null, $data['vehicle_id'] ?? null, $proyects_inactive);
 
             if (!isset($data['project_id']) && !isset($data['vehicle_id'])) {
                 $data_title_canva_projects = 'Todo lo invertido de gasolina en cada proyecto.';

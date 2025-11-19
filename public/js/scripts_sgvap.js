@@ -103,7 +103,7 @@ function ask_before_submit_new(id_form) {
             }
         }
 
-        else if (id_form === 'generar_graficas_viaticos_barras' || id_form === 'generar_graficas_viaticos_pastel') {
+        else if (id_form === 'generar_graficas_viaticos_barras' || id_form === 'generar_graficas_viaticos_pastel' || id_form === 'generar_graficas_viatico_gasolina' || id_form === 'generar_graficas_viatico_caseta' || id_form === 'generar_graficas_viatico_hospedaje') {
             const selectMes = document.getElementById('mes').value.trim();
 
             let year = null;

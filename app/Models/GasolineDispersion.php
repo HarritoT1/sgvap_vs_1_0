@@ -72,7 +72,7 @@ class GasolineDispersion extends Model
 		return $this->belongsTo(Vehicle::class);
 	}
 
-	public static function gas_for_project($mes = null, $projectId = null, $proyects_inactive = false)
+	public static function gas_for_project($mes = null, $year = null, $projectId = null, $proyects_inactive = false)
 	{
 		//Si el usuario manda projectId, NO debes filtrar activos/inactivos. Nunca.
 
@@ -86,6 +86,7 @@ class GasolineDispersion extends Model
 		)
 			->join('projects', 'gasoline_dispersions.project_id', '=', 'projects.id')
 			->when($mes, fn($q) => $q->whereMonth('gasoline_dispersions.fecha_dispersion', $mes))
+			->when($year, fn($q) => $q->whereYear('gasoline_dispersions.fecha_dispersion', $year))
 			->when($projectId, fn($q) => $q->where('gasoline_dispersions.project_id', $projectId))
 			->groupBy('projects.id', 'projects.nombre', 'projects.status')
 			->get();
@@ -98,7 +99,7 @@ class GasolineDispersion extends Model
 		return $gasolina_por_proyecto;
 	}
 
-	public static function gas_for_vehicle($mes = null, $projectId = null, $vehicleId = null, $proyects_inactive = false)
+	public static function gas_for_vehicle($mes = null, $year = null, $projectId = null, $vehicleId = null, $proyects_inactive = false)
 	{
 		//Si el usuario manda projectId, NO debes filtrar activos/inactivos. Nunca.
 
@@ -111,6 +112,7 @@ class GasolineDispersion extends Model
 			->join('vehicles', 'gasoline_dispersions.vehicle_id', '=', 'vehicles.id')
 			->join('projects', 'gasoline_dispersions.project_id', '=', 'projects.id')
 			->when($mes, fn($q) => $q->whereMonth('gasoline_dispersions.fecha_dispersion', $mes))
+			->when($year, fn($q) => $q->whereYear('gasoline_dispersions.fecha_dispersion', $year))
 			->when($projectId, fn($q) => $q->where('gasoline_dispersions.project_id', $projectId))
 			->when($vehicleId, fn($q) => $q->where('gasoline_dispersions.vehicle_id', $vehicleId))
 			->when(
