@@ -844,7 +844,7 @@ l-68 45 0 51 c1 283 222 551 505 611 96 20 97 20 125 -19z" />
                         <img class="imageResponsive mb-1" alt="icono_sgvap" src="{{ asset('img/icono_sgvap.png') }}"
                             style="width: 6rem;">
                         <hr class="my-3 hr-sidebar">
-                        <ul class="nav flex-column">
+                        <ul class="nav flex-column" style="padding-right: 30px;">
                             <li class="nav-item">
                                 <a class="nav-link d-flex align-items-center gap-2 active text-white fw-bold"
                                     aria-current="page" href="{{ route('inicio.index') }}" target="_self">
@@ -1064,7 +1064,7 @@ l-68 45 0 51 c1 283 222 551 505 611 96 20 97 20 125 -19z" />
                             </li>
                         </ul>
                         <hr class="my-3 hr-sidebar">
-                        <ul class="nav flex-column">
+                        <ul class="nav flex-column" style="padding-right: 30px;">
                             <li class="nav-item">
                                 <details class="text-white">
                                     <summary class="summary-navbar">
@@ -1103,7 +1103,7 @@ l-68 45 0 51 c1 283 222 551 505 611 96 20 97 20 125 -19z" />
                             </li>
                         </ul>
                         <hr class="my-3 hr-sidebar">
-                        <ul class="nav flex-column">
+                        <ul class="nav flex-column" style="padding-right: 30px;">
                             <li class="nav-item">
                                 <a class="nav-link d-flex align-items-center gap-2 text-white fw-bold"
                                     href="{{ route('contacto.index') }}" target="_self">
@@ -1150,6 +1150,9 @@ l-68 45 0 51 c1 283 222 551 505 611 96 20 97 20 125 -19z" />
             }
             if (document.getElementById("input_find_rfc_cliente")) {
                 asig_listener_autocomplete_rfc_cliente()
+            }
+            if (document.getElementById("input_find_rfc_hospedaje")) {
+                asig_listener_autocomplete_rfc_hospedaje()
             }
             if (document.getElementById("ajuste_retiro")) {
                 document.getElementById("ajuste_retiro").addEventListener('change', (e) => {

@@ -94,6 +94,7 @@ ul.nav summary,
 ul.nav {
   font-size: 0.8rem !important;
   font-weight: bold !important;
+  text-align: justify;
 }
 
 ul.vineta {

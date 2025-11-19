@@ -227,6 +227,8 @@ Route::middleware(['auth', 'inactive'])->group(function () {
 
     Route::delete('/hospedaje_destroy/{dispersion}', [LodgingDispersionController::class, 'destroy'])->name('lodging.destroy')->where('dispersion', '[0-9]+');
 
+    Route::get('/lodgings/buscar-rfc', [LodgingDispersionController::class, 'buscarRFCHospedaje'])->name('lodgings.buscar_rfc_hospedaje');
+
     /************** */
     Route::get('/gdm_graficas_gasolina', function () {
         return view('Gestion_dispersiones_monetarias/gdm_graficas_gasolina'); //http://127.0.0.1:8000/gdm_graficas_gasolina

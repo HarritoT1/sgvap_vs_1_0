@@ -180,4 +180,19 @@ class LodgingDispersionController extends Controller
 
         return redirect()->route('dispersiones.hospedaje_alta_dispersion')->with('success', 'Dispersión de hospedaje eliminada exitosamente ;).');
     }
+
+    public function buscarRFCHospedaje(Request $request)
+    {
+        $query = $request->input('q');
+
+        $dispersions = LodgingDispersion::where('rfc_hospedaje', 'like', $query . '%')
+            ->limit(10)
+            ->get();
+
+        if ($dispersions->isEmpty()) {
+            return response()->json(['message' => 'No se encontraron resultados.'], 404);
+        }
+
+        return response()->json($dispersions);
+    }
 }

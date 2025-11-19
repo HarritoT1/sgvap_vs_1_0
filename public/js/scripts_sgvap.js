@@ -209,6 +209,39 @@ function asig_listener_autocomplete_id_proyect() {
     });
 }
 
+function asig_listener_autocomplete_rfc_hospedaje() {
+    document.getElementById('input_find_rfc_hospedaje').addEventListener('input', function () {
+        const query = this.value;
+        const sugerencias = document.getElementById('sugerencias_rfc_hospedaje');
+
+        if (query.length < 1) {
+            sugerencias.innerHTML = '';
+            return;
+        }
+
+        console.log("buscando rfc de hospedajes...");
+
+        fetch(`/lodgings/buscar-rfc?q=${query}`, {
+            method: 'GET',
+            headers: {
+                'X-CSRF-TOKEN': document.querySelector('meta[name="csrf-token"]').content,
+                'Accept': 'application/json',
+            }
+        })
+            .then(res => { if (res.ok) { return res.json() } else { throw new Error('Error en la respuesta del servidor') } })
+            .then(data => {
+                sugerencias.innerHTML = '';
+                data.forEach(lodging => {
+                    const option = document.createElement('option');
+                    option.value = lodging.rfc_hospedaje;
+                    sugerencias.appendChild(option);
+                });
+            }).catch(err => {
+                console.warn("Error al buscar el RFC de hospedajes:", err.message);
+            });
+    });
+}
+
 async function validar_form_generator() {
 
     const divErrosPart1 = document.getElementById('errors_part_1');
