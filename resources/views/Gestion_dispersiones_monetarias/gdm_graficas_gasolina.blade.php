@@ -105,8 +105,8 @@
                         <div class="ps-3">
                             <div class="form-check form-check-inline">
                                 <input class="form-check-input" type="checkbox" name="proyects_inactive" id="opt1"
-                                    value="true" {{ true ? '' : 'disabled' }} style="text-align: justify;">
-                                <label class="form-check-label fw-bold" for="opt1">Incluír proyectos concluídos
+                                    value="true" {{ $disabledCheck ? 'disabled' : '' }} style="text-align: justify;">
+                                <label class="form-check-label fw-bold" for="opt1" style="text-align: justify">Incluír proyectos concluídos
                                     actualmente.</label>
                             </div>
                             <!-- Aquí va el feedback para el grupo -->

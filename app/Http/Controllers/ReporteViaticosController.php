@@ -155,6 +155,8 @@ class ReporteViaticosController extends Controller
         $data_title_canva_projects = '';
         $data_title_canva_vehicles = '';
 
+        $disabledCheck = null;
+
         // --- Validación ---
         $data = $request->validate([
             'mes' => 'nullable|integer|min:1|max:12',
@@ -184,18 +186,24 @@ class ReporteViaticosController extends Controller
 
                 $data_title_canva_vehicles = 'Todo lo invertido de gasolina en cada vehículo independientemente del proyecto.';
 
+                $disabledCheck = false;
+
             } else if (isset($data['project_id']) && !isset($data['vehicle_id'])) {
                 $project_name = Project::findOrFail($data['project_id'])->nombre;
 
                 $data_title_canva_projects = 'Todo lo invertido de gasolina en el proyecto: ' . $project_name . '.';
 
                 $data_title_canva_vehicles = 'Todo lo invertido de gasolina en cada vehículo del proyecto: ' . $project_name . '.';
+
+                $disabledCheck = true;
                 
             } else {
                 $project_name = Project::findOrFail($data['project_id'])->nombre;
 
                 $data_title_canva_projects = 'Todo lo invertido de gasolina en el proyecto: ' . $project_name;
                 $data_title_canva_vehicles = "Todo lo invertido de gasolina en el vehículo {$data['vehicle_id']} del proyecto: " . $project_name;
+
+                $disabledCheck = true;
             }
 
             $vehicles = Vehicle::all();
@@ -205,6 +213,6 @@ class ReporteViaticosController extends Controller
                 ->withInput();
         }
 
-        return view('Gestion_dispersiones_monetarias.gdm_graficas_gasolina', compact('gasolina_por_proyecto', 'gasolina_por_vehiculo', 'data_title_canva_projects', 'data_title_canva_vehicles', 'vehicles'));
+        return view('Gestion_dispersiones_monetarias.gdm_graficas_gasolina', compact('gasolina_por_proyecto', 'gasolina_por_vehiculo', 'data_title_canva_projects', 'data_title_canva_vehicles', 'vehicles', 'disabledCheck'));
     }
 }
