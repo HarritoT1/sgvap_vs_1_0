@@ -9,6 +9,7 @@ namespace App\Models;
 use Carbon\Carbon;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
+use Illuminate\Support\Facades\DB;
 
 /**
  * Class LodgingDispersion
@@ -65,5 +66,32 @@ class LodgingDispersion extends Model
 	public function project()
 	{
 		return $this->belongsTo(Project::class);
+	}
+
+	public static function lodging_for_project($mes = null, $year = null, $projectId = null, $proyects_inactive = false)
+	{
+		//Si el usuario manda projectId, NO debes filtrar activos/inactivos. Nunca.
+
+		//Porque si el usuario pide un proyecto específico, tiene sentido devolverlo independientemente de su estado.
+
+		$hospedaje_por_proyecto = self::select(
+			'projects.id AS project_id',
+			'projects.nombre AS project_name',
+			'projects.status AS project_status',
+			DB::raw('SUM(lodging_dispersions.importe_total) AS total_invertido_hospedaje')
+		)
+			->join('projects', 'lodging_dispersions.project_id', '=', 'projects.id')
+			->when($mes, fn($q) => $q->whereMonth('lodging_dispersions.fecha_dispersion', $mes))
+			->when($year, fn($q) => $q->whereYear('lodging_dispersions.fecha_dispersion', $year))
+			->when($projectId, fn($q) => $q->where('lodging_dispersions.project_id', $projectId))
+			->groupBy('projects.id', 'projects.nombre', 'projects.status')
+			->get();
+
+		// Ajuste correcto:
+		if (!$proyects_inactive && !$projectId) {
+			return $hospedaje_por_proyecto->where('project_status', 'activo');
+		}
+
+		return $hospedaje_por_proyecto;
 	}
 }

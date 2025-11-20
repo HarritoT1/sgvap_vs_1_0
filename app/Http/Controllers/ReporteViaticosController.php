@@ -319,4 +319,72 @@ class ReporteViaticosController extends Controller
 
         return view('Gestion_dispersiones_monetarias.gdm_graficas_caseta', compact('caseta_por_proyecto', 'caseta_por_vehiculo', 'data_title_canva_projects', 'data_title_canva_vehicles', 'vehicles', 'disabledCheck'));
     }
+
+    public function barras_hospedaje(Request $request)
+    {
+        // --- Sanitización previa ---
+        if ($request->has('mes')) {
+            $cleanMes = trim($request->input('mes'));
+            $request->merge(['mes' => $cleanMes === '' ? null : (int) $cleanMes]);
+        }
+
+        if ($request->has('project_id')) {
+            $cleanProjectId = trim(explode('→', $request->input('project_id'))[0]);
+            $request->merge(['project_id' => $cleanProjectId === '' ? null : $cleanProjectId]);
+        }
+
+        if ($request->has('year')) {
+            $cleanYear = trim($request->input('year'));
+            $request->merge(['year' => $cleanYear === '' ? null : $cleanYear]);
+        }
+
+        $proyects_inactive  = $request->has('proyects_inactive');
+
+        $data_title_canva_projects = '';
+
+        $disabledCheck = null;
+
+        // --- Validación ---
+        $data = $request->validate([
+            'mes' => 'nullable|integer|min:1|max:12',
+            'project_id' => 'nullable|string|exists:projects,id|max:80',
+            'year' => 'nullable|integer|min:2000|max:2150',
+        ], [
+            'mes.integer' => 'Debes mandar un número de mes válido.',
+            'mes.min' => 'El mes debe ser mayor o igual a 1.',
+            'mes.max' => 'El mes debe ser menor o igual a 12.',
+
+            'project_id.exists' => 'El ID del proyecto proporcionado no existe en la base de datos.',
+            'project_id.max' => 'El ID del proyecto no puede exceder los 80 caracteres.',
+
+            'year.integer' => 'Debes mandar un número de año válido.',
+            'year.min' => 'El año debe ser mayor o igual a 2000.',
+            'year.max' => 'El año debe ser menor o igual a 2150.',
+        ]);
+
+        try {
+
+            // Llamada a métodos estáticos ya pulidos.
+            $hospedaje_por_proyecto = LodgingDispersion::lodging_for_project($data['mes'] ?? null, $data['year'] ?? null, $data['project_id'] ?? null, $proyects_inactive);
+
+            if (isset($data['project_id'])) {
+                $project_name = Project::findOrFail($data['project_id'])->nombre;
+
+                $data_title_canva_projects = 'Todo lo invertido de hospedaje en el proyecto: ' . $project_name . '.';
+
+                $disabledCheck = true;
+                
+            } else {
+                $data_title_canva_projects = 'Todo lo invertido de hospedaje en cada proyecto.';
+
+                $disabledCheck = false;
+            }
+
+        } catch (\Exception $e) {
+            return back()->withErrors(['error' => 'El sistema no pudo generar las gráficas de viáticos: ' . $e->getMessage()])
+                ->withInput();
+        }
+
+        return view('Gestion_dispersiones_monetarias.gdm_graficas_hospedaje', compact('caseta_por_proyecto', 'data_title_canva_projects', 'disabledCheck'));
+    }
 }
