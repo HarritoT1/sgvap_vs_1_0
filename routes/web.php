@@ -12,6 +12,7 @@ use App\Http\Controllers\ReporteViaticosController;
 use App\Http\Controllers\GasolineDispersionController;
 use App\Http\Controllers\TagDispersionController;
 use App\Http\Controllers\LodgingDispersionController;
+use App\Http\Controllers\VehicleController;
 use App\Models\Customer;
 use App\Models\DailyExpenseReport;
 use App\Models\Employee;
@@ -20,10 +21,6 @@ use App\Models\Vehicle;
 /*Route::get('/', function () {
     return view('welcome');
 }); //http://127.0.0.1:8000/*/
-
-Route::get('/gv_registro_vehiculos', function () {
-    return view('Gestion_vehiculos/gv_registro_vehiculos'); //http://127.0.0.1:8000/gv_registro_vehiculos
-})->name("vehiculos.registro_vehiculos");
 
 Route::get('/gv_consulta_act_filtro', function () {
     return view('Gestion_vehiculos/gv_consulta_act_filtro'); //http://127.0.0.1:8000/gv_consulta_act_filtro
@@ -234,4 +231,10 @@ Route::middleware(['auth', 'inactive'])->group(function () {
     Route::get('/gdm_graficas_caseta', [ReporteViaticosController::class, 'barras_caseta'])->name("dispersiones.graficas_caseta"); //http://127.0.0.1:8000/gdm_graficas_caseta
 
     Route::get('/gdm_graficas_hospedaje', [ReporteViaticosController::class, 'barras_hospedaje'])->name("dispersiones.graficas_hospedaje"); //http://127.0.0.1:8000/gdm_graficas_hospedaje
+
+    Route::get('/gv_registro_vehiculos', function () {
+        return view('Gestion_vehiculos/gv_registro_vehiculos'); //http://127.0.0.1:8000/gv_registro_vehiculos
+    })->name("vehiculos.registro_vehiculos");
+
+    Route::post('/vehicle_create', [VehicleController::class, 'create'])->name('vehicles.create');
 });
