@@ -385,6 +385,6 @@ class ReporteViaticosController extends Controller
                 ->withInput();
         }
 
-        return view('Gestion_dispersiones_monetarias.gdm_graficas_hospedaje', compact('caseta_por_proyecto', 'data_title_canva_projects', 'disabledCheck'));
+        return view('Gestion_dispersiones_monetarias.gdm_graficas_hospedaje', compact('hospedaje_por_proyecto', 'data_title_canva_projects', 'disabledCheck'));
     }
 }
