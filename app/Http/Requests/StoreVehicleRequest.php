@@ -25,7 +25,7 @@ class StoreVehicleRequest extends FormRequest
     {
         $this->merge([
             'id' => trim($this->input('id')),
-            'nombre_modelo' => trim($this->input('modelo')),
+            'nombre_modelo' => trim($this->input('nombre_modelo')),
             'marca' => trim($this->input('marca')),
             'color' => trim($this->input('color')),
 
