@@ -30,6 +30,7 @@ class StoreVehicleRequest extends FormRequest
             'color' => trim($this->input('color')),
 
             'obs_gral' => $this->emptyToNull($this->input('obs_gral')),
+            'caracteristicas' => trim(implode(',', $this->input('caracteristicas', []))),
         ]);
     }
 
@@ -51,6 +52,7 @@ class StoreVehicleRequest extends FormRequest
             'color' => 'required|string|max:50',
             'ruta_foto_1' => 'nullable|mimes:png,jpeg,jpg,webp,gif|max:5120',
             'km_actual' => 'required|integer|min:0',
+            'caracteristicas' => 'required|string',
             'obs_gral' => 'nullable|string|max:500',
         ];
     }
@@ -82,6 +84,8 @@ class StoreVehicleRequest extends FormRequest
             'km_actual.required' => 'El kilometraje actual es obligatorio.',
             'km_actual.integer' => 'El kilometraje actual debe ser un número entero válido.',
             'km_actual.min' => 'El kilometraje actual no puede ser negativo.',
+
+            'caracteristicas.required' => 'Por lo menos marca una característica del vehículo.',
 
             'obs_gral.max' => 'Las observaciones generales no deben exceder los 500 caracteres.',
         ];

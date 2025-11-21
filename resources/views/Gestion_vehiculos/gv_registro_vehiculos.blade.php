@@ -87,7 +87,7 @@
                         <div class="col-sm-5 text-center">
                             <div class="d-inline-block text-start">
                                 <div class="form-check form-switch mb-2">
-                                    <input class="form-check-input checklist" type="checkbox" id="char1" required
+                                    <input class="form-check-input checklist" type="checkbox" id="char1" 
                                         name="caracteristicas[]" value="Retrovisor izquierdo" @checked(in_array("Retrovisor izquierdo", old('caracteristicas', [])))>
                                     <label class="form-check-label fw-bold" for="char1">Retrovisor Izquierdo.</label>
                                 </div>
