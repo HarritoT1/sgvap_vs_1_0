@@ -57,4 +57,40 @@ class VehicleController extends Controller
         $vehicle->caracteristicasArray = explode(',', $vehicle->caracteristicas ?? "");
         return view('Gestion_vehiculos.gv_consulta_act', ['vehicle' => $vehicle]);
     }
+
+    public function update(UpdateVehicleRequest $request)
+    {
+        $data = $request->validated();
+        
+        try {
+            // Buscar el vehículo existente.
+            $vehicle = Vehicle::findOrFail($request->input('id_vehicle'));
+
+            //PENDIENTE....
+            // Intentar actualizar.
+            $vehicle->update($data);
+
+            return redirect()
+                ->route('projects.consulta_act', ['id' => $project->id])
+                ->with('success', 'Proyecto actualizado exitosamente ;).');
+        } catch (\Illuminate\Database\Eloquent\ModelNotFoundException $e) {
+            // Si el cliente no existe (por manipulación del id).
+            return redirect()
+                ->back()
+                ->withErrors(['id_project' => 'El proyecto que intenta actualizar no existe.'])
+                ->withInput();
+        } catch (\Illuminate\Database\QueryException $e) {
+            // Si ocurre un error de base de datos (ej. violación de unique).
+            return redirect()
+                ->back()
+                ->withErrors(['database' => 'Error al actualizar el cliente: ' . $e->getMessage()])
+                ->withInput();
+        } catch (\Exception $e) {
+            // Cualquier otro error inesperado.
+            return redirect()
+                ->back()
+                ->withErrors(['general' => 'Ocurrió un error inesperado al actualizar el proyecto.'])
+                ->withInput();
+        }
+    }
 }

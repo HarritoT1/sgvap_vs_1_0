@@ -91,7 +91,11 @@ class UpdateVehicleRequest extends FormRequest
 
             'obs_gral.max' => 'Las observaciones generales no deben exceder los 500 caracteres.',
 
-            ''
+            'status.required' => 'El estado del vehículo es obligatorio.',
+            'status.in' => 'El estado del vehículo debe ser "funcional" o "mantenimiento".',
+
+            'is_on_loan.required' => 'El estado de prestamo del vehículo es obligatorio.',
+            'is_on_loan.in' => 'El estado de prestamo del vehículo debe ser "SI" o "NO".',
         ];
     } 
 }
