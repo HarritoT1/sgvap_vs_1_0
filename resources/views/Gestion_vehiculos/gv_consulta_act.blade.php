@@ -2,17 +2,22 @@
 
 @section('content')
     <div class="w-100 my-3 div-main">
-        <h1 class="fw-bold my-3" style="font-size: 2rem; text-align:justify">Detalles del vehículo con la placa: $id</h1>
+        <h1 class="fw-bold my-3" style="font-size: 2rem; text-align:justify">Detalles del vehículo con la placa: {{ $vehicle->id }}</h1>
         <div class="w-100 div-secondary">
 
             <h2 class="mb-3 fw-bold" style="font-size: 1.5rem;">Datos del vehículo:</h2>
             <form id="actualizar_version_2" action="#" method="post" enctype="multipart/form-data" autocomplete="off"
                 class="needs-validation p-1" novalidate>
+                @csrf
+                @method('PUT')
+
+                <input type="hidden" name="id_vehicle" value="{{ $vehicle->id }}" class="ignore">
+
                 <div class="row g-3">
                     <div class="col-sm-6">
                         <label for="id" class="form-label fw-bold">Placa</label>
                         <input type="text" class="form-control" id="id" name="id" placeholder="ASP-MV9"
-                            value="" required maxlength="20" disabled>
+                            value="{{ $vehicle->id }}" required maxlength="20" disabled>
                         <div class="invalid-feedback">
                             Ingresa una placa vehícular válida.
                         </div>
@@ -21,7 +26,7 @@
                     <div class="col-sm-6">
                         <label for="nombre_modelo" class="form-label fw-bold">Nombre del modelo</label>
                         <input type="text" class="form-control" id="nombre_modelo" name="nombre_modelo" placeholder=""
-                            value="" required maxlength="50" disabled>
+                            value="{{ $vehicle->nombre_modelo }}" required maxlength="50" disabled>
                         <div class="invalid-feedback">
                             Ingresa un nombre de modelo válido.
                         </div>
@@ -30,7 +35,7 @@
                     <div class="col-sm-6">
                         <label for="marca" class="form-label fw-bold">Marca</label>
                         <input type="text" class="form-control" id="marca" name="marca" placeholder=""
-                            value="" required maxlength="50" disabled>
+                            value="{{ $vehicle->marca }}" required maxlength="50" disabled>
                         <div class="invalid-feedback">
                             Ingresa una marca válida.
                         </div>
@@ -39,7 +44,7 @@
                     <div class="col-sm-6">
                         <label for="anio" class="form-label fw-bold">Año</label>
                         <input type="number" class="form-control" id="anio" name="anio" placeholder=""
-                            step="1" min="1900" value="" required disabled>
+                            step="1" min="1900" value="{{ $vehicle->anio }}" required disabled>
                         <div class="invalid-feedback">
                             Ingresa una año válido.
                         </div>
@@ -48,7 +53,7 @@
                     <div class="col-sm-6">
                         <label for="color" class="form-label fw-bold">Color</label>
                         <input type="text" class="form-control" id="color" name="color" placeholder=""
-                            value="" required maxlength="50" disabled>
+                            value="{{ $vehicle->color }}" required maxlength="50" disabled>
                         <div class="invalid-feedback">
                             Ingresa un color válido.
                         </div>
@@ -59,7 +64,7 @@
                         <div class="input-group">
                             <span class="input-group-text">⏲</span>
                             <input type="number" class="form-control" id="km_actual" name="km_actual" placeholder=""
-                                step="1" min="0" value="" required disabled>
+                                step="1" min="0" value="{{ $vehicle->km_actual }}" required disabled>
                             <div class="invalid-feedback">
                                 Ingresa un km entero válido.
                             </div>
@@ -70,10 +75,10 @@
                         <label for="status" class="form-label fw-bold">Estado del vehículo</label>
                         <select name="status" id="status" class="form-control form-select"
                             aria-label="Default select example" required disabled>
-                            <option value="funcional" selected>
+                            <option value="funcional" @if($vehicle->status == "funcional") selected @endif>
                                 FUNCIONAL
                             </option>
-                            <option value="mantenimiento">
+                            <option value="mantenimiento" @if($vehicle->status == "mantenimiento") selected @endif>
                                 MANTENIMIENTO
                             </option>
                         </select>
@@ -85,7 +90,7 @@
                     <div class="col-sm-6">
                         <label for="is_on_loan" class="form-label fw-bold">En prestamo</label>
                         <input type="text" class="form-control" id="is_on_loan" name="is_on_loan" placeholder=""
-                            value="SI" required maxlength="2" readonly>
+                            value=@if($vehicle->is_on_loan)"SI" @else "NO" @endif required maxlength="2" readonly>
                         <div class="invalid-feedback">
                             Entrada invalida.
                         </div>
@@ -95,7 +100,7 @@
                         <h3 class="fw-bold" style="font-size: 1rem;">Fotografía del vehículo</h3>
                         <label for="ruta_foto_1" class="form-label d-block w-100" style="cursor: pointer;"
                             title="Cambiar fotografía">
-                            <img id="prev_foto_1" class="imageResponsive my-2 img_file" alt="img" src=" "
+                            <img id="prev_foto_1" class="imageResponsive my-2 img_file" alt="img" src="{{ trim($vehicle->ruta_foto_1 ?? '') !== '' ? asset('storage/'.$vehicle->ruta_foto_1) : '' }}"
                                 style="width: 15rem; border-radius: 15px; box-shadow: -1px 3px 10px 4px rgba(0,0,0,0.75); height: 12rem;">
                         </label>
                         <input type="file" class="form-control mt-4 mb-3" id="ruta_foto_1" name="ruta_foto_1"
@@ -115,12 +120,12 @@
                             <div class="d-inline-block text-start">
                                 <div class="form-check form-switch mb-2">
                                     <input class="form-check-input checklist" type="checkbox" id="char1" checked
-                                        required name="caracteristicas[]" value="Retrovisor izquierdo" disabled>
+                                         name="caracteristicas[]" value="Retrovisor izquierdo" disabled @checked(in_array("Retrovisor izquierdo",  $vehicle->caracteristicasArray))>
                                     <label class="form-check-label fw-bold" for="char1">Retrovisor Izquierdo.</label>
                                 </div>
                                 <div class="form-check form-switch mb-2">
                                     <input class="form-check-input checklist" type="checkbox" id="char2" checked
-                                        name="caracteristicas[]" value="Retrovisor derecho" disabled>
+                                        name="caracteristicas[]" value="Retrovisor derecho" disabled >
                                     <label class="form-check-label fw-bold" for="char2">Retrovisor Derecho.</label>
                                 </div>
                                 <div class="form-check form-switch mb-2">

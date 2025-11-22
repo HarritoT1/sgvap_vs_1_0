@@ -13,19 +13,27 @@
                 </div>
 
                 <div class="modal-body p-5 pt-0" style="max-width: 100%;">
-                    <form id="consultar_vehiculo" action="{{ route('vehiculos.consulta_act') }}" method="get" enctype="application/x-www-form-urlencoded"
-                        autocomplete="off" class="needs-validation p-1" novalidate>
+                    <form id="consultar_vehiculo" action="{{ route('vehiculos.consulta_act') }}" method="get"
+                        enctype="application/x-www-form-urlencoded" autocomplete="off" class="needs-validation p-1"
+                        novalidate>
                         @csrf
-                        
+
                         <div class="col-12 mb-4" style="max-width: 100%;" id="vehicle_id">
                             <select name="id" id="id" class="form-control form-select"
                                 aria-label="Default select example" required style="height: 3.5rem;">
-                                <option value="ABJ3-S23D" selected>
-                                    ABJ3-S23D
-                                </option>
-                                <option value="ABJ3-S23E">
-                                    ABJ3-S23E
-                                </option>
+                                @if (!empty($vehicles))
+                                    @foreach ($vehicles as $vehicle)
+                                        <option value="{{ $vehicle->id }}"
+                                            {{ old('vehicle_id') == $vehicle->id ? 'selected' : '' }}>
+                                            {{ $vehicle->id }} → {{ $vehicle->marca }} {{ $vehicle->nombre_modelo }}
+                                            {{ $vehicle->color }}
+                                        </option>
+                                    @endforeach
+                                @else
+                                    <option value="" selected>
+                                        NINGUNO
+                                    </option>
+                                @endif
                             </select>
                             <div class="invalid-feedback">
                                 Selecciona una placa porfavor.
@@ -36,6 +44,17 @@
                         <small class="fw-bold d-block mx-auto my-2 text-center text-body-secondary"
                             style="font-size: 1.2rem">¡¡¡Selecciona una placa vehícular!!!</small>
                         <hr class="mt-4">
+
+                        @if($errors->any())
+                            <div class="alert alert-danger mt-3 text-justify" role="alert">
+                                <h6>Por favor corrige los errores debajo:</h6>
+                                <ul>
+                                    @foreach ($errors->all() as $error)
+                                        <li>{{ $error }}</li>
+                                    @endforeach
+                                </ul>
+                            </div>
+                        @endif
                     </form>
                 </div>
             </div>

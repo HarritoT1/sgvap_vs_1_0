@@ -31,6 +31,8 @@ class VehicleController extends Controller
                 $data['ruta_foto_1'] = $path;
             }
 
+            else $data['ruta_foto_1'] = "";
+
             // Crear vehículo
             $vehicle = Vehicle::create($data);
         } catch (\Exception $e) {
@@ -52,6 +54,8 @@ class VehicleController extends Controller
             'id.max' => 'La placa vehicular no puede exceder los 20 caracteres.',
         ]);
         $vehicle = Vehicle::findOrFail($data['id']);
+        $vehicle->caracteristicasArray = explode(',', $vehicle->caracteristicas);
+        dd($vehicle);
         return view('Gestion_vehiculos.gv_consulta_act', ['vehicle' => $vehicle]);
     }
 }
