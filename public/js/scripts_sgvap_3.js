@@ -64,8 +64,8 @@ function ask_before_submit_with_files() {
 
         const huboCambiossrc = Array.from(imgs).some(
             (img, index) => {
-                valoresOriginales2[`ruta_evidencia_${index + 1}`] = img.src;
-                return valoresOriginales[`ruta_evidencia_${index + 1}`] !== img.src;
+                valoresOriginales2[`ruta_evidencia_${index + 1}`] = img.getAttribute("src").trim();
+                return valoresOriginales[`ruta_evidencia_${index + 1}`] !== img.getAttribute("src").trim();
             }
         );
 

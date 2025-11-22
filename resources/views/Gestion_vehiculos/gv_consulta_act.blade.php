@@ -119,58 +119,58 @@
                         <div class="col-sm-5 text-center">
                             <div class="d-inline-block text-start">
                                 <div class="form-check form-switch mb-2">
-                                    <input class="form-check-input checklist" type="checkbox" id="char1" checked
+                                    <input class="form-check-input checklist" type="checkbox" id="char1" 
                                          name="caracteristicas[]" value="Retrovisor izquierdo" disabled @checked(in_array("Retrovisor izquierdo",  $vehicle->caracteristicasArray))>
                                     <label class="form-check-label fw-bold" for="char1">Retrovisor Izquierdo.</label>
                                 </div>
                                 <div class="form-check form-switch mb-2">
-                                    <input class="form-check-input checklist" type="checkbox" id="char2" checked
+                                    <input class="form-check-input checklist" type="checkbox" id="char2" 
                                         name="caracteristicas[]" value="Retrovisor derecho" disabled @checked(in_array("Retrovisor derecho",  $vehicle->caracteristicasArray))>
                                     <label class="form-check-label fw-bold" for="char2">Retrovisor Derecho.</label>
                                 </div>
                                 <div class="form-check form-switch mb-2">
-                                    <input class="form-check-input checklist" type="checkbox" id="char3" checked
-                                        name="caracteristicas[]" value="Tapon gasolina" disabled>
+                                    <input class="form-check-input checklist" type="checkbox" id="char3" 
+                                        name="caracteristicas[]" value="Tapon gasolina" disabled @checked(in_array("Tapon gasolina",  $vehicle->caracteristicasArray))>
                                     <label class="form-check-label fw-bold" for="char3">Tapón Gasolina.</label>
                                 </div>
                                 <div class="form-check form-switch mb-2">
-                                    <input class="form-check-input checklist" type="checkbox" id="char4" checked
-                                        name="caracteristicas[]" value="Tapones llantas" disabled>
+                                    <input class="form-check-input checklist" type="checkbox" id="char4" 
+                                        name="caracteristicas[]" value="Tapones llantas" disabled @checked(in_array("Tapones llantas",  $vehicle->caracteristicasArray))>
                                     <label class="form-check-label fw-bold" for="char4">Tapones Llantas.</label>
                                 </div>
                                 <div class="form-check form-switch mb-2">
-                                    <input class="form-check-input checklist" type="checkbox" id="char5" checked
-                                        name="caracteristicas[]" value="Cristales puertas" disabled>
+                                    <input class="form-check-input checklist" type="checkbox" id="char5" 
+                                        name="caracteristicas[]" value="Cristales puertas" disabled @checked(in_array("Cristales puertas",  $vehicle->caracteristicasArray))>
                                     <label class="form-check-label fw-bold" for="char5">Cristales Puertas.</label>
                                 </div>
                                 <div class="form-check form-switch mb-2">
-                                    <input class="form-check-input checklist" type="checkbox" id="char6" checked
-                                        name="caracteristicas[]" value="Llanta refaccion" disabled>
+                                    <input class="form-check-input checklist" type="checkbox" id="char6" 
+                                        name="caracteristicas[]" value="Llanta refaccion" disabled @checked(in_array("Llanta refaccion",  $vehicle->caracteristicasArray))>
                                     <label class="form-check-label fw-bold" for="char6">Llanta Refacción.</label>
                                 </div>
                                 <div class="form-check form-switch mb-2">
-                                    <input class="form-check-input checklist" type="checkbox" id="char7" checked
-                                        name="caracteristicas[]" value="Limpiadores" disabled>
+                                    <input class="form-check-input checklist" type="checkbox" id="char7" 
+                                        name="caracteristicas[]" value="Limpiadores" disabled @checked(in_array("Limpiadores",  $vehicle->caracteristicasArray))>
                                     <label class="form-check-label fw-bold" for="char7">Limpiadores.</label>
                                 </div>
                                 <div class="form-check form-switch mb-2">
-                                    <input class="form-check-input checklist" type="checkbox" id="char8" checked
-                                        name="caracteristicas[]" value="Parabrisas frontal" disabled>
+                                    <input class="form-check-input checklist" type="checkbox" id="char8" 
+                                        name="caracteristicas[]" value="Parabrisas frontal" disabled @checked(in_array("Parabrisas frontal",  $vehicle->caracteristicasArray))>
                                     <label class="form-check-label fw-bold" for="char8">Parabrisas Frontal.</label>
                                 </div>
                                 <div class="form-check form-switch mb-2">
-                                    <input class="form-check-input checklist" type="checkbox" id="char9" checked
-                                        name="caracteristicas[]" value="Parabrisas trasero" disabled>
+                                    <input class="form-check-input checklist" type="checkbox" id="char9" 
+                                        name="caracteristicas[]" value="Parabrisas trasero" disabled @checked(in_array("Parabrisas trasero",  $vehicle->caracteristicasArray))>
                                     <label class="form-check-label fw-bold" for="char9">Parabrisas Trasero.</label>
                                 </div>
                                 <div class="form-check form-switch mb-2">
-                                    <input class="form-check-input checklist" type="checkbox" id="char10" checked
-                                        name="caracteristicas[]" value="Medallon" disabled>
+                                    <input class="form-check-input checklist" type="checkbox" id="char10" 
+                                        name="caracteristicas[]" value="Medallon" disabled @checked(in_array("Medallon",  $vehicle->caracteristicasArray))>
                                     <label class="form-check-label fw-bold" for="char10">Medallón.</label>
                                 </div>
                                 <div class="form-check form-switch mb-2">
-                                    <input class="form-check-input checklist" type="checkbox" id="char11" checked
-                                        name="caracteristicas[]" value="Molduras" disabled>
+                                    <input class="form-check-input checklist" type="checkbox" id="char11" 
+                                        name="caracteristicas[]" value="Molduras" disabled @checked(in_array("Molduras",  $vehicle->caracteristicasArray))>
                                     <label class="form-check-label fw-bold" for="char11">Molduras.</label>
                                 </div>
                             </div>
@@ -179,58 +179,58 @@
                         <div class="col-sm-5 text-center" id="caracteristicas_2">
                             <div class="d-inline-block text-start">
                                 <div class="form-check form-switch mb-2">
-                                    <input class="form-check-input checklist" type="checkbox" id="char12" checked
-                                        name="caracteristicas[]" value="Calaveras" disabled>
+                                    <input class="form-check-input checklist" type="checkbox" id="char12" 
+                                        name="caracteristicas[]" value="Calaveras" disabled @checked(in_array("Calaveras",  $vehicle->caracteristicasArray))>
                                     <label class="form-check-label fw-bold" for="char12">Calaveras.</label>
                                 </div>
                                 <div class="form-check form-switch mb-2">
-                                    <input class="form-check-input checklist" type="checkbox" id="char13" checked
-                                        name="caracteristicas[]" value="Parrilla" disabled>
+                                    <input class="form-check-input checklist" type="checkbox" id="char13" 
+                                        name="caracteristicas[]" value="Parrilla" disabled @checked(in_array("Parrilla",  $vehicle->caracteristicasArray))>
                                     <label class="form-check-label fw-bold" for="char13">Parrilla.</label>
                                 </div>
                                 <div class="form-check form-switch mb-2">
-                                    <input class="form-check-input checklist" type="checkbox" id="char14" checked
-                                        name="caracteristicas[]" value="Placa delantera" disabled>
+                                    <input class="form-check-input checklist" type="checkbox" id="char14" 
+                                        name="caracteristicas[]" value="Placa delantera" disabled @checked(in_array("Placa delantera",  $vehicle->caracteristicasArray))>
                                     <label class="form-check-label fw-bold" for="char14">Placa Delantera.</label>
                                 </div>
                                 <div class="form-check form-switch mb-2">
-                                    <input class="form-check-input checklist" type="checkbox" id="char15" checked
-                                        name="caracteristicas[]" value="Placa trasera" disabled>
+                                    <input class="form-check-input checklist" type="checkbox" id="char15" 
+                                        name="caracteristicas[]" value="Placa trasera" disabled @checked(in_array("Placa trasera",  $vehicle->caracteristicasArray))>
                                     <label class="form-check-label fw-bold" for="char15">Placa Trasera.</label>
                                 </div>
                                 <div class="form-check form-switch mb-2">
-                                    <input class="form-check-input checklist" type="checkbox" id="char16" checked
-                                        name="caracteristicas[]" value="Faros" disabled>
+                                    <input class="form-check-input checklist" type="checkbox" id="char16" 
+                                        name="caracteristicas[]" value="Faros" disabled @checked(in_array("Faros",  $vehicle->caracteristicasArray))>
                                     <label class="form-check-label fw-bold" for="char16">Faros.</label>
                                 </div>
                                 <div class="form-check form-switch mb-2">
-                                    <input class="form-check-input checklist" type="checkbox" id="char17" checked
-                                        name="caracteristicas[]" value="Retrovisor" disabled>
+                                    <input class="form-check-input checklist" type="checkbox" id="char17" 
+                                        name="caracteristicas[]" value="Retrovisor" disabled @checked(in_array("Retrovisor",  $vehicle->caracteristicasArray))>
                                     <label class="form-check-label fw-bold" for="char17">Retrovisor.</label>
                                 </div>
                                 <div class="form-check form-switch mb-2">
-                                    <input class="form-check-input checklist" type="checkbox" id="char18" checked
-                                        name="caracteristicas[]" value="Tapetes" disabled>
+                                    <input class="form-check-input checklist" type="checkbox" id="char18" 
+                                        name="caracteristicas[]" value="Tapetes" disabled @checked(in_array("Tapetes",  $vehicle->caracteristicasArray))>
                                     <label class="form-check-label fw-bold" for="char18">Tapetes.</label>
                                 </div>
                                 <div class="form-check form-switch mb-2">
-                                    <input class="form-check-input checklist" type="checkbox" id="char19" checked
-                                        name="caracteristicas[]" value="Claxon" disabled>
+                                    <input class="form-check-input checklist" type="checkbox" id="char19" 
+                                        name="caracteristicas[]" value="Claxon" disabled @checked(in_array("Claxon",  $vehicle->caracteristicasArray))>
                                     <label class="form-check-label fw-bold" for="char19">Claxon.</label>
                                 </div>
                                 <div class="form-check form-switch mb-2">
-                                    <input class="form-check-input checklist" type="checkbox" id="char20" checked
-                                        name="caracteristicas[]" value="Estereo" disabled>
+                                    <input class="form-check-input checklist" type="checkbox" id="char20" 
+                                        name="caracteristicas[]" value="Estereo" disabled @checked(in_array("Estereo",  $vehicle->caracteristicasArray))>
                                     <label class="form-check-label fw-bold" for="char20">Estéreo.</label>
                                 </div>
                                 <div class="form-check form-switch mb-2">
-                                    <input class="form-check-input checklist" type="checkbox" id="char21" checked
-                                        name="caracteristicas[]" value="Poliza de seguro" disabled>
+                                    <input class="form-check-input checklist" type="checkbox" id="char21" 
+                                        name="caracteristicas[]" value="Poliza de seguro" disabled @checked(in_array("Poliza de seguro",  $vehicle->caracteristicasArray))>
                                     <label class="form-check-label fw-bold" for="char21">Póliza de Seguro.</label>
                                 </div>
                                 <div class="form-check form-switch mb-2">
-                                    <input class="form-check-input checklist" type="checkbox" id="char22" checked
-                                        name="caracteristicas[]" value="Tarjeta de circulacion" disabled>
+                                    <input class="form-check-input checklist" type="checkbox" id="char22" 
+                                        name="caracteristicas[]" value="Tarjeta de circulacion" disabled @checked(in_array("Tarjeta de circulacion",  $vehicle->caracteristicasArray))>
                                     <label class="form-check-label fw-bold" for="char22">Tarjeta de Circulación.</label>
                                 </div>
                             </div>
@@ -246,7 +246,7 @@
                         <label for="obs_gral" class="form-label fw-bold">Observación general descriptiva:</label>
                         <div class="input-group" style="min-height: 10rem !important;">
                             <span class="input-group-text">📝</span>
-                            <textarea id="obs_gral" name="obs_gral" class="form-control" aria-label="Notas" maxlength="500" disabled style="resize: none; overflow-y: auto;"></textarea>
+                            <textarea id="obs_gral" name="obs_gral" class="form-control" aria-label="Notas" maxlength="500" disabled style="resize: none; overflow-y: auto;">{{ $vehicle->obs_gral ?? '' }}</textarea>
                         </div>
                     </div>
 
@@ -276,6 +276,25 @@
                     </div>
 
                     <hr class="my-4 mb-2">
+
+                    @if (session('success'))
+                        <div class="alert alert-success mt-3 text-justify" role="alert">
+                            <ul class="mb-0">
+                                <li>{{ session('success') }}</li>
+                            </ul>
+                        </div>
+                    @endif
+                    
+                    @if ($errors->any())
+                        <div class="alert alert-danger mt-3 text-justify" role="alert">
+                            <h6>Por favor corrige los errores debajo:</h6>
+                            <ul style="text-align: justify;">
+                                @foreach ($errors->all() as $error)
+                                    <li>{{ $error }}</li>
+                                @endforeach
+                            </ul>
+                        </div>
+                    @endif
             </form>
         </div>
     </div>
