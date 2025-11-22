@@ -125,7 +125,7 @@
                                 </div>
                                 <div class="form-check form-switch mb-2">
                                     <input class="form-check-input checklist" type="checkbox" id="char2" checked
-                                        name="caracteristicas[]" value="Retrovisor derecho" disabled >
+                                        name="caracteristicas[]" value="Retrovisor derecho" disabled @checked(in_array("Retrovisor derecho",  $vehicle->caracteristicasArray))>
                                     <label class="form-check-label fw-bold" for="char2">Retrovisor Derecho.</label>
                                 </div>
                                 <div class="form-check form-switch mb-2">
