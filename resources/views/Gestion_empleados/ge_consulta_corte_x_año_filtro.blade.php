@@ -16,6 +16,8 @@
                     <form id="consultar_corte_mensual" action="{{ route('empleados.consulta_corte_x_año_especifico') }}"
                         method="get" enctype="application/x-www-form-urlencoded" autocomplete="off"
                         class="needs-validation p-1" novalidate>
+                        @csrf
+                        
                         <div class="col-12 mb-3" style="max-width: 100%;">
                             <label for="anio" class="form-label fw-bold" style="font-size: 1.2rem;">Año</label>
                             <input type="number" class="form-control" id="anio" name="anio" placeholder="2025"

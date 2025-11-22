@@ -11,6 +11,8 @@
             </h2>
             <form id="generar_graficas_viatico_caseta" action="{{ route('dispersiones.graficas_caseta') }}" method="get"
                 enctype="application/x-www-form-urlencoded" autocomplete="off" class="needs-validation p-1" novalidate>
+                @csrf
+                
                 <div class="row g-3">
                     <div class="col-sm-6" style="max-width: 100%;" id="campo_mes">
                         <label for="mes" class="form-label fw-bold" style="font-size: 1.2rem;">Mes</label>

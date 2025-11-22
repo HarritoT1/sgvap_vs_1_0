@@ -41,4 +41,17 @@ class VehicleController extends Controller
             ->route('vehiculos.consulta_act', ['id' => $vehicle->id])
             ->with('success', 'Vehículo registrado exitosamente.');
     }
+
+    public function show(Request $request)
+    {
+        $data = $request->validate([
+            'id' => 'required|string|exists:vehicles,id|max:20',
+        ], [
+            'id.required' => 'La placa vehicular es obligatorio.',
+            'id.exists' => 'La placa vehicular proporcionada no existe en la base de datos.',
+            'id.max' => 'La placa vehicular no puede exceder los 20 caracteres.',
+        ]);
+        $vehicle = Vehicle::findOrFail($data['id']);
+        return view('Gestion_vehiculos.gv_consulta_act', ['vehicle' => $vehicle]);
+    }
 }

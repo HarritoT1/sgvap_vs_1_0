@@ -15,6 +15,8 @@
                 <div class="modal-body p-5 pt-0" style="max-width: 100%;">
                     <form id="buscar_cliente" action="{{route('clientes.consulta_act')}}" method="get" enctype="application/x-www-form-urlencoded"
                         autocomplete="off" class="needs-validation p-1" novalidate>
+                        @csrf
+                        
                         <div class="form-floating mb-3" style="max-width: 100%;">
                             <input type="text" class="form-control rounded-3" id="input_find_rfc_cliente" name="id"
                                 placeholder="" value="" required maxlength="50" list="sugerencias_rfc_cliente">

@@ -13,8 +13,10 @@
                 </div>
 
                 <div class="modal-body p-5 pt-0" style="max-width: 100%;">
-                    <form id="consultar_vehiculo" action="#" method="get" enctype="application/x-www-form-urlencoded"
+                    <form id="consultar_vehiculo" action="{{ route('vehiculos.consulta_act') }}" method="get" enctype="application/x-www-form-urlencoded"
                         autocomplete="off" class="needs-validation p-1" novalidate>
+                        @csrf
+                        
                         <div class="col-12 mb-4" style="max-width: 100%;" id="vehicle_id">
                             <select name="id" id="id" class="form-control form-select"
                                 aria-label="Default select example" required style="height: 3.5rem;">

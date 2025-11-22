@@ -14,6 +14,8 @@
                 <div class="modal-body p-5 pt-0" style="max-width: 100%;">
                     <form id="buscar_proyecto" action="{{ route('projects.consulta_act') }}" method="get" enctype="application/x-www-form-urlencoded"
             autocomplete="off" class="needs-validation p-1" novalidate>
+            @csrf
+            
                         <div class="form-floating mb-3" style="max-width: 100%;">
                             <input type="text" class="form-control rounded-3" id="input_find_id_proyect" name="id" placeholder="" value="" required maxlength="80" list="sugerencias_id_proyect">
                             <label for="input_find_id_proyect">id</label>

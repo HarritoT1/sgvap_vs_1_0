@@ -22,14 +22,6 @@ use App\Models\Vehicle;
     return view('welcome');
 }); //http://127.0.0.1:8000/*/
 
-Route::get('/gv_consulta_act_filtro', function () {
-    return view('Gestion_vehiculos/gv_consulta_act_filtro'); //http://127.0.0.1:8000/gv_consulta_act_filtro
-})->name("vehiculos.consulta_act_filtro");
-
-Route::get('/gv_consulta_act/{id}', function () {
-    return view('Gestion_vehiculos/gv_consulta_act'); //http://127.0.0.1:8000/gv_consulta_act
-})->name("vehiculos.consulta_act");
-
 Route::get('/gv_registro_prestamos', function () {
     return view('Gestion_vehiculos/gv_registro_prestamos'); //http://127.0.0.1:8000/gv_registro_prestamos
 })->name("vehiculos.registro_prestamos");
@@ -237,4 +229,10 @@ Route::middleware(['auth', 'inactive'])->group(function () {
     })->name("vehiculos.registro_vehiculos");
 
     Route::post('/vehicle_create', [VehicleController::class, 'create'])->name('vehicles.create');
+
+    Route::get('/gv_consulta_act_filtro', function () {
+        return view('Gestion_vehiculos/gv_consulta_act_filtro')->with(['vehicles' => Vehicle::all()]); //http://127.0.0.1:8000/gv_consulta_act_filtro
+    })->name("vehiculos.consulta_act_filtro");
+
+    Route::get('/gv_consulta_act', [VehicleController::class, 'show'])->name("vehiculos.consulta_act"); //http://127.0.0.1:8000/gv_consulta_act?id=ABC-DFA
 });
