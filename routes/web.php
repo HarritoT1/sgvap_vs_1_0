@@ -235,4 +235,6 @@ Route::middleware(['auth', 'inactive'])->group(function () {
     })->name("vehiculos.consulta_act_filtro");
 
     Route::get('/gv_consulta_act', [VehicleController::class, 'show'])->name("vehiculos.consulta_act"); //http://127.0.0.1:8000/gv_consulta_act?id=ABC-DFA
+
+    Route::put('/vehicle_update', [VehicleController::class, 'update'])->name('vehicles.update');
 });

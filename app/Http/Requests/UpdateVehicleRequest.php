@@ -31,6 +31,7 @@ class UpdateVehicleRequest extends FormRequest
 
             'obs_gral' => $this->emptyToNull($this->input('obs_gral')),
             'caracteristicas' => trim(implode(',', $this->input('caracteristicas', []))),
+            'is_on_loan' => strtoupper(trim($this->input('is_on_loan'))),
         ]);
     }
 
@@ -45,7 +46,7 @@ class UpdateVehicleRequest extends FormRequest
     public function rules()
     {
         return [
-            'id' => 'required|string|max:20|unique:vehicles,id'.$this->input("id_vehicle"),
+            'id' => 'required|string|max:20|unique:vehicles,id,' . $this->input('id_vehicle'),
             'nombre_modelo' => 'required|string|max:50',
             'marca' => 'required|string|max:50',
             'anio' => 'required|integer|min:1900|max:2150',

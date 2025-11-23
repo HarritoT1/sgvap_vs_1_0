@@ -40,7 +40,7 @@
                             </div>
                         </div>
                         <button class="button-custom d-block mb-2 btn btn-lg rounded-3 btn-primary" type="submit"
-                            style="background-color: var(--botones-color); font-size: 1.2rem;">Generar</button>
+                            style="background-color: var(--botones-color); font-size: 1.2rem;">Consultar</button>
                         <small class="fw-bold d-block mx-auto my-2 text-center text-body-secondary"
                             style="font-size: 1.2rem">¡¡¡Selecciona una placa vehícular!!!</small>
                         <hr class="mt-4">

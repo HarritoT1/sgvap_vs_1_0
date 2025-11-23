@@ -6,7 +6,7 @@
         <div class="w-100 div-secondary">
 
             <h2 class="mb-3 fw-bold" style="font-size: 1.5rem;">Datos del vehículo:</h2>
-            <form id="actualizar_version_2" action="#" method="post" enctype="multipart/form-data" autocomplete="off"
+            <form id="actualizar_version_2" action="{{ route('vehicles.update') }}" method="post" enctype="multipart/form-data" autocomplete="off"
                 class="needs-validation p-1" novalidate>
                 @csrf
                 @method('PUT')
@@ -97,7 +97,7 @@
                     </div>
 
                     <div class="mx-auto mt-4" style="width: 25rem;">
-                        <h3 class="fw-bold" style="font-size: 1rem;">Fotografía del vehículo</h3>
+                        <h3 class="fw-bold mb-3" style="font-size: 1rem;">Fotografía del vehículo</h3>
                         <label for="ruta_foto_1" class="form-label d-block w-100" style="cursor: pointer;"
                             title="Cambiar fotografía">
                             <img id="prev_foto_1" class="imageResponsive my-2 img_file" alt="img" src="{{ trim($vehicle->ruta_foto_1 ?? '') !== '' ? asset('storage/'.$vehicle->ruta_foto_1) : '' }}"
