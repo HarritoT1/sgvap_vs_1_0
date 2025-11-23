@@ -58,6 +58,7 @@ Route::middleware(['auth', 'inactive'])->group(function () {
     })->name("contacto.index");
 
     /* GESTION CLIENTES */
+
     Route::get('/gc_nuevo', function () {
         return view('Gestion_clientes/gc_nuevo'); //http://127.0.0.1:8000/gc_nuevo
     })->name("clientes.nuevo");
@@ -75,6 +76,7 @@ Route::middleware(['auth', 'inactive'])->group(function () {
     Route::get('/clientes/buscar-rfc', [CustomerController::class, 'buscarRFC'])->name('clientes.buscar_rfc');
 
     /* GESTION PROYECTOS */
+
     Route::get('/gp_nuevo', function () {
         return view('Gestion_proyectos/gp_nuevo', ['customers' => Customer::all()]); //http://127.0.0.1:8000/gp_nuevo
     })->name("projects.nuevo");
@@ -92,6 +94,7 @@ Route::middleware(['auth', 'inactive'])->group(function () {
     Route::get('/projects/buscar-id', [ProjectController::class, 'buscarID'])->name('projects.buscar_id');
 
     /* GESTION EMPLEADOS */
+
     Route::get('/ge_nuevo', function () {
         return view('Gestion_empleados/ge_nuevo'); //http://127.0.0.1:8000/ge_nuevo
     })->name("empleados.nuevo");
@@ -223,6 +226,8 @@ Route::middleware(['auth', 'inactive'])->group(function () {
     Route::get('/gdm_graficas_caseta', [ReporteViaticosController::class, 'barras_caseta'])->name("dispersiones.graficas_caseta"); //http://127.0.0.1:8000/gdm_graficas_caseta
 
     Route::get('/gdm_graficas_hospedaje', [ReporteViaticosController::class, 'barras_hospedaje'])->name("dispersiones.graficas_hospedaje"); //http://127.0.0.1:8000/gdm_graficas_hospedaje
+
+    /* GESTION VEHÍCULAR */
 
     Route::get('/gv_registro_vehiculos', function () {
         return view('Gestion_vehiculos/gv_registro_vehiculos'); //http://127.0.0.1:8000/gv_registro_vehiculos
