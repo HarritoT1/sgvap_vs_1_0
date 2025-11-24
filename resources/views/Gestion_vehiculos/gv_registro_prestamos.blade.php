@@ -7,7 +7,7 @@
         <div class="w-100 div-secondary">
 
             <h2 class="mb-3 fw-bold" style="font-size: 1.5rem;">Datos del prestamo:</h2>
-            <form id="crear_prestamo" action="#" method="post" enctype="application/x-www-form-urlencoded"
+            <form id="crear_prestamo" action="{{ route('prestamos.create') }}" method="post" enctype="application/x-www-form-urlencoded"
                 autocomplete="off" class="needs-validation p-1" novalidate>
                 @csrf
 
@@ -16,7 +16,7 @@
                     <div class="col-sm-6">
                         <label for="input_find_rfc" class="form-label fw-bold">RFC del empleado títular</label>
                         <input type="text" class="form-control" id="input_find_rfc" name="employee_id" placeholder=""
-                            value="" required maxlength="50" list="sugerencias_rfc">
+                            value="{{ old('employee_id') }}" required maxlength="50" list="sugerencias_rfc">
                         <div class="invalid-feedback">
                             Ingresa un RFC válido.
                         </div>
@@ -27,7 +27,7 @@
                     <div class="col-sm-6">
                         <label for="proveedor" class="form-label fw-bold">Proveedor</label>
                         <input type="text" class="form-control" id="proveedor" name="proveedor" placeholder=""
-                            value="" required maxlength="100">
+                            value="{{ old('proveedor') }}" required maxlength="100">
                         <div class="invalid-feedback">
                             Ingresa un nombre de proveedor válido.
                         </div>
@@ -42,7 +42,7 @@
                             </span></label>
 
                         <input type="text" class="form-control" id="input_find_id_proyect" name="project_id"
-                            placeholder="" value="" required maxlength="80" list="sugerencias_id_proyect">
+                            placeholder="" value="{{ old('project_id') }}" required maxlength="80" list="sugerencias_id_proyect">
                         <div class="invalid-feedback">
                             Ingresa un id de proyecto válido.
                         </div>
@@ -77,7 +77,7 @@
                     <div class="col-sm-6 mx-auto">
                         <label for="fecha_prestamo" class="form-label fw-bold">Fecha del prestamo</label>
                         <input type="date" class="form-control sm-form-control" id="fecha_prestamo"
-                            name="fecha_prestamo" value="" required>
+                            name="fecha_prestamo" value="{{ old('fecha_prestamo') }}" required>
                         <div class="invalid-feedback">
                             Ingresa una fecha válida.
                         </div>

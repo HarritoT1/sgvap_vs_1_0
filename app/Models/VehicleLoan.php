@@ -44,6 +44,8 @@ class VehicleLoan extends Model
 	protected $table = 'vehicle_loans';
 	public $timestamps = false;
 
+	const STATUS_PENDIENTE = 'no_entregado';
+
 	protected $casts = [
 		'id' => 'int',
 		'fecha_prestamo' => 'datetime',

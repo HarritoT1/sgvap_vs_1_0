@@ -13,6 +13,7 @@ use App\Http\Controllers\GasolineDispersionController;
 use App\Http\Controllers\TagDispersionController;
 use App\Http\Controllers\LodgingDispersionController;
 use App\Http\Controllers\VehicleController;
+use App\Http\Controllers\VehicleLoanController;
 use App\Models\Customer;
 use App\Models\DailyExpenseReport;
 use App\Models\Employee;
@@ -29,10 +30,6 @@ Route::get('/gv_consulta_act_prestamos_filtro', function () {
 Route::post('/prestamo_consulta_filtro', function () {
     return response()->json([["id" => 1, "fecha_prestamo" => "2025-12-24", "employee_name" => "Miguel Angel Mancera", "vehicle_id" => "ASFG-AH4D"], ["id" => 2, "fecha_prestamo" => "2025-12-25", "employee_name" => "Jose Cruz", "vehicle_id" => "AFGG-AH4B"], ["id" => 3, "fecha_prestamo" => "2025-12-26", "employee_name" => "Luis Joel", "vehicle_id" => "AHIG-AH4A"], ["id" => 4, "fecha_prestamo" => "2025-12-27", "employee_name" => "Victor Manuel", "vehicle_id" => "AJKG-AH4C"]]);
 })->name("vehiculos.prestamo_consulta_filtro");
-
-Route::get('/gv_consulta_act_prestamos/{id}', function () {
-    return view('Gestion_vehiculos/gv_consulta_act_prestamos'); //http://127.0.0.1:8000/gv_consulta_act_prestamos
-})->name("vehiculos.consulta_act_prestamos")->where('id', '[0-9]+');
 
 // CONTROLADORES FINALES (PRODUCCION).
 Route::get('/', function () {
@@ -242,4 +239,8 @@ Route::middleware(['auth', 'inactive'])->group(function () {
     Route::get('/gv_registro_prestamos', function () {
         return view('Gestion_vehiculos/gv_registro_prestamos')->with("vehicles", Vehicle::all()); //http://127.0.0.1:8000/gv_registro_prestamos
     })->name("vehiculos.registro_prestamos");
+
+    Route::post('/vehicle_loan_create', [VehicleLoanController::class, 'create'])->name('prestamos.create');
+
+    Route::get('/gv_consulta_act_prestamos/{id}', [VehicleLoanController::class, 'show'])->name("vehiculos.consulta_act_prestamos")->where('id', '[0-9]+');
 });
