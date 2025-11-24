@@ -22,10 +22,6 @@ use App\Models\Vehicle;
     return view('welcome');
 }); //http://127.0.0.1:8000/*/
 
-Route::get('/gv_registro_prestamos', function () {
-    return view('Gestion_vehiculos/gv_registro_prestamos'); //http://127.0.0.1:8000/gv_registro_prestamos
-})->name("vehiculos.registro_prestamos");
-
 Route::get('/gv_consulta_act_prestamos_filtro', function () {
     return view('Gestion_vehiculos/gv_consulta_act_prestamos_filtro'); //http://127.0.0.1:8000/gv_consulta_act_prestamos_filtro
 })->name("vehiculos.consulta_act_prestamos_filtro");
@@ -242,4 +238,8 @@ Route::middleware(['auth', 'inactive'])->group(function () {
     Route::get('/gv_consulta_act', [VehicleController::class, 'show'])->name("vehiculos.consulta_act"); //http://127.0.0.1:8000/gv_consulta_act?id=ABC-DFA
 
     Route::put('/vehicle_update', [VehicleController::class, 'update'])->name('vehicles.update');
+
+    Route::get('/gv_registro_prestamos', function () {
+        return view('Gestion_vehiculos/gv_registro_prestamos')->with("vehicles", Vehicle::all()); //http://127.0.0.1:8000/gv_registro_prestamos
+    })->name("vehiculos.registro_prestamos");
 });

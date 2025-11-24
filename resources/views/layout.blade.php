@@ -1076,19 +1076,19 @@ l-68 45 0 51 c1 283 222 551 505 611 96 20 97 20 125 -19z" />
                                     <ul class="flex-column vineta">
                                         <li class="nav-item">
                                             <a class="nav-link d-flex align-items-center gap-2 text-white fw-bold"
-                                                href="/gv_registro_vehiculos" target="_self">
+                                                href="{{ route('vehiculos.registro_vehiculos') }}" target="_self">
                                                 Registro vehícular.
                                             </a>
                                         </li>
                                         <li class="nav-item">
                                             <a class="nav-link d-flex align-items-center gap-2 text-white fw-bold"
-                                                href="/gv_consulta_act_filtro" target="_self">
+                                                href="{{ route('vehiculos.consulta_act_filtro') }}" target="_self">
                                                 Consulta y act. de vehículos.
                                             </a>
                                         </li>
                                         <li class="nav-item">
                                             <a class="nav-link d-flex align-items-center gap-2 text-white fw-bold"
-                                                href="/gv_registro_prestamos" target="_self">
+                                                href="{{ route('vehiculos.registro_prestamos') }}" target="_self">
                                                 Préstamo vehícular.
                                             </a>
                                         </li>

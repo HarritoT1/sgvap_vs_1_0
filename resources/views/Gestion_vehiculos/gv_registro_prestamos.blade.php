@@ -9,6 +9,8 @@
             <h2 class="mb-3 fw-bold" style="font-size: 1.5rem;">Datos del prestamo:</h2>
             <form id="crear_prestamo" action="#" method="post" enctype="application/x-www-form-urlencoded"
                 autocomplete="off" class="needs-validation p-1" novalidate>
+                @csrf
+
                 <div class="row g-3">
 
                     <div class="col-sm-6">
@@ -49,18 +51,23 @@
                     </div>
 
                     <div class="col-sm-6">
-                        <label for="vehicle_id" class="form-label fw-bold">Placa del vehículo</label>
+                        <label for="vehicle_id" class="form-label fw-bold">Placa del vehículo (FUNCIONALES Y DISPONIBLES)</label>
                         <select name="vehicle_id" id="vehicle_id" class="form-control form-select"
                             aria-label="Default select example" required>
-                            <option value="" selected>
-                                NINGUNA
+                            <option value="">
+                                NINGUNO
                             </option>
-                            <option value="ABJ3-S23D">
-                                ABJ3-S23D
-                            </option>
-                            <option value="ABJ3-S23E">
-                                ABJ3-S23E
-                            </option>
+                            @if (!empty($vehicles))
+                                @foreach ($vehicles as $vehicle)
+                                    @if($vehicle->is_on_loan != true && $vehicle->status != 'mantenimiento')
+                                        <option value="{{ $vehicle->id }}"
+                                            {{ old('vehicle_id') == $vehicle->id ? 'selected' : '' }}>
+                                            {{ $vehicle->id }} → {{ $vehicle->marca }} {{ $vehicle->nombre_modelo }}
+                                            {{ $vehicle->color }}
+                                        </option>
+                                    @endif
+                                @endforeach
+                            @endif
                         </select>
                         <div class="invalid-feedback">
                             Ingresa una placa de vehículo válida.
@@ -79,8 +86,27 @@
                     <hr class="my-4 mb-2">
 
                     <button class="d-block mx-auto btn btn-primary btn-lg fw-bold button-custom" type="button"
-                        onclick="ask_before_submit_new()" style="background-color: var(--botones-color);">Generar
+                        onclick="ask_before_submit_new('crear_prestamo')" style="background-color: var(--botones-color);">Generar
                         prestamo</button>
+                    
+                    @if (session('success'))
+                        <div class="alert alert-success mt-3 text-justify" role="alert">
+                            <ul class="mb-0">
+                                <li>{{ session('success') }}</li>
+                            </ul>
+                        </div>
+                    @endif
+
+                    @if ($errors->any())
+                        <div class="alert alert-danger mt-3 text-justify" role="alert">
+                            <h6>Por favor corrige los errores debajo:</h6>
+                            <ul style="text-align: justify;">
+                                @foreach ($errors->all() as $error)
+                                    <li>{{ $error }}</li>
+                                @endforeach
+                            </ul>
+                        </div>
+                    @endif
                 </div>
             </form>
         </div>
