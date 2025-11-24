@@ -16,7 +16,7 @@ class DatabaseSeeder extends Seeder
      */
     public function run(): void
     {
-        $this->truncateTables(['customers', 'projects', 'employees', 'vehicles', 'daily_expense_reports', 'extra_ecore_debts', 'gasoline_dispersions', 'tag_dispersions', 'lodging_dispersions', 'monthly_expense_cuts']);
+        $this->truncateTables(['customers', 'projects', 'employees', 'vehicles', 'daily_expense_reports', 'extra_ecore_debts', 'gasoline_dispersions', 'tag_dispersions', 'lodging_dispersions', 'monthly_expense_cuts', 'vehicle_loans']);
         $this->call(CustomerSeeder::class);
         $this->call(ProjectSeeder::class);
         $this->call(EmployeeSeeder::class);
@@ -27,6 +27,7 @@ class DatabaseSeeder extends Seeder
         $this->call(TagDispersionSeeder::class);
         $this->call(LodgingDispersionSeeder::class);
         $this->call(MonthlyExpenseCutSeeder::class);
+        $this->call(VehicleLoanSeeder::class);
     }
 
     protected function truncateTables(array $tables)

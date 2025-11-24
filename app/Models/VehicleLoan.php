@@ -8,6 +8,7 @@ namespace App\Models;
 
 use Carbon\Carbon;
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\Factories\HasFactory;
 
 /**
  * Class VehicleLoan
@@ -37,11 +38,14 @@ use Illuminate\Database\Eloquent\Model;
  * @package App\Models
  */
 class VehicleLoan extends Model
-{
+{	
+	use HasFactory;
+
 	protected $table = 'vehicle_loans';
 	public $timestamps = false;
 
 	protected $casts = [
+		'id' => 'int',
 		'fecha_prestamo' => 'datetime',
 		'fecha_devolucion' => 'datetime',
 		'km_salida' => 'int',
@@ -65,7 +69,6 @@ class VehicleLoan extends Model
 		'ruta_evidencia_4',
 		'ruta_evidencia_5',
 		'obs_gral',
-		'last_update'
 	];
 
 	public function employee()
