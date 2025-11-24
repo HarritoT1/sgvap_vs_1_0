@@ -57,7 +57,7 @@ class VehicleLoanController extends Controller
                 ->withInput();
         }
 
-        return redirect()->route('vehiculos.consulta_act_prestamos', ['id' => $loan->id])
+        return redirect()->route('vehiculos.consulta_act_prestamos', ['loan' => $loan->id])
             ->with('success', 'Prestamo vehícular registrado exitosamente ;).');
     }
 
