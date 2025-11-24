@@ -242,5 +242,5 @@ Route::middleware(['auth', 'inactive'])->group(function () {
 
     Route::post('/vehicle_loan_create', [VehicleLoanController::class, 'create'])->name('prestamos.create');
 
-    Route::get('/gv_consulta_act_prestamos/{id}', [VehicleLoanController::class, 'show'])->name("vehiculos.consulta_act_prestamos")->where('id', '[0-9]+');
+    Route::get('/gv_consulta_act_prestamos/{loan}', [VehicleLoanController::class, 'show'])->name("vehiculos.consulta_act_prestamos")->where('loan', '[0-9]+');
 });

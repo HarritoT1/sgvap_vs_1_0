@@ -60,4 +60,9 @@ class VehicleLoanController extends Controller
         return redirect()->route('vehiculos.consulta_act_prestamos', ['id' => $loan->id])
             ->with('success', 'Prestamo vehícular registrado exitosamente ;).');
     }
+
+    public function show(VehicleLoan $loan)
+    {
+        return view('Gestion_vehiculos.gv_consulta_act_prestamos', ['loan' => $loan, 'vehicles' => Vehicle::all()]);
+    }
 }
