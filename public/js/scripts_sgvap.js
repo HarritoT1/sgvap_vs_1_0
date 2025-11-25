@@ -1336,7 +1336,7 @@ async function get_results_and_show_them_like_links(endpoint, concepto_dispersio
 }
 
 function ask_destroy() {
-    if (confirm("¿Está seguro de eliminar esta dispersión?")) document.getElementById("destroy").requestSubmit();
+    if (confirm("¿Está seguro de eliminar este registro? Esta acción no podrá ser revertida.")) document.getElementById("destroy").requestSubmit();
 
     else return;
 }

@@ -160,4 +160,33 @@ class VehicleLoanController extends Controller
             $data[$key] = $loan->{$key};
         }
     }
+
+    public function destroy($id)
+    {
+        try {
+            $loan = VehicleLoan::findOrFail($id);
+            $vehicle = $loan->vehicle;
+
+            DB::transaction(function () use ($loan, $vehicle) {
+                // Cambiar is_on_loan del vehículo.
+                $vehicle->is_on_loan = false;
+                $vehicle->save();
+
+                $loan->delete();
+            });
+
+            // Eliminar archivos asociados después de eliminar el préstamo.
+            foreach (range(1, 5) as $i) {
+                $key = "ruta_evidencia_{$i}";
+                if ($loan->{$key}) {
+                    Storage::disk('public')->delete($loan->{$key});
+                }
+            }
+
+        } catch (\Exception $e) {
+            return redirect()->route('vehiculos.registro_prestamos')->withErrors(['error' => 'No se pudo eliminar el prestamo vehícular: ' . $e->getMessage()]);
+        }
+
+        return redirect()->route('vehiculos.registro_prestamos')->with('success', 'Se elimino el prestamo vehícular, se actualizo el estado del vehículo a disponible ;).');
+    }
 }

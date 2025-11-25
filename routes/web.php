@@ -245,4 +245,6 @@ Route::middleware(['auth', 'inactive'])->group(function () {
     Route::get('/gv_consulta_act_prestamos/{loan}', [VehicleLoanController::class, 'show'])->name("vehiculos.consulta_act_prestamos")->where('loan', '[0-9]+');
 
     Route::put('/vehicle_loan_update', [VehicleLoanController::class, 'update'])->name('prestamos.update');
+
+    Route::delete('/vehicle_loan_destroy/{id}', [VehicleLoanController::class, 'destroy'])->name('prestamos.destroy')->where('id', '[0-9]+');
 });

@@ -6,8 +6,8 @@
             prestamo y actualización del estado
             del vehículo:</h1>
 
-        <form id="actualizar_version_2" action="{{ route('prestamos.update') }}" method="post" enctype="multipart/form-data" autocomplete="off"
-            class="needs-validation p-1" novalidate>
+        <form id="actualizar_version_2" action="{{ route('prestamos.update') }}" method="post" enctype="multipart/form-data"
+            autocomplete="off" class="needs-validation p-1" novalidate>
             @csrf
             @method('PUT')
 
@@ -445,6 +445,13 @@
 
                 <hr class="my-4 mb-2">
 
+                @if ($loan->status !== 'entregado')
+                    <button type="button" class="btn btn-outline-danger d-block ms-auto my-3" style="width: 6rem;"
+                        onclick="ask_destroy()">
+                        <b>Eliminar</b>
+                    </button>
+                @endif
+
                 @if (session('success'))
                     <div class="alert alert-success mt-3 text-justify" role="alert">
                         <ul class="mb-0">
@@ -472,6 +479,12 @@
             <input type="hidden" id="color" value="{{ $vehicle->color }}">
             <input type="hidden" id="nombre_modelo" value="{{ $vehicle->nombre_modelo }}">
             <input type="hidden" id="anio" value="{{ $vehicle->anio }}">
+        </form>
+
+        <form action="{{ route('prestamos.destroy', ['id' => $loan->id]) }}" method="post" id="destroy">
+            @csrf
+            @method('DELETE')
+
         </form>
     </div>
 @endsection
