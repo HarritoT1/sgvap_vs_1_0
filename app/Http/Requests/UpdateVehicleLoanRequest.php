@@ -25,7 +25,7 @@ class UpdateVehicleLoanRequest extends FormRequest
             'is_on_loan' => strtoupper(trim($this->input('is_on_loan'))),
             'caracteristicas' => trim(implode(',', $this->input('caracteristicas', []))),
             'proveedor' => trim($this->input('proveedor')),
-            'prestamo_obs_gral' => $this->emptyToNull($this->input('obs_gral')),
+            'prestamo_obs_gral' => $this->emptyToNull($this->input('prestamo_obs_gral')),
         ]);
     }
 

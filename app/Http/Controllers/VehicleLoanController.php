@@ -101,6 +101,7 @@ class VehicleLoanController extends Controller
                     'proveedor' => $data['proveedor'],
                     'status' => $data['prestamo_status'],
                     'fecha_devolucion' => $data['fecha_devolucion'],
+                    'km_retorno' => $data['km_retorno'],
                     'ruta_evidencia_1' => $data['ruta_evidencia_1'],
                     'ruta_evidencia_2' => $data['ruta_evidencia_2'],
                     'ruta_evidencia_3' => $data['ruta_evidencia_3'],
