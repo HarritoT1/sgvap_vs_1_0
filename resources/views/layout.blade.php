@@ -1094,7 +1094,7 @@ l-68 45 0 51 c1 283 222 551 505 611 96 20 97 20 125 -19z" />
                                         </li>
                                         <li class="nav-item">
                                             <a class="nav-link d-flex align-items-center gap-2 text-white fw-bold"
-                                                href="/gv_consulta_act_prestamos_filtro" target="_self">
+                                                href="{{ route('vehiculos.consulta_act_prestamos_filtro') }}" target="_self">
                                                 Consulta y act. de prestamos.
                                             </a>
                                         </li>

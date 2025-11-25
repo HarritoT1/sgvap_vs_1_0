@@ -98,7 +98,7 @@ class LodgingDispersionController extends Controller
         $cleanProjectId = $cleanProjectId === '' ? null : $cleanProjectId;
 
         $cleanMes = trim($request->input('mes'));
-        $cleanMes = $cleanMes === '' ? null : (float) $cleanMes;
+        $cleanMes = $cleanMes === '' ? null : (int) $cleanMes;
 
         $cleanRFCHospedaje = trim($request->input('rfc_hospedaje'));
         $cleanRFCHospedaje = $cleanRFCHospedaje === '' ? null : $cleanRFCHospedaje;

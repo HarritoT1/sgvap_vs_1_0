@@ -1288,7 +1288,7 @@ async function get_results_and_show_them_like_links(endpoint, concepto_dispersio
                         a.href = `/gdm_${concepto_dispersion}_disp_consulta_act/${item.id}`;
                     }
                     else {
-                        a.textContent = `Prestamo de vehículo con placa ${item.vehicle_id} al empleado ${item.employee_name} el ${item.fecha_prestamo}.`;
+                        a.textContent = `Prestamo de vehículo con placa ${item.vehicle_info} al empleado ${item.employee_name} el ${item.fecha_prestamo_string}.`;
                         a.href = `/gv_consulta_act_prestamos/${item.id}`;
                     }
                     li.appendChild(a);

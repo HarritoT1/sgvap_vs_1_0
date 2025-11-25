@@ -8,7 +8,7 @@
         <div class="w-100 div-secondary px-5 py-4 d-block">
             <h2 class="mb-3 fw-bold" style="font-size: 1.5rem; text-align:justify">Datos del prestamo:
             </h2>
-            <form id="consultar_prestamo_filtro" action="#" method="get" enctype="application/x-www-form-urlencoded"
+            <form id="consultar_disp_gasolina_filtro" action="#" method="get" enctype="application/x-www-form-urlencoded"
                 autocomplete="off" class="needs-validation p-1" novalidate>
                 <div class="row g-3">
 
@@ -36,15 +36,17 @@
                             vehículo</label>
                         <select name="vehicle_id" id="vehicle_id" class="form-control form-select"
                             aria-label="Default select example" style="height: 3.5rem;">
-                            <option value="" selected>
-                                NINGUNA
+                            <option value="">
+                                NINGUNO
                             </option>
-                            <option value="ABJ3-S23D">
-                                ABJ3-S23D
-                            </option>
-                            <option value="ABJ3-S23E">
-                                ABJ3-S23E
-                            </option>
+                            @if (!empty($vehicles))
+                                @foreach ($vehicles as $vehicle)
+                                    <option value="{{ $vehicle->id }}">
+                                        {{ $vehicle->id }} → {{ $vehicle->marca }} {{ $vehicle->nombre_modelo }}
+                                        {{ $vehicle->color }}
+                                    </option>
+                                @endforeach
+                            @endif
                         </select>
                         <div class="invalid-feedback">
                             Ingresa una placa de vehículo válida.
@@ -117,6 +119,12 @@
                         onclick="get_results_and_show_them_like_links('/prestamo_consulta_filtro', 'prestamo')"
                         style="background-color: var(--botones-color);">Consultar</button>
 
+                    <div class="alert alert-danger mt-3 text-justify d-none" role="alert" id="errors_part_1">
+                        <h6>Por favor corrige los errores debajo:</h6>
+                        <ul>
+                        </ul>
+                    </div>
+
                 </div>
             </form>
         </div>
@@ -134,6 +142,8 @@
         <ul class="flex-column vineta d-none"
             style="text-align:justify; overflow-y: auto; overflow-x: hidden; height: 22rem; padding-right: 2rem;"
             id="lista_resultados"></ul>
+
+        <div class="loader d-none my-5" id="loaderCircle"></div>
     </div>
 
     <br>

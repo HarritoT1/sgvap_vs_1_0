@@ -99,7 +99,7 @@ class GasolineDispersionController extends Controller
         $cleanProjectId = $cleanProjectId === '' ? null : $cleanProjectId;
 
         $cleanMes = trim($request->input('mes'));
-        $cleanMes = $cleanMes === '' ? null : (float) $cleanMes;
+        $cleanMes = $cleanMes === '' ? null : (int) $cleanMes;
 
         $cleanVehicleId = trim($request->input('vehicle_id'));
         $cleanVehicleId = $cleanVehicleId === '' ? null : $cleanVehicleId;

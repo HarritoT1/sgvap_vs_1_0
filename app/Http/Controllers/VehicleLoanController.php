@@ -182,11 +182,101 @@ class VehicleLoanController extends Controller
                     Storage::disk('public')->delete($loan->{$key});
                 }
             }
-
         } catch (\Exception $e) {
             return redirect()->route('vehiculos.registro_prestamos')->withErrors(['error' => 'No se pudo eliminar el prestamo vehícular: ' . $e->getMessage()]);
         }
 
         return redirect()->route('vehiculos.registro_prestamos')->with('success', 'Se elimino el prestamo vehícular, se actualizo el estado del vehículo a disponible ;).');
+    }
+
+    public function find(Request $request)
+    {
+        // --- Sanitización previa ---
+        $cleanStatusLoan = trim($request->input('status'));
+        $cleanStatusLoan = $cleanStatusLoan === '' ? null : $cleanStatusLoan;
+
+        $cleanVehicleId = trim($request->input('vehicle_id'));
+        $cleanVehicleId = $cleanVehicleId === '' ? null : $cleanVehicleId;
+
+        $cleanEmployeeId = trim(explode('→', $request->input('employee_id'))[0]);
+        $cleanEmployeeId = $cleanEmployeeId === '' ? null : $cleanEmployeeId;
+
+        $cleanMes = trim($request->input('mes'));
+        $cleanMes = $cleanMes === '' ? null : (int) $cleanMes;
+
+        $request->merge([
+            'status' => $cleanStatusLoan,
+            'vehicle_id' => $cleanVehicleId,
+            'employee_id' => $cleanEmployeeId,
+            'mes' => $cleanMes,
+        ]);
+
+        // --- Validación ---
+        $data = $request->validate([
+            'status' => 'nullable|in:entregado,no_entregado',
+            'vehicle_id' => 'nullable|string|exists:vehicles,id|max:20',
+            'employee_id' => 'nullable|string|exists:employees,id|max:50',
+            'mes' => 'nullable|numeric|min:1|max:12',
+        ], [
+            'status.in' => 'El estado del prestamo proporcionado no es válido.',
+
+            'vehicle_id.exists' => 'El vehículo proporcionado no existe en la base de datos.',
+            'vehicle_id.max' => 'El identificador del vehículo no puede exceder los 20 caracteres.',
+
+            'employee_id.exists' => 'El empleado proporcionado no existe en la base de datos.',
+            'employee_id.max' => 'El identificador del empleado no puede exceder los 50 caracteres.',
+
+            'mes.numeric' => 'Debes enviar un número de mes válido.',
+            'mes.min' => 'El mes debe ser mayor o igual a 1.',
+            'mes.max' => 'El mes debe ser menor o igual a 12.',
+        ]);
+
+        // Validamos aquí para capturar errores y responder JSON sin usar failedValidation() del FormRequest.
+
+        try {
+            // --- Construcción dinámica de la consulta ---
+            $query = VehicleLoan::orderBy('fecha_prestamo', 'desc')->limit(50);
+
+            if (!empty($data['status'])) {
+                $query->where('status', $data['status']);
+            }
+
+            if (!empty($data['vehicle_id'])) {
+                $query->where('vehicle_id', $data['vehicle_id']);
+            }
+
+            if (!empty($data['employee_id'])) {
+                $query->where('employee_id', $data['employee_id']);
+            }
+
+            if (!empty($data['mes'])) {
+                $query->whereMonth('fecha_prestamo', $data['mes']);
+            }
+
+            // --- Ejecución de la consulta ---
+
+            $result = $query->get();
+
+            $result->each(function ($item) {
+                $item->fecha_prestamo_string = $item->fecha_prestamo->toDateString();
+
+                $item->vehicle_info = $item->vehicle->id . ' → ' . $item->vehicle->marca . ' ' . $item->vehicle->nombre_modelo . ' ' . $item->vehicle->color;
+
+                $item->employee_name = $item->employee->nombre;
+
+                $item->makeHidden(['employee', 'project', 'vehicle']); // Esto elimina las relaciones del resultado serializado, pero sin romper el modelo.
+            });
+
+            // --- Respuesta ---
+            if ($result->isEmpty()) {
+                return response()->json(['err' => 'No se encontraron resultados asociados con los filtros proporcionados.'], 404);
+            }
+
+            return response()->json($result);
+        } catch (\Exception $e) {
+            return response()->json([
+                'err' => 'Error en el sistema SGVAP al consultar los prestamos vehículares: ' . $e->getMessage(),
+            ], 500);
+        }
     }
 }
