@@ -6,7 +6,7 @@
             prestamo y actualización del estado
             del vehículo:</h1>
 
-        <form id="actualizar_version_2" action="#" method="post" enctype="multipart/form-data" autocomplete="off"
+        <form id="actualizar_version_2" action="{{ route('prestamos.update') }}" method="post" enctype="multipart/form-data" autocomplete="off"
             class="needs-validation p-1" novalidate>
             @csrf
             @method('PUT')
