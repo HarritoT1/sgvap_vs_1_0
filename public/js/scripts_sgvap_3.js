@@ -92,14 +92,14 @@ function asign_change_listener_select_loan_status() {
 
         if (this.value.trim() !== "") {
             prestamoStatus.value = "entregado";
-            prestamoStatus.style.backgroundColor = "lightgreen";
+            prestamoStatus.style.backgroundColor = "#22D91C";
             enPrestamo.value = "NO";
-            enPrestamo.style.backgroundColor = "lightgreen";
+            enPrestamo.style.backgroundColor = "#22D91C";
         } else {
             prestamoStatus.value = "no_entregado";
-            prestamoStatus.style.backgroundColor = "lightcoral";
+            prestamoStatus.style.backgroundColor = "#F23535";
             enPrestamo.value = "SI";
-            enPrestamo.style.backgroundColor = "lightcoral";
+            enPrestamo.style.backgroundColor = "#F23535";
         }
     });
 }

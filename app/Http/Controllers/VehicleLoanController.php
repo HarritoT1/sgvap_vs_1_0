@@ -63,6 +63,7 @@ class VehicleLoanController extends Controller
 
     public function show(VehicleLoan $loan)
     {   
-        return view('Gestion_vehiculos.gv_consulta_act_prestamos', ['loan' => $loan, 'vehicles' => Vehicle::all(), 'vehicle' => $loan->vehicle, 'employee' => $loan->employee]);
+        $loan->vehicle->caracteristicasArray = explode(',', $loan->vehicle->caracteristicas ?? "");
+        return view('Gestion_vehiculos.gv_consulta_act_prestamos', ['loan' => $loan, 'vehicle' => $loan->vehicle]);
     }
 }
