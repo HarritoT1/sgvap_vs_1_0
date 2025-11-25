@@ -11,6 +11,8 @@
             @csrf
             @method('PUT')
 
+            <input type="hidden" name="id_loan" value="{{ $loan->id }}" class="ignore">
+
             <div class="w-100 div-secondary mb-3">
                 <h2 class="mb-3 fw-bold" style="font-size: 1.5rem;">Datos del vehículo en cuestión:</h2>
 

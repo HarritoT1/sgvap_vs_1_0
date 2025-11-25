@@ -29,6 +29,7 @@ function save_values_of_inputs_with_files() {
 
     valoresOriginales = {};
     inputs.forEach((input, index) => {
+        if (input.classList.contains('ignore')) return;
         if (!(input.type === 'radio') && !(input.type === 'checkbox')) valoresOriginales[input.name] = input.value;
         if (input.type === 'radio' && input.checked === true) valoresOriginales[input.name] = input.value;
         if (input.type === 'checkbox') valoresOriginales[input.value] = input.checked;
@@ -52,6 +53,7 @@ function ask_before_submit_with_files() {
 
         const huboCambios = Array.from(inputs).some(
             (input) => {
+                if (input.classList.contains('ignore')) return false;
                 if (!(input.type === 'radio') && !(input.type === 'checkbox')) valoresOriginales2[input.name] = input.value.trim();
                 if (input.type === 'radio' && input.checked === true) valoresOriginales2[input.name] = input.value;
                 if (input.type === 'checkbox') valoresOriginales2[input.value] = input.checked;
