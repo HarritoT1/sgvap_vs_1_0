@@ -391,7 +391,7 @@
                     <div class="input-group" style="min-height: 10rem !important;">
                         <span class="input-group-text">📝</span>
                         <textarea form="actualizar_version_2" id="prestamo_obs_gral" name="prestamo_obs_gral" class="form-control"
-                            aria-label="Notas" maxlength="500" disabled style="resize: none; overflow-y: auto;">{{ $loan->obs_gral ?? 'SIN OBSERVACIÓN.' }}</textarea>
+                            aria-label="Notas" maxlength="500" disabled style="resize: none; overflow-y: auto;">{{ $loan->obs_gral ?? 'SIN OBSERVACIÓN GENERAL.' }}</textarea>
                     </div>
                 </div>
 
