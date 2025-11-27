@@ -138,7 +138,7 @@ function ask_before_submit_new(id_form) {
 }
 
 function cancel_edit_mode() {
-    if (confirm("¿Está seguro de cancelar los cambios del proyecto?")) {
+    if (confirm("¿Está seguro de cancelar los cambios realizados?")) {
         window.location.reload();
     }
 }
