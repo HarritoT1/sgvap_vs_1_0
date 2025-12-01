@@ -710,12 +710,12 @@ async function show_all_personnel(e, anio_query, id_query) {
                             <tr class="text-center" style="font-size: 1.2rem;">
                                 <td>${record.mesName}</td>
                                 <td>${record.anio}</td>
-                                <td>$ ${record.total_alimentos_mes.toLocaleString('es-MX')}</td>
-                                <td>$ ${record.total_traslado_local_mes.toLocaleString('es-MX')}</td>
-                                <td>$ ${record.total_traslado_externo_mes.toLocaleString('es-MX')}</td>
-                                <td>$ ${record.total_comision_bancaria_mes.toLocaleString('es-MX')}</td>
-                                <td>$ ${record.total_comision_sivale_mes.toLocaleString('es-MX')}</td>
-                                <td>$ ${record.total_iva_mes.toLocaleString('es-MX')}</td>
+                                <td>$ ${record.total_alimentos_mes?.toLocaleString('es-MX') ?? '0'}</td>
+                                <td>$ ${record.total_traslado_local_mes?.toLocaleString('es-MX') ?? '0'}</td>
+                                <td>$ ${record.total_traslado_externo_mes?.toLocaleString('es-MX') ?? '0'}</td>
+                                <td>$ ${record.total_comision_bancaria_mes?.toLocaleString('es-MX') ?? '0'}</td>
+                                <td>$ ${record.total_comision_sivale_mes?.toLocaleString('es-MX') ?? '0'}</td>
+                                <td>$ ${record.total_iva_mes?.toLocaleString('es-MX') ?? '0'}</td>
                             </tr>
                         </tbody>
                     </table>
@@ -730,12 +730,12 @@ async function show_all_personnel(e, anio_query, id_query) {
                         newRow.innerHTML = `
                         <td>${record.mesName}</td>
                         <td>${record.anio}</td>
-                        <td>$ ${record.total_alimentos_mes.toLocaleString('es-MX')}</td>
-                        <td>$ ${record.total_traslado_local_mes.toLocaleString('es-MX')}</td>
-                        <td>$ ${record.total_traslado_externo_mes.toLocaleString('es-MX')}</td>
-                        <td>$ ${record.total_comision_bancaria_mes.toLocaleString('es-MX')}</td>
-                        <td>$ ${record.total_comision_sivale_mes.toLocaleString('es-MX')}</td>
-                        <td>$ ${record.total_iva_mes.toLocaleString('es-MX')}</td>
+                        <td>$ ${record.total_alimentos_mes?.toLocaleString('es-MX') ?? '0'}</td>
+                        <td>$ ${record.total_traslado_local_mes?.toLocaleString('es-MX') ?? '0'}</td>
+                        <td>$ ${record.total_traslado_externo_mes?.toLocaleString('es-MX') ?? '0'}</td>
+                        <td>$ ${record.total_comision_bancaria_mes?.toLocaleString('es-MX') ?? '0'}</td>
+                        <td>$ ${record.total_comision_sivale_mes?.toLocaleString('es-MX') ?? '0'}</td>
+                        <td>$ ${record.total_iva_mes?.toLocaleString('es-MX') ?? '0'}</td>
                     `;
                         tbody.appendChild(newRow);
                     }
