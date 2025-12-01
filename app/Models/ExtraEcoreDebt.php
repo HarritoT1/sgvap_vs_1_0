@@ -20,8 +20,10 @@ use Illuminate\Database\Eloquent\Factories\HasFactory;
  * @property string $status
  * @property Carbon $last_update
  * @property string|null $employee_id
+ * @property int|null $daily_expense_report_id // Si existe.
  * 
  * @property Employee|null $employee
+ * @property DailyExpenseReport|null $dailyExpenseReport // Esta es la relación añadida.
  *
  * @package App\Models
  */
@@ -36,7 +38,8 @@ class ExtraEcoreDebt extends Model
 		'id' => 'int',
 		'monto_extra_ecore' => 'float',
 		'fecha_descontar' => 'datetime',
-		'last_update' => 'datetime'
+		'last_update' => 'datetime',
+		'daily_expense_report_id' => 'int'
 	];
 
 	protected $fillable = [
@@ -44,11 +47,17 @@ class ExtraEcoreDebt extends Model
 		'campo_descontar',
 		'fecha_descontar',
 		'status',
-		'employee_id'
+		'employee_id',
+		'daily_expense_report_id'
 	];
 
 	public function employee()
 	{
 		return $this->belongsTo(Employee::class);
+	}
+
+	public function dailyExpenseReport()
+	{
+		return $this->belongsTo(DailyExpenseReport::class, 'daily_expense_report_id');
 	}
 }

@@ -13,6 +13,6 @@ class ExtraEcoreDebtSeeder extends Seeder
      */
     public function run(): void
     {
-        ExtraEcoreDebt::factory()->count(50)->create();
+        ExtraEcoreDebt::factory()->count(25)->create();
     }
 }

@@ -4,7 +4,7 @@ namespace Database\Factories;
 
 use Illuminate\Database\Eloquent\Factories\Factory;
 use App\Models\Employee;
-
+use App\Models\DailyExpenseReport;
 /**
  * @extends \Illuminate\Database\Eloquent\Factories\Factory<\App\Models\ExtraEcoreDebt>
  */
@@ -26,9 +26,10 @@ class ExtraEcoreDebtFactory extends Factory
         return [
             'monto_extra_ecore' => $this->faker->randomFloat(4, 10, 2000), // 10 a 2000 con 4 decimales.
             'campo_descontar' => $this->faker->randomElement($campos),
-            'fecha_descontar' => $this->faker->unique()->dateTimeBetween('now', '+2 month'),
+            'fecha_descontar' => $this->faker->unique()->dateTimeBetween('now', '+3 month'),
             'status' => $this->faker->randomElement($status),
             'employee_id' => Employee::query()->inRandomOrder()->value('id'),
+            'daily_expense_report_id' => $this->faker->unique()->numberBetween(1, 50),
         ];
     }
 }

@@ -144,6 +144,8 @@ class DailyExpenseReportController extends Controller
                     throw new \Exception('El proyecto seleccionado ya está concluido.');
                 }
 
+                $with_ajuste = false;
+
                 // 2. Si viene el registro de un adeudo, validar duplicado.
                 if ($request->has('ajuste_retiro')) {
                     $exist = ExtraEcoreDebt::where('employee_id', $data['employee_id'])
@@ -155,12 +157,7 @@ class DailyExpenseReportController extends Controller
                         throw new \Exception('Ya existe un adeudo creado para el mismo campo a descontar en la misma fecha para este empleado.');
                     }
 
-                    ExtraEcoreDebt::create([
-                        'employee_id' => $data['employee_id'],
-                        'campo_descontar' => $data['campo_descontar'],
-                        'monto_extra_ecore' => $data['monto_extra_ecore'],
-                        'fecha_descontar' => $data['fecha_descontar'],
-                    ]);
+                    $with_ajuste = true;
                 }
 
                 // 3. Si se cobró un adeudo, marcarlo como descontado.
@@ -171,7 +168,7 @@ class DailyExpenseReportController extends Controller
                 }
 
                 // 4. Registrar el reporte de gastos diarios.
-                DailyExpenseReport::create([
+                $daily = DailyExpenseReport::create([
                     'fecha_dispersion_dia' => $data['fecha_dispersion_dia'],
                     'desayuno' => $data['desayuno'] ?? 0,
                     'comida' => $data['comida'] ?? 0,
@@ -182,6 +179,17 @@ class DailyExpenseReportController extends Controller
                     'employee_id' => $data['employee_id'],
                     'project_id' => $data['project_id'],
                 ]);
+
+                if ($with_ajuste) {
+                    // 5. Registrar el registro de adeudo.
+                    ExtraEcoreDebt::create([
+                        'employee_id' => $data['employee_id'],
+                        'campo_descontar' => $data['campo_descontar'],
+                        'monto_extra_ecore' => $data['monto_extra_ecore'],
+                        'fecha_descontar' => $data['fecha_descontar'],
+                        'daily_expense_report_id' => $daily->id,
+                    ]);
+                }
             });
         } catch (\Exception $e) {
             return back()
@@ -258,9 +266,15 @@ class DailyExpenseReportController extends Controller
     public function destroy($id)
     {
         try {
-            $report = DailyExpenseReport::findOrFail($id);
+            DB::transaction(function () use ($id) {
+                $report = DailyExpenseReport::findOrFail($id);
 
-            $report->delete();
+                if ($report->extraEcoreDebt) {
+                    $report->extraEcoreDebt->delete();
+                }
+
+                $report->delete();
+            });
         } catch (\Exception $e) {
             return response()->json([
                 'err' => 'Error en el sistema al eliminar el reporte de gastos diarios: ' . $e->getMessage(),
@@ -322,7 +336,7 @@ class DailyExpenseReportController extends Controller
             $total_traslados = $semanal_records->reduce(function ($c, $n) {
                 return $c + (($n->traslado_local ?? 0) + ($n->traslado_externo ?? 0));
             }, 0);
-            
+
             $total_comision = $semanal_records->reduce(function ($c, $n) {
                 return $c + ($n->comision_bancaria ?? 0);
             }, 0);
@@ -330,7 +344,6 @@ class DailyExpenseReportController extends Controller
             $total_a_retirar = $total_alimentos + $total_traslados + $total_comision;
 
             return view('Gestion_empleados.ge_retiro_semanal', ['semanal_records' => $semanal_records, 'employee_name' => $employee_name, 'total_alimentos' => $total_alimentos, 'total_traslados' => $total_traslados, 'total_comision' => $total_comision, 'total_a_retirar' => $total_a_retirar]);
-            
         } catch (\Illuminate\Database\Eloquent\ModelNotFoundException $e) {
             // Si el empleado no existe (por manipulación del id).
             return redirect()

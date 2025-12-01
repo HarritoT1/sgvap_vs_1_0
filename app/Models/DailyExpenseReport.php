@@ -27,6 +27,7 @@ use Illuminate\Database\Eloquent\Factories\HasFactory;
  * 
  * @property Employee|null $employee
  * @property Project|null $project
+ * @property ExtraEcoreDebt|null $extraEcoreDebt
  *
  * @package App\Models
  */
@@ -69,5 +70,10 @@ class DailyExpenseReport extends Model
 	public function project()
 	{
 		return $this->belongsTo(Project::class);
+	}
+
+	public function extraEcoreDebt()
+	{
+		return $this->hasOne(ExtraEcoreDebt::class, 'daily_expense_report_id');
 	}
 }
