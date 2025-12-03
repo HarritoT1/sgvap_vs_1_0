@@ -2,8 +2,7 @@
 
 @section('content')
     <div class="w-100 my-3 div-main">
-        <h1 class="fw-bold my-3" style="font-size: 2rem; text-align:justify">Detalles del proyecto con el id:
-            {{ $project->id }}</h1>
+        <h1 class="fw-bold my-3" style="font-size: 2rem; text-align:justify">Detalles del proyecto con el id: {{ $project->id }}</h1>
         <div class="w-100 div-secondary">
 
             <h2 class="mb-3 fw-bold" style="font-size: 1.5rem;">Datos del proyecto:</h2>
