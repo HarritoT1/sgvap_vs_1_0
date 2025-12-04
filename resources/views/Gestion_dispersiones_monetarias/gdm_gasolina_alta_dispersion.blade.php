@@ -61,7 +61,7 @@
                         <div class="input-group">
                             <span class="input-group-text">$</span>
                             <input type="number" class="form-control" aria-label="Amount (to the nearest dollar)"
-                                id="costo_lt" name="costo_lt" placeholder="0.0000" step="0.0001" min="0"
+                                id="costo_lt" name="costo_lt" placeholder="0.0000" step="any" min="0"
                                 value="{{ old('costo_lt') }}" required>
                             <div class="invalid-feedback">
                                 Ingresa un costo de gasolina válido.
@@ -74,7 +74,7 @@
                         <div class="input-group">
                             <span class="input-group-text">$</span>
                             <input type="number" class="form-control" aria-label="Amount (to the nearest dollar)"
-                                id="cant_litros" name="cant_litros" placeholder="0.0000" step="0.0001" min="0"
+                                id="cant_litros" name="cant_litros" placeholder="0.0000" step="any" min="0"
                                 value="{{ old('cant_litros') }}" required>
                             <div class="invalid-feedback">
                                 Ingresa una cantidad de lts. de gasolina válida.

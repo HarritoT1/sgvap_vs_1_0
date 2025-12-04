@@ -2,8 +2,7 @@
 
 @section('content')
     <div class="w-100 my-3 div-main">
-        <h1 class="fw-bold my-3" style="font-size: 2rem; text-align:justify">Datos del empleado con el RFC:
-            {{ $employee->id }}
+        <h1 class="fw-bold my-3" style="font-size: 2rem; text-align:justify">Datos del empleado con el RFC: {{ $employee->id }}
         </h1>
         <div class="w-100 div-secondary">
 
