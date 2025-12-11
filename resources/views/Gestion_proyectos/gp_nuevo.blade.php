@@ -40,7 +40,7 @@
                     </div>
 
                     <div class="col-sm-6">
-                        <label for="customer_id" class="form-label fw-bold">Cliente 🤝🏻</label>
+                        <label for="customer_id" class="form-label fw-bold">Cliente (activo) 🤝🏻</label>
                         <select name="customer_id" id="customer_id" class="form-control form-select"
                             aria-label="Default select example" required>
                             <option value="">
@@ -48,10 +48,12 @@
                             </option>
                             @if (!empty($customers))
                                 @foreach ($customers as $customer)
-                                    <option value="{{ $customer->id }}"
-                                        {{ old('customer_id') == $customer->id ? 'selected' : '' }}>
-                                        {{ $customer->razon_social }}
-                                    </option>
+                                    @if ($customer->status === 'activo')
+                                        <option value="{{ $customer->id }}"
+                                            {{ old('customer_id') == $customer->id ? 'selected' : '' }}>
+                                            {{ $customer->razon_social }}
+                                        </option>
+                                    @endif
                                 @endforeach
                             @endif
                         </select>
