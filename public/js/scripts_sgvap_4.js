@@ -16,10 +16,22 @@ function generate_pdf_project() {
     doc.addImage(imgBackground, "PNG", 0, 0, 375, 530);
 
     doc.setFont("times", "bold");
-    doc.setFontSize(30);
+    doc.setFontSize(20);
     doc.setTextColor(0, 0, 0);
 
-    doc.text(`<< ${find_2('nombre').value.toUpperCase()} >>`, 188, 97, { align: "center" });
+    //doc.text(`<< ${find_2('nombre').value.toUpperCase()} >>`, 188, 90, { align: "center" });
+    let name = doc.splitTextToSize(find_2('nombre').value, 170);
+    let nameUpperCase = name.map(cadena => cadena.toUpperCase());
+
+    doc.text(nameUpperCase, 188, 90, { align: "center" });
+
+    doc.setFont("times", "bold");
+    doc.setFontSize(70);
+    doc.setTextColor(0, 0, 0);
+
+    doc.text('<<', 40, 100, { align: "center" });
+
+    doc.text('>>', 340, 100, { align: "center" });
 
     doc.setFont("times", "normal");
     doc.setFontSize(16);
