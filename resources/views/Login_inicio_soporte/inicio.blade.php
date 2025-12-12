@@ -15,7 +15,7 @@
     </iframe>
 
     <p style="font-size: 0.8rem;">
-        También puedes descargar el PDF para verlo: <a class="text-decoration-none" download="manual_usuario.pdf" href="{{asset('img/prueba.pdf')}}">Descargar PDF</a>
+        También puedes descargar el PDF para verlo: <a class="text-decoration-none" download="manual_usuario.pdf" href="{{asset('img/MANUAL_USUARIO_FINAL.pdf')}}">Descargar PDF</a>
     </p>
 
     <h3 class="fw-bold text-center mt-5" style="font-size: 1.2rem;">
