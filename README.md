@@ -97,7 +97,7 @@ Desarrollar una solución web que permita gestionar clientes, proyectos, emplead
 ## Capturas del sistema
 
 ### Autenticación
-![Listado de proyectos](public/screenshots/login.png)
+<img src="public/screenshots/login.png" width="600" alt="Listado de proyectos">
 
 ### Dashboard
 
