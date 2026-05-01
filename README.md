@@ -98,106 +98,121 @@ Desarrollar una solución web que permita gestionar clientes, proyectos, emplead
 
 ### Autenticación
 <p align="center">
-  <img src="public/screenshots/login.png" width="400">
+  <img src="public/screenshots/login.png" width="500">
 </p>
 
 ### Dashboard
 <p align="center">
-  <img src="public/screenshots/dashboard.png" width="400">
+  <img src="public/screenshots/dashboard.png" width="500">
   &nbsp;&nbsp;&nbsp;
-  <img src="public/screenshots/barrra_nav_phone.png" width="400">
+  <img src="public/screenshots/barrra_nav_phone.png" width="500">
 </p>
 
 ### Gestión de proyectos
 <p align="center">
-  <img src="public/screenshots/proyectos/P1.png" width="400">
+  <img src="public/screenshots/proyectos/P1.png" width="500">
   &nbsp;&nbsp;&nbsp;
-  <img src="public/screenshots/proyectos/P2.png" width="400">
+  <img src="public/screenshots/proyectos/P2.png" width="500">
 </p>
 
 ### Gestión de empleados
 <p align="center">
-  <img src="public/screenshots/empleados/E1.png" width="400">
+  <img src="public/screenshots/empleados/E1.png" width="500">
   &nbsp;&nbsp;&nbsp;
-  <img src="public/screenshots/empleados/E2.png" width="400">
+  <img src="public/screenshots/empleados/E2.png" width="500">
   &nbsp;&nbsp;&nbsp;
-  <img src="public/screenshots/empleados/E3.png" width="400">
+  <img src="public/screenshots/empleados/E3.png" width="500">
 </p>
 
 ### Gestión de clientes
 <p align="center">
-  <img src="public/screenshots/clientes/C1.png" width="400">
+  <img src="public/screenshots/clientes/C1.png" width="500">
   &nbsp;&nbsp;&nbsp;
-  <img src="public/screenshots/clientes/C2.png" width="400">
+  <img src="public/screenshots/clientes/C2.png" width="500">
   &nbsp;&nbsp;&nbsp;
-  <img src="public/screenshots/clientes/C3.png" width="400">
+  <img src="public/screenshots/clientes/C3.png" width="500">
 </p>
 
 ### Gestión de viáticos
 <p align="center">
-  <img src="public/screenshots/viaticos/V1.png" width="400">
+  <img src="public/screenshots/viaticos/V1.png" width="500">
   &nbsp;&nbsp;&nbsp;
-  <img src="public/screenshots/viaticos/V2.png" width="400">
+  <img src="public/screenshots/viaticos/V2.png" width="500">
   &nbsp;&nbsp;&nbsp;
-  <img src="public/screenshots/viaticos/V3.png" width="400">
+  <img src="public/screenshots/viaticos/V3.png" width="500">
 </p>
 
 <p align="center">
-  <img src="public/screenshots/viaticos/V4.png" width="400">
+  <img src="public/screenshots/viaticos/V4.png" width="500">
   &nbsp;&nbsp;&nbsp;
-  <img src="public/screenshots/viaticos/V5.png" width="400">
+  <img src="public/screenshots/viaticos/V5.png" width="500">
   &nbsp;&nbsp;&nbsp;
-  <img src="public/screenshots/viaticos/V6.png" width="400">
+  <img src="public/screenshots/viaticos/V6.png" width="500">
 </p>
 
 <p align="center">
-  <img src="public/screenshots/viaticos/V7.png" width="400">
+  <img src="public/screenshots/viaticos/V7.png" width="500">
   &nbsp;&nbsp;&nbsp;
-  <img src="public/screenshots/viaticos/V8.png" width="400">
+  <img src="public/screenshots/viaticos/V8.png" width="500">
   &nbsp;&nbsp;&nbsp;
-  <img src="public/screenshots/viaticos/V9.png" width="400">
+  <img src="public/screenshots/viaticos/V9.png" width="500">
 </p>
 
 
 ### Dispersiones monetarias
 <p align="center">
-  <img src="public/screenshots/dispersiones/D1.png" width="400">
+  <img src="public/screenshots/dispersiones/D1.png" width="500">
   &nbsp;&nbsp;&nbsp;
-  <img src="public/screenshots/dispersiones/D2.png" width="400">
+  <img src="public/screenshots/dispersiones/D2.png" width="500">
   &nbsp;&nbsp;&nbsp;
-  <img src="public/screenshots/dispersiones/D3.png" width="400">
+  <img src="public/screenshots/dispersiones/D3.png" width="500">
   &nbsp;&nbsp;&nbsp;
-  <img src="public/screenshots/dispersiones/D4.png" width="400">
+  <img src="public/screenshots/dispersiones/D4.png" width="500">
 </p>
 
 ### Gestión de vehículos
 <p align="center">
-  <img src="public/screenshots/vehiculos/V1.png" width="400">
+  <img src="public/screenshots/vehiculos/V1.png" width="500">
   &nbsp;&nbsp;&nbsp;
-  <img src="public/screenshots/vehiculos/V2.png" width="400">
+  <img src="public/screenshots/vehiculos/V2.png" width="500">
   &nbsp;&nbsp;&nbsp;
-  <img src="public/screenshots/vehiculos/V3.png" width="400">
+  <img src="public/screenshots/vehiculos/V3.png" width="500">
 </p>
 
 <p align="center">
-  <img src="public/screenshots/vehiculos/V4.png" width="400">
+  <img src="public/screenshots/vehiculos/V4.png" width="500">
   &nbsp;&nbsp;&nbsp;
-  <img src="public/screenshots/vehiculos/V5.png" width="400">
+  <img src="public/screenshots/vehiculos/V5.png" width="500">
   &nbsp;&nbsp;&nbsp;
-  <img src="public/screenshots/vehiculos/V6.png" width="400">
+  <img src="public/screenshots/vehiculos/V6.png" width="500">
 </p>
 
 <p align="center">
-  <img src="public/screenshots/vehiculos/V7.png" width="400">
+  <img src="public/screenshots/vehiculos/V7.png" width="500">
   &nbsp;&nbsp;&nbsp;
-  <img src="public/screenshots/vehiculos/V8.png" width="400">
+  <img src="public/screenshots/vehiculos/V8.png" width="500">
 </p>
 
 ### Reportes y gráficas
+<p align="center">
+  <img src="public/screenshots/reportes/barras.png" width="500">
+  &nbsp;&nbsp;&nbsp;
+  <img src="public/screenshots/reportes/pasteles.png" width="500">
+  &nbsp;&nbsp;&nbsp;
+  <img src="public/screenshots/reportes/proyecto_pdf.png" width="500">
+</p>
+
+<p align="center">
+  <img src="public/screenshots/reportes/pres1.png" width="500">
+  &nbsp;&nbsp;&nbsp;
+  <img src="public/screenshots/reportes/pres2.png" width="500">
+  &nbsp;&nbsp;&nbsp;
+  <img src="public/screenshots/reportes/pres3.png" width="500">
+</p>
 
 ### Autor
 <p align="center">
-  <img src="public/screenshots/autor.png" width="400">
+  <img src="public/screenshots/autor.png" width="500">
 </p>
 
 ---
