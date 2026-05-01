@@ -91,6 +91,117 @@ Desarrollar una solución web que permita gestionar clientes, proyectos, emplead
 
   * Estado de proyectos concluidos
   * Préstamos vehiculares finalizados
+    
+---
+
+## Requerimientos no funcionales
+
+* **Rendimiento:** tiempo de respuesta menor a 2 segundos en operaciones comunes
+* **Disponibilidad:** acceso continuo en entorno local con disponibilidad mínima del 95%
+* **Usabilidad:** interfaz clara, navegación estructurada y validación en formularios
+* **Portabilidad:** compatible con navegadores modernos
+* **Adaptabilidad:** diseño responsivo (Flexbox y Grid)
+* **Seguridad:** autenticación de usuario administrador, implementación de HTTPS con TLS 1.3, protección contra:
+
+  * Inyecciones SQL (Eloquent ORM)
+  * XSS (escape en Blade)
+  * CSRF (tokens de seguridad)
+
+---
+
+## Instalación
+
+1. Clonar el repositorio
+
+```bash
+git clone https://github.com/HarritoT1/sgvap_vs_1_0.git
+```
+
+2. Instalar dependencias
+
+```bash
+composer install
+npm install
+```
+
+3. Configurar entorno
+
+```bash
+cp .env.example .env
+```
+
+4. Generar clave de aplicación
+
+```bash
+php artisan key:generate
+```
+
+5. Configurar base de datos en `.env`
+
+6. Ejecutar migraciones y seeders
+
+```bash
+php artisan migrate --seed
+```
+
+7. Ejecutar servidor
+
+```bash
+php artisan serve
+```
+
+---
+
+## Uso del sistema
+
+Flujo básico de operación:
+
+1. Inicio de sesión como administrador
+2. Registro de clientes, proyectos y empleados
+3. Asignación y control de viáticos
+4. Registro de dispersiones (gasolina, casetas, hospedaje)
+5. Gestión de vehículos y préstamos
+6. Generación de reportes y análisis gráfico
+
+---
+
+## Base de datos
+
+* Motor: MySQL
+* Convención: nombres en inglés y en plural
+* Relaciones:
+	
+  * Clientes  ↔ Proyectos
+  * Proyectos ↔ Empleados
+  * Empleados ↔ Viáticos
+  * Vehículos ↔ Préstamos
+
+Incluye uso de migraciones, seeders y procedimientos almacenados.
+
+---
+
+## Arquitectura
+
+El sistema está desarrollado bajo el patrón MVC (Modelo-Vista-Controlador), utilizando Laravel como framework principal, lo que permite una separación clara de responsabilidades, facilitando el mantenimiento y escalabilidad del sistema.
+
+---
+
+## Estado del proyecto
+
+Proyecto funcional y testeado, desarrollado como parte de formación profesional para la empresa E Core Network S. A. de C.V., operando en entorno local mediante XAMPP.
+
+---
+
+## Entregables
+
+* Documento de requerimientos
+* Diagramas UML 
+* Prototipo en Figma
+* Script SQL inicial
+* Bitácora de pruebas
+* Sistema funcional
+* Manual de usuario
+* Reporte técnico
 
 ---
 
@@ -214,118 +325,6 @@ Desarrollar una solución web que permita gestionar clientes, proyectos, emplead
 <p align="center">
   <img src="public/screenshots/autor.png" width="500">
 </p>
-
----
-
-
-## Requerimientos no funcionales
-
-* **Rendimiento:** tiempo de respuesta menor a 2 segundos en operaciones comunes
-* **Disponibilidad:** acceso continuo en entorno local con disponibilidad mínima del 95%
-* **Usabilidad:** interfaz clara, navegación estructurada y validación en formularios
-* **Portabilidad:** compatible con navegadores modernos
-* **Adaptabilidad:** diseño responsivo (Flexbox y Grid)
-* **Seguridad:** autenticación de usuario administrador, implementación de HTTPS con TLS 1.3, protección contra:
-
-  * Inyecciones SQL (Eloquent ORM)
-  * XSS (escape en Blade)
-  * CSRF (tokens de seguridad)
-
----
-
-## Instalación
-
-1. Clonar el repositorio
-
-```bash
-git clone https://github.com/HarritoT1/sgvap_vs_1_0.git
-```
-
-2. Instalar dependencias
-
-```bash
-composer install
-npm install
-```
-
-3. Configurar entorno
-
-```bash
-cp .env.example .env
-```
-
-4. Generar clave de aplicación
-
-```bash
-php artisan key:generate
-```
-
-5. Configurar base de datos en `.env`
-
-6. Ejecutar migraciones y seeders
-
-```bash
-php artisan migrate --seed
-```
-
-7. Ejecutar servidor
-
-```bash
-php artisan serve
-```
-
----
-
-## Uso del sistema
-
-Flujo básico de operación:
-
-1. Inicio de sesión como administrador
-2. Registro de clientes, proyectos y empleados
-3. Asignación y control de viáticos
-4. Registro de dispersiones (gasolina, casetas, hospedaje)
-5. Gestión de vehículos y préstamos
-6. Generación de reportes y análisis gráfico
-
----
-
-## Base de datos
-
-* Motor: MySQL
-* Convención: nombres en inglés y en plural
-* Relaciones:
-	
-  * Clientes  ↔ Proyectos
-  * Proyectos ↔ Empleados
-  * Empleados ↔ Viáticos
-  * Vehículos ↔ Préstamos
-
-Incluye uso de migraciones, seeders y procedimientos almacenados.
-
----
-
-## Arquitectura
-
-El sistema está desarrollado bajo el patrón MVC (Modelo-Vista-Controlador), utilizando Laravel como framework principal, lo que permite una separación clara de responsabilidades, facilitando el mantenimiento y escalabilidad del sistema.
-
----
-
-## Estado del proyecto
-
-Proyecto funcional y testeado, desarrollado como parte de formación profesional para la empresa E Core Network S. A. de C.V., operando en entorno local mediante XAMPP.
-
----
-
-## Entregables
-
-* Documento de requerimientos
-* Diagramas UML 
-* Prototipo en Figma
-* Script SQL inicial
-* Bitácora de pruebas
-* Sistema funcional
-* Manual de usuario
-* Reporte técnico
 
 ---
 
