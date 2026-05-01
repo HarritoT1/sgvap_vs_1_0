@@ -105,7 +105,7 @@ Desarrollar una solución web que permita gestionar clientes, proyectos, emplead
 <p align="center">
   <img src="public/screenshots/dashboard.png" width="400">
   &nbsp;&nbsp;&nbsp;
-  <img src="public/screenshots/barra_nav_phone.png" width="400">
+  <img src="public/screenshots/barrra_nav_phone.png" width="400">
 </p>
 
 ### Gestión de proyectos
@@ -124,7 +124,7 @@ Desarrollar una solución web que permita gestionar clientes, proyectos, emplead
 
 ### Autor
 <p align="center">
-  <img src="public/screenshots/login.png" width="400">
+  <img src="public/screenshots/autor.png" width="400">
 </p>
 
 ---
