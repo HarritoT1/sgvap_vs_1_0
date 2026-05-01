@@ -97,9 +97,16 @@ Desarrollar una solución web que permita gestionar clientes, proyectos, emplead
 ## Capturas del sistema
 
 ### Autenticación
-<img src="public/screenshots/login.png" width="600" alt="Listado de proyectos">
+<p align="center">
+  <img src="public/screenshots/login.png" width="400">
+</p>
 
 ### Dashboard
+<p align="center">
+  <img src="public/screenshots/dashboard.png" width="400">
+  &nbsp;&nbsp;&nbsp;
+  <img src="public/screenshots/barra_nav_phone.png" width="400">
+</p>
 
 ### Gestión de proyectos
 
@@ -116,6 +123,9 @@ Desarrollar una solución web que permita gestionar clientes, proyectos, emplead
 ### Reportes y gráficas
 
 ### Autor
+<p align="center">
+  <img src="public/screenshots/login.png" width="400">
+</p>
 
 ---
 
