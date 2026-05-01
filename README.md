@@ -214,6 +214,12 @@ Incluye uso de migraciones, seeders y procedimientos almacenados.
 
 ---
 
+## Arquitectura
+
+El sistema está desarrollado bajo el patrón MVC (Modelo-Vista-Controlador), utilizando Laravel como framework principal, lo que permite una separación clara de responsabilidades, facilitando el mantenimiento y escalabilidad del sistema.
+
+---
+
 ## Estado del proyecto
 
 Proyecto funcional y testeado, desarrollado como parte de formación profesional para la empresa E Core Network S. A. de C.V., operando en entorno local mediante XAMPP.
