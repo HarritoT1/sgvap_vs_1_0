@@ -99,11 +99,17 @@ Desarrollar una solución web que permita gestionar clientes, proyectos, emplead
 
 ### Autenticación
 
-| Imagen 1 |
-|---|---|---|
-| <img src="public/screenshots/login.png" width="250"> |
+<p align="center">
+  <img src="public/screenshots/login.png" width="70%">
+</p>
 
 ### Dashboard
+
+<p align="center">
+  <img src="public/screenshots/dashboard.png" width="70%">
+  &nbsp;
+  <img src="public/screenshots/barrra_nav_phone.png" width="45%">
+</p>
 
 ### Gestión de proyectos
 
@@ -120,6 +126,10 @@ Desarrollar una solución web que permita gestionar clientes, proyectos, emplead
 ### Reportes y gráficas
 
 ### Autor
+
+<p align="center">
+  <img src="public/screenshots/autor.png" width="70%">
+</p>
 
 ---
 
