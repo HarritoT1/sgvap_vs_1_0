@@ -113,11 +113,49 @@ Desarrollar una solución web que permita gestionar clientes, proyectos, emplead
 
 ### Gestión de proyectos
 
+<p align="center">
+  <img src="public/screenshots/proyectos/P1.png" width="70%">
+  &nbsp;
+  <img src="public/screenshots/proyectos/P2.png" width="45%">
+</p>
+
 ### Gestión de empleados
+
+<p align="center">
+  <img src="public/screenshots/empleados/E1.png" width="70%">
+  &nbsp;
+  <img src="public/screenshots/empleados/E2.png" width="70%">
+  &nbsp;
+  <img src="public/screenshots/empleados/E3.png" width="70%">
+</p>
 
 ### Gestión de clientes
 
+<p align="center">
+  <img src="public/screenshots/clientes/C1.png" width="70%">
+  &nbsp;
+  <img src="public/screenshots/clientes/C2.png" width="70%">
+  &nbsp;
+  <img src="public/screenshots/clientes/C3.png" width="70%">
+</p>
+
 ### Gestión de viáticos
+
+<p align="center">
+  <img src="public/screenshots/viaticos/V1.png" width="70%">
+  &nbsp;
+  <img src="public/screenshots/viaticos/V2.png" width="70%">
+  &nbsp;
+  <img src="public/screenshots/viaticos/V3.png" width="70%">
+  &nbsp;
+  <img src="public/screenshots/viaticos/V4.png" width="70%">
+  &nbsp;
+  <img src="public/screenshots/viaticos/V5.png" width="70%">
+  &nbsp;
+  <img src="public/screenshots/viaticos/V6.png" width="70%">
+  &nbsp;
+  <img src="public/screenshots/viaticos/V7.png" width="70%">
+</p>
 
 ### Dispersiones monetarias
 
