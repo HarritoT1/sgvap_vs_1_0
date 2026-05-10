@@ -99,6 +99,10 @@ Desarrollar una solución web que permita gestionar clientes, proyectos, emplead
 
 ### Autenticación
 
+| Imagen 1 |
+|---|---|---|
+| <img src="public/screenshots/login.png" width="250"> |
+
 ### Dashboard
 
 ### Gestión de proyectos
