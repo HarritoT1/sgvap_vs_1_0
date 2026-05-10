@@ -159,9 +159,51 @@ Desarrollar una solución web que permita gestionar clientes, proyectos, emplead
 
 ### Dispersiones monetarias
 
+<p align="center">
+  <img src="public/screenshots/dispersiones/D1.png" width="70%">
+  &nbsp;
+  <img src="public/screenshots/dispersiones/D2.png" width="70%">
+  &nbsp;
+  <img src="public/screenshots/dispersiones/D3.png" width="70%">
+  &nbsp;
+  <img src="public/screenshots/dispersiones/D4.png" width="70%">
+</p>
+
 ### Gestión de vehículos
 
+<p align="center">
+  <img src="public/screenshots/vehiculos/V1.png" width="70%">
+  &nbsp;
+  <img src="public/screenshots/vehiculos/V2.png" width="70%">
+  &nbsp;
+  <img src="public/screenshots/vehiculos/V3.png" width="70%">
+  &nbsp;
+  <img src="public/screenshots/vehiculos/V4.png" width="70%">
+  &nbsp;
+  <img src="public/screenshots/vehiculos/V5.png" width="70%">
+  &nbsp;
+  <img src="public/screenshots/vehiculos/V6.png" width="70%">
+  &nbsp;
+  <img src="public/screenshots/vehiculos/V7.png" width="70%">
+  &nbsp;
+  <img src="public/screenshots/vehiculos/V8.png" width="70%">
+</p>
+
 ### Reportes y gráficas
+
+<p align="center">
+  <img src="public/screenshots/reportes/barras.png" width="70%">
+  &nbsp;
+  <img src="public/screenshots/reportes/pasteles.png" width="70%">
+  &nbsp;
+  <img src="public/screenshots/reportes/pres1.png" width="50%">
+  &nbsp;
+  <img src="public/screenshots/reportes/pres2.png" width="50%">
+  &nbsp;
+  <img src="public/screenshots/reportes/pres3.png" width="50%">
+  &nbsp;
+  <img src="public/screenshots/reportes/proyecto_pdf.png" width="70%">
+</p>
 
 ### Autor
 
